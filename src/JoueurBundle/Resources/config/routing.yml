@@ -1,0 +1,6 @@
+joueur_homepage:
+    path:     /
+    defaults: { _controller: JoueurBundle:Default:index }
+joueur_Display:
+    path:     /Display
+    defaults: { _controller: JoueurBundle:Joueur:Display }

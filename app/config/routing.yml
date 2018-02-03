@@ -1,3 +1,7 @@
+joueur:
+    resource: "@JoueurBundle/Resources/config/routing.yml"
+    prefix:   /Joueur
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
