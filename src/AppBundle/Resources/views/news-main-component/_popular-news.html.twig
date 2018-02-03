@@ -1,0 +1,259 @@
+{#Heading component variable example#}
+{% set headingTitle = "Adjustable link" %}
+{% set heading = "Header" %}
+{% set link = "#" %}
+
+<div class="main-component">
+
+    <!-- Heading Component-->
+    {% include 'AppBundle:news-main-component:_heading-component.html.twig'  with {'headingTitle': headingTitle , 'heading' : heading, 'link' : link } %}
+
+    <div class="row row-30">
+        <div class="col-md-6">
+            <!-- Post Future-->
+            <article class="post-future">
+                <a class="post-future-figure" href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-2-1-368x287.jpg') }}" alt="" width="368"
+                            height="287"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">Sadio mane still makes a
+                            difference, sam wilson admits</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-secondary">The Team
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>Liverpool would love to welcome Philippe Coutinho back, but Sadio Mane is
+                            carrying...</p>
+                    </div>
+                    <div class="post-future-footer group-flex group-flex-xs"><a
+                                class="button button-gray-outline" href="blog-post.html">Read more</a>
+                        <div class="post-future-share">
+                            <div class="inline-toggle-parent">
+                                <div class="inline-toggle icon material-icons-share"></div>
+                                <div class="inline-toggle-element">
+                                    <ul class="list-inline">
+                                        <li>Share</li>
+                                        <li><a class="icon fa-facebook" href="#"></a></li>
+                                        <li><a class="icon fa-twitter" href="#"></a></li>
+                                        <li><a class="icon fa-google-plus" href="#"></a></li>
+                                        <li><a class="icon fa-instagram" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <!-- Post Future-->
+            <article class="post-future"><a class="post-future-figure" href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-2-2-368x287.jpg') }}" alt="" width="368"
+                            height="287"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">Robertson's decent debut
+                            at european cup 2017</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-secondary">The Team
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>Robertson, in his first Anfield outing as a Liverpool player, looked
+                            assured at left-back...</p>
+                    </div>
+                    <div class="post-future-footer group-flex group-flex-xs"><a
+                                class="button button-gray-outline" href="blog-post.html">Read more</a>
+                        <div class="post-future-share">
+                            <div class="inline-toggle-parent">
+                                <div class="inline-toggle icon material-icons-share"></div>
+                                <div class="inline-toggle-element">
+                                    <ul class="list-inline">
+                                        <li>Share</li>
+                                        <li><a class="icon fa-facebook" href="#"></a></li>
+                                        <li><a class="icon fa-twitter" href="#"></a></li>
+                                        <li><a class="icon fa-google-plus" href="#"></a></li>
+                                        <li><a class="icon fa-instagram" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-12">
+            <!-- Post Gloria-->
+            <article class="post-gloria">
+                <img src="{{ asset('assets/images/post-gloria-1-769x429.jpg') }}" alt=""
+                     width="769" height="429"/>
+                <div class="post-gloria-main">
+                    <h3 class="post-gloria-title"><a href="blog-post.html">Premier League Winners
+                            and Losers: a quick look</a></h3>
+                    <div class="post-gloria-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-primary">The League
+                        </div>
+                        <div class="post-gloria-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <div class="post-gloria-text">
+                        <svg version="1.1" x="0px" y="0px" width="6.888px" height="4.68px" viewbox="0 0 6.888 4.68"
+                             enable-background="new 0 0 6.888 4.68" xml:space="preserve">
+                            <path d="M1.584,0h1.8L2.112,4.68H0L1.584,0z M5.112,0h1.776L5.64,4.68H3.528L5.112,0z"></path>
+                          </svg>
+                        <p>During this year’s premier league, we are glad to announce that there are
+                            new players who are...</p>
+                    </div>
+                    <a class="button" href="blog-post.html">Read more</a>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <!-- Post Future-->
+            <article class="post-future">
+                <a class="post-future-figure" href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-2-3-368x287.jpg') }}" alt="" width="368"
+                            height="287"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">Pochettino and ‘gaffer’s
+                            son’ Rose estranged – reports</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-secondary">The Team
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>Danny Rose and Mauricio Pochettino were once so close that he was
+                            nicknamed “the gaffer’s...</p>
+                    </div>
+                    <div class="post-future-footer group-flex group-flex-xs"><a
+                                class="button button-gray-outline" href="blog-post.html">Read more</a>
+                        <div class="post-future-share">
+                            <div class="inline-toggle-parent">
+                                <div class="inline-toggle icon material-icons-share"></div>
+                                <div class="inline-toggle-element">
+                                    <ul class="list-inline">
+                                        <li>Share</li>
+                                        <li><a class="icon fa-facebook" href="#"></a></li>
+                                        <li><a class="icon fa-twitter" href="#"></a></li>
+                                        <li><a class="icon fa-google-plus" href="#"></a></li>
+                                        <li><a class="icon fa-instagram" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <!-- Post Future-->
+            <article class="post-future">
+                <a class="post-future-figure" href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-2-4-368x287.jpg') }}" alt="" width="368"
+                            height="287"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">Coutinho’s camp: It was
+                            all Barca’s fault and we can prove it</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-secondary">The Team
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>Philippe Coutinho is reportedly seeking clear-the-air talks with
+                            Liverpool after...</p>
+                    </div>
+                    <div class="post-future-footer group-flex group-flex-xs"><a
+                                class="button button-gray-outline" href="blog-post.html">Read more</a>
+                        <div class="post-future-share">
+                            <div class="inline-toggle-parent">
+                                <div class="inline-toggle icon material-icons-share"></div>
+                                <div class="inline-toggle-element">
+                                    <ul class="list-inline">
+                                        <li>Share</li>
+                                        <li><a class="icon fa-facebook" href="#"></a></li>
+                                        <li><a class="icon fa-twitter" href="#"></a></li>
+                                        <li><a class="icon fa-google-plus" href="#"></a></li>
+                                        <li><a class="icon fa-instagram" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-12">
+            <!-- Post Future-->
+            <article class="post-future post-future-horizontal"><a class="post-future-figure"
+                                                                   href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-3-1-370x325.jpg') }}" alt="" width="370"
+                            height="325"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">Zidane: “We’re not going
+                            to change the way we play at the Calderón”</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-red">hot<span class="icon mdi mdi-fire"></span>
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>Back when I played football in high school, I took a fair number of hits
+                            that had me seeing stars. But my coach would just tell me to shake
+                            it…</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="col-md-12">
+            <!-- Post Future-->
+            <article class="post-future post-future-horizontal"><a class="post-future-figure"
+                                                                   href="blog-post.html"><img
+                            src="{{ asset('assets/images/news-3-2-370x325.jpg') }}" alt="" width="370"
+                            height="325"/></a>
+                <div class="post-future-main">
+                    <h4 class="post-future-title"><a href="blog-post.html">NFL Will Handle Referee
+                            Pete Morelli’s Use of Profanity Internally</a></h4>
+                    <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-primary">The League
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2017">April 15, 2017</time>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="post-future-text">
+                        <p>The NFL will internally address referee Pete Morelli's recent microphone
+                            gaffe, a league spokesman said, but it does not appear Morelli...</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="section secti²on-md bg-gray-100">
+    <div class="container">
+        <div class="row row-50">
+            {% include "AppBundle:news-main-component:_latest-news-carousel.html.twig" %}
+
+            <!-- Center Block-->
+            <div class="col-lg-8">
+                {% include "AppBundle:news-main-component:_game-result.html.twig" %}
+                {% include "AppBundle:news-main-component:_popular-news.html.twig" %}
+            </div>
+
+            <!-- Aside block -->
+            <div class="col-lg-4">
+                {% include "AppBundle:news-main-component:_spotlight-aside.html.twig" %}
+            </div>
+
+        </div>
+    </div>
+</section>
