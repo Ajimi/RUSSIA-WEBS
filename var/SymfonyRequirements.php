@@ -184,6 +184,16 @@ class RequirementCollection implements IteratorAggregate
     }
 
     /**
+     * Adds a Requirement.
+     *
+     * @param Requirement $requirement A Requirement instance
+     */
+    public function add(Requirement $requirement)
+    {
+        $this->requirements[] = $requirement;
+    }
+
+    /**
      * Adds a mandatory requirement.
      *
      * @param bool $fulfilled Whether the requirement is fulfilled
@@ -194,16 +204,6 @@ class RequirementCollection implements IteratorAggregate
     public function addRequirement($fulfilled, $testMessage, $helpHtml, $helpText = null)
     {
         $this->add(new Requirement($fulfilled, $testMessage, $helpHtml, $helpText, false));
-    }
-
-    /**
-     * Adds a Requirement.
-     *
-     * @param Requirement $requirement A Requirement instance
-     */
-    public function add(Requirement $requirement)
-    {
-        $this->requirements[] = $requirement;
     }
 
     /**
@@ -763,30 +763,6 @@ class SymfonyRequirements extends RequirementCollection
     }
 
     /**
-     * Defines PHP required version from Symfony version.
-     *
-     * @return string|false The PHP required version or false if it could not be guessed
-     */
-    protected function getPhpRequiredVersion()
-    {
-        if (!file_exists($path = __DIR__ . '/../composer.lock')) {
-            return false;
-        }
-
-        $composerLock = json_decode(file_get_contents($path), true);
-        foreach ($composerLock['packages'] as $package) {
-            $name = $package['name'];
-            if ('symfony/symfony' !== $name && 'symfony/http-kernel' !== $name) {
-                continue;
-            }
-
-            return (int)$package['version'][1] > 2 ? self::REQUIRED_PHP_VERSION : self::LEGACY_REQUIRED_PHP_VERSION;
-        }
-
-        return false;
-    }
-
-    /**
      * Loads realpath_cache_size from php.ini and converts it to int.
      *
      * (e.g. 16k is converted to 16384 int)
@@ -812,5 +788,29 @@ class SymfonyRequirements extends RequirementCollection
             default:
                 return (int)$size;
         }
+    }
+
+    /**
+     * Defines PHP required version from Symfony version.
+     *
+     * @return string|false The PHP required version or false if it could not be guessed
+     */
+    protected function getPhpRequiredVersion()
+    {
+        if (!file_exists($path = __DIR__ . '/../composer.lock')) {
+            return false;
+        }
+
+        $composerLock = json_decode(file_get_contents($path), true);
+        foreach ($composerLock['packages'] as $package) {
+            $name = $package['name'];
+            if ('symfony/symfony' !== $name && 'symfony/http-kernel' !== $name) {
+                continue;
+            }
+
+            return (int)$package['version'][1] > 2 ? self::REQUIRED_PHP_VERSION : self::LEGACY_REQUIRED_PHP_VERSION;
+        }
+
+        return false;
     }
 }

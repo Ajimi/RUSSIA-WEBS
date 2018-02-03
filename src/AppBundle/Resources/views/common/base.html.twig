@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+    <!-- Site Title-->
+    <title>{% block title %} Base title {% endblock %}</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="http://static.livedemo00.template-help.com/wt_63853/soccer/images/favicon.ico"
+          type="image/x-icon">
+    <!-- Stylesheets-->
+    {% block stylesheets %}
+        {% include 'AppBundle:common:_style.html.twig' %}
+    {% endblock %}
+</head>
+<body class="animsition-overlay">
+<div class="page">
+    {% include 'AppBundle:common:_header.html.twig' %}
+    {% block body %}
+    {% endblock %}
+
+    {% include 'AppBundle:common:_footer.html.twig' %}
+    {% block javascripts %}
+        {% include 'AppBundle:common:_js.html.twig' %}
+    {% endblock %}
+</div>
+</body>
+</html>
