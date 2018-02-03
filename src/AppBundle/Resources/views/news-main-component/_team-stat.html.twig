@@ -1,11 +1,7 @@
 <div class="aside-component">
     <!-- Heading Component-->
-    <article class="heading-component">
-        <div class="heading-component-inner">
-            <h5 class="heading-component-title">Team Stats
-            </h5>
-        </div>
-    </article>
+    {% include 'AppBundle:news-main-component:_heading-component-title.html.twig' with {'title' : 'TEAM STAT'} %}
+
 
     <div class="table-custom-responsive">
         <table class="table-custom table-custom-bordered table-team-statistic">
