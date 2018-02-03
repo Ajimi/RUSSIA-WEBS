@@ -17,4 +17,14 @@ class DefaultController extends Controller
         return $this->render('AppBundle:main:main.html.twig', [
         ]);
     }
+
+    /**
+     * @Route("/news", name="homepage")
+     */
+    public function newsAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:main:news.html.twig', [
+        ]);
+    }
 }
