@@ -53,7 +53,17 @@
                         {% include 'AppBundle:blog-component:_post-modern.html.twig' %}
                     {% endfor %}
                 </div>
+                <div class="col-sm-9 col-md-6 col-lg-4">
+                    {% include 'AppBundle:blog-component:_heading-component-title.html.twig' with {'title': "EVENTS"} %}
+                    {% for i in 1..4 %}
+                        <!-- Post Classic-->
+                        {# TODO : Pass variables to @_post-minimal-image#}
+                        {% include 'AppBundle:blog-component:_comment-modern.html.twig' %}
+                    {% endfor %}
+                </div>
             </div>
+        </div>
     </section>
+
     {#TODO : Add blog elements blog-elements.html #}
 {% endblock %}
