@@ -19,7 +19,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/news", name="homepage")
+     * @Route("/news", name="home")
      */
     public function newsAction(Request $request)
     {

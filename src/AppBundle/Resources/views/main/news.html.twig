@@ -1,5 +1,21 @@
 {% extends 'AppBundle:common:base.html.twig' %}
 {% block body %}
-    Hello World
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-sm-9 col-md-6 col-lg-4">
+                    {% include 'AppBundle:news-main-component:_heading-component-title.html.twig' with {'title': "In the spotlight"} %}
+                    <div class="list-post-classic">
+                        {% for i in 1..3 %}
+                            <!-- Post Classic-->
+                            {# TODO : Pass variables to @_post-classic-image#}
+                            {% include 'AppBundle:news-main-component:_post-classic-image.html.twig' %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {#TODO : Add blog elements blog-elements.html #}
 {% endblock %}
