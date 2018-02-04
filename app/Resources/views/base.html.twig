@@ -8,16 +8,16 @@
         <link rel="stylesheet" href="{{ asset('templates/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('templates/css/fonts.css') }}">
         <link rel="stylesheet" href="{{ asset('templates/css/style.css') }}" id="main-styles-link">
-    {% endblock %}
+    {% endblock %} }
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
     <div class="animsition-overlay">
-        <div class="preloader loaded">
-            <div class="preloader-body">
-                <div class="preloader-item"></div>
+            <div class="preloader loaded">
+                <div class="preloader-body">
+                    <div class="preloader-item"></div>
+                </div>
             </div>
-        </div>
         <div class="page">
             {% block header%}
                 <!-- Page Header-->
@@ -152,9 +152,9 @@
                                     <div class="rd-navbar-main-container container">
                                         <!-- RD Navbar Nav-->
                                         <ul class="rd-navbar-nav">
-                                            <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Home</a>
+                                            <li class="rd-nav-item {% block header_home %}{% endblock %}"><a class="rd-nav-link" href="{{ path('homepage') }}">Home</a>
                                             </li>
-                                            <li class="rd-nav-item"><a class="rd-nav-link" href="#">Features</a>
+                                            <li class="rd-nav-item {% block header_feature %}{% endblock %}"><a class="rd-nav-link" href="#">Features</a>
                                                 <!-- RD Navbar Megamenu-->
                                                 <article class="rd-menu rd-navbar-megamenu rd-megamenu-2-columns context-light">
                                                     <div class="rd-megamenu-main">
@@ -300,7 +300,7 @@
                                                     </article>
                                                 </article>
                                             </li>
-                                            <li class="rd-nav-item"><a class="rd-nav-link" href="#">News</a>
+                                            <li class="rd-nav-item {% block header_news %}{% endblock %}"><a class="rd-nav-link" href="#">News</a>
                                                 <!-- RD Navbar Dropdown-->
                                                 <ul class="rd-menu rd-navbar-dropdown">
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="blog-elements.html">Blog Elements</a></li>
@@ -312,19 +312,16 @@
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="blog-post.html">Blog post</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="rd-nav-item"><a class="rd-nav-link" href="#">Team</a>
+                                            <li class="rd-nav-item {% block header_team %}{% endblock %}"><a class="rd-nav-link" href="#">Competition</a>
                                                 <!-- RD Navbar Dropdown-->
                                                 <ul class="rd-menu rd-navbar-dropdown">
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="game-overview.html">Game Overview</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="roster.html">Roster</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="standings.html">Standings</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="latest-results-1.html">Latest Results 1</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="latest-results-2.html">Latest Results 2</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="game-schedule.html">Game schedule</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="player-page.html">Player Page</a></li>
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="game-overview.html">Schedule</a></li>
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="latest-results-2.html">Latest Results 1</a></li>
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="standings.html">Groups</a></li>
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('team_list') }}">Teams</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="rd-nav-item"><a class="rd-nav-link" href="#">Shop</a>
+                                            <li class="rd-nav-item {% block header_shop %}{% endblock %}"><a class="rd-nav-link" href="#">Shop</a>
                                                 <!-- RD Navbar Dropdown-->
                                                 <ul class="rd-menu rd-navbar-dropdown">
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="shop-elements.html">Shop Elements</a></li>

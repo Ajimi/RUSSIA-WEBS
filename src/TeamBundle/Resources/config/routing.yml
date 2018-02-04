@@ -1,0 +1,6 @@
+team_display:
+    path:     /Display
+    defaults: { _controller: TeamBundle:Team:Display }
+team_list:
+    path:     /List
+    defaults: { _controller: TeamBundle:Team:List }

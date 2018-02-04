@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %}Joueur{% endblock %}
+{% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    <section class="section parallax-container breadcrumbs-wrap" data-parallax-img="./images/bg-breadcrumbs-1.jpg">
+    <section class="section parallax-container breadcrumbs-wrap" data-parallax-img="{{ asset('templates/images/bg-breadcrumbs-1.jpg') }}">
         <div class="parallax-content breadcrumbs-custom context-dark">
             <div class="container">
                 <h3 class="breadcrumbs-custom-title">Player Page</h3>
                 <ul class="breadcrumbs-custom-path">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ path('homepage') }}">Home</a></li>
                     <li><a href="#">Team</a></li>
                     <li class="active">Player Page</li>
                 </ul>
@@ -32,9 +33,9 @@
                     <div class="player-info-corporate">
                         <div class="player-info-figure">
                             <div class="block-number"><span>11</span></div>
-                            <div class="player-img"><img src="./images/roster-player-5-368x286.png" alt="" width="368" height="286"/>
+                            <div class="player-img"><img src="{{ asset('templates/images/roster-player-5-368x286.png') }}" alt="" width="368" height="286"/>
                             </div>
-                            <div class="team-logo-img"><img src="./images/logo-team-1-313x313.png" alt="" width="313" height="313"/>
+                            <div class="team-logo-img"><img src="{{ asset('templates/images/logo-team-1-313x313.png') }}" alt="" width="313" height="313"/>
                             </div>
                         </div>
                         <div class="player-info-main">
