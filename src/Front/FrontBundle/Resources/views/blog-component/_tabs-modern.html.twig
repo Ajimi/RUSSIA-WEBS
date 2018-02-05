@@ -1,0 +1,40 @@
+{# TODO : Make .nav-item extensible #}
+<div class="tabs-custom tabs-horizontal tabs-modern" id="tabs-modern">
+    <ul class="nav nav-tabs">
+        <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-modern-1"
+                                                    data-toggle="tab">New</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-2"
+                                                    data-toggle="tab">Trending</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-modern-3"
+                                                    data-toggle="tab">Popular</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="tabs-modern-1">
+            <!-- Post Classic-->
+            {% for i in 1..3 %}
+                {# TODO : Pass variables to @_post-classic-image#}
+                {% include 'FrontBundle:blog-component:_post-classic-image.html.twig' %}
+            {% endfor %}
+
+        </div>
+        <div class="tab-pane fade" id="tabs-modern-2">
+            <!-- Post Classic-->
+            {% for i in 1..3 %}
+                {# TODO : Pass variables to @_post-classic-image#}
+                {% include 'FrontBundle:blog-component:_post-classic-image.html.twig' %}
+            {% endfor %}
+
+        </div>
+        <div class="tab-pane fade" id="tabs-modern-3">
+            <!-- Post Classic-->
+            {% for i in 1..2 %}
+                <!-- Post Classic-->
+                {# TODO : Pass variables to @_post-classic-image#}
+                {% include 'FrontBundle:blog-component:_post-classic-image.html.twig' %}
+
+            {% endfor %}
+            <!-- Post Classic-->
+
+        </div>
+    </div>
+</div>
