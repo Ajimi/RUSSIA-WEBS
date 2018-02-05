@@ -9,22 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="test")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:main:main.html.twig', [
-        ]);
-    }
-
-    /**
-     * @Route("/news", name="home")
-     */
-    public function newsAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:main:news.html.twig', [
-        ]);
+        $this->render("AppBundle::base.html.twig", []);
     }
 }
