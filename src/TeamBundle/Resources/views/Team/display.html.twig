@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Team Details{% endblock %}
+{% block title %}{{ name }}{% endblock %}
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
@@ -10,8 +10,9 @@
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="{{ path('homepage') }}">Home</a></li>
                     <li><a href="#">Team</a></li>
-                    <li><a href="#">List</a></li>
-                    <li class="active">Details</li>
+                    <li><a href="{{ path('team_list') }}">List</a></li>
+                    <li><a href="#">Details</li>
+                    <li class="active">{{ name }}</li>
                 </ul>
             </div>
         </div>
@@ -22,7 +23,7 @@
             <!-- Heading Component-->
             <article class="heading-component">
                 <div class="heading-component-inner">
-                    <h5 class="heading-component-title">Team Details
+                    <h5 class="heading-component-title">{{ name }} Details
                     </h5>
                 </div>
             </article>

@@ -1,5 +1,5 @@
 team_display:
-    path:     /Display
+    path:     /Display/{Name}
     defaults: { _controller: TeamBundle:Team:Display }
 team_list:
     path:     /List

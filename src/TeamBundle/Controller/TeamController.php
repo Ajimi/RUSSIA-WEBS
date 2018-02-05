@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TeamController extends Controller
 {
-    public function DisplayAction()
+    public function DisplayAction($Name)
     {
         return $this->render('TeamBundle:Team:display.html.twig', array(
-            // ...
+            'name'=>$Name
         ));
     }
 
