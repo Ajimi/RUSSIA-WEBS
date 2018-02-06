@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="joueur_homepage")
+     * @Route("/dk", name="joueur_homepage")
      */
     public function indexAction()
     {

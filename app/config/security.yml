@@ -3,7 +3,7 @@
 security:
 
     encoders:
-            FOS\UserBundle\Model\UserInterface: bcrypt
+            UserBundle\Entity\User: bcrypt
 
 
     role_hierarchy:
@@ -25,14 +25,15 @@ security:
         main:
             pattern: ^/
             form_login:
-                check_path: /login_check
-                login_path: /login
+                #check_path: /login_check
+                #login_path: /login
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
 
-            logout:
-                path:   /logout
-                target: /
+            logout: ~
+
+            remember_me:
+                secret: '%secret%'
             anonymous:    true
 
 
