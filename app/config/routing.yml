@@ -11,6 +11,8 @@ team:
     resource: "@TeamBundle/Resources/config/routing.yml"
     prefix:   /Team
 
+
 joueur:
-    resource: "@JoueurBundle/Resources/config/routing.yml"
-    prefix:   /Joueur
+    resource: '@JoueurBundle/Controller/'
+    prefix: /joueur
+    type: annotation
