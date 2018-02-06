@@ -39,9 +39,6 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-    globals:
-        front_office: '%front_office%'
-
 # Doctrine Configuration
 doctrine:
     dbal:
