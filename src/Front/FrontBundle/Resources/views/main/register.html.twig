@@ -1,0 +1,6 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+{% block body %}
+    {# TODO : Make bread crumbs generic#}
+    {% include "@Front/common/_breadcrumbs.html.twig" %}
+    {% include '@Front/account-component/register-login.html.twig' %}
+{% endblock %}

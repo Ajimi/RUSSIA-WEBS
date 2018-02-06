@@ -1,72 +1,53 @@
-Symfony Standard Edition
-========================
+Integration of template
+=========
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Hi there! Inside this code you'll find the following things:
 
-What's inside?
---------------
+* A `template` directory: that contains code of the `HTML` code
 
-The Symfony Standard Edition is configured with the following defaults:
+* A `/*` directory: that contains the code of symfony project
 
-  * An AppBundle you can use to start coding;
+## Setup
 
-  * Twig as the only configured template engine;
+### 1) Install the vendor libs with Composer!
 
-  * Doctrine ORM/DBAL;
+[Download Composer][composer] either globally or right into *this* directory,
+and then (from this directory), run:
 
-  * Swiftmailer;
+```bash
+php composer.phar install
+```
 
-  * Annotations enabled for everything.
+This will interactively ask you for some settings - like `database_host`.
+Fill those in. If you make a mistake - just modify `app/config/parameters.yml`
+afterwards!
 
-It comes pre-configured with the following bundles:
+If you get an error about "Unknown Database" - it's cool! Ignore it for now :)
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+### 2) Bootstrap the database
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+To get your database up and running, execute the following commands:
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console h:d:f:l
+```
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+If you get any errors, check your database settings in `app/config/parameters.yml`.
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+### 3) Start your web server
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+We recommend using the built-in PHP web server. To start it, run:
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+```bash
+php bin/console server:run
+```
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+Then, load the site at:
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+    http://localhost:8000
 
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
+[composer]: https://getcomposer.org/
 
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.3/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.3/doctrine.html
-[8]:  https://symfony.com/doc/3.3/templating.html
-[9]:  https://symfony.com/doc/3.3/security.html
-[10]: https://symfony.com/doc/3.3/email.html
-[11]: https://symfony.com/doc/3.3/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html

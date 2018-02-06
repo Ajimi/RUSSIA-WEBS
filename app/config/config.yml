@@ -39,6 +39,11 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+<<<<<<< HEAD
+=======
+    globals:
+        front_office: '%front_office%'
+>>>>>>> remotes/origin/master
 
 # Doctrine Configuration
 doctrine:
