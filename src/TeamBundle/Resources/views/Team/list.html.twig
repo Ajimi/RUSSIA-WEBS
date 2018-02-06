@@ -1,21 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontBundle:common:_base.html.twig' %}
 {% block title %}Teams List{% endblock %}
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    <section class="section parallax-container breadcrumbs-wrap"
-             data-parallax-img="{{ asset('assets/images/bg-breadcrumbs-1.jpg') }}">
-        <div class="parallax-content breadcrumbs-custom context-dark">
-            <div class="container">
-                <h3 class="breadcrumbs-custom-title">Roster</h3>
-                <ul class="breadcrumbs-custom-path">
-                    <li><a href="{{ path('homepage') }}">Home</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li class="active">List</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Teams List'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li class="active">List</li>
+        {% endblock %}
+    {% endembed %}
 
     <section class="section section-sm bg-gray-100">
         <div class="container">
@@ -24,12 +18,9 @@
                     <div class="row row-50">
                         <div class="col-12">
                             <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">List
-                                    </h5>
-                                </div>
-                            </article>
+                            {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Teams List' } %}
+                            {% endembed %}
+
                             <div class="card-standing card-group-custom card-standing-index" id="accordion1" role="tablist" aria-multiselectable="false">
                                 <div class="list-cos">
                                     <div class="card-header">

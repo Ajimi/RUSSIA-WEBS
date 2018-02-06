@@ -1,21 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontBundle:common:_base.html.twig' %}
 {% block title %}Joueur{% endblock %}
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    <section class="section parallax-container breadcrumbs-wrap"
-             data-parallax-img="{{ asset('assets/images/bg-breadcrumbs-1.jpg') }}">
-        <div class="parallax-content breadcrumbs-custom context-dark">
-            <div class="container">
-                <h3 class="breadcrumbs-custom-title">Player Page</h3>
-                <ul class="breadcrumbs-custom-path">
-                    <li><a href="{{ path('homepage') }}">Home</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li class="active">Player Page</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Player Page'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li class="active">Player Page</li>
+        {% endblock %}
+    {% endembed %}
 
     <!-- Privacy Policy-->
     <section class="section section-md bg-gray-100">
@@ -23,12 +17,9 @@
             <div class="row row-30">
                 <div class="col-lg-8">
                     <!-- Heading Component-->
-                    <article class="heading-component">
-                        <div class="heading-component-inner">
-                            <h5 class="heading-component-title">Player overview
-                            </h5>
-                        </div>
-                    </article>
+                    {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : ' Player overview' } %}
+                    {% endembed %}
+
 
                     <!-- Player Info Corporate-->
                     <div class="player-info-corporate">
