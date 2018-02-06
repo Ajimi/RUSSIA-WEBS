@@ -12,7 +12,7 @@ class JoueurController extends Controller
     /**
      * @Route("/display", name="joueur_Display")
      */
-    public function DisplayAction()
+    public function displayAction()
     {
         return $this->render('JoueurBundle:Joueur:display.html.twig', array(
             // ...
