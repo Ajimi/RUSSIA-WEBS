@@ -1,16 +1,16 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 front:
     resource: "@FrontBundle/Controller/"
     type:     annotation
     prefix:   /front
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
-
 team:
-    resource: "@TeamBundle/Resources/config/routing.yml"
-    prefix:   /Team
-
+    resource: "@TeamBundle/Controller/"
+    type:     annotation
+    prefix:   /team
 
 joueur:
     resource: '@JoueurBundle/Controller/'
