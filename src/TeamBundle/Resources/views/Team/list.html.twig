@@ -3,7 +3,8 @@
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    <section class="section parallax-container breadcrumbs-wrap" data-parallax-img="{{ asset('templates/images/bg-breadcrumbs-1.jpg') }}">
+    <section class="section parallax-container breadcrumbs-wrap"
+             data-parallax-img="{{ asset('assets/images/bg-breadcrumbs-1.jpg') }}">
         <div class="parallax-content breadcrumbs-custom context-dark">
             <div class="container">
                 <h3 class="breadcrumbs-custom-title">Roster</h3>
@@ -47,7 +48,9 @@
                                         <a href="{{ path('team_display',{'Name':'Tunisia'}) }}">
                                         <div class="card-standing-team-item" >
                                             <div class="card-standing-team">
-                                                <div class="card-standing-team-figure"><img src="{{ asset('templates/images/TunisiaFlag.png') }}" alt="" width="50" height="37"/>
+                                                <div class="card-standing-team-figure"><img
+                                                            src="{{ asset('assets/images/TunisiaFlag.png') }}" alt=""
+                                                            width="50" height="37"/>
                                                 </div>
                                                 <div class="card-standing-team-title">
                                                     <div class="card-standing-team-name">Tunisia</div>
