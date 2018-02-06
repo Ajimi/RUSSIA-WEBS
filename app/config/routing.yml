@@ -16,3 +16,8 @@ joueur:
     resource: '@JoueurBundle/Controller/'
     prefix: /joueur
     type: annotation
+
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
