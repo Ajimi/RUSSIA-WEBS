@@ -1,35 +1,16 @@
-<div class="player-info-modern"><a class="player-info-modern-figure" href="player-page.html"><img
-                src="{{ asset('/asstes/images/player-2-368x286.png') }}" alt="" width="368" height="286"></a>
+<div class="player-info-modern"><a class="player-info-modern-figure" href="{{ path('joueur_Display') }}"><img
+                src="{% block player_image %}{% endblock %}" alt="" width="368" height="286"></a>
     <div class="player-info-modern-footer">
         <div class="player-info-modern-number">
-            <p>21</p>
+            <p>{% block player_number %} {% endblock %}</p>
         </div>
         <div class="player-info-modern-content">
             <div class="player-info-modern-title">
-                <h5><a href="player-page.html">Joe Perkins</a></h5>
-                <p>Midfielder</p>
+                <h5><a href="player-page.html">{% block player_name %} {% endblock %}</a></h5>
+                <p>{% block player_position %} {% endblock %}</p>
             </div>
             <div class="player-info-modern-progress">
-                <!-- Linear progress bar-->
-                <article class="progress-linear progress-bar-modern animated-first">
-                    <div class="progress-header">
-                        <p>Pass Acc</p>
-                    </div>
-                    <div class="progress-bar-linear-wrap">
-                        <div class="progress-bar-linear" style="width: 95%;"></div>
-                    </div>
-                    <span class="progress-value">95</span>
-                </article>
-                <!-- Linear progress bar-->
-                <article class="progress-linear progress-bar-modern animated-first">
-                    <div class="progress-header">
-                        <p>Shots Acc</p>
-                    </div>
-                    <div class="progress-bar-linear-wrap">
-                        <div class="progress-bar-linear" style="width: 70%;"></div>
-                    </div>
-                    <span class="progress-value">70</span>
-                </article>
+                {% block player_skills %}{% endblock %}
             </div>
         </div>
     </div>
