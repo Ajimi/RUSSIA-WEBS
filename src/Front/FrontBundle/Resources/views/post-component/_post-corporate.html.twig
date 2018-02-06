@@ -2,25 +2,48 @@
     <div class="post-corporate-content">
         <div class="post-corporate-header">
             <!-- Badge-->
-            <div class="badge badge-primary">The League
+            <div class="badge {% block badge-class %}badge-primary{% endblock %}">
+                {% block badge-title %}
+                The League
+                {% endblock %}
             </div>
-            <time class="post-corporate-time" datetime="2017">April 15, 2017</time>
-            <div class="post-corporate-view"><span class="icon fl-justicons-visible6"> </span>234
+            <time class="post-corporate-time" datetime="2017">
+                {% block time %}April 15, 2017{% endblock %}
+            </time>
+            <div class="post-corporate-view">
+                <span class="icon fl-justicons-visible6">
+                </span>{% block view_number %}234{% endblock %}
             </div>
         </div>
-        <h4 class="post-corporate-title"><a href="blog-post.html">On anniversary of 8-2 loss to Man
-                United, nothing has changed at Arsenal</a></h4>
+        <h4 class="post-corporate-title">
+            <a href="{% block url %}blog-post.html{% endblock %}">
+                {% block title %}
+                    On anniversary of 8-2 loss to Man
+                    United, nothing has changed at Arsenal
+                {% endblock %}
+            </a>
+        </h4>
         <div class="post-corporate-text">
-            <p>Six years ago today, Arsenal suffered perhaps the worst humiliation of Arsene
-                Wenger's time in charge, an 8-2 defeat to Manchester United at Old Trafford that
-                still scars plenty of supporters.</p>
+            <p>
+                {% block text %}
+                    Six years ago today, Arsenal suffered perhaps the worst humiliation of Arsene
+                    Wenger's time in charge, an 8-2 defeat to Manchester United at Old Trafford that
+                    still scars plenty of supporters.
+                {% endblock %}
+            </p>
         </div>
     </div>
-    <a class="post-corporate-figure" href="blog-post.html"><img
-                src="{{ asset('assets/images/post-corporate-1-768x414.jpg') }}" alt="" width="768" height="414"/></a>
+    <a class="post-corporate-figure" href="blog-post.html">
+        <img src="{% block image %}{{ asset('assets/images/post-corporate-1-768x414.jpg') }}{% endblock %}"
+             alt="" width="768" height="414"/>
+    </a>
     <div class="post-corporate-footer">
-        <div class="post-corporate-comment"><span class="icon mdi mdi-comment-outline"></span><a
-                    href="#">345 Comments</a></div>
+        <div class="post-corporate-comment">
+            <span class="icon mdi mdi-comment-outline"></span>
+            <a href="#">
+                {% block comment_number %}345{% endblock %} Comments
+            </a>
+        </div>
         <div class="post-corporate-share">
             <ul class="group">
                 <li>Share</li>
