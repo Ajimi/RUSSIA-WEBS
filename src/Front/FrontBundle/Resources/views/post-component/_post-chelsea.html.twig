@@ -1,0 +1,41 @@
+<article class="post-chelsea"><a class="post-chelsea-figure" href="blog-post.html">
+        <img src="{% block image %}
+            {{ asset('assets/images/post-chelsea-1-371x264.jpg') }}
+        {% endblock %}" alt="" width="371" height="264"/></a>
+    <div class="post-chelsea-main">
+        <!-- Badge-->
+        <div class="badge {% block badge-class %}badge-secondary{% endblock %}">
+            {% block badge-title %}
+            The Team
+            {% endblock %}
+        </div>
+        <h4 class="post-chelsea-title">
+            <a href="{% block url %}blog-post.html{% endblock %}">
+                {% block title %}
+                    Alvaro Morata proving his worth at Chelsea
+                {% endblock %}
+            </a>
+        </h4>
+        <div class="post-chelsea-text">
+            <p>
+                {% block text %}
+                    Morata is essentially Diego Costa’s replacement at Chelsea, despite the fact that his
+                    international teammate is in exile in Brazil. In many ways, the...
+                {% endblock %}
+            </p>
+        </div>
+        <div class="post-chelsea-meta">
+            <div class="post-chelsea-time"><span class="icon mdi mdi-clock"></span>
+                <time datetime="2017">{% block time %}April 15, 2017{% endblock %}</time>
+            </div>
+            <div class="post-chelsea-comment">
+                <span class="icon mdi mdi-comment-outline"> </span>
+                <a href="#">{% block comment_number %}345{% endblock %}
+                </a>
+            </div>
+            <div class="post-chelsea-view"><span class="icon fl-justicons-visible6"></span>
+                {% block view_number %}234{% endblock %}
+            </div>
+        </div>
+    </div>
+</article>
