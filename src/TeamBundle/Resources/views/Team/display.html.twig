@@ -3,21 +3,16 @@
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    <section class="section parallax-container breadcrumbs-wrap"
-             data-parallax-img="{{ asset('assets/images/bg-breadcrumbs-1.jpg') }}">
-        <div class="parallax-content breadcrumbs-custom context-dark">
-            <div class="container">
-                <h3 class="breadcrumbs-custom-title">Roster</h3>
-                <ul class="breadcrumbs-custom-path">
-                    <li><a href="{{ path('homepage') }}">Home</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="{{ path('team_list') }}">List</a></li>
-                    <li><a href="#">Details</a></li>
-                    <li class="active">{{ name }}</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    {% embed 'FrontBundle:commun:_breadcrumbs.html.twig' %}
+        {% block breadcrumbs_title %}Team Details{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="{{ path('team_list') }}">List</a></li>
+            <li><a href="#">Details</a></li>
+            <li class="active">{{ name }}</li>
+        {% endblock %}
+    {% endembed %}
 
     <section class="section section-sm bg-gray-100">
         <div class="container">
