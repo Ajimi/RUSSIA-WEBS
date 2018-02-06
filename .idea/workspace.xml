@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e15ac8d0-ad79-47e1-a4ea-95ab731abd05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TeamBundle/Resources/views/Team/list.html.twig" afterPath="$PROJECT_DIR$/src/TeamBundle/Resources/views/Team/list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TeamBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/TeamBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TeamBundle/Resources/views/Team/display.html.twig" afterPath="$PROJECT_DIR$/src/TeamBundle/Resources/views/Team/display.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TeamBundle/Controller/TeamController.php" afterPath="$PROJECT_DIR$/src/TeamBundle/Controller/TeamController.php" />
+    <list default="true" id="e15ac8d0-ad79-47e1-a4ea-95ab731abd05" name="Default" comment="Merge remote-tracking branch 'remotes/origin/Moncef'&#10;&#10;# Conflicts:&#10;#&#9;app/AppKernel.php&#10;#&#9;app/Resources/views/default/index.html.twig&#10;#&#9;app/config/config.yml&#10;#&#9;app/config/routing.yml&#10;#&#9;bin/symfony_requirements">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/PIDEV_V.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_02_02_18_13_27_c.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_02_02_18_13_27_s.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -286,11 +289,18 @@
       <option name="project" value="LOCAL" />
       <updated>1517835686630</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'remotes/origin/Moncef'&#10;&#10;# Conflicts:&#10;#&#9;app/AppKernel.php&#10;#&#9;app/Resources/views/default/index.html.twig&#10;#&#9;app/config/config.yml&#10;#&#9;app/config/routing.yml&#10;#&#9;bin/symfony_requirements">
+      <created>1517920483241</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1517920483241</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31218000" />
+    <option name="totallyTimeSpent" value="31766000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -334,11 +344,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Template V0" />
     <MESSAGE value="Template V1" />
     <MESSAGE value="Template V1.1" />
     <MESSAGE value="Panel hide" />
-    <option name="LAST_COMMIT_MESSAGE" value="Panel hide" />
+    <MESSAGE value="Merge remote-tracking branch 'remotes/origin/Moncef'&#10;&#10;# Conflicts:&#10;#&#9;app/AppKernel.php&#10;#&#9;app/Resources/views/default/index.html.twig&#10;#&#9;app/config/config.yml&#10;#&#9;app/config/routing.yml&#10;#&#9;bin/symfony_requirements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'remotes/origin/Moncef'&#10;&#10;# Conflicts:&#10;#&#9;app/AppKernel.php&#10;#&#9;app/Resources/views/default/index.html.twig&#10;#&#9;app/config/config.yml&#10;#&#9;app/config/routing.yml&#10;#&#9;bin/symfony_requirements" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -675,6 +690,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
           <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -682,6 +698,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="46" column="78" lean-forward="false" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -689,6 +706,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -696,6 +714,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
