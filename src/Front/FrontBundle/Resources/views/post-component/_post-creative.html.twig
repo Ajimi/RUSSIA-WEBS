@@ -2,20 +2,38 @@
     <div class="post-creative-content">
         <div class="post-creative-header">
             <!-- Badge-->
-            <div class="badge badge-primary">The League
+            <div class="badge {% block badge-class %}badge-primary{% endblock %}">
+                {% block badge-title %}
+                The League
+                {% endblock %}
             </div>
-            <time class="post-creative-time" datetime="2017">April 15, 2017</time>
-            <div class="post-creative-view"><span class="icon fl-justicons-visible6"></span>234
+            <time class="post-creative-time" datetime="2017">
+                {% block time %}April 15, 2017{% endblock %}
+            </time>
+            <div class="post-creative-view">
+                <span class="icon fl-justicons-visible6"></span>
+                {% block view_number %}234{% endblock %}
             </div>
         </div>
-        <h4 class="post-creative-title"><a href="blog-post.html">On anniversary of 8-2 loss
-                to Man United, nothing has changed at Arsenal</a></h4>
+        <h4 class="post-creative-title">
+            <a href="{% block url %}blog-post.html{% endblock %}">
+                {% block title %}
+                    On anniversary of 8-2 loss to Man
+                    United, nothing has changed at Arsenal
+                {% endblock %}
+            </a>
+        </h4>
     </div>
-    <a class="post-creative-figure" href="blog-post.html"><img
-                src="{{ asset('assets/images/news-4-1-370x279.jpg') }}" alt="" width="370" height="279"/></a>
+    <a class="post-creative-figure" href="{% block url %}blog-post.html{% endblock %}">
+        <img src="{% block image %}{{ asset('assets/images/news-4-1-370x279.jpg') }}{% endblock %}" alt="" width="370"
+             height="279"/>
+    </a>
     <div class="post-creative-footer">
-        <div class="post-creative-comment"><span
-                    class="icon mdi mdi-comment-outline"></span><a href="#">345 Comments</a>
+        <div class="post-creative-comment">
+            <span class="icon mdi mdi-comment-outline"></span>
+            <a href="#">
+                {% block comment_number %}345{% endblock %} Comments
+            </a>
         </div>
         <div class="post-creative-share">
             <div class="inline-toggle-parent"><span

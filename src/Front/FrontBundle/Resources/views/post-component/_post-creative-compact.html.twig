@@ -2,18 +2,32 @@
     <div class="post-creative-content">
         <div class="post-creative-header">
             <!-- Badge-->
-            <div class="badge badge-secondary">The Team
+            <div class="badge {% block badge-class %}badge-secondary{% endblock %}">
+                {% block badge-title %}
+                The Team
+                {% endblock %}
             </div>
-            <time class="post-creative-time" datetime="2017">April 15, 2017</time>
-            <div class="post-creative-view"><span class="icon fl-justicons-visible6"></span>234
+            <time class="post-creative-time" datetime="2017">
+                {% block time %}April 15, 2017{% endblock %}
+            </time>
+            <div class="post-creative-view">
+                <span class="icon fl-justicons-visible6"></span>{% block view_number %}234{% endblock %}
             </div>
         </div>
-        <h4 class="post-creative-title"><a href="blog-post.html">Round 2 predictions:
-                Experts' picks for the conference semifinals</a></h4>
+        <h4 class="post-creative-title">
+            <a href="{% block url %}blog-post.html{% endblock %}">
+                {% block title %}
+                    Round 2 predictions: Experts' picks for the conference semifinals
+                {% endblock %}
+            </a>
+        </h4>
     </div>
     <div class="post-creative-footer">
-        <div class="post-creative-comment"><span
-                    class="icon mdi mdi-comment-outline"></span><a href="#">345 Comments</a>
+        <div class="post-creative-comment">
+            <span class="icon mdi mdi-comment-outline"></span>
+            <a href="#">
+                {% block comment_number %}345{% endblock %} Comments
+            </a>
         </div>
         <div class="post-creative-share">
             <div class="inline-toggle-parent"><span
