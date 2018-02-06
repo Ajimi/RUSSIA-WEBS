@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e15ac8d0-ad79-47e1-a4ea-95ab731abd05" name="Default" comment="Add FOS">
+    <list default="true" id="e15ac8d0-ad79-47e1-a4ea-95ab731abd05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -339,7 +338,7 @@
       <workItem from="1517749831677" duration="14000" />
       <workItem from="1517830421582" duration="6354000" />
       <workItem from="1517927116760" duration="6221000" />
-      <workItem from="1517944940434" duration="625000" />
+      <workItem from="1517944940434" duration="647000" />
     </task>
     <task id="LOCAL-00001" summary="Template V0">
       <created>1517591224113</created>
@@ -432,11 +431,18 @@
       <option name="project" value="LOCAL" />
       <updated>1517945562681</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add UserBundle">
+      <created>1517945586934</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1517945586934</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39086000" />
+    <option name="totallyTimeSpent" value="39108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -519,7 +525,8 @@
     <MESSAGE value="Refactor TeamBundle to work with annotation" />
     <MESSAGE value="Add FOSUserBundle" />
     <MESSAGE value="Add FOS configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add FOS configuration" />
+    <MESSAGE value="Add UserBundle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add UserBundle" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
