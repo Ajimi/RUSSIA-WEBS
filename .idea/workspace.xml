@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e15ac8d0-ad79-47e1-a4ea-95ab731abd05" name="Default" comment="Seperate fos user route">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Front/FrontBundle/Resources/views/navbar-component/_nav-panel-right-item.html.twig" afterPath="$PROJECT_DIR$/src/Front/FrontBundle/Resources/views/navbar-component/_nav-panel-right-item.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JoueurBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/JoueurBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/UserBundle.php" afterPath="$PROJECT_DIR$/src/UserBundle/UserBundle.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="_nav-panel-right-item.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Front/FrontBundle/Resources/views/navbar-component/_nav-panel-right-item.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="104" column="42" lean-forward="false" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
+            <state relative-caret-position="369">
+              <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -586,7 +582,7 @@
       <workItem from="1517749831677" duration="14000" />
       <workItem from="1517830421582" duration="6354000" />
       <workItem from="1517927116760" duration="6221000" />
-      <workItem from="1517944940434" duration="9678000" />
+      <workItem from="1517944940434" duration="9777000" />
     </task>
     <task id="LOCAL-00001" summary="Template V0">
       <created>1517591224113</created>
@@ -756,11 +752,25 @@
       <option name="project" value="LOCAL" />
       <updated>1517955342736</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Change router path to avoid problems">
+      <created>1517955379435</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1517955379435</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Inherit `layout.html.twig` from FOSUserBundle">
+      <created>1517955440569</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1517955440569</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48139000" />
+    <option name="totallyTimeSpent" value="48238000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -854,7 +864,9 @@
     <MESSAGE value="Add fos necessary configuration" />
     <MESSAGE value="Seperate fos user route" />
     <MESSAGE value="Add bundles services.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add bundles services.yml" />
+    <MESSAGE value="Change router path to avoid problems" />
+    <MESSAGE value="Inherit `layout.html.twig` from FOSUserBundle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inherit `layout.html.twig` from FOSUserBundle" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1259,8 +1271,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Front/FrontBundle/Resources/views/navbar-component/_nav-panel-right-item.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="104" column="42" lean-forward="false" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
+        <state relative-caret-position="369">
+          <caret line="86" column="44" lean-forward="true" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
           <folding />
         </state>
       </provider>

@@ -81,10 +81,29 @@
                 </article>
             </div>
         </li>
-        <li><a class="link link-icon link-icon-left link-classic"
-               href="login-and-register.html"><span
-                        class="icon fl-bigmug-line-login12"></span><span
+        <li>
+
+            {# TODO CHANGE PATH & OTHER STUFF#}
+            {% if is_granted('ROLE_USER') %}
+                <a class="link link-icon link-icon-left link-classic"
+                   href="login-and-register.html">
+                    <span class="icon fl-bigmug-line-login12"></span><span
                         class="link-icon-text">Your Account</span></a>
+            {% else %}
+                <a class="link link-icon link-icon-left link-classic"
+                   href="{{ path('fos_user_security_login') }}">
+                    <span class="icon fl-bigmug-line-login12"></span><span
+                            class="link-icon-text">Login</span></a>
+            {% endif %}
+
+        </li>
+        <li>
+            {% if is_granted('ROLE_USER') %}
+                <a class="link link-icon link-icon-left link-classic"
+                   href="{{ path('fos_user_security_logout') }}">
+                    <span class="icon fl-budicons-free-logout12"></span><span
+                            class="link-icon-text">Logout</span></a>
+            {% endif %}
         </li>
     </ul>
 </div>
