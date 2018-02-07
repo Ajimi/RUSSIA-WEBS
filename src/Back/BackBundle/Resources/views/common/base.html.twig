@@ -9,10 +9,7 @@
     <title>{% block title %}Gentelella - Symfony Web Application{% endblock %}</title>
 
     {% block stylesheets %}
-        <!-- Bootstrap -->
-        <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        {% include '@Back/@Back/common/_style.html.twig' %}
     {% endblock stylesheets %}
 
     <!-- Custom Theme Style -->
@@ -69,14 +66,7 @@
 </div>
 
 {% block javascripts %}
-    <!-- jQuery -->
-    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('assets/vendors/fastclick/lib/fastclick.js') }}"></script>
-    <!-- NProgress -->
-    <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
+    {% include '@Back/common/_js.html.twig' %}
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}
