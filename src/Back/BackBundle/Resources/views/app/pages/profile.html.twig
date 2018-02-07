@@ -1,4 +1,4 @@
-{% extends "@Back/app/base.html.twig" %}
+{% extends "@Back/app/_base.html.twig" %}
 
 {% block page_title %}Profile{% endblock %}
 
@@ -132,7 +132,7 @@
                             <!-- end of image cropping -->
 
                         </div>
-                        <h3>{{ app.user.username }}</h3>
+                        <h3>{{ app.user.username|default('adza') }}</h3>
 
                         <ul class="list-unstyled user_data">
                             <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
