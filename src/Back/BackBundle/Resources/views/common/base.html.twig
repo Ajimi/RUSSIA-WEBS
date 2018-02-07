@@ -8,8 +8,8 @@
 
     <title>{% block title %}Gentelella - Symfony Web Application{% endblock %}</title>
 
+    {% include '@Back/common/_style.html.twig' %}
     {% block stylesheets %}
-        {% include '@Back/common/_style.html.twig' %}
     {% endblock stylesheets %}
 
     <!-- Custom Theme Style -->
@@ -64,8 +64,8 @@
     </div>
 </div>
 
+{% include '@Back/common/_js.html.twig' %}
 {% block javascripts %}
-    {% include '@Back/common/_js.html.twig' %}
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}
