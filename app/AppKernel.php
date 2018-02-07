@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JoueurBundle\JoueurBundle(),
             new TeamBundle\TeamBundle(),
             new Front\FrontBundle\FrontBundle(),
+            new Back\BackBundle\BackBundle(),
             new UserBundle\UserBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),

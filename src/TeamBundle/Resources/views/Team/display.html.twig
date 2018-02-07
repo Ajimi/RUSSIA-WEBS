@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontBundle:common:_base.html.twig' %}
 {% block title %}{{ name }}{% endblock %}
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Team Details'} %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : name ~' Details'} %}
         {% block breadcrumbs_path %}
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="#">Team</a></li>

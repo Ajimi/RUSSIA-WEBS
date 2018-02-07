@@ -25,5 +25,4 @@ class TeamController extends Controller
         return $this->render('TeamBundle:Team:list.html.twig', array(// ...
         ));
     }
-
 }
