@@ -39,10 +39,7 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-<<<<<<< HEAD
-=======
 
->>>>>>> master-holder
 # Doctrine Configuration
 doctrine:
     dbal:
