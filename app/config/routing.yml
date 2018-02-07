@@ -6,7 +6,7 @@ team_front:
 team_back:
     resource: "@TeamBackBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin/team
 
 player_front:
     resource: "@PlayerFrontBundle/Controller/"
@@ -16,7 +16,7 @@ player_front:
 player_back:
     resource: "@PlayerBackBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin/player
 
 app:
     resource: '@AppBundle/Controller/'
