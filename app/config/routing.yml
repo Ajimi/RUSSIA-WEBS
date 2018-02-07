@@ -20,4 +20,4 @@ joueur:
 back:
     resource: "@BackBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin
