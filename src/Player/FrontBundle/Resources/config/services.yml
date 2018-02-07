@@ -1,0 +1,4 @@
+services:
+#    player_front.example:
+#        class: Player\FrontBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
