@@ -22,9 +22,12 @@
     <div class="main_container">
 
 
-        {% include '@Back/app/sidebar.html.twig' %}
-        {% include '@Back/app/topnav.html.twig' %}
-
+        {% block sidebar %}
+            {% include '@Back/app/sidebar.html.twig' %}
+        {% endblock %}
+        {% block topnav %}
+            {% include '@Back/app/topnav.html.twig' %}
+        {% endblock %}
 
         <!-- page content -->
         <div class="right_col" role="main">
