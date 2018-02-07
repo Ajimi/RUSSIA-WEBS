@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class TopNavController
  * @package Back\BackBundle\Controller
- * @Route("/admin")
  */
 class TopNavController extends Controller
 {

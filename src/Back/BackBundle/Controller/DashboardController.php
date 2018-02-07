@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class DashboardController
  * @package Back\BackBundle\Controller
- * @Route("/admin")
  */
 class DashboardController extends Controller
 {

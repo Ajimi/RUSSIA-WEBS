@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class SidebarController
  * @package Back\BackBundle\Controller
- * @Route("/admin")
  */
 class SidebarController extends Controller
 {
