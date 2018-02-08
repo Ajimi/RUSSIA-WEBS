@@ -1,6 +1,6 @@
 <?php
 
-namespace JoueurBundle\Controller;
+namespace Player\BackBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
