@@ -1,0 +1,31 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    <section class="section section-variant-1 bg-gray-100">
+        <div class="container">
+            <div class="row row-50 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-6">
+                    <div class="card-login-register active" id="card-l-r">
+                        <div class="card-top-panel">
+                            <div class="card-top-panel-left">
+                                <h5 class="card-title card-title-login">Login</h5>
+                                <h5 class="card-title card-title-register">Register</h5>
+                            </div>
+                            <div class="card-top-panel-right">
+                            <span class="card-subtitle">
+                                <span class="card-subtitle-login">Register now</span>
+                                <span class="card-subtitle-register">Sign in</span>
+                            </span>
+                                <button class="card-toggle active" data-custom-toggle="#card-l-r">
+                                    <span class="card-toggle-circle"></span>
+                                </button>
+                            </div>
+                        </div>
+                        {% include "@FOSUser/Registration/register_content.html.twig" %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock fos_user_content %}

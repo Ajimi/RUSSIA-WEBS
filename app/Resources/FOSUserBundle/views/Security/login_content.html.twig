@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<div class="card-form card-form-login">
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="rd-form rd-mailform"
+          novalidate="novalidate">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% endif %}
+
+        <div class="form-wrap">
+            <label class="form-label rd-input-label" for="username">{{ 'security.login.username'|trans }}</label>
+            <input class="form-input form-control-has-validation form-control-last-child" type="text" id="username"
+                   name="_username" value="{{ last_username }}" required="required"
+                   data-constraints="@Required"
+            />
+        </div>
+        <div class="form-wrap">
+            <label class="form-label rd-input-label" for="password">{{ 'security.login.password'|trans }}</label>
+            <input class="form-input form-control-has-validation form-control-last-child" type="password" id="password"
+                   name="_password" required="required"/>
+        </div>
+
+        <label class="checkbox-inline checkbox-inline-lg checkbox-light">
+            <input name="_remember_me" value="checkbox-1" type="checkbox"
+                   class="checkbox-custom"><span class="checkbox-custom-dummy"></span>Remember Me
+        </label>
+
+        <input type="checkbox"
+               id="remember_me" name="_remember_me" value="on"/>
+        <label class="form-label rd-input-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+        <input type="hidden" name="_target_path" value="{{ path('app_calendar') }}"/>
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+        <button class="button button-lg button-primary button-block" id="_submit" name="_submit" type="submit">Sign in
+        </button>
+    </form>
+    <div class="group-sm group-sm-justify group-middle">
+        <a class="button button-google button-icon button-icon-left button-round"
+           href="#"><span class="icon fa fa-google-plus"></span><span>Google+</span></a><a
+                class="button button-twitter button-icon button-icon-left button-round"
+                href="#"><span class="icon fa fa-twitter"></span><span>Twitter</span></a><a
+                class="button button-facebook button-icon button-icon-left button-round"
+                href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a>
+    </div>
+</div>

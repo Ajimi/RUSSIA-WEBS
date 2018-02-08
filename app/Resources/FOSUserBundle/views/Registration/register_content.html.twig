@@ -1,0 +1,50 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="card-form card-form-register">
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register rd-form rd-mailform' ,'data-form-output':'form-output-global'}}) }}
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+    {% endif %}
+
+    <div class="form-wrap">
+        {{ form_label(form.email, 'E-mail', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'email', 'data-constraints':'@Email @Required'} }) }}
+        <span class="form-validation">{{ form_errors(form.email) }}</span>
+    </div>
+
+    <div class="form-wrap">
+        {{ form_label(form.username, 'Username', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
+        {{ form_widget(form.username, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'text', 'data-constraints':'@Required'} }) }}
+        <span class="form-validation">{{ form_errors(form.username) }}</span>
+    </div>
+
+    <div class="form-wrap">
+        {{ form_label(form.plainPassword.first, 'Password', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'password', 'data-constraints':'@Required'} }) }}
+        <span class="form-validation">{{ form_errors(form.plainPassword.first) }}</span>
+    </div>
+
+    <div class="form-wrap">
+        {{ form_label(form.plainPassword.second, 'Repeat Password', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'password', 'data-constraints':'@Required'} }) }}
+        <span class="form-validation">{{ form_errors(form.plainPassword.second) }}</span>
+    </div>
+
+    <button class="button button-lg button-primary button-block" type="submit">Create new
+        account
+    </button>
+    {#<div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}"/>
+    </div>#}
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+    <div class="group-sm group-sm-justify group-middle"><a
+                class="button button-google button-icon button-icon-left button-round"
+                href="#"><span class="icon fa fa-google-plus"></span><span>Google+</span></a><a
+                class="button button-twitter button-icon button-icon-left button-round"
+                href="#"><span class="icon fa fa-twitter"></span><span>Twitter</span></a><a
+                class="button button-facebook button-icon button-icon-left button-round"
+                href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a></div>
+</div>
+
+</div>
