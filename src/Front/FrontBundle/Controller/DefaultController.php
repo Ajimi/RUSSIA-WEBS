@@ -29,7 +29,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/registers", name="register")
      */
     public function registerAction(Request $request)
     {
