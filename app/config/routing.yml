@@ -20,7 +20,7 @@ app:
 front:
     resource: "@FrontBundle/Controller/"
     type:     annotation
-    prefix:   /front
+    prefix:   /
 
 back:
     resource: "@BackBundle/Controller/"
