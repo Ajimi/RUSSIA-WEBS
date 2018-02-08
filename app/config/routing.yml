@@ -1,27 +1,17 @@
+player:
+    resource: "@PlayerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+team:
+    resource: "@TeamBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 forum:
     resource: "@ForumBundle/Controller/"
     type:     annotation
     prefix:   /
-
-team_front:
-    resource: "@TeamFrontBundle/Controller/"
-    type:     annotation
-    prefix:   /team
-
-team_back:
-    resource: "@TeamBackBundle/Controller/"
-    type:     annotation
-    prefix:   /admin/team
-
-player_front:
-    resource: "@PlayerFrontBundle/Controller/"
-    type:     annotation
-    prefix:   /player
-
-player_back:
-    resource: "@PlayerBackBundle/Controller/"
-    type:     annotation
-    prefix:   /admin/player
 
 app:
     resource: '@AppBundle/Controller/'

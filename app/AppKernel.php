@@ -18,15 +18,13 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Front\FrontBundle\FrontBundle(),
             new Back\BackBundle\BackBundle(),
-            new Player\BackBundle\PlayerBackBundle(),
-            new Player\FrontBundle\PlayerFrontBundle(),
-            new Team\BackBundle\TeamBackBundle(),
-            new Team\FrontBundle\TeamFrontBundle(),
             new UserBundle\UserBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Forum\ForumBundle\ForumBundle(),
+            new Team\TeamBundle\TeamBundle(),
+            new Player\PlayerBundle\PlayerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
