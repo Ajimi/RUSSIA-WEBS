@@ -1,3 +1,8 @@
+forum:
+    resource: "@ForumBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 team_front:
     resource: "@TeamFrontBundle/Controller/"
     type:     annotation
