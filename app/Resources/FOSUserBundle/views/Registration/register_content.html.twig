@@ -1,10 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="card-form card-form-register">
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register rd-form rd-mailform' ,'data-form-output':'form-output-global'}}) }}
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-    {% endif %}
-
     <div class="form-wrap">
         {{ form_label(form.email, 'E-mail', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
         {{ form_widget(form.email, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'email', 'data-constraints':'@Email @Required'} }) }}
