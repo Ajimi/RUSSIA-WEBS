@@ -12,7 +12,6 @@
         {{ form_widget(form.username, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'text', 'data-constraints':'@Required'} }) }}
         <span class="form-validation">{{ form_errors(form.username) }}</span>
     </div>
-
     <div class="form-wrap">
         {{ form_label(form.plainPassword.first, 'Password', {'label_attr': {'class': 'form-label rd-input-label'}}) }}
         {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child', 'type':'password', 'data-constraints':'@Required'} }) }}
