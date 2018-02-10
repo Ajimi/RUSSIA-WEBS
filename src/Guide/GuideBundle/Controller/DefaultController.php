@@ -5,7 +5,9 @@ namespace Guide\GuideBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-
+/*
+ * @Route("/guide")
+ */
 class DefaultController extends Controller
 {
     /**
