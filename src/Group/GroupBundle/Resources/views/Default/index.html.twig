@@ -1,1 +1,253 @@
-Hello World!
+{% extends 'FrontBundle:common:_base.html.twig' %}
+{% block title %}Group List{% endblock %}
+{% block header_team %}active{% endblock %}
+{% block body %}
+    <!-- Section Breadcrumbs-->
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Group List'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Group</a></li>
+            <li class="active">List</li>
+        {% endblock %}
+    {% endembed %}
+
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="row row-50">
+                        <div class="col-12">
+                            <!-- Heading Component-->
+                            {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Group List' } %}
+                            {% endembed %}
+
+                            <div class="card-standing card-group-custom card-standing-index" id="accordion1"
+                                 role="tablist" aria-multiselectable="false">
+                                <div class="list-cos">
+                                    <div class="card-header">
+                                        <div class="card-standing-caption-aside ">
+                                            <div class="card-standing-team">Group A</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading1" role="tab">
+                                        <a href="{{ path('team_display',{'Name':'Tunisia'}) }}">
+                                            <div class="card-standing-team-item">
+                                                <div class="card-standing-team">
+                                                    <div class="card-standing-team-figure"><img
+                                                                src="{{ asset('assets/images/RussieFlag.png') }}" alt=""
+                                                                width="50" height="37"/>
+                                                    </div>
+                                                    <div class="card-standing-team-title">
+                                                        <div class="card-standing-team-name">RUSSIE</div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-standing-team">153</div>
+                                                <div class="card-standing-team">30</div>
+                                                <div class="card-standing-team">1</div>
+                                                <div class="card-standing-team">586</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading2" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/ArabieSaoudite.png') }} alt=""
+                                                            width="50" height="37"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Arabie Saoudite</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading3" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/Egypte.png') }} alt=""
+                                                            width="50" height="37"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Egypte</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading4" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/Uruguay.png') }} alt=""
+                                                            width="37" height="34"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Ururuay</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+
+                                </article>
+                                <!-- Bootstrap card-->
+
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="row row-50">
+                        <div class="col-12">
+                            <!-- Heading Component-->
+
+
+                            <div class="card-standing card-group-custom card-standing-index" id="accordion1"
+                                 role="tablist" aria-multiselectable="false">
+                                <div class="list-cos">
+                                    <div class="card-header">
+                                        <div class="card-standing-caption-aside ">
+                                            <div class="card-standing-team">Group B</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading1" role="tab">
+                                        <a href="{{ path('team_display',{'Name':'Tunisia'}) }}">
+                                            <div class="card-standing-team-item">
+                                                <div class="card-standing-team">
+                                                    <div class="card-standing-team-figure"><img
+                                                                src="{{ asset('assets/images/PortugalFlag.png') }}"
+                                                                alt=""
+                                                                width="50" height="37"/>
+                                                    </div>
+                                                    <div class="card-standing-team-title">
+                                                        <div class="card-standing-team-name">Portugal</div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-standing-team">153</div>
+                                                <div class="card-standing-team">30</div>
+                                                <div class="card-standing-team">1</div>
+                                                <div class="card-standing-team">586</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading2" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/EspagneFlag.png') }} alt=""
+                                                            width="50" height="37"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Espagne</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading3" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/MarcoFlag.png') }} alt=""
+                                                            width="50" height="37"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Maroc</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- Bootstrap card-->
+                                <article class="card ">
+                                    <div class="card-header" id="accordion1Heading4" role="tab">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/IranFlag.png') }} alt=""
+                                                            width="37" height="34"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Iran</div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-standing-team">153</div>
+                                            <div class="card-standing-team">30</div>
+                                            <div class="card-standing-team">1</div>
+                                            <div class="card-standing-team">586</div>
+                                        </div>
+                                    </div>
+
+                                </article>
+                                <!-- Bootstrap card-->
+
+                                <!-- Bootstrap card-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
