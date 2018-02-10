@@ -66,6 +66,11 @@ class Hotel
 
 
     /**
+     * TODO : Add Picture
+     */
+    private $pictures;
+
+    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="Room", mappedBy="hotel")
      */
@@ -218,7 +223,7 @@ class Hotel
     /**
      * @param Location $location
      */
-    public function setLocation($location)
+    public function setLocation(Location $location)
     {
         $this->location = $location;
 

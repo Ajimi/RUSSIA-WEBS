@@ -3,6 +3,7 @@
 namespace Common\LocationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Reservation\HotelBundle\Entity\Hotel;
 
 /**
  * Location
@@ -68,7 +69,7 @@ class Location
     /**
      * Get geoCode
      *
-     * @return \General\LocationBundle\Entity\GeoCode
+     * @return GeoCode
      */
     public function getGeoCode()
     {
@@ -78,11 +79,11 @@ class Location
     /**
      * Set geoCode
      *
-     * @param \General\LocationBundle\Entity\GeoCode $geoCode
+     * @param GeoCode $geoCode
      *
      * @return Location
      */
-    public function setGeoCode(\General\LocationBundle\Entity\GeoCode $geoCode = null)
+    public function setGeoCode(GeoCode $geoCode = null)
     {
         $this->geoCode = $geoCode;
 
@@ -92,7 +93,7 @@ class Location
     /**
      * Get hotel
      *
-     * @return \Reservation\HotelBundle\Entity\Hotel
+     * @return Hotel
      */
     public function getHotel()
     {
@@ -106,7 +107,7 @@ class Location
      *
      * @return Location
      */
-    public function setHotel(\Reservation\HotelBundle\Entity\Hotel $hotel = null)
+    public function setHotel(Hotel $hotel = null)
     {
         $this->hotel = $hotel;
 

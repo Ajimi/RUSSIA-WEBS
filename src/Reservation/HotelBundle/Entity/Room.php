@@ -196,7 +196,7 @@ class Room
     /**
      * @param Hotel $hotel
      */
-    public function setHotel($hotel)
+    public function setHotel(Hotel $hotel)
     {
         $this->hotel = $hotel;
 

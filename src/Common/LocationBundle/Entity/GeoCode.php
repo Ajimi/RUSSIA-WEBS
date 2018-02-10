@@ -112,7 +112,7 @@ class GeoCode
     /**
      * @param Location $location
      */
-    public function setLocation($location)
+    public function setLocation(Location $location)
     {
         $this->location = $location;
 
