@@ -15,7 +15,7 @@ class TeamFrontController extends Controller
      */
     public function displayAction($Name)
     {
-        return $this->render('TeamtBundle:Team:display.html.twig', array(
+        return $this->render('TeamBundle:Team:display.html.twig', array(
             'name'=>$Name
         ));
     }
