@@ -2,7 +2,10 @@
 
 namespace Common\RegionBundle\Entity;
 
+use Common\LocationBundle\Entity\Location;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Reservation\HotelBundle\Entity\Hotel;
 
 /**
  * Region
@@ -27,6 +30,25 @@ class Region
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var Location
+     *
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", mappedBy="region")
+     */
+    private $location;
+
+    /**
+     * One Region has Many Hotels.
+     * @ORM\OneToMany(targetEntity="Reservation\HotelBundle\Entity\Hotel", mappedBy="region")
+     */
+    private $hotels;
+
+
+    public function __construct()
+    {
+        $this->hotels = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +84,62 @@ class Region
 
         return $this;
     }
-}
 
+    /**
+     * Add hotel
+     *
+     * @param Hotel $hotel
+     *
+     * @return Region
+     */
+    public function addHotel(Hotel $hotel)
+    {
+        $this->hotels[] = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * Remove hotel
+     *
+     * @param Hotel $hotel
+     */
+    public function removeHotel(Hotel $hotel)
+    {
+        $this->hotels->removeElement($hotel);
+    }
+
+    /**
+     * Get hotels
+     *
+     * @return \Doctrine\Common\Collections\Collection|Hotel[]
+     */
+    public function getHotels()
+    {
+        return $this->hotels;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \Common\LocationBundle\Entity\Location $location
+     *
+     * @return Region
+     */
+    public function setLocation(\Common\LocationBundle\Entity\Location $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Common\LocationBundle\Entity\Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+}

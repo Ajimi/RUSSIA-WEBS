@@ -64,11 +64,19 @@ class Hotel
      */
     private $location;
 
+    /**
+     * Hotels has one region.
+     * @ORM\ManyToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="hotels")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     */
+    private $region;
+
+
 
     /**
-     * TODO : Add Picture
+     * TODO : Add Images
      */
-    private $pictures;
+    private $hotelImages;
 
     /**
      * One Product has Many Features.
@@ -257,10 +265,34 @@ class Hotel
     /**
      * Get rooms
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|Room[]
      */
     public function getRooms()
     {
         return $this->rooms;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Common\RegionBundle\Entity\Region $region
+     *
+     * @return Hotel
+     */
+    public function setRegion(\Common\RegionBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Common\RegionBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

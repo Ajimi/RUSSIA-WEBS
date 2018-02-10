@@ -43,6 +43,14 @@ class Location
     private $hotel;
 
     /**
+     * One Location has One Hotel.
+     * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="location")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    private $region;
+
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -112,5 +120,29 @@ class Location
         $this->hotel = $hotel;
 
         return $this;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Common\RegionBundle\Entity\Region $region
+     *
+     * @return Location
+     */
+    public function setRegion(\Common\RegionBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Common\RegionBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

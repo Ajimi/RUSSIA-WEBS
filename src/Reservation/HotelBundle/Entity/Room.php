@@ -58,6 +58,11 @@ class Room
 
 
     /**
+     * TODO : Add Images
+     */
+    private $roomImages;
+
+    /**
      * @var string
      * @ORM\Column(type="text")
      */
