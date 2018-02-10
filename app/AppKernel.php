@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Team\TeamBundle\TeamBundle(),
             new Player\PlayerBundle\PlayerBundle(),
             new Reservation\HotelBundle\HotelBundle(),
+            new Reservation\TicketBundle\TicketBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
