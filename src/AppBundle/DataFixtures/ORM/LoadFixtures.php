@@ -33,7 +33,7 @@ class LoadFixtures implements FixtureInterface
         );
     }
 
-    public function random()
+    public function roomType()
     {
         $genera = [
             'Octopus',
@@ -41,15 +41,6 @@ class LoadFixtures implements FixtureInterface
             'Orcinus',
             'Hippocampus',
             'Asterias',
-            'Amphiprion',
-            'Carcharodon',
-            'Aurelia',
-            'Cucumaria',
-            'Balistoides',
-            'Paralithodes',
-            'Chelonia',
-            'Trichechus',
-            'Eumetopias'
         ];
 
         $key = array_rand($genera);

@@ -2,12 +2,11 @@
 
 namespace Reservation\HotelBundle\Entity;
 
+use Common\LocationBundle\Entity\Location;
 use Common\RegionBundle\Entity\Region;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Common\LocationBundle\Entity\Location;
-
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -34,12 +33,6 @@ class Hotel
      */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
 
     /**
      * @var int
@@ -139,24 +132,7 @@ class Hotel
      *
      * @return string
      */
-    public function getAddress()
-    {
-        return $this->address;
-    }
 
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Hotel
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
 
     /**
      * Get availableRooms
