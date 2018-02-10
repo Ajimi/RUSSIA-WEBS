@@ -5,7 +5,9 @@ namespace Common\RegionBundle\Entity;
 use Common\LocationBundle\Entity\Location;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Reservation\HotelBundle\Entity\Hotel;
+
 
 /**
  * Region
@@ -43,6 +45,12 @@ class Region
      * @ORM\OneToMany(targetEntity="Reservation\HotelBundle\Entity\Hotel", mappedBy="region")
      */
     private $hotels;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
 
     public function __construct()
@@ -141,5 +149,29 @@ class Region
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Region
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
