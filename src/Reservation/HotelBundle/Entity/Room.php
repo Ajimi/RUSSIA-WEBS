@@ -3,6 +3,8 @@
 namespace Reservation\HotelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Room

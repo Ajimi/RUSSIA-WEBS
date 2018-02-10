@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Common\LocationBundle\Entity\Location;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Hotel
@@ -72,6 +73,13 @@ class Hotel
      * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
      */
     private $region;
+
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
 
     /**
@@ -297,5 +305,29 @@ class Hotel
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Hotel
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
