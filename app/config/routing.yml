@@ -1,3 +1,23 @@
+location_location:
+    resource: "@LocationBundle/Controller/LocationController.php"
+    type:     annotation
+
+location_address:
+    resource: "@LocationBundle/Controller/AddressController.php"
+    type:     annotation
+
+region_region:
+    resource: "@RegionBundle/Controller/RegionController.php"
+    type:     annotation
+
+hotel_room:
+    resource: "@HotelBundle/Controller/RoomController.php"
+    type:     annotation
+
+hotel_hotel:
+    resource: "@HotelBundle/Controller/HotelController.php"
+    type:     annotation
+
 region:
     resource: "@RegionBundle/Controller/"
     type:     annotation
