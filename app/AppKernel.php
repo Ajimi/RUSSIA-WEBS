@@ -5,12 +5,9 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    /**
-     * @return array
-     */
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -18,18 +15,27 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            /*
+             * Created Bundles
+             */
             new AppBundle\AppBundle(),
             new Front\FrontBundle\FrontBundle(),
             new Back\BackBundle\BackBundle(),
             new UserBundle\UserBundle(),
-
-            new FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Forum\ForumBundle\ForumBundle(),
             new Team\TeamBundle\TeamBundle(),
             new Player\PlayerBundle\PlayerBundle(),
+            new Reservation\HotelBundle\HotelBundle(),
+            new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
-        );
+
+            /*
+             * External Bundles
+             */
+            new FOS\UserBundle\FOSUserBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+        ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

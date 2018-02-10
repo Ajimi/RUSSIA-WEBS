@@ -1,3 +1,13 @@
+ticket:
+    resource: "@TicketBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+hotel:
+    resource: "@HotelBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 group:
     resource: "@GroupBundle/Controller/"
     type:     annotation

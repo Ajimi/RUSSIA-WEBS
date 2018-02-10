@@ -1,0 +1,4 @@
+services:
+#    hotel.example:
+#        class: Reservation\HotelBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
