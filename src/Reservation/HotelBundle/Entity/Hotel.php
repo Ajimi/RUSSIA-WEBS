@@ -59,8 +59,8 @@ class Hotel
     private $stars;
 
     /**
-     * One Location has One GeoCode.
-     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", mappedBy="location")
+     * One Hotel has One Hotel.
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", mappedBy="hotel")
      */
     private $location;
 
