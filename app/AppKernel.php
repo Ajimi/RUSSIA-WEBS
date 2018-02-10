@@ -5,9 +5,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    /**
+     * @return array
+     */
     public function registerBundles()
     {
-        $bundles = [
+        $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -25,7 +28,8 @@ class AppKernel extends Kernel
             new Forum\ForumBundle\ForumBundle(),
             new Team\TeamBundle\TeamBundle(),
             new Player\PlayerBundle\PlayerBundle(),
-        ];
+            new Group\GroupBundle\GroupBundle(),
+        );
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
