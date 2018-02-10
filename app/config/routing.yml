@@ -1,3 +1,8 @@
+guide:
+    resource: "@GuideBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 ticket:
     resource: "@TicketBundle/Controller/"
     type:     annotation
