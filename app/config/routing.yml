@@ -1,3 +1,8 @@
+location:
+    resource: "@LocationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 guide:
     resource: "@GuideBundle/Controller/"
     type:     annotation
