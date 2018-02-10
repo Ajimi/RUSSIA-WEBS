@@ -2,7 +2,9 @@
 
 namespace Reservation\HotelBundle\Entity;
 
+use Common\RegionBundle\Entity\Region;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Common\LocationBundle\Entity\Location;
 
@@ -70,7 +72,6 @@ class Hotel
      * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
      */
     private $region;
-
 
 
     /**
@@ -230,6 +231,8 @@ class Hotel
 
     /**
      * @param Location $location
+     *
+     * @return $this
      */
     public function setLocation(Location $location)
     {
@@ -241,11 +244,11 @@ class Hotel
     /**
      * Add room
      *
-     * @param \Reservation\HotelBundle\Entity\Room $room
+     * @param Room $room
      *
      * @return Hotel
      */
-    public function addRoom(\Reservation\HotelBundle\Entity\Room $room)
+    public function addRoom(Room $room)
     {
         $this->rooms[] = $room;
 
@@ -255,9 +258,9 @@ class Hotel
     /**
      * Remove room
      *
-     * @param \Reservation\HotelBundle\Entity\Room $room
+     * @param Room $room
      */
-    public function removeRoom(\Reservation\HotelBundle\Entity\Room $room)
+    public function removeRoom(Room $room)
     {
         $this->rooms->removeElement($room);
     }
@@ -265,7 +268,7 @@ class Hotel
     /**
      * Get rooms
      *
-     * @return \Doctrine\Common\Collections\Collection|Room[]
+     * @return Collection|Room[]
      */
     public function getRooms()
     {
@@ -275,11 +278,11 @@ class Hotel
     /**
      * Set region
      *
-     * @param \Common\RegionBundle\Entity\Region $region
+     * @param Region $region
      *
      * @return Hotel
      */
-    public function setRegion(\Common\RegionBundle\Entity\Region $region = null)
+    public function setRegion(Region $region = null)
     {
         $this->region = $region;
 
@@ -289,7 +292,7 @@ class Hotel
     /**
      * Get region
      *
-     * @return \Common\RegionBundle\Entity\Region
+     * @return Region
      */
     public function getRegion()
     {

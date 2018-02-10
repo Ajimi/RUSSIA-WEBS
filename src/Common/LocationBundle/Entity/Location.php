@@ -2,6 +2,7 @@
 
 namespace Common\LocationBundle\Entity;
 
+use Common\RegionBundle\Entity\Region;
 use Doctrine\ORM\Mapping as ORM;
 use Reservation\HotelBundle\Entity\Hotel;
 
@@ -111,7 +112,7 @@ class Location
     /**
      * Set hotel
      *
-     * @param \Reservation\HotelBundle\Entity\Hotel $hotel
+     * @param Hotel $hotel
      *
      * @return Location
      */
@@ -125,11 +126,11 @@ class Location
     /**
      * Set region
      *
-     * @param \Common\RegionBundle\Entity\Region $region
+     * @param Region $region
      *
      * @return Location
      */
-    public function setRegion(\Common\RegionBundle\Entity\Region $region = null)
+    public function setRegion(Region $region = null)
     {
         $this->region = $region;
 
@@ -139,7 +140,7 @@ class Location
     /**
      * Get region
      *
-     * @return \Common\RegionBundle\Entity\Region
+     * @return Region
      */
     public function getRegion()
     {
