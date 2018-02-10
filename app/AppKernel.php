@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Group\GroupBundle\GroupBundle(),
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
+            new Common\RegionBundle\RegionBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

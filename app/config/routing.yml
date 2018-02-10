@@ -1,3 +1,8 @@
+region:
+    resource: "@RegionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 location:
     resource: "@LocationBundle/Controller/"
     type:     annotation
