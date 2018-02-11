@@ -25,4 +25,13 @@ class ForumController extends Controller
         return $this->render("ForumBundle:Forum:List.html.twig",array());
     }
 
+    /**
+     * @Route("/affiche/{Name}", name="forum_affiche")
+     */
+    public function AfficheAction($Name)
+    {
+        return $this->render('ForumBundle:Forum:Affiche.html.twig',array(
+            'name'=>$Name
+        ));
+    }
 }
