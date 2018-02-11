@@ -1,0 +1,3 @@
+match_homepage:
+    path:     /
+    defaults: { _controller: MatchBundle:Default:index }
