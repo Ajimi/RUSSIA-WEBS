@@ -1,5 +1,6 @@
 match:
-    resource: "@MatchBundle/Resources/config/routing.yml"
+    resource: "@MatchBundle/Controller/"
+    type:     annotation
     prefix:   /
 
 guide:
