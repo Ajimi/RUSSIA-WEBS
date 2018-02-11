@@ -37,8 +37,7 @@ class GeoCode
 
     /**
      * One GeoCode has One Location.
-     * @ORM\OneToOne(targetEntity="Location", inversedBy="geoCode")
-     * @ORM\JoinColumn(name="geocode_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Location", mappedBy="geoCode")
      */
     private $location;
 

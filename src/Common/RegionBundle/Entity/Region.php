@@ -36,7 +36,7 @@ class Region
     /**
      * @var Location
      *
-     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", mappedBy="region")
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", inversedBy="region")
      */
     private $location;
 

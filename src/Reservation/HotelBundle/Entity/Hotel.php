@@ -57,14 +57,20 @@ class Hotel
 
     /**
      * One Hotel has One Hotel.
-     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", mappedBy="hotel")
+     * @var Location
+     *
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", inversedBy="hotel")
+     * @ORM\JoinColumn(name="location_id", nullable=true, referencedColumnName="id")
      */
     private $location;
 
+
     /**
-     * Hotels has one region.
+     * @var Region
+     *
      * @ORM\ManyToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="hotels")
-     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="region_id", nullable=true, referencedColumnName="id")
+     *
      */
     private $region;
 

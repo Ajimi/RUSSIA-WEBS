@@ -27,7 +27,7 @@
 #        roles: ['ROLE_ADMIN']
 
 Common\LocationBundle\Entity\Address:
-    address{1..10}:
+    address{1..30}:
         country: <country()>
         city: <city()>
         state: <state()>
@@ -35,13 +35,13 @@ Common\LocationBundle\Entity\Address:
         postalcode: <postcode()>
 
 Common\LocationBundle\Entity\GeoCode:
-    geocode{1..10}:
+    geocode{1..30}:
         latitude: <latitude()>
         longitude: <longitude()>
 
 
 Common\LocationBundle\Entity\Location:
-    location{1..10}:
+    location{1..30}:
         address (unique):    '@address*'
         geocode (unique):    '@geocode*'
 
@@ -58,9 +58,10 @@ Reservation\HotelBundle\Entity\Hotel:
     hotel{1..30}:
         name:       <streetName()>
         rate:       <numberBetween(0,5)>
-        stars:      <numberBetween(0,5>
+        stars:      <numberBetween(1,5)>
         availableRooms: <randomDigitNotNull()>
-        location:   '@location*'
+        location (unique):   '@location*'
+        region:     '@region*'
 
 Common\RegionBundle\Entity\Region:
     region{1..5}:

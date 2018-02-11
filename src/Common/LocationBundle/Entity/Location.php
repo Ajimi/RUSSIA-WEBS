@@ -23,30 +23,33 @@ class Location
      */
     private $id;
 
+
     /**
-     * One Location has One Address.
-     * @ORM\OneToOne(targetEntity="Address", mappedBy="location")
+     * @var Address
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Address", inversedBy="location", cascade={"persist"})
+     * @ORM\JoinColumn(name="address_id", nullable=true)
      */
     private $address;
 
+
     /**
-     * One Location has One GeoCode.
-     * @ORM\OneToOne(targetEntity="GeoCode", mappedBy="location")
+     * @var GeoCode
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\GeoCode", inversedBy="location", cascade={"persist"})
+     * @ORM\JoinColumn(name="geo_code_id", nullable=true)
      */
     private $geoCode;
 
 
     /**
-     * One Location has One Hotel.
-     * @ORM\OneToOne(targetEntity="Reservation\HotelBundle\Entity\Hotel", inversedBy="location")
-     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     * @var Hotel
+     * @ORM\OneToOne(targetEntity="Reservation\HotelBundle\Entity\Hotel", mappedBy="location")
      */
     private $hotel;
 
+
     /**
-     * One Location has One Hotel.
-     * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="location")
-     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * @var Region
+     * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Region", mappedBy="location")
      */
     private $region;
 

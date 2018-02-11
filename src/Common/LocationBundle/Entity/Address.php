@@ -66,8 +66,7 @@ class Address
 
     /**
      * One Address has One Location.
-     * @ORM\OneToOne(targetEntity="Location", inversedBy="address")
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Location", mappedBy="address")
      */
     private $location;
 
