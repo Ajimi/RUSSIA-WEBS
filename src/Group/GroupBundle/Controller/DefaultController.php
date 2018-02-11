@@ -11,10 +11,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/",name="group")
      */
     public function indexAction()
     {
-        return $this->render('GroupBundle:Default:index.html.twig');
+        return $this->render('GroupBundle:Default:index.html.twig', array());
     }
 }
