@@ -54,7 +54,7 @@ class Room
     /**
      * Many Rooms has one Hotel.
      * @ORM\ManyToOne(targetEntity="Reservation\HotelBundle\Entity\Hotel", inversedBy="rooms")
-     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
      */
     private $hotel;
 
