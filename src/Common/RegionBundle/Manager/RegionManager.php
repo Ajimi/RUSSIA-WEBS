@@ -1,19 +1,27 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hir0w
+ * Date: 2/12/2018
+ * Time: 6:48 PM
+ */
 
-namespace Common\BookingBundle\Manager;
+namespace Common\RegionBundle\Manager;
+
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Reservation\HotelBundle\HotelManager\Manager;
 
-class BookingManager extends Manager
+class RegionManager extends Manager
 {
+
     private $entityManager;
-    private $repository;
 
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->repository = $this->getRepository("BookingBundle:Booking");
+        $this->repository = $this->getRepository("RegionBundle:Region");
     }
 
     /**

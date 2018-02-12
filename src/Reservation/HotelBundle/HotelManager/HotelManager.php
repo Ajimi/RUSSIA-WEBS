@@ -20,9 +20,6 @@ class HotelManager extends Manager
     private $entityManager;
     private $repository;
     private $roomManager;
-    /**
-     * @var LocationManager
-     */
     private $locationManager;
 
     /**
@@ -66,6 +63,10 @@ class HotelManager extends Manager
         return $data;
     }
 
+    /**
+     * @param Hotel $hotel
+     * @return array
+     */
     private function serializeHotel(Hotel $hotel)
     {
         return array(

@@ -1,12 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hir0w
+ * Date: 2/12/2018
+ * Time: 6:55 PM
+ */
 
 namespace Common\BookingBundle\Manager;
 
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Reservation\HotelBundle\HotelManager\Manager;
 
-class BookingManager extends Manager
+class BillManager extends Manager
 {
+
     private $entityManager;
     private $repository;
 
