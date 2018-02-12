@@ -1,3 +1,8 @@
+news:
+    resource: "@NewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 location_location:
     resource: "@LocationBundle/Controller/LocationController.php"
     type:     annotation

@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
+            new News\NewsBundle\NewsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
