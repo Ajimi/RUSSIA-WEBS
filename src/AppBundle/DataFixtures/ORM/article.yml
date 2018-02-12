@@ -1,0 +1,3 @@
+\News\NewsBundle\Article:
+    article{1..10}:
+        content: <paragraph()>
