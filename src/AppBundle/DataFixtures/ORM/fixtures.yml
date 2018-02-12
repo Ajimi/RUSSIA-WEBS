@@ -31,7 +31,8 @@ Common\LocationBundle\Entity\Address:
         country: <country()>
         city: <city()>
         state: <state()>
-        street1: <streetAddress()>
+        street1: <address()>
+        street2: <streetAddress()>
         postalcode: <postcode()>
 
 Common\LocationBundle\Entity\GeoCode:
@@ -60,11 +61,10 @@ Reservation\HotelBundle\Entity\Hotel:
         rate:       <numberBetween(0,5)>
         stars:      <numberBetween(1,5)>
         availableRooms: <randomDigitNotNull()>
-        location (unique):   '@location*'
+        location(unique):   '@location*'
+        region:     '@region*'
 
 Common\RegionBundle\Entity\Region:
     region{1..5}:
         name:       <cityPrefix()>
-        location:   '@location*'
-        hotels:     ['@hotel*']
-
+        location(unique) :   '@location*'
