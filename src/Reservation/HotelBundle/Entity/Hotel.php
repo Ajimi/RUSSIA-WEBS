@@ -2,6 +2,7 @@
 
 namespace Reservation\HotelBundle\Entity;
 
+use AppBundle\Exception\ApiThrowable;
 use Common\LocationBundle\Entity\Location;
 use Common\RegionBundle\Entity\Region;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -74,6 +75,16 @@ class Hotel
      */
     private $region;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Common\BookingBundle\Entity\Booking", mappedBy="hotel")
+     */
+    private $bookings;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Room", mappedBy="hotel")
+     */
+    private $rooms;
+
 
     /**
      * @Gedmo\Slug(fields={"name"})
@@ -87,15 +98,11 @@ class Hotel
      */
     private $hotelImages;
 
-    /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Room", mappedBy="hotel")
-     */
-    private $rooms;
 
     public function __construct()
     {
         $this->rooms = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
 
@@ -132,12 +139,6 @@ class Hotel
 
         return $this;
     }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
 
 
     /**
