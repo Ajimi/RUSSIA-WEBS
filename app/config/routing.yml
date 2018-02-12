@@ -1,3 +1,8 @@
+booking:
+    resource: "@BookingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 news:
     resource: "@NewsBundle/Controller/"
     type:     annotation

@@ -37,11 +37,11 @@ class AppKernel extends Kernel
             new Reservation\HotelBundle\HotelBundle(),
             new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
-
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
             new News\NewsBundle\NewsBundle(),
+            new Common\BookingBundle\BookingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -53,7 +53,6 @@ class AppKernel extends Kernel
              * External Bundle
              */
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

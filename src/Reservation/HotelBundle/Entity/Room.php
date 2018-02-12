@@ -2,6 +2,7 @@
 
 namespace Reservation\HotelBundle\Entity;
 
+use AppBundle\Exception\ApiThrowable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -52,11 +53,24 @@ class Room
     private $price;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="availability", type="boolean")
+     */
+    private $available;
+
+    /**
      * Many Rooms has one Hotel.
      * @ORM\ManyToOne(targetEntity="Reservation\HotelBundle\Entity\Hotel", inversedBy="rooms")
      * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
      */
     private $hotel;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
 
     /**
@@ -64,11 +78,6 @@ class Room
      */
     private $roomImages;
 
-    /**
-     * @var string
-     * @ORM\Column(type="text")
-     */
-    private $description;
 
     /**
      * Get id
@@ -202,12 +211,29 @@ class Room
 
     /**
      * @param Hotel $hotel
+     * @return $this
      */
     public function setHotel(Hotel $hotel)
     {
         $this->hotel = $hotel;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAvailable(): bool
+    {
+        return $this->available;
+    }
+
+    /**
+     * @param bool $available
+     */
+    public function setAvailable(bool $available)
+    {
+        $this->available = $available;
     }
 
 
