@@ -175,6 +175,8 @@
                                         <ul class="rd-navbar-nav">
                                             <li class="rd-nav-item {% block header_home %}{% endblock %}"><a class="rd-nav-link" href="{{ path('homepage') }}">Home</a>
                                             </li>
+                                            <li class="rd-nav-item {% block header_forum %}{% endblock %}"><a class="rd-nav-link" href="{{ path('') }}">Home</a>
+                                            </li>
                                             <li class="rd-nav-item {% block header_feature %}{% endblock %}"><a class="rd-nav-link" href="#">Features</a>
                                                 <!-- RD Navbar Megamenu-->
                                                 <article class="rd-menu rd-navbar-megamenu rd-megamenu-2-columns context-light">
@@ -192,7 +194,7 @@
                                                                 <ul class="rd-megamenu-list">
                                                                     <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="shortcodes.html">Shortcodes</a></li>
                                                                     <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="typography.html">Typography</a></li>
-                                                                    <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="blog-elements.html">Blog Elements</a></li>
+                                                                    <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="{{ path('forum_list') }}">Blog Elements</a></li>
                                                                     <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="sport-elements.html">Sport Elements</a></li>
                                                                     <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="shop-elements.html">Shop Elements</a></li>
                                                                     <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="404-error-page.html">404 Error Page</a></li>
@@ -350,13 +352,12 @@
                                             <li class="rd-nav-item {% block header_news %}{% endblock %}"><a class="rd-nav-link" href="#">News</a>
                                                 <!-- RD Navbar Dropdown-->
                                                 <ul class="rd-menu rd-navbar-dropdown">
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="blog-elements.html">Blog Elements</a></li>
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('forum_list') }}">Forum</a></li>
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-1.html">News 1</a></li>
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-2.html">News 2</a></li>
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-3.html">News 3</a></li>
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-4.html">News 4</a></li>
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-5.html">News 5</a></li>
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="blog-post.html">Blog post</a></li>
                                                 </ul>
                                             </li>
                                             <li class="rd-nav-item {% block header_team %}{% endblock %}"><a class="rd-nav-link" href="#">Competition</a>
