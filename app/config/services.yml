@@ -34,5 +34,5 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
     data_fixture.alice:
-        class: AppBundle\DataFixtures\ORM\LoadFixtures
-        tags: [doctrine.fixture.orm]
+            class: AppBundle\DataFixtures\ORM\LoadFixtures
+            tags: [doctrine.fixture.orm]
