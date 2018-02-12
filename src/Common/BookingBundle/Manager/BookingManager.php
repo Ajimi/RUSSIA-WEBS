@@ -4,6 +4,7 @@ namespace Common\BookingBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Reservation\HotelBundle\HotelManager\Manager;
 
 class BookingManager extends Manager
 {
