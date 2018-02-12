@@ -1,0 +1,51 @@
+{% extends '@Back/common/_base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <!-- NProgress -->
+    <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{{ asset('assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}"
+          rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
+{% endblock %}
+{% block page_title %}Hotel Managment{% endblock page_title %}
+{% block page_content %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <!-- Chart.js -->
+    <script src="{{ asset('assets/vendors/Chart.js/dist/Chart.min.js') }}"></script>
+    <!-- jQuery Sparklines -->
+    <script src="{{ asset('assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
+    <!-- Flot -->
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.time.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.stack.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.resize.js') }}"></script>
+    <!-- Flot plugins -->
+    <script src="{{ asset('assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
+    <script src="{{ asset('assets/vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/flot.curvedlines/curvedLines.js') }}"></script>
+    <!-- DateJS -->
+    <script src="{{ asset('assets/vendors/DateJS/build/date.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{ asset('assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
+
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+{% endblock %}

@@ -26,7 +26,7 @@ class LoadFixtures implements FixtureInterface
     {
         $objects = Fixtures::load(
             [
-                __DIR__ . '/fixtures.yml',
+//                __DIR__ . '/fixtures.yml',
                 __DIR__ . '/user.yml',
                 __DIR__ . '/article.yml',
             ],

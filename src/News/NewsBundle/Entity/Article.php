@@ -3,6 +3,9 @@
 namespace News\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Article
@@ -24,10 +27,65 @@ class Article
     /**
      * @var string
      *
+     * @ORM\Column(name="title", type="text", nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
 
+    /**
+     * @var date $created
+     * @ORM\Column(type="date")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $created;
+
+    /**
+     * @var date $updated
+     *
+     * @ORM\Column(type="date")
+     * @Gedmo\Timestampable
+     */
+    private $updated;
+
+    /**
+     * @var \DateTime $contentChanged
+     *
+     * @ORM\Column(type="date")
+     * @Gedmo\Timestampable(on="change", field={"content"})
+     */
+    private $contentChanged;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * TODO : Add Image for each Article;
+     */
 
     /**
      * Get id
@@ -61,6 +119,70 @@ class Article
         $this->content = $content;
 
         return $this;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getCreated(): Date
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param Date $created
+     */
+    public function setCreated(Date $created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getContentChanged(): \DateTime
+    {
+        return $this->contentChanged;
+    }
+
+    /**
+     * @param \DateTime $contentChanged
+     */
+    public function setContentChanged(\DateTime $contentChanged)
+    {
+        $this->contentChanged = $contentChanged;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getUpdated(): Date
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param Date $updated
+     */
+    public function setUpdated(Date $updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
     }
 }
 
