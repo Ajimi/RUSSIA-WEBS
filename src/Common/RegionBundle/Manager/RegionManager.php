@@ -10,8 +10,10 @@ namespace Common\RegionBundle\Manager;
 
 
 use Common\LocationBundle\Manager\LocationManager;
+use Common\RegionBundle\Entity\Region;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Reservation\HotelBundle\Entity\Hotel;
 use Reservation\HotelBundle\HotelManager\HotelManager;
 use Reservation\HotelBundle\HotelManager\Manager;
 
@@ -51,20 +53,57 @@ class RegionManager extends Manager
 
     /**
      *
+     * @throws \AppBundle\Exception\ApiException
      */
     public function getList()
     {
-        $rooms = $this->repository->findAll();
-        $this->isEmpty($rooms, "Empty list of room");
-        return $this->serializer($rooms);
+        $regions = $this->repository->findAll();
+        $this->isEmpty($regions, "Empty list of region");
+        return $this->serializer($regions);
     }
 
 
     /**
-     * @param $rooms
+     * @param Region|null $region
+     * @return array
+     * @throws \AppBundle\Exception\ApiException
      */
-    private function serializer($rooms)
+    public function getRegion(Region $region = null): array
     {
+        $this->isEmpty($region);
+        $data = array('region' => array());
+        $data ['region'] = $this->serializer(array($region))['regions'];
+        return $data;
+    }
 
+    /**
+     * @param Region $region
+     * @return array
+     * @internal param $regions
+     */
+    private function serialize(Region $region)
+    {
+        return array(
+            "id" => $region->getId(),
+            "name" => $region->getName(),
+            "slug" => $region->getSlug()
+        );
+    }
+
+    /**
+     * @param array|Region[] $regions
+     * @return array
+     * @internal param $
+     */
+    private function serializer($regions)
+    {
+        $data = array('regions' => array());
+        foreach ($regions as $region) {
+            $regionData = $this->serialize($region);
+            $hotels = $region->getHotels();
+            $regionData['hotels'] = $this->hotelManager->serializer($hotels)['hotels'];
+            $data['regions'][] = $regionData;
+        }
+        return $data;
     }
 }

@@ -73,6 +73,7 @@ class HotelManager extends Manager
     {
         $this->isEmpty($hotel, "Hotel Object not found");
         $data = array('hotel' => array());
+        /** @var Hotel $hotel */
         $data["hotel"] = $this->serialize($hotel);
 
         $rooms = $this->roomManager->getHotelRooms($hotel);
@@ -126,7 +127,7 @@ class HotelManager extends Manager
      * @param $hotels
      * @return array
      */
-    private function serializer($hotels): array
+    public function serializer($hotels): array
     {
         $data = array('hotels' => array());
         foreach ($hotels as $hotel) {
