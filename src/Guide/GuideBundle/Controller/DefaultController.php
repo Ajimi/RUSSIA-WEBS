@@ -15,6 +15,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GuideBundle:Default:index.html.twig');
+        return $this->render('GuideBundle:guide:index.html.twig');
     }
 }

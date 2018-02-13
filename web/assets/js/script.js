@@ -1336,6 +1336,7 @@
          * @description Enables Isotope plugin
          */
         if (plugins.isotope.length) {
+
             var isogroup = [];
             for (var i = 0; i < plugins.isotope.length; i++) {
                 var isotopeItem = plugins.isotope[i],
@@ -1392,7 +1393,9 @@
                     };
                 }
                 iso.isotope(isotopeAttrs);
-            }).eq(0).trigger("click")
+
+            }).eq(0).trigger("click");
+            iso.shuffle();
         }
 
 

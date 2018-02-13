@@ -1,0 +1,292 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+{% endblock %}
+{% block body %}
+
+    {% block page %}
+
+        <!-- Section Breadcrumbs-->
+        {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'FAN GUIDE'} %}
+            {% block breadcrumbs_path %}
+                <li><a href="{{ path('homepage') }}">Home</a></li>
+                <li><a class="active" href="{{ path('guide_guide_default_index') }}">Fan Guide</a></li>
+            {% endblock %}
+        {% endembed %}
+        <!-- -->
+        <section class="section section-md oh">
+            <div class="container">
+                <h2 class="text-center">Welcome To Russia</h2>
+                <div class="navigation-custom">
+                    <button class="button navigation-custom-toggle" data-custom-toggle="#isotope-filters"
+                            data-custom-toggle-hide-on-blur="true">Filter
+                    </button>
+                    <div class="navigation-custom-content" id="isotope-filters">
+                        <ul class="isotope-filters isotope-filters-modern">
+                            <li><a class="active" data-isotope-filter="*" data-isotope-group="gallery"
+                                   href="#">All</a></li>
+                            <li>
+                                <a data-isotope-filter="city" data-isotope-group="gallery" href="#">Host Cities</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="accomodation" data-isotope-group="gallery"
+                                   href="#">Accomodation</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="general" data-isotope-group="gallery"
+                                   href="#">General Information</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="matches" data-isotope-group="gallery"
+                                   href="#">Attending Matches</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="visit" data-isotope-group="gallery"
+                                   href="#">Visit Russia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Isotope Content-->
+                <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                    <div class="row row-30">
+
+
+                        <!-- City Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Moscow{% endblock %}
+                            {% block url_isotope %}{{ path('moscow_city') }}{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Saint Petersburg{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Kazan{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Sochi{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig' with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Volgograd{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Ekaterinburg{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Kaliningrad{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Nizhny Novgorod{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig' with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Rostov-on-Don{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Samara{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                            {% block title_isotope %}Saransk{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+
+                        <!-- General Information Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Transport{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Money and Payment{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Health Care{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}How to stay connected{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig' with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Shopping and eating out{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Useful Russian words and phrases{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}In case of emergency{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+
+                        <!-- Accomodation Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'accomodation'} %}
+                            {% block title_isotope %}Accomodaction Options{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'accomodation'} %}
+                            {% block title_isotope %}Reservation And Payment{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'accomodation'} %}
+                            {% block title_isotope %}Hotel Accommodation Rules{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+
+                        <!-- Accomodation Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}The stadiums{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}Things not to bring to the stadium{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}Match day{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+                        <!-- Accomodation Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'visit'} %}
+                            {% block title_isotope %}visit{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'visit'} %}
+                            {% block title_isotope %}Visa-free entry{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}Match day{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    <!-- -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    <script>
+
+    </script>
+{% endblock %}
+{#<section class="section-main bg-gray-1">#}
+    {#<div class="section-main-player section-main-player-1"><img#}
+                {#src=""#}
+                {#alt="" width="697" height="862"/>#}
+    {#</div>#}
+    {#<div class="section-main-inner">#}
+        {#<div class="container">#}
+            {#<div class="section-main-top">#}
+                {#<div class="brand"><img class="brand-image"#}
+                                        {#src=""#}
+                                        {#alt="" width="180" height="47"/>#}
+                    {#<p class="brand-slogan">Multi sports theme </p>#}
+                {#</div>#}
+                {#<a class="button button-default" href="#">Try Template Now</a>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="section-main-body">#}
+            {#<div class="container">#}
+                {#<div class="row row-1 row-60 list-themes">#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-1"><a class="list-item-inner" href="soccer/index.html">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Soccer#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-2"><span class="badge">Coming Soon</span><a#}
+                                    {#class="list-item-inner" href="#">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Baseball#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-3"><span class="badge">Coming Soon</span><a#}
+                                    {#class="list-item-inner" href="#">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Billiards#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-4"><span class="badge">Coming Soon</span><a#}
+                                    {#class="list-item-inner" href="#">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Rugby#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-5"><span class="badge">Coming Soon</span><a#}
+                                    {#class="list-item-inner" href="#">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Basketball#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-sm-6 col-lg-4">#}
+                        {#<div class="list-item list-item-6"><span class="badge">Coming Soon</span><a#}
+                                    {#class="list-item-inner" href="#">#}
+                                {#<div class="list-item-text">#}
+                                    {#<div class="list-item-counter"></div>#}
+                                    {#<p class="list-item-title">Bowling#}
+                                    {#</p>#}
+                                {#</div>#}
+                                {#<figure class="list-item-figure"><img#}
+                                            {#src=""#}
+                                            {#alt="" width="179" height="136"/>#}
+                                {#</figure>#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="section-main-dummy"></div>#}
+        {#<div class="section-main-dummy"></div>#}
+    {#</div>#}
+    {#<div class="section-main-player section-main-player-2"><img#}
+                {#src=""#}
+                {#alt="" width="719" height="848"/>#}
+    {#</div>#}
+{#</section>#}
