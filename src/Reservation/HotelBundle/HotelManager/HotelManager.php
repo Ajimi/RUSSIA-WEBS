@@ -10,6 +10,7 @@ namespace Reservation\HotelBundle\HotelManager;
 
 
 use AppBundle\Exception\ApiException;
+use Common\LocationBundle\Entity\Location;
 use Common\LocationBundle\Manager\LocationManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -54,29 +55,12 @@ class HotelManager extends Manager
         $hotels = $this->repository->findAll();
         $this->throwApiException($hotels, "Empty list of hotels");
 
-
-        $data = array('hotels' => array());
-        foreach ($hotels as $hotel) {
-            $data['hotels'][] = $this->serializeHotel($hotel);
-        }
+        $data = $this->hotelSerialization($hotels);
 
         return $data;
     }
 
-    /**
-     * @param Hotel $hotel
-     * @return array
-     */
-    private function serializeHotel(Hotel $hotel)
-    {
-        return array(
-            "id" => $hotel->getId(),
-            "name" => $hotel->getName(),
-            "availableRooms" => $hotel->getAvailableRooms(),
-            "rate" => $hotel->getRate(),
-            "stars" => $hotel->getStars(),
-        );
-    }
+
 
     /**
      * @param Hotel $hotel
@@ -99,6 +83,7 @@ class HotelManager extends Manager
         return $data;
     }
 
+
     /**
      * @param Hotel|null $hotel
      * @return array
@@ -118,6 +103,34 @@ class HotelManager extends Manager
         $location = $this->locationManager->getLocation($hotel->getLocation());
         $data["hotel"]["location"] = $location;
 
+        return $data;
+    }
+
+    /**
+     * @param Hotel $hotel
+     * @return array
+     */
+    private function serializeHotel(Hotel $hotel)
+    {
+        return array(
+            "id" => $hotel->getId(),
+            "name" => $hotel->getName(),
+            "availableRooms" => $hotel->getAvailableRooms(),
+            "rate" => $hotel->getRate(),
+            "stars" => $hotel->getStars(),
+        );
+    }
+
+    /**
+     * @param $hotels
+     * @return array
+     */
+    private function hotelSerialization($hotels): array
+    {
+        $data = array('hotels' => array());
+        foreach ($hotels as $hotel) {
+            $data['hotels'][] = $this->serializeHotel($hotel);
+        }
         return $data;
     }
 
