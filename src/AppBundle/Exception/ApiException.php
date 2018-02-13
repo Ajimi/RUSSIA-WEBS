@@ -10,12 +10,21 @@ namespace AppBundle\Exception;
  */
 class ApiException extends \Exception
 {
+    /**
+     * ApiException constructor.
+     * @param string $message
+     * @param int $code
+     * @param \Throwable|null $previous
+     */
     public function __construct($message = "", $code = 0, \Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
 
-    public function getErrorDetails()
+    /**
+     * @return array
+     */
+    public function getErrorDetails(): array
     {
         return [
             'code' => $this->getCode() ?: 404,

@@ -15,6 +15,10 @@ use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\HotelManager\HotelManager;
 use Reservation\HotelBundle\HotelManager\Manager;
 
+/**
+ * Class LocationManager
+ * @package Common\LocationBundle\Manager
+ */
 class LocationManager extends Manager
 {
     private $entityManager;
@@ -48,10 +52,8 @@ class LocationManager extends Manager
     public function getList()
     {
         $locations = $this->repository->findAll();
-        $this->throwApiException($locations, "Empty list of location");
-        $data = $this->locationSerialization($locations);
-
-        return $data;
+        $this->isEmpty($locations, "Empty list of location");
+        return $this->serializer($locations);
     }
 
     /**
@@ -60,9 +62,9 @@ class LocationManager extends Manager
      */
     public function getLocation(Location $location = null)
     {
-        $this->throwApiException($location, "Location Object not found");
+        $this->isEmpty($location, "Location Object not found");
         $data = array('location' => array());
-        $data ['location'] = $this->serializeLocation($location);
+        $data ['location'] = $this->serialize($location);
         return $data;
     }
 
@@ -71,11 +73,11 @@ class LocationManager extends Manager
      * @param $locations
      * @return array
      */
-    private function locationSerialization($locations): array
+    private function serializer($locations): array
     {
         $data = array('locations' => array());
         foreach ($locations as $location) {
-            $data['locations'][] = $this->serializeLocation($location);
+            $data['locations'][] = $this->serialize($location);
         }
         return $data;
     }
@@ -84,7 +86,7 @@ class LocationManager extends Manager
      * @param Location $location
      * @return array
      */
-    private function serializeLocation(Location $location)
+    private function serialize(Location $location)
     {
         return array(
             "id" => $location->getId(),

@@ -14,12 +14,20 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\HotelManager\Manager;
 
+/**
+ * Class TicketManager
+ * @package Reservation\TicketBundle\Manager
+ */
 class TicketManager extends Manager
 {
     private $entityManager;
     private $repository;
 
 
+    /**
+     * TicketManager constructor.
+     * @param EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;

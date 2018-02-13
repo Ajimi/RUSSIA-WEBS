@@ -16,6 +16,10 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\Entity\Hotel;
 
+/**
+ * Class HotelManager
+ * @package Reservation\HotelBundle\HotelManager
+ */
 class HotelManager extends Manager
 {
     private $entityManager;
@@ -53,11 +57,9 @@ class HotelManager extends Manager
     public function getList()
     {
         $hotels = $this->repository->findAll();
-        $this->throwApiException($hotels, "Empty list of hotels");
+        $this->isEmpty($hotels, "Empty list of hotels");
 
-        $data = $this->hotelSerialization($hotels);
-
-        return $data;
+        return $this->serializer($hotels);
     }
 
 
@@ -69,12 +71,11 @@ class HotelManager extends Manager
      */
     public function getHotel(Hotel $hotel = null)
     {
-        $this->throwApiException($hotel, "Hotel Object not found");
+        $this->isEmpty($hotel, "Hotel Object not found");
         $data = array('hotel' => array());
-        $data["hotel"] = $this->serializeHotel($hotel);
+        $data["hotel"] = $this->serialize($hotel);
 
         $rooms = $this->roomManager->getHotelRooms($hotel);
-        $data["hotel"]["rooms"] = [];
         $data["hotel"]["rooms"] = $rooms["rooms"];
 
         $location = $this->locationManager->getLocation($hotel->getLocation());
@@ -92,12 +93,11 @@ class HotelManager extends Manager
     public function getHotelRooms(Hotel $hotel = null)
     {
 
-        $this->throwApiException($hotel, "Hotel Object not found");
+        $this->isEmpty($hotel, "Hotel Object not found");
         $data = array('hotel' => array());
-        $data["hotel"] = $this->serializeHotel($hotel);
+        $data["hotel"] = $this->serialize($hotel);
 
         $rooms = $this->roomManager->getHotelRooms($hotel);
-        $data["hotel"]["rooms"] = [];
         $data["hotel"]["rooms"] = $rooms["rooms"];
 
         $location = $this->locationManager->getLocation($hotel->getLocation());
@@ -110,7 +110,7 @@ class HotelManager extends Manager
      * @param Hotel $hotel
      * @return array
      */
-    private function serializeHotel(Hotel $hotel)
+    private function serialize(Hotel $hotel)
     {
         return array(
             "id" => $hotel->getId(),
@@ -121,15 +121,34 @@ class HotelManager extends Manager
         );
     }
 
+
     /**
      * @param $hotels
      * @return array
      */
-    private function hotelSerialization($hotels): array
+    private function serializer($hotels): array
     {
         $data = array('hotels' => array());
         foreach ($hotels as $hotel) {
-            $data['hotels'][] = $this->serializeHotel($hotel);
+            $hotelData = $this->serialize($hotel);
+            try {
+                $rooms = $this->roomManager->getHotelRooms($hotel);
+
+                $hotelData['rooms'] = $rooms["rooms"];
+            } catch (ApiException $exception) {
+                $hotelData['rooms'] = [];
+            }
+
+            try {
+                $location = $this->locationManager->getLocation($hotel->getLocation());
+
+                $hotelData["location"] = $location["location"];
+
+            } catch (ApiException $exception) {
+                $hotelData['location'] = [];
+            }
+
+            $data['hotels'][] = $hotelData;
         }
         return $data;
     }

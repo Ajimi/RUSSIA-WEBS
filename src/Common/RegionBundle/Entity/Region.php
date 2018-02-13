@@ -53,6 +53,9 @@ class Region
     private $slug;
 
 
+    /**
+     * Region constructor.
+     */
     public function __construct()
     {
         $this->hotels = new ArrayCollection();
