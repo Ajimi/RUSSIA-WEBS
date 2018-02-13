@@ -19,4 +19,21 @@ class MatchController extends Controller
     {
         return $this->render('MatchBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/add", name="add_match")
+     */
+    public  function addAction()
+    {
+
+        return $this->render('MatchBundle:Default:add_match_form.html.twig');
+    }
+
+    /**
+     * @Route("/test")
+     */
+    public function testTwigAction()
+    {
+
+    }
 }
