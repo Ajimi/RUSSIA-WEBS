@@ -24,6 +24,7 @@ class LocationManager extends Manager
     /**
      * LocationManager constructor.
      * @param EntityManager $entityManager
+     * @param HotelManager $hotelManager
      */
     public function __construct(EntityManager $entityManager)
     {
@@ -40,6 +41,10 @@ class LocationManager extends Manager
     }
 
 
+    /**
+     * Returns All Locations
+     * @return array
+     */
     public function getList()
     {
         $locations = $this->repository->findAll();
@@ -49,11 +54,28 @@ class LocationManager extends Manager
         return $data;
     }
 
-    private function locationSerialization($rooms): array
+    /**
+     * @param Location|null $location
+     * @return array
+     */
+    public function getLocation(Location $location = null)
+    {
+        $this->throwApiException($location, "Location Object not found");
+        $data = array('location' => array());
+        $data ['location'] = $this->serializeLocation($location);
+        return $data;
+    }
+
+
+    /**
+     * @param $locations
+     * @return array
+     */
+    private function locationSerialization($locations): array
     {
         $data = array('locations' => array());
-        foreach ($rooms as $room) {
-            $data['locations'][] = $this->serializeLocation($room);
+        foreach ($locations as $location) {
+            $data['locations'][] = $this->serializeLocation($location);
         }
         return $data;
     }
@@ -75,17 +97,6 @@ class LocationManager extends Manager
             "longitude" => $location->getGeoCode()->getLongitude(),
             "latitude" => $location->getGeoCode()->getLatitude(),
         );
-    }
-
-    /**
-     * @param Location|null $location
-     * @return array
-     */
-    public function getLocation(Location $location = null)
-    {
-        $this->throwApiException($location, "Location Object not found");
-        $data = array('hotel' => array());
-        return $data [] = $this->serializeLocation($location);
     }
 
 }
