@@ -17,6 +17,14 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             /*
+             * External Bundles
+             */
+            new FOS\UserBundle\FOSUserBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+
+
+            /*
              * Created Bundles
              */
             new AppBundle\AppBundle(),
@@ -29,20 +37,23 @@ class AppKernel extends Kernel
             new Reservation\HotelBundle\HotelBundle(),
             new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
-
-            /*
-             * External Bundles
-             */
-            new FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Guide\GuideBundle\GuideBundle(),
             new Match\MatchBundle\MatchBundle(),
+            new Common\LocationBundle\LocationBundle(),
+            new Common\RegionBundle\RegionBundle(),
+            new Common\UploadBundle\UploadBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+
+            /**
+             * External Bundle
+             */
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

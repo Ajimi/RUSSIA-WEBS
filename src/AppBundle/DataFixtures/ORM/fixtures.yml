@@ -1,0 +1,70 @@
+#AppBundle\Entity\Genus:
+#    genus_{1..10}:
+#        name: <genus()>
+#        subFamily: '@subfamily_*'
+#        speciesCount: <numberBetween(100, 100000)>
+#        funFact: <sentence()>
+#        isPublished: <boolean(75)>
+#        firstDiscoveredAt: <dateTimeBetween('-200 years', 'now')>
+#
+#AppBundle\Entity\GenusNote:
+#    genus.note_{1..100}:
+#        username: <userName()>
+#        userAvatarFilename: '50%? leanna.jpeg : ryan.jpeg'
+#        note: <paragraph()>
+#        createdAt: <dateTimeBetween('-6 months', 'now')>
+#        genus: '@genus_*'
+#
+#AppBundle\Entity\SubFamily:
+#    subfamily_{1..10}:
+#        # use some fake data for this
+#        name: <lastName()>
+#
+#AppBundle\Entity\User:
+#    user_{1..10}:
+#        email: weaverryan+<current()>@gmail.com
+#        plainPassword: iliketurtles
+#        roles: ['ROLE_ADMIN']
+
+Common\LocationBundle\Entity\Address:
+    address{1..30}:
+        country: <country()>
+        city: <city()>
+        state: <state()>
+        street1: <streetAddress()>
+        postalcode: <postcode()>
+
+Common\LocationBundle\Entity\GeoCode:
+    geocode{1..30}:
+        latitude: <latitude()>
+        longitude: <longitude()>
+
+
+Common\LocationBundle\Entity\Location:
+    location{1..30}:
+        address (unique):    '@address*'
+        geocode (unique):    '@geocode*'
+
+Reservation\HotelBundle\Entity\Room:
+    room{1..50}:
+        type:         <roomType()>
+        size:         <numberBetween(100,300)>
+        bedNumber:    <numberBetween(1,7)>
+        price:        <randomDigitNotNull()>
+        description:  <sentence(9)>
+        hotel:       '@hotel*'
+
+Reservation\HotelBundle\Entity\Hotel:
+    hotel{1..30}:
+        name:       <streetName()>
+        rate:       <numberBetween(0,5)>
+        stars:      <numberBetween(1,5)>
+        availableRooms: <randomDigitNotNull()>
+        location (unique):   '@location*'
+
+Common\RegionBundle\Entity\Region:
+    region{1..5}:
+        name:       <cityPrefix()>
+        location:   '@location*'
+        hotels:     ['@hotel*']
+
