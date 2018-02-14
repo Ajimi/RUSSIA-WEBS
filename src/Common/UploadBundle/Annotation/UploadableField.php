@@ -7,7 +7,7 @@ use Doctrine\Common\Annotations\Annotation\Target;
 
 /**
  * @Annotation
- * @Target("PROPERTY)
+ * @Target("PROPERTY")
  */
 class UploadableField
 {
