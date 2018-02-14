@@ -2,6 +2,8 @@
 
 namespace Reservation\TicketBundle\Entity;
 
+use Common\BookingBundle\Entity\Booking;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,20 @@ class Ticket
      */
     private $price;
 
+    /**
+     * @var ArrayCollection | Booking[]
+     * @ORM\OneToMany(targetEntity="Common\BookingBundle\Entity\Booking", mappedBy="ticket")
+     */
+    private $bookings;
+
+
+    /**
+     * Ticket constructor.
+     */
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
     /**
      * Get id
