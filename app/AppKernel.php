@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
+            new Common\UploadBundle\UploadBundle(),
             new Common\BookingBundle\BookingBundle(),
         ];
 

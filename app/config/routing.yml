@@ -3,6 +3,10 @@ booking:
     type:     annotation
     prefix:   /
 
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
 location_location:
     resource: "@LocationBundle/Controller/LocationController.php"
     type:     annotation
