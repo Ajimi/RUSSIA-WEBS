@@ -5,6 +5,7 @@ namespace News\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
 use Gedmo\Mapping\Annotation as Gedmo;
+use UserBundle\Entity\User;
 
 
 /**
@@ -15,6 +16,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Article
 {
+
+
     /**
      * @var int
      *
@@ -39,6 +42,13 @@ class Article
     private $content;
 
     /**
+     * @var User|null
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="articles");
+     */
+    private $author;
+
+    /**
      * @var date $created
      * @ORM\Column(type="date")
      * @Gedmo\Timestampable(on="create")
@@ -53,19 +63,13 @@ class Article
      */
     private $updated;
 
-    /**
-     * @var \DateTime $contentChanged
-     *
-     * @ORM\Column(type="date")
-     * @Gedmo\Timestampable(on="change", field={"content"})
-     */
-    private $contentChanged;
 
     /**
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
 
     /**
      * @return string
@@ -172,7 +176,7 @@ class Article
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -183,6 +187,23 @@ class Article
     public function setTitle(string $title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return null|User
+     */
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param null|User $author
+     * @return null|User
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 }
 
