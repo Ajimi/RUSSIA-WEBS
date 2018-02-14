@@ -3,7 +3,7 @@
 namespace Common\RegionBundle\Parser;
 
 use Common\RegionBundle\Entity\Region;
-use Common\RegionBundle\Handler\ApiHandler;
+use Common\RegionBundle\Handler\ApiParserHandler;
 use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
 
@@ -17,7 +17,7 @@ class PlaceParser
      */
     private $manager;
     /**
-     * @var ApiHandler
+     * @var ApiParserHandler
      */
     private $handler;
     private $client;
@@ -31,7 +31,7 @@ class PlaceParser
     {
 
         $this->manager = $manager;
-        $this->handler = new ApiHandler($manager);
+        $this->handler = new ApiParserHandler($manager);
         $this->client = new Client(['base_uri' => self::API_URL]);
     }
 
@@ -71,7 +71,7 @@ class PlaceParser
     }
 
     /**
-     * @return ApiHandler
+     * @return ApiParserHandler
      */
     public function getHandler()
     {
@@ -79,7 +79,7 @@ class PlaceParser
     }
 
     /**
-     * @param ApiHandler $handler
+     * @param ApiParserHandler $handler
      */
     public function setHandler($handler)
     {

@@ -14,7 +14,7 @@ use Common\RegionBundle\Entity\Region;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
-class ApiHandler
+class ApiParserHandler
 {
     /**
      * @var EntityManager
