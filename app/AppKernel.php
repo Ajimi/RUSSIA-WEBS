@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
+            new Common\UploadBundle\UploadBundle(),
             new News\NewsBundle\NewsBundle(),
             new Common\BookingBundle\BookingBundle(),
         ];
@@ -53,6 +54,7 @@ class AppKernel extends Kernel
              * External Bundle
              */
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
