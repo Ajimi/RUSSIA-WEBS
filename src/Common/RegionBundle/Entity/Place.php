@@ -86,6 +86,13 @@ class Place
      */
     private $category;
 
+    /**
+     * @var Location|null
+     *
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", cascade={"persist"})
+     */
+    private $location;
+
 
     /**
      * Get id
@@ -283,6 +290,22 @@ class Place
 
 
     /**
+     * @return Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed $location
+     */
+    public function setLocation(Location $location)
+    {
+        $this->location = $location;
+    }
+
+    /**
      * @param array $item
      * @param Region $region
      * @return Place
@@ -302,6 +325,7 @@ class Place
         $place->setSiteUrl($item['site_url']);
 
         $location = Location::fromJson($item, $region);
+        $place->setLocation($location);
         // TODO : setLocation Association
         return $place;
     }

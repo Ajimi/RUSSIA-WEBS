@@ -31,14 +31,14 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=255 ,nullable=true)
      */
     private $code;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="icon_type", type="string", length=255)
+     * @ORM\Column(name="icon_type", type="string", length=255,nullable=true)
      */
     private $iconType;
 
