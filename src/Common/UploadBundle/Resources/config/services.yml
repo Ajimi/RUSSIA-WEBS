@@ -2,10 +2,10 @@ services:
     upload.annotation_reader:
         class: Common\UploadBundle\Annotation\UploadAnnotationReader
         arguments: ["@annotations.reader"]
-    upload.hadnler:
+    upload.handler:
         class: Common\UploadBundle\Handler\UploadHandler
     upload.subscriber:
         class: Common\UploadBundle\EventListener\UploadSubscriber
-        arguments: ["@upload.annotation_reader","@upload.hadnler"]
+        arguments: ["@upload.annotation_reader","@upload.handler"]
         tags:
             - { name: doctrine.event_subscriber, conncetion: default }
