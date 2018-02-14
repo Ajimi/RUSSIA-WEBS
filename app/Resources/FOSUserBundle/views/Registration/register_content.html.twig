@@ -24,8 +24,7 @@
         <span class="form-validation">{{ form_errors(form.plainPassword.second) }}</span>
     </div>
 
-    <button class="button button-lg button-primary button-block" type="submit">Create new
-        account
+    <button class="button button-lg button-primary button-block" type="submit">{{ 'registration.submit'|trans }}
     </button>
     {#<div>
         <input type="submit" value="{{ 'registration.submit'|trans }}"/>
@@ -39,7 +38,6 @@
                 class="button button-twitter button-icon button-icon-left button-round"
                 href="#"><span class="icon fa fa-twitter"></span><span>Twitter</span></a><a
                 class="button button-facebook button-icon button-icon-left button-round"
-                href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a></div>
-</div>
-
+                href="#"><span class="icon fa fa-facebook"></span><span>Facebook</span></a>
+    </div>
 </div>
