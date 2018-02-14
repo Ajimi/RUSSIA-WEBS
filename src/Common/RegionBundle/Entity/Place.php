@@ -3,6 +3,7 @@
 namespace Common\RegionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\Category;
 
 /**
  * Place
@@ -47,6 +48,46 @@ class Place
      * @ORM\ManyToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="places")
      */
     private $region;
+
+    /**
+     * @var string
+     * @ORM\Column(name="preview_text", type="text")
+     */
+    private $previewText;
+
+    /**
+     * @var string
+     * @ORM\Column(name="preview_picture", type="text")
+     */
+    private $previewPicture;
+
+    /**
+     * @var string
+     * @ORM\Column(name="working_time", type="string")
+     */
+    private $workingTime;
+
+    /**
+     * @var string
+     * @ORM\Column(name="phone", type="string")
+     */
+    private $phone;
+
+    /**
+     * @var string
+     * @ORM\Column(name="site_url", type="string")
+     */
+    private $siteUrl;
+
+    /**
+     * @var \Common\RegionBundle\Entity\Category
+     *
+     * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Category")
+     */
+    private $category;
+
+
+
 
     /**
      * Get id
@@ -145,5 +186,102 @@ class Place
     {
         $this->region = $region;
     }
+
+    /**
+     * @return string
+     */
+    public function getPreviewText(): string
+    {
+        return $this->previewText;
+    }
+
+    /**
+     * @param string $previewText
+     */
+    public function setPreviewText(string $previewText)
+    {
+        $this->previewText = $previewText;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreviewPicture(): string
+    {
+        return $this->previewPicture;
+    }
+
+    /**
+     * @param string $previewPicture
+     */
+    public function setPreviewPicture(string $previewPicture)
+    {
+        $this->previewPicture = $previewPicture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWorkingTime(): string
+    {
+        return $this->workingTime;
+    }
+
+    /**
+     * @param string $workingTime
+     */
+    public function setWorkingTime(string $workingTime)
+    {
+        $this->workingTime = $workingTime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiteUrl(): string
+    {
+        return $this->siteUrl;
+    }
+
+    /**
+     * @param string $siteUrl
+     */
+    public function setSiteUrl(string $siteUrl)
+    {
+        $this->siteUrl = $siteUrl;
+    }
+
+    /**
+     * @return \Common\RegionBundle\Entity\Category
+     */
+    public function getCategory(): \Common\RegionBundle\Entity\Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param \Common\RegionBundle\Entity\Category $category
+     */
+    public function setCategory(\Common\RegionBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+    }
+
 }
 
