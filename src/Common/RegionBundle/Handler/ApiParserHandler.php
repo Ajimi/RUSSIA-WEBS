@@ -9,6 +9,7 @@
 namespace Common\RegionBundle\Handler;
 
 
+use Common\RegionBundle\Entity\Category;
 use Common\RegionBundle\Entity\Place;
 use Common\RegionBundle\Entity\Region;
 use Doctrine\ORM\EntityManager;
@@ -20,6 +21,7 @@ class ApiParserHandler
      * @var EntityManager
      */
     private $manager;
+
 
     public function __construct(EntityManager $manager)
     {
@@ -73,6 +75,16 @@ class ApiParserHandler
         if ($placeRepo) {
             return $placeRepo;
         }
+
+        $repoCategory = $this->getRepository('RegionBundle:Category');
+
+        $category = $repoCategory->findOneBy(['code' => $placeItem['category']['code']]);
+        if (!$category) {
+            /** @var Category $category */
+            $category = Category::fromJson($placeItem['category']);
+        }
+
+        $place->setCategory($category);
 
         $this->manager->persist($place);
         $this->manager->flush();

@@ -82,7 +82,7 @@ class Place
     /**
      * @var \Common\RegionBundle\Entity\Category
      *
-     * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="Common\RegionBundle\Entity\Category" , cascade={"persist"})
      */
     private $category;
 
@@ -301,13 +301,8 @@ class Place
         $place->setPhone($item['phone']);
         $place->setSiteUrl($item['site_url']);
 
-        /** @var Category $category */
-        $category = Category::fromJson($item['category']);
-
-        $place->setCategory($category);
-
         $location = Location::fromJson($item, $region);
-
+        // TODO : setLocation Association
         return $place;
     }
 }

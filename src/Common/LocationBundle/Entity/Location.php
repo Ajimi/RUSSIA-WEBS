@@ -167,8 +167,8 @@ class Location
 
         $address->setCity($city->getName());
         $address->setState($city->getName());
-        $address->setPostalcode($faker->postcode);
-        $address->setStreet1($faker->streetAddress);
+//        $address->setPostalcode($faker->postcode);
+//        $address->setStreet1($faker->streetAddress);
 
         $geocodeArray = explode(',', $item['location']);
         $geocode->setLatitude($geocodeArray[0]);
