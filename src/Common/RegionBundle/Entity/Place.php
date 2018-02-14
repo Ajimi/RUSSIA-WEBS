@@ -3,7 +3,6 @@
 namespace Common\RegionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Entity\Category;
 
 /**
  * Place
@@ -63,7 +62,7 @@ class Place
 
     /**
      * @var string
-     * @ORM\Column(name="working_time", type="string")
+     * @ORM\Column(name="working_time", type="string", nullable=true)
      */
     private $workingTime;
 
@@ -85,8 +84,6 @@ class Place
      * @ORM\OneToOne(targetEntity="Common\RegionBundle\Entity\Category")
      */
     private $category;
-
-
 
 
     /**
@@ -283,5 +280,26 @@ class Place
         $this->category = $category;
     }
 
+
+    /**
+     * @param array $item
+     * @param Region $region
+     * @return Place
+     */
+    public static function fromJson($item, Region $region): Place
+    {
+        $place = new Place();
+        $place->setName($item['name']);
+        $place->setType($item['type']);
+        $place->setPreviewText($item['preview_text']);
+        $place->setInformation($item['detail_text']);
+        $place->setPreviewPicture($item['preview_picture']);
+        $place->setRegion($region);
+        $place->setPhone($item['phone']);
+        $place->setSiteUrl($item['site_url']);
+        /** TODO : Parse Location */
+        /** Todo: Category */
+        return $place;
+    }
 }
 
