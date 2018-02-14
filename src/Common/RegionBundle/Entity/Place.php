@@ -2,6 +2,7 @@
 
 namespace Common\RegionBundle\Entity;
 
+use Common\LocationBundle\Entity\Location;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -288,7 +289,9 @@ class Place
      */
     public static function fromJson($item, Region $region): Place
     {
+        /** @var Place $place */
         $place = new Place();
+
         $place->setName($item['name']);
         $place->setType($item['type']);
         $place->setPreviewText($item['preview_text']);
@@ -297,8 +300,14 @@ class Place
         $place->setRegion($region);
         $place->setPhone($item['phone']);
         $place->setSiteUrl($item['site_url']);
-        /** TODO : Parse Location */
-        /** Todo: Category */
+
+        /** @var Category $category */
+        $category = Category::fromJson($item['category']);
+
+        $place->setCategory($category);
+
+        $location = Location::fromJson($item);
+
         return $place;
     }
 }
