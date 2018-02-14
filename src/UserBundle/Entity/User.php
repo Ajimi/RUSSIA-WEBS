@@ -59,6 +59,10 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\Article", mappedBy="author")
+     */
+    private $articles;
+    /**
      * @ORM\Column(type="date")
      */
     protected $birthday;
