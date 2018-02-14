@@ -44,6 +44,7 @@ twig:
     strict_variables: '%kernel.debug%'
     paths:
             "%kernel.root_dir%": app
+
 # Doctrine Configuration
 doctrine:
     dbal:

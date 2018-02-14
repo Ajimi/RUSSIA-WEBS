@@ -31,4 +31,12 @@ class TeamTest
     {
         return $this->id;
     }
+
+    /**
+     * @var string
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+
 }

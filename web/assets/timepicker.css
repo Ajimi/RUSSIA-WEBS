@@ -51,7 +51,7 @@
 	padding: 20px 24px;
 	color: rgba(255,255,255,.5);
 	text-align: center;
-	background-color: #1565c0;
+	background-color: #2A3F54;
 }
 	.mdtp__time_holder > span {
 		display: inline-block;
@@ -97,7 +97,7 @@
 	.mdtp__clock .mdtp__am:hover, .mdtp__clock .mdtp__pm:hover { background-color: rgba(0,0,0,.1); }
 	.mdtp__clock .mdtp__am.active, .mdtp__clock .mdtp__pm.active {
 		color: #fafafa;
-		background-color: #1565c0;
+		background-color: #2A3F54;
 	}
 .mdtp__clock .mdtp__clock_dot {
 	position: absolute;
@@ -105,7 +105,7 @@
 	left: 50%;
 	transform: translate(-50%,-50%);
 	padding: 4px;
-	background-color: #1565c0;
+	background-color: #2A3F54;
 	border-radius: 50%;
 }
 .mdtp__clock .mdtp__hour_holder,
@@ -150,7 +150,7 @@
 	}
 		.mdtp__digit.active span,
 		.mdtp__clock .mdtp__digit span:hover {
-			background-color: #1565c0 !important;
+			background-color: #2A3F54 !important;
 			color: #fff;
 			z-index: 2;
 		}
@@ -162,7 +162,7 @@
 	right: 0;
 	height: 2px;
 	width: calc(100% - 40px);
-	background-color: #1565c0;
+	background-color: #2A3F54;
 }
 .mdtp__clock .mdtp__minute_holder .mdtp__digit { font-size: 13px; }
 .mdtp__clock .mdtp__minute_holder .mdtp__digit:not(.marker) {
@@ -258,19 +258,19 @@
 	line-height: 32px;
 	font-weight: 500;
 	cursor: pointer;
-	color: #1565c0;
+	color: #2A3F54;
 }
 .mdtp__button:hover { background-color: #e0e0e0; }
 
 /* Color themes */
-.mdtp__wrapper[data-theme='blue'] .mdtp__time_holder { background-color: #1565c0; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__time_holder { background-color: #2A3F54; }
 .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__am.active,
-.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__pm.active { background-color: #1565c0; }
-.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__clock_dot { background-color: #1565c0; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__pm.active { background-color: #2A3F54; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__clock_dot { background-color: #2A3F54; }
 .mdtp__wrapper[data-theme='blue'] .mdtp__digit.active span,
-.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit span:hover { background-color: #1565c0 !important; }
-.mdtp__wrapper[data-theme='blue'] .mdtp__digit.active:before { background-color: #1565c0; }
-.mdtp__wrapper[data-theme='blue'] .mdtp__button { color: #1565c0; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit span:hover { background-color: #2A3F54 !important; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__digit.active:before { background-color: #2A3F54; }
+.mdtp__wrapper[data-theme='blue'] .mdtp__button { color: #2A3F54; }
 
 .mdtp__wrapper[data-theme='red'] .mdtp__time_holder { background-color: #c62828; }
 .mdtp__wrapper[data-theme='red'] .mdtp__clock .mdtp__am.active,

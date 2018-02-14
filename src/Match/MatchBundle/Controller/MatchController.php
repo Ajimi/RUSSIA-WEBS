@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Match\MatchBundle\Form\MatchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -30,10 +31,14 @@ class MatchController extends Controller
     }
 
     /**
-     * @Route("/test")
+     * @Route("/test", name="match_test")
      */
     public function testTwigAction()
     {
+        $form = $this->createForm(MatchType::class);
+        return $this->render('MatchBundle:Default:test.html.twig',[
+            'matchForm'=>$form->createView()
+        ]);
 
     }
 }
