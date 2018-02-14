@@ -85,3 +85,9 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable:   true
+            timestampable: true
+
+ivory_ck_editor:
+    configs:
+        my_config:
+            skin: "kama,/bundles/ivoryckeditor/skins/kama/"
