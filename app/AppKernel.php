@@ -37,7 +37,6 @@ class AppKernel extends Kernel
             new Reservation\HotelBundle\HotelBundle(),
             new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
-
             new Guide\GuideBundle\GuideBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
