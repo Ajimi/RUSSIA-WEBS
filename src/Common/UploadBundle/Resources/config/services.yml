@@ -1,4 +1,11 @@
 services:
-#    upload.example:
-#        class: Common\UploadBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    upload.annotation_reader:
+        class: Common\UploadBundle\Annotation\UploadAnnotationReader
+        arguments: ["@annotations.reader"]
+    upload.hadnler:
+        class: Common\UploadBundle\Handler\UploadHandler
+    upload.subscriber:
+        class: Common\UploadBundle\EventListener\UploadSubscriber
+        arguments: ["@upload.annotation_reader","@upload.hadnler"]
+        tags:
+            - { name: doctrine.event_subscriber, conncetion: default }
