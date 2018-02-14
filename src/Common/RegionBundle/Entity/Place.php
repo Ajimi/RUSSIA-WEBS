@@ -306,7 +306,7 @@ class Place
 
         $place->setCategory($category);
 
-        $location = Location::fromJson($item);
+        $location = Location::fromJson($item, $region);
 
         return $place;
     }
