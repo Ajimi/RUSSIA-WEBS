@@ -31,12 +31,20 @@ class UploadSubscriber implements EventSubscriber
      */
     private $handler;
 
+    /**
+     * UploadSubscriber constructor.
+     * @param UploadAnnotationReader $reader
+     * @param UploadHandler $handler
+     */
     public function __construct(UploadAnnotationReader $reader, UploadHandler $handler)
     {
         $this->reader = $reader;
         $this->handler = $handler;
     }
 
+    /**
+     * @return array
+     */
     public function getSubscribedEvents()
     {
         return [
@@ -47,11 +55,17 @@ class UploadSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * @param EventArgs $event
+     */
     public function prePersist(EventArgs $event)
     {
         $this->preEvent($event);
     }
 
+    /**
+     * @param EventArgs $event
+     */
     private function preEvent(EventArgs $event)
     {
         $entity = $event->getEntity();
@@ -60,11 +74,17 @@ class UploadSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @param EventArgs $event
+     */
     public function preUpdate(EventArgs $event)
     {
         $this->preEvent($event);
     }
 
+    /**
+     * @param EventArgs $event
+     */
     public function postLoad(EventArgs $event)
     {
         $entity = $event->getEntity();
@@ -73,6 +93,9 @@ class UploadSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @param EventArgs $event
+     */
     public function postRemove(EventArgs $event)
     {
         $entity = $event->getEntity();
