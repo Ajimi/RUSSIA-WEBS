@@ -42,6 +42,11 @@ class Place
      */
     private $information;
 
+    /**
+     * @var Region
+     * @ORM\ManyToOne(targetEntity="Common\RegionBundle\Entity\Region", inversedBy="places")
+     */
+    private $region;
 
     /**
      * Get id
@@ -123,6 +128,22 @@ class Place
         $this->information = $information;
 
         return $this;
+    }
+
+    /**
+     * @return Region
+     */
+    public function getRegion(): Region
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param Region $region
+     */
+    public function setRegion(Region $region)
+    {
+        $this->region = $region;
     }
 }
 
