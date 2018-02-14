@@ -326,7 +326,7 @@ class Place
 
         $location = Location::fromJson($item, $region);
         $place->setLocation($location);
-        // TODO : setLocation Association
+        // Completed : setLocation Association
         return $place;
     }
 }
