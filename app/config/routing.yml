@@ -1,3 +1,8 @@
+match:
+    resource: "@MatchBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /

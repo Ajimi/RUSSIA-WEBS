@@ -18,6 +18,7 @@
 
 
 <body class="nav-md">
+ {% block container %}
 <div class="container body">
     <div class="main_container">
         {% block sidebar %}
@@ -69,12 +70,13 @@
         {% endblock %}
     </div>
 </div>
-
+ {% endblock %}
 {% include '@Back/common/_js.html.twig' %}
 {% block javascripts %}
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}
+
 
 
 </body>
