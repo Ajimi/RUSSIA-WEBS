@@ -1,0 +1,42 @@
+{% extends "BackBundle:common:_base.html.twig" %}
+
+{% block title %}GroupBundle:GroupController:AfficherGroup{% endblock %}
+
+{% block body %}
+
+    <div class="right_col" role="main">
+
+        <h1>La liste des groupes</h1>
+
+
+        <table border="3">
+            <tr>
+
+                <th>Nom du groupe</th>
+                <th>Equipe 1</th>
+                <th>Equipe2</th>
+                <th>Equipe 3</th>
+                <th>Equipe 4</th>
+            </tr>
+
+            {% for groups in G %}
+
+
+
+                <tr>
+                    <td>{{ groups.name }}</td>
+                    <td>{{ groups.team1.teamName }}</td>
+                    <td>{{ groups.team2.teamName }}</td>
+                    <td>{{ groups.team3.teamName }}</td>
+                    <td>{{ groups.team4.teamName }}</td>
+
+                    <td><a href="{{ path('admin_group_delete',{'id':groups.id}) }}">Supprimer</a></td>
+
+                </tr>
+
+            {% endfor %}
+
+
+        </table>
+    </div>
+{% endblock %}
