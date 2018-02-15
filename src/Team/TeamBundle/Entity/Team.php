@@ -2,6 +2,8 @@
 
 namespace Team\TeamBundle\Entity;
 
+use Common\UploadBundle\Annotation\Uploadable;
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="team")
  * @ORM\Entity(repositoryClass="Team\TeamBundle\Repository\TeamRepository")
+ * @Uploadable()
  */
 class Team
 {
@@ -27,6 +30,13 @@ class Team
      * @ORM\Column(name="teamName", type="string", length=255)
      */
     private $teamName;
+
+    /**
+     * @var string
+     * @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
+     * @ORM\Column(name="teamLogo", type="string", length=255)
+     */
+    private $teamLogo;
 
     /**
      * @var string
@@ -148,9 +158,26 @@ class Team
     }
 
     /**
+     * @return mixed
+     */
+    public function getTeamLogo()
+    {
+        return $this->teamLogo;
+    }
+
+    /**
+     * @param mixed $teamLogo
+     */
+    public function setTeamLogo($teamLogo)
+    {
+        $this->teamLogo = $teamLogo;
+    }
+
+
+    /**
      * @param int $goalIn
      */
-    public function setGoalIn(int $goalIn)
+    public function setGoalIn($goalIn)
     {
         $this->goalIn = $goalIn;
     }
