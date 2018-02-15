@@ -31,7 +31,6 @@ class TeamTest
     {
         return $this->id;
     }
-
     /**
      * @var string
      * @ORM\Column(name="name", type="string")
@@ -39,4 +38,27 @@ class TeamTest
     private $name;
 
 
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return TeamTest
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

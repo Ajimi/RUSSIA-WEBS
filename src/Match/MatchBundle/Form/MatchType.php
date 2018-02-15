@@ -2,9 +2,10 @@
 
 namespace Match\MatchBundle\Form;
 
-use Match\MatchBundle\Entity\TeamTest;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,16 +17,21 @@ class MatchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('teamName1',EntityType::class,
+            ->add('team1', EntityType::class,
                 array(
-                    'class'=>'MatchBundle:TeamTest'))
-            ->add('teamName2',EntityType::class,
+                    'class' => 'MatchBundle:TeamTest',
+                    'choice_label' => 'name'))
+            ->add('team2', EntityType::class,
                 array(
-                    'class'=>'MatchBundle:TeamTest'))
-            ->add('level')
+                    'class' => 'MatchBundle:TeamTest',
+                    'choice_label' => 'name'))
+            ->add('level', ChoiceType::class, array(
+                'choices' => array('Final' => 'Final', 'SemiFinal' => 'SemiFinal'),
+                'multiple' => false))
             ->add('date')
             ->add('time')
-        ->add('stadium');
+            ->add('stadium')
+            ->add('create', SubmitType::class);
     }/**
      * {@inheritdoc}
      */
