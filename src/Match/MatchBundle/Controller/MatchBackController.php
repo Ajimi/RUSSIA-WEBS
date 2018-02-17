@@ -14,6 +14,21 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MatchBackController extends Controller
 {
+
+    /**
+     * @Route("/list", name="match_list")
+     */
+    public function displayListAction()
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $matchs = $em->getRepository("MatchBundle:Match")->findAll();
+
+        return $this->render('MatchBundle:Default:list_match.html.twig', array(
+            'matchs' => $matchs
+        ));
+    }
     /**
      * @Route("/index", name="match_index")
      */
@@ -34,7 +49,8 @@ class MatchBackController extends Controller
 
             $em->persist($match);
             $em->flush();
-            // return $this->redirectToRoute('_afficheV');
+            return $this->redirectToRoute('match_index');
+
         }
 
         return $this->render('MatchBundle:Default:index.html.twig', [
@@ -64,10 +80,11 @@ class MatchBackController extends Controller
 
             $em->persist($match);
             $em->flush();
-            // return $this->redirectToRoute('_afficheV');
+            return $this->redirectToRoute('match_index');
+
         }
 
-        return $this->render('MatchBundle:Default:add_match_form.html.twig', [
+        return $this->render('MatchBundle:Default:index.html.twig', [
             'matchForm' => $form->createView()
         ]);
     }
@@ -78,9 +95,7 @@ class MatchBackController extends Controller
     public function testTwigAction()
     {
         $form = $this->createForm(MatchType::class);
-        return $this->render('MatchBundle:Default:test.html.twig',[
-            'matchForm'=>$form->createView()
-        ]);
+        return $this->render('MatchBundle:Default:test.html.twig');
 
     }
 }
