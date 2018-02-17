@@ -34,10 +34,26 @@ class TeamBackController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * @Route("/list", name="team_list")
      */
-    public function editTeamAction()
+    public function listTeamAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $teams=$em->getRepository("TeamBundle:Team")->findAll();
+
+        return $this->render('TeamBundle:TeamBack:list_team.html.twig', array(
+            'teams' => $teams
+            // ...
+        ));
+
+    }
+
+    /**
+     * @Route("/edit/{id}")
+     */
+    public function editTeamAction(Request $request,$id)
+    {
+
         return $this->render('TeamBundle:TeamBack:edit_team.html.twig', array(// ...
         ));
     }
