@@ -1,6 +1,6 @@
 <div class="promo promo-classic">
     <div class="promo-meta promo-classic-meta">
-        <p class="promo-title heading-3">Europa League final 2017</p>
+        <p class="promo-title heading-3">{% block heading %}Russia World Cup{% endblock %}</p>
         <div class="divider-middle divider-secondary"></div>
         <time class="promo-time" datetime="2017-04-14">Saturday, April 14, 2017</time>
     </div>
@@ -13,17 +13,18 @@
             <figure class="promo-team-figure promo-classic-team-figure"><img
                         src="{{ asset('/asstes/images/team-atletico-72x72.png') }}" alt="" width="72" height="72"/>
             </figure>
-            <div class="promo-team-name">Atletico</div>
-            <div class="promo-team-country">USA</div>
+            <div class="promo-team-name">{% block team1 %}USA{% endblock %}</div>
+            <div class="promo-team-country">{% block nickname1 %}The Yanks{% endblock %}</div>
         </div>
         <div class="promo-middle promo-classic-middle">VS</div>
         <div class="promo-team">
             <figure class="promo-team-figure promo-classic-team-figure"><img
                         src="{{ asset('/asstes/images/team-sevilla-83x67.png') }}" alt="" width="83" height="67"/>
             </figure>
-            <div class="promo-team-name">Sevilla</div>
-            <div class="promo-team-country">Spain</div>
+            <div class="promo-team-name">{% block team2 %}Spain{% endblock %}</div>
+            <div class="promo-team-country">{% block nickname2 %}The Yanks{% endblock %}</div>
         </div>
     </div>
-    <a class="button button-primary button-block" href="#">Buy tickets now</a>
+    <a class="button button-primary button-block" href="{{ path('cart_add_item', {'match': match.id}) }}">Buy tickets
+        now</a>
 </div>
