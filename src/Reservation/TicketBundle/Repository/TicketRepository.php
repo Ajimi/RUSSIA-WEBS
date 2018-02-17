@@ -10,4 +10,15 @@ namespace Reservation\TicketBundle\Repository;
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findAllBy($criteria)
+    {
+
+        $qb = $this->createQueryBuilder('t')
+            ->select('t')
+            ->where('t.match in (:criteria)')
+            ->setParameter('criteria', $criteria);
+
+        return $qb->getQuery()->getArrayResult();
+    }
 }

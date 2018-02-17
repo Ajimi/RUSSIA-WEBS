@@ -24,13 +24,19 @@ class Ticket
     private $id;
 
     /**
-     * onetomany
+     * @var integer
+     * @ORM\Column(name="quantity", type="integer", nullable=true)
      */
-    private $match;
+    private $quantity;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Matche", inversedBy="ticket")
+     */
+    private $matche;
 
     /**
      * @var string
-     * @ORM\Column(type="decimal", precision=10, scale=10)
+     * @ORM\Column(type="decimal", precision=4, scale=2)
      */
     private $price;
 
@@ -76,5 +82,86 @@ class Ticket
         $this->price = $price;
         return $this;
     }
-}
 
+    /**
+     * @return Matche
+     */
+    public function getMatch(): Matche
+    {
+        return $this->match;
+    }
+
+    /**
+     * @param mixed $matche
+     */
+    public function setMatch($matche)
+    {
+        $this->match = $matche;
+    }
+
+    /**
+     * Add booking
+     *
+     * @param \Common\BookingBundle\Entity\Booking $booking
+     *
+     * @return Ticket
+     */
+    public function addBooking(\Common\BookingBundle\Entity\Booking $booking)
+    {
+        $this->bookings[] = $booking;
+
+        return $this;
+    }
+
+    /**
+     * Remove booking
+     *
+     * @param \Common\BookingBundle\Entity\Booking $booking
+     */
+    public function removeBooking(\Common\BookingBundle\Entity\Booking $booking)
+    {
+        $this->bookings->removeElement($booking);
+    }
+
+    /**
+     * Get bookings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity(int $quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatche()
+    {
+        return $this->matche;
+    }
+
+    /**
+     * @param mixed $matche
+     */
+    public function setMatche($matche)
+    {
+        $this->matche = $matche;
+    }
+}

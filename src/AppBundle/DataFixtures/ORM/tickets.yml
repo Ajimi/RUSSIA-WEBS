@@ -1,0 +1,9 @@
+Reservation\TicketBundle\Entity\Matche:
+    matche{1..30}:
+        team1: <country()>
+        team2: <country()>
+Reservation\TicketBundle\Entity\Ticket:
+    ticket{1..30}:
+        matche(unique): '@matche*'
+        price: <numberBetween(100,300)>
+        quantity: <numberBetween(5000,8000)>
