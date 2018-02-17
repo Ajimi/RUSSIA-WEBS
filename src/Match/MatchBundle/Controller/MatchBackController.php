@@ -20,8 +20,6 @@ class MatchBackController extends Controller
      */
     public function displayListAction()
     {
-
-
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
 
@@ -87,6 +85,19 @@ class MatchBackController extends Controller
         return $this->render('MatchBundle:Default:index.html.twig', [
             'matchForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete_match")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $match = $em->getRepository("MatchBundle:Match")->find($id);
+        $em->remove($match);
+        $em->flush();
+        return $this->redirectToRoute('match_list');
+
     }
 
     /**
