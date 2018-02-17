@@ -40,6 +40,19 @@ class Score
     private $score;
 
     /**
+     * Score constructor.
+     * @param $team
+     * @param $match
+     * @param int $score
+     */
+    public function __construct($team, $match, $score)
+    {
+        $this->team = $team;
+        $this->match = $match;
+        $this->score = $score;
+    }
+
+    /**
      * Get id.
      *
      * @return int

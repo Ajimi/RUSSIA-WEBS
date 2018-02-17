@@ -3,6 +3,7 @@
 namespace Match\MatchBundle\Controller;
 
 use Match\MatchBundle\Entity\Match;
+use Match\MatchBundle\Entity\Score;
 use Match\MatchBundle\Form\MatchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -49,13 +50,17 @@ class MatchBackController extends Controller
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            //dump($form->getData());
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
-            // dump($match);
+            $scoreTeam1 = new Score($match->getTeam1(), $match, null);
+            $scoreTeam2 = new Score($match->getTeam2(), $match, null);
+
             $em->persist($match);
+            $em->persist($scoreTeam1);
+            $em->persist($scoreTeam2);
             $em->flush();
+
             return $this->redirectToRoute('match_list');
 
         }

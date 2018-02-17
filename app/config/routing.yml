@@ -3,6 +3,7 @@ match:
     type:     annotation
     prefix:   /
 
+
 upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /
