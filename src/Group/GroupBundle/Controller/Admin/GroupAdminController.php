@@ -8,7 +8,7 @@
 
 namespace Group\GroupBundle\Controller\Admin;
 
-
+use Doctrine\ORM\EntityManager;
 use Group\GroupBundle\Entity\Groupe;
 use Group\GroupBundle\Form\GroupeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -34,6 +34,7 @@ class GroupAdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($group);
             $em->flush();
+            return $this->redirectToRoute("AfficheGroup");
         }
 
         return $this->render('GroupBundle:GroupController:ajout.html.twig', array(
@@ -58,7 +59,7 @@ class GroupAdminController extends Controller
     /**
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("/delete",name="admin_group_delete")
+     * @Route("/delete/{id}",name="admin_group_delete")
      */
     public function deleteGroupAction($id)
     {
