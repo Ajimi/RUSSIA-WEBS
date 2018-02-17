@@ -55,6 +55,8 @@
                             <td class=" ">{{ m.level }}</td>
                             <td class=" ">8,674 tickets</td>
                             <td class="">
+                                <button type="button" class="btn btn-success btn-xs">Add Result</button>
+
                                 <a href="{{ path('edit_match',{'id':m.id}) }}" data-target="#editMatchModal"
                                    class="btn btn-info btn-xs">
                                     <i class="fa fa-pencil"></i> Edit
@@ -168,6 +170,7 @@
     <script src="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
     <script src="{{ asset('assets/timepicker.js') }}"></script>
     <!-- bootstrap-daterangepicker -->
     <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
