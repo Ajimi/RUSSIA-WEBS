@@ -1,0 +1,71 @@
+<li>
+    <div class="cart-inline-toggled-outer">
+        <!-- Link Cart-->
+        <button class="link link-cart cart-inline-toggle"
+                data-rd-navbar-toggle="#cart-inline"><span
+                    class="link-cart-icon fl-bigmug-line-shopping202"></span><span
+                    class="link-cart-counter">{{ counter }}</span></button>
+        <!-- Cart Inline-->
+
+        <article class="cart-inline cart-inline-toggled" id="cart-inline">
+            <div class="cart-inline-inner">
+                <div class="cart-inline-header">
+                    {% if counter == 0 %}
+                        <h5 class="cart-inline-title">There's no Product in the cart</h5>
+                    {% elseif counter == 1 %}
+                        <h5 class="cart-inline-title">There one Product in the cart</h5>
+                        <p class="cart-inline-subtitle">total price: $750</p>
+                    {% else %}
+                        <h5 class="cart-inline-title">There {{ counter }} Products in the cart</h5>
+                        <p class="cart-inline-subtitle">total price: $750</p>
+                    {% endif %}
+
+                </div>
+                <div class="cart-inline-main">
+                    <!-- Product inline-->
+                    {% if counter != 0 %}
+                        {% set break = false %}
+                        {% for match in matches if not break %}
+                            <article class="product-inline">
+                                <div class="product-inline-aside"><a
+                                            class="product-inline-figure"
+                                            href="product-page.html"><img
+                                                class="product-inline-image"
+                                                src="{{ asset('assets/images/product-Nike-Air-Zoom-Pegasus-67x30.png') }}"
+                                                alt="" width="67" height="30"/></a></div>
+                                <div class="product-inline-main">
+                                    <p class="heading-7 product-inline-title"><a
+                                                href="product-page.html">{{ match.team1 }} vs {{ match.team2 }}</a>
+                                    </p>
+                                    <ul class="product-inline-meta">
+                                        <li>
+                                            <input class="form-input" type="number"
+                                                   data-zeros="true" value="2" min="1"
+                                                   max="100">
+                                        </li>
+                                        <li>
+                                            <p class="product-inline-price">{{ match.ticket.price }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </article>
+                            {% if loop.index == 5 %}
+                                {% set break = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>There's No Item</p>
+                    {% endif %}
+                    <!-- Product inline-->
+                </div>
+                <div class="cart-inline-footer"><a
+                            class="button button-md button-default-outline"
+                            href="{{ path('cart_index') }}">Go to Cart</a><a
+                            class="button button-md button-primary" href="checkout.html">Checkout</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</li>
+
