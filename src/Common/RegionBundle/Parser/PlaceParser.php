@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 
 class PlaceParser
 {
-    const API_URL = '';
+    const API_URL = 'http://welcome2018.com/api/v1/';
 
     private static $parser;
     /**

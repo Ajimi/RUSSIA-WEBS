@@ -9,8 +9,6 @@
 namespace Common\RegionBundle\Controller;
 
 use Common\RegionBundle\Parser\PlaceParser;
-use Common\RegionBundle\RegionBundle;
-use GuzzleHttp\Client;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

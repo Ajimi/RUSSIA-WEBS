@@ -3,6 +3,7 @@
 namespace Common\RegionBundle\Entity;
 
 use Common\LocationBundle\Entity\Location;
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
