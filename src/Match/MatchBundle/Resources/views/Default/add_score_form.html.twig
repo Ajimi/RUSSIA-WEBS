@@ -1,0 +1,97 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}Match | Game Result{% endblock %}
+
+{% block page_title %}Game Result{% endblock page_title %}
+{% block page_content %}
+
+    <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Result</h2>
+
+                <div class="clearfix"></div>
+
+                <table class="table table-hover">
+
+                    <form class="form-horizontal form-label-left input_mask">
+
+                        <tbody>
+                        <tr>
+                            <td style='text-align:center;vertical-align:middle'>
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                                <br><br>
+                                DALLAS COWBOYS
+                                <br>
+                                <input type="text" class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="Shots">
+
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h1>VS</h1></td>
+                            <td style='text-align:center;vertical-align:middle'>
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                                <br><br>
+                                DALLAS COWBOYS
+                                <br>
+                                <input type="text" class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="Shots">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style='text-align:center;vertical-align:middle'><h1>STATISTICS</h1></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="Saves">
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Saves</h3></td>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="Saves">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3"
+                                       placeholder="Yellow Cards">
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Yellow Cards</h3></td>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3"
+                                       placeholder="Yellow Cards">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3"
+                                       placeholder="Red Cards">
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Red Cards</h3></td>
+                            <td><input type="text" class="form-control col-md-3 col-sm-3 col-xs-3"
+                                       placeholder="Red Cards">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Save Result</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </form>
+                </table>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock page_content %}
