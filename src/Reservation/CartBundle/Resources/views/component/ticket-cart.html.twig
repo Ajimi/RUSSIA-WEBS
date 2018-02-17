@@ -1,0 +1,47 @@
+{% set total = 0 %}
+
+<section class="section section-md bg-gray-100">
+    <div class="container">
+        <!-- Heading Component-->
+        {% include 'FrontBundle:other-component:_heading-component-title.html.twig' with {'heading-title' : 'Your Cart'} %}
+        <div class="product-cart">
+            <div class="table-custom-responsive">
+                <table class="table-custom table-product">
+                    <thead>
+                    <tr>
+                        <th>First Team</th>
+                        <th></th>
+                        <th>Second Team</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% if matches|length != 0 %}
+                        {% for item in matches %}
+                            {% set total= total + item.ticket.price %}
+                            {% embed '@Cart/component/ticket-cart-item.html.twig'  with {'match': item} %}
+                            {% endembed %}
+                        {% endfor %}
+                    {% else %}
+                        <td colspan="6">
+                            <div class="product-cart-name" style=>
+                                <p class="product-cart-title">There's Nothing in the cart</p>
+                            </div>
+                        </td>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            {% if matches|length != 0 %}
+                <div class="product-cart-footer">
+                    <div class="product-cart-total"><span>Total</span><span class="product-cart-total-price"><span
+                                    class="sup">$</span><span>{{ total }}</span></span></div>
+                    <a class="button button-lg button-primary" href="checkout.html">Proceed to Checkout</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
