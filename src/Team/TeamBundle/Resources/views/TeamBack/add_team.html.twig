@@ -50,13 +50,6 @@
                     </div>
 
                     <div class="form-group">
-                        {{ form_label(form.matchPlayed, 'Match Played*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {{ form_widget(form.matchPlayed, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@level @Required'} }) }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         {{ form_label(form.matchWon, 'Match Won*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {{ form_widget(form.matchWon, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
