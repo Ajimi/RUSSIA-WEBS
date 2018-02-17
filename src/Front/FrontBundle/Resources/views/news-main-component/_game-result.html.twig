@@ -1,7 +1,6 @@
-{#Heading component variable example#}
 {% set headingTitle = "Upcoming matches" %}
-{% set heading = "Calendar" %}
-{% set link = "#" %}
+{% set heading = "Tickets" %}
+{% set link = path('ticket_index') %}
 
 <div class="main-component">
 
@@ -11,10 +10,10 @@
     <!-- Game Result Bug-->
     <article class="game-result">
         <div class="game-info game-info-creative">
-            <p class="game-info-subtitle">Real Stadium -
+            <p class="game-info-subtitle">{{ match.team1 }}
                 <time datetime="08:30"> 08:30 PM</time>
             </p>
-            <h3 class="game-info-title">Champions league semi-final 2017</h3>
+            <h3 class="game-info-title">Russia World Cup 2018</h3>
             <div class="game-info-main">
                 <div class="game-info-team game-info-team-first">
                     <figure><img src="{{ asset('assets/images/team-atletico-100x100.png') }}" alt="" width="100"
