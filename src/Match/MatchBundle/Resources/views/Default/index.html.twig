@@ -1,1 +1,204 @@
 {% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- FullCalendar -->
+    <link href="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.print.css') }}" rel="stylesheet" media="print">
+    <!-- NProgress -->
+    <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- FullCalendar -->
+    <link href="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.print.css') }}" rel="stylesheet" media="print">
+
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+ {% block page_content %}
+
+     <div class="clearfix"></div>
+
+     <div class="row">
+         <div class="col-md-12">
+             <div class="x_panel">
+                 <div class="x_title">
+                     <h2>Calendar
+                         <small>Matchs</small>
+                     </h2>
+                     <ul class="nav navbar-right panel_toolbox">
+                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                         </li>
+                         <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                             <ul class="dropdown-menu" role="menu">
+                                 <li><a href="#">Settings 1</a>
+                                 </li>
+                                 <li><a href="#">Settings 2</a>
+                                 </li>
+                             </ul>
+                         </li>
+                         <li><a class="close-link"><i class="fa fa-close"></i></a>
+                         </li>
+                     </ul>
+                     <div class="clearfix"></div>
+                 </div>
+                 <div class="x_content">
+
+                     <div id='calendar'></div>
+
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+     <!-- calendar modal -->
+     <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                     <h4 class="modal-title" id="myModalLabel">New Match</h4>
+                 </div>
+                 <div class="modal-body">
+                     <div id="testmodal" style="padding: 5px 20px;">
+                         {{ form_start(matchForm, {'method': 'post', 'action': path('add_match'), 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+                         <div class="form-group">
+                             {{ form_label(matchForm.team1, 'Team Name*', {'label_attr':{'class': 'col-sm-3 control-label'}}) }}
+                             <div class="col-sm-9">
+                                 {{ form_widget(matchForm.team1, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@team1 @Required'} }) }}
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             {{ form_label(matchForm.team2, 'Team Name*', {'label_attr':{'class': 'col-sm-3 control-label','display': 'inline'}}) }}
+                             <div class="col-sm-9">
+                                 {{ form_widget(matchForm.team2, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@team2 @Required'} }) }}
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             {{ form_label(matchForm.level, 'Level*', {'label_attr':{'class': 'col-sm-3 control-label','display': 'inline'}}) }}
+                             <div class="col-sm-9">
+                                 {{ form_widget(matchForm.level, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@level @Required'} }) }}
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             {{ form_label(matchForm.date, 'Date*', {'label_attr':{'class': 'control-label col-sm-3','display': 'inline'}}) }}
+                             <div class="col-sm-9">
+
+                                 <fieldset>
+                                     <div class="control-group ">
+
+                                         <input type="text" class="form-control has-feedback-left"
+                                                id="single_cal3" name="calendar" placeholder="Pick a Date"
+                                                aria-describedby="inputSuccess2Status3" required="required">
+                                         <span class="fa fa-calendar-o form-control-feedback left"
+                                               aria-hidden="true"></span>
+                                         <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                     </div>
+                                     {% do matchForm.date.setRendered %}
+                                 </fieldset>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                 Time<span class="required">*</span></label>
+                             <div class="col-sm-9">
+                                 <input type="text" id="timepicker" name="timepicker"
+                                        class="form-control col-md-7 col-xs-12"/>
+                                 {% do matchForm.time.setRendered %}
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                             {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-sm-3'}}) }}
+                             <div class="col-sm-9">
+                                 {{ form_widget(matchForm.stadium, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@stadium @Required'} }) }}
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary antosubmit">Save changes</button>
+                     {{ form_widget(matchForm.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                     {{ form_end(matchForm) }}
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                     <h4 class="modal-title" id="myModalLabel2">Edit Calendar Entry</h4>
+                 </div>
+                 <div class="modal-body">
+
+                     <div id="testmodal2" style="padding: 5px 20px;">
+                         <form id="antoform2" class="form-horizontal calender" role="form">
+                             <div class="form-group">
+                                 <label class="col-sm-3 control-label">Title</label>
+                                 <div class="col-sm-9">
+                                     <input type="text" class="form-control" id="title2" name="title2">
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <label class="col-sm-3 control-label">Description</label>
+                                 <div class="col-sm-9">
+                                     <textarea class="form-control" style="height:55px;" id="descr2"
+                                               name="descr"></textarea>
+                                 </div>
+                             </div>
+
+                         </form>
+                     </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary antosubmit">Save changes</button>
+
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
+     <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
+     <!-- /calendar modal -->
+
+ {% endblock page_content %}
+
+
+{% block javascripts %}
+    <!-- FullCalendar -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/timepicker.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#timepicker').mdtimepicker(); //Initializes the time picker
+        });
+    </script>
+{% endblock javascripts %}
+
+
+
