@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 
 /**
  * @Route("/admin/match")
@@ -94,6 +98,30 @@ class MatchBackController extends Controller
 
     }
 
+    /**
+     * @Route("/search", name="search_match")
+     */
+
+    public function searchAction(Request $request)
+    {
+
+
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            //$val = $request ->get('search')->getData();
+            $val = "se";
+            alert($val);
+            $em = $this->getDoctrine()->getManager();
+            $repo = $em->getRepository('MatchBundle:Match');
+            $match = $repo->searchDQL($val);
+
+            $s = new Serializer(array(new ObjectNormalizer()));
+            $data = $s->normalize($match);
+            return new JsonResponse($data);
+
+        }
+
+    }
     /**
      * @Route("/test", name="match_test")
      */
