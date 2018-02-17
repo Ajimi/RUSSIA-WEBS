@@ -18,42 +18,18 @@ class MatchBackController extends Controller
     /**
      * @Route("/list", name="match_list")
      */
-    public function displayListAction()
+    public function displayListAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $matchs = $em->getRepository("MatchBundle:Match")->findAll();
 
-        return $this->render('MatchBundle:Default:list_match.html.twig', array(
-            'matchs' => $matchs
-        ));
-    }
-    /**
-     * @Route("/index", name="match_index")
-     */
-    public function indexAction(Request $request)
-    {
         $match = new Match();
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
-        if ($form->isValid() & $form->isSubmitted()) {
-            dump($form->getData());
 
-            dump($match);
-            $em = $this->getDoctrine()->getManager();
-            $match->setDate($request->get('calendar'));
-            $match->setTime($request->get('timepicker'));
-
-            dump($match);
-
-            $em->persist($match);
-            $em->flush();
-            return $this->redirectToRoute('match_index');
-
-        }
-
-        return $this->render('MatchBundle:Default:index.html.twig', [
-            'matchForm' => $form->createView()
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $matchs = $em->getRepository("MatchBundle:Match")->findAll();
+        return $this->render('MatchBundle:Default:list_match.html.twig', array(
+            'matchs' => $matchs, 'matchForm' => $form->createView()
+        ));
 
     }
 
@@ -67,26 +43,37 @@ class MatchBackController extends Controller
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
         if ($form->isValid() & $form->isSubmitted()) {
-            dump($form->getData());
-
-            dump($match);
+            //dump($form->getData());
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
-
-            dump($match);
-
+            // dump($match);
             $em->persist($match);
             $em->flush();
-            return $this->redirectToRoute('match_index');
+            return $this->redirectToRoute('match_list');
 
         }
 
-        return $this->render('MatchBundle:Default:index.html.twig', [
+        return $this->render('MatchBundle:Default:add_match_form.html.twig', [
             'matchForm' => $form->createView()
         ]);
     }
 
+    /**
+     * @Route("/edit/{id}", name="edit_match")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $match = new Match();
+        $form = $this->createForm(MatchType::class, $match);
+
+        $em = $this->getDoctrine()->getManager();
+        $match = $em->getRepository("MatchBundle:Match")->find($id);
+        $em->remove($match);
+        $em->flush();
+        return $this->redirectToRoute('match_list');
+
+    }
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
@@ -103,10 +90,30 @@ class MatchBackController extends Controller
     /**
      * @Route("/test", name="match_test")
      */
-    public function testTwigAction()
+    public function testTwigAction(Request $request)
     {
-        $form = $this->createForm(MatchType::class);
-        return $this->render('MatchBundle:Default:test.html.twig');
+        $match = new Match();
+        $form = $this->createForm(MatchType::class, $match);
+        $form->handleRequest($request);
+        if ($form->isValid() & $form->isSubmitted()) {
+            dump($form->getData());
+
+            dump($match);
+            $em = $this->getDoctrine()->getManager();
+            $match->setDate($request->get('calendar'));
+            $match->setTime($request->get('timepicker'));
+
+            dump($match);
+
+            $em->persist($match);
+            $em->flush();
+            return $this->redirectToRoute('match_list');
+
+        }
+
+        return $this->render('MatchBundle:Default:test.html.twig', [
+            'matchForm' => $form->createView()
+        ]);
 
     }
 }
