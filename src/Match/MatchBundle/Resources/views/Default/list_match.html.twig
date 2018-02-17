@@ -55,9 +55,10 @@
                             <td class=" ">{{ m.level }}</td>
                             <td class=" ">8,674 tickets</td>
                             <td class="">
-                                <button type="button" class="btn btn-success btn-xs">Add Result</button>
+                                <a href="{{ path('edit_match',{'id':m.id}) }}"
+                                   class="btn btn-success btn-xs">Add Result </a>
 
-                                <a href="{{ path('edit_match',{'id':m.id}) }}" data-target="#editMatchModal"
+                                <a href="{{ path('edit_match',{'id':m.id}) }}"
                                    class="btn btn-info btn-xs">
                                     <i class="fa fa-pencil"></i> Edit
                                 </a>
