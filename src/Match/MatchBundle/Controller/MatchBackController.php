@@ -97,6 +97,9 @@ class MatchBackController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
+        $score = $em->getRepository('MatchBundle:Score')->findBy(array('match' => $match->getId()));
+        foreach ($score as $s)
+            $em->remove($s);
         $em->remove($match);
         $em->flush();
         return $this->redirectToRoute('match_list');

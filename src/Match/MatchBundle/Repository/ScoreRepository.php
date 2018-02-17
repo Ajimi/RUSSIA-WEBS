@@ -10,4 +10,5 @@ namespace Match\MatchBundle\Repository;
  */
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

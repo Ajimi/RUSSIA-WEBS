@@ -182,60 +182,7 @@
     </script>
 
 
-    <script src="{{ asset('assets/jquery-3.2.1.min.js') }}"></script>
-    <script>
 
-        $(function () {
-            $('#search').keyup(
-                function () {
-                    var DATA = $(this).val();
-                    $.ajax({
-                        type: 'POST',
-                        url: "{{ path('search_match') }}",
-                        data: "s=" + DATA,
-                        success: function (response) {
-                            $('#tableDiv').html(
-                                "<table class='table table-striped jambo_table bulk_action' id='tab'>" +
-                                "<thead>" +
-                                '<tr class="headings">' +
-                                '<th class="column-title">DATE</th>' +
-                                '<th class="column-title">TIME</th>' +
-                                '<th class="column-title">TEAM</th>' +
-                                '<th class="column-title">TEAM</th>' +
-                                '<th class="column-title">STADIUM</th>' +
-                                '<th class="column-title">LEVEL</th>' +
-                                '<th class="column-title">TICKETS</th>' +
-                                '</th>' +
-                                '<th class="bulk-actions" colspan="7">' +
-                                '<a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <iclass="fa fa-chevron-down"></i></a>' +
-                                '</th>' +
-                                '</tr>' +
-                                '</thead>' +
-                                '</table>'
-                            );
-                            $.each(response, function (k, m) {
-                                    $('#tab').append(
-                                        "<tr>" +
-                                        "<td>" + m.date + "</td>" +
-                                        "<td>" + m.time + "</td>" +
-                                        "<td>" + m.team1.name + "</td>" +
-                                        "<td>" + m.team2.name + "</td>" +
-                                        "<td>" + m.stadium + "</td>" +
-                                        "<td>" + "8,674 tickets" + "</td>" +
-                                        "</td>" +
-                                        "</tr>"
-                                    );
-
-                                }
-                            );
-
-                        }
-                    })
-                }
-            )
-
-        })
-    </script>
 
 {% endblock javascripts %}
 
