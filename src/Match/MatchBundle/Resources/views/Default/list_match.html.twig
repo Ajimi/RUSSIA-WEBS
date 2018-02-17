@@ -1,4 +1,11 @@
 {% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
 {% block title %}Match | Game Schedule{% endblock %}
 
 {% block page_title %}Game Schedule{% endblock page_title %}
@@ -7,7 +14,8 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <button data-toggle="modal" data-target="#myModal" class="btn btn-success " id="newMatchBtn">New Match
+                <button data-toggle="modal" data-target="#newMatchModal" class="btn btn-success " id="newMatchBtn">New
+                    Match
                 </button>
 
                 <div class="clearfix"></div>
@@ -47,18 +55,22 @@
                             <td class=" ">{{ m.level }}</td>
                             <td class=" ">8,674 tickets</td>
                             <td class="">
-                                <a href="{{ path('edit_match',{'id':m.id}) }}" class="btn btn-info btn-xs"><i
-                                            class="fa fa-pencil"></i> Edit
+                                <a href="{{ path('edit_match',{'id':m.id}) }}" data-target="#editMatchModal"
+                                   class="btn btn-info btn-xs">
+                                    <i class="fa fa-pencil"></i> Edit
                                 </a>
-                                <a href="{{ path('delete_match',{'id':m.id}) }}" class="btn btn-danger btn-xs"><i
-                                            class="fa fa-trash-o"></i>
+                                <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
+                                   class="btn btn-danger btn-xs">
+                                    <i class="fa fa-trash-o"></i>
                                     Delete </a>
                             </td>
                         </tr>
                     {% endfor %}
 
+
                     </tbody>
                 </table>
+
 
             </div>
 
@@ -66,10 +78,8 @@
     </div>
 
 
-    <!-- Modal -->
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <!-- New Match Modal -->
+    <div id="newMatchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -150,6 +160,24 @@
 
 
 {% endblock %}
+
+
+{% block javascripts %}
+    <!-- FullCalendar -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/timepicker.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#timepicker').mdtimepicker(); //Initializes the time picker
+        });
+    </script>
+{% endblock javascripts %}
 
 
 

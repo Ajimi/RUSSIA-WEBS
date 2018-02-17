@@ -28,7 +28,9 @@ class MatchBackController extends Controller
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
         return $this->render('MatchBundle:Default:list_match.html.twig', array(
-            'matchs' => $matchs, 'matchForm' => $form->createView()
+            'matchs' => $matchs,
+            'matchForm' => $form->createView()
+
         ));
 
     }
@@ -42,7 +44,7 @@ class MatchBackController extends Controller
         $match = new Match();
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
-        if ($form->isValid() & $form->isSubmitted()) {
+        if ($form->isValid()) {
             //dump($form->getData());
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
@@ -64,20 +66,25 @@ class MatchBackController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $match = new Match();
-        $form = $this->createForm(MatchType::class, $match);
-
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
-        $em->remove($match);
-        $em->flush();
-        return $this->redirectToRoute('match_list');
+        $Form = $this->createForm(MatchType::class, $match);
+        $Form->handleRequest($request);
+        if ($Form->isValid()) {
+            $em->persist($match);
+            $em->flush();
+            return $this->redirectToRoute('match_list');
+        }
+
+        return $this->render('MatchBundle:Default:edit_match.html.twig',
+            array('matchForm' => $Form->createView()));
+
 
     }
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
@@ -112,7 +119,7 @@ class MatchBackController extends Controller
         }
 
         return $this->render('MatchBundle:Default:test.html.twig', [
-            'matchForm' => $form->createView()
+            'editMatchForm' => $form->createView()
         ]);
 
     }
