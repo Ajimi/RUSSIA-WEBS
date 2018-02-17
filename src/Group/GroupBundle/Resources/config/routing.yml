@@ -1,0 +1,3 @@
+_deleteG:
+    path:     /deleteG/{id}
+    defaults: { _controller: GroupBundle:groupe:deleteG }

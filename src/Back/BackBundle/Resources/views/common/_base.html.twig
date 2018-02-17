@@ -18,21 +18,23 @@
 
 
 <body class="nav-md">
+ {% block container %}
 <div class="container body">
     <div class="main_container">
         {% block sidebar %}
             {% include '@Back/common/_sidebar.html.twig' %}
         {% endblock %}
-        {% block topnav %}
+        {% block tonpav %}
             {% include '@Back/common/_topnav.html.twig' %}
         {% endblock %}
 
+        <div class="right_col" role="main">
+            <div class="">
+                {% block body %}
 
-        {% block body %}
+                    <!-- page content -->
 
-            <!-- page content -->
-            <div class="right_col" role="main">
-                <div class="">
+
                     {% block top_content_header %}
                         <div class="page-title">
                             <div class="title_left">
@@ -58,22 +60,24 @@
                     {% block page_content %}{% endblock %}
 
 
-                </div>
+                    <!-- /page content -->
+
+                {% endblock %}
             </div>
-            <!-- /page content -->
-            {% block footer %}
-                {% include '@Back/common/_footer.html.twig' %}
-            {% endblock %}
+        </div>
+        {% block footer %}
+            {% include '@Back/common/_footer.html.twig' %}
         {% endblock %}
     </div>
 </div>
-
+ {% endblock %}
 {% include '@Back/common/_js.html.twig' %}
 {% block javascripts %}
 
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}
+
 
 
 </body>

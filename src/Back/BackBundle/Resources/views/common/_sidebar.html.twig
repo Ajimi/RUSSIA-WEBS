@@ -33,7 +33,7 @@
             </div>
 
             <div class="menu_section">
-                <h3>Developer</h3>
+                <h3>Feature</h3>
                 <ul class="nav side-menu">
                     <li>
                         <a><i class="fa fa-book"></i> Documentation <span class="fa fa-chevron-down"></span></a>
@@ -47,14 +47,18 @@
                         <ul class="nav child_menu">
                             <li><a href="http://symfony.com/doc/current/index.html">List</a>
                             </li>
-                            <li><a href="http://symfony.com/doc/current/index.html">Add</a>
+                            <li><a href="{{ path('team_add') }}">Add</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ path('app_gentelella', {page: 'index'}) }}">
-                            <i class="fa fa-search"></i>Template
-                        </a>
+                        <a><i class="fa fa-book"></i> Group <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ path('AfficheGroup') }}">List</a>
+                            </li>
+                            <li><a href="{{ path('group_admin_add') }}">Add</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -63,6 +67,11 @@
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
                     <li><a href="{{ path('app_dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+                    <li>
+                        <a href="{{ path('app_gentelella', {page: 'index'}) }}">
+                            <i class="fa fa-search"></i>Template
+                        </a>
+                    </li>
                 </ul>
             </div>
             {# SECTION RESERVATION  #}

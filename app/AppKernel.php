@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
             new Guide\GuideBundle\GuideBundle(),
+            new Match\MatchBundle\MatchBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
             new Common\UploadBundle\UploadBundle(),
