@@ -45,12 +45,6 @@ class Team
      */
     private $teamShortcut;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="matchPlayer", type="integer")
-     */
-    private $matchPlayed;
 
     /**
      * @var int
@@ -206,29 +200,6 @@ class Team
         return $this;
     }
 
-    /**
-     * Get matchPlayer
-     *
-     * @return int
-     */
-    public function getMatchPlayed()
-    {
-        return $this->matchPlayed;
-    }
-
-    /**
-     * Set matchPlayer
-     *
-     * @param integer $matchPlayed
-     *
-     * @return Team
-     */
-    public function setMatchPlayed($matchPlayed)
-    {
-        $this->matchPlayed = $matchPlayed;
-
-        return $this;
-    }
 
     /**
      * Get matchWon
