@@ -1,0 +1,24 @@
+{% extends '@Front/common/_base.html.twig' %}
+{% block body %}
+    <div class="preloader loaded">
+        <div class="preloader-body">
+            <div class="preloader-item"></div>
+        </div>
+    </div>
+    {{ render(controller('TicketBundle:Ticket:nextMatchTicket')) }}
+
+    {{ render(controller('TicketBundle:Ticket:allMatchesTicket')) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $("#groups").on('change', function () {
+                console.log($(this).val());
+            });
+        });
+    </script>
+{% endblock %}
+
