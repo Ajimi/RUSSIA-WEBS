@@ -94,6 +94,8 @@ class CartController extends Controller
         $cart[$match->getId()] = 1;
         $session->set('cart', $cart);
 
+        $session->getFlashBag()->add('success', 'The ticket added perfectly');
+
         // TODO : Change Route to CART and add more SESSION FLASHBAG SAME AS REMOVE
         return $this->redirectToRoute('cart_index');
     }
@@ -104,7 +106,7 @@ class CartController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function removeFromCartAction(Request $request, Matche $match)
+    public function removeFromCartAction(Request $request, Matche $match): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         $session = $this->container->get('session');
 
@@ -114,6 +116,8 @@ class CartController extends Controller
             unset($cart[$match->getId()]);
             $session->set('cart', $cart);
         }
+
+        $session->getFlashBag()->add('error', 'The ticket removed perfectly');
 
         return $this->redirectToRoute('cart_index');
     }

@@ -9,5 +9,24 @@
         {% endblock %}
     {% endembed %}
 
+    <section class="section section-md bg-gray-100">
+        <div class="container">
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if app.session.flashBag.has('error') %}
+                <div class="alert alert-danger">
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
     {{ render(controller('CartBundle:Cart:ticketCart')) }}
 {% endblock %}
