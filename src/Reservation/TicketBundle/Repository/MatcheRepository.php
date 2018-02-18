@@ -12,11 +12,15 @@ class MatcheRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findAllBy($criteria)
     {
-
         $qb = $this->createQueryBuilder('m')
             ->andWhere('m.id in (:criteria)')
             ->setParameter('criteria', $criteria);
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function findAllMatches()
+    {
+        return $this->createQueryBuilder("m");
     }
 }
