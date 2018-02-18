@@ -16,61 +16,24 @@
             </div>
             <div class="x_content">
                 <table class="table table-hover">
+                    {% for score in formatedResult %}
+                        <tr>
 
-                    <tbody>
-                    <tr>
+                            <td style='text-align:center;vertical-align:baseline'><img
+                                        src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> {{ score.team1Statistics.name |upper }}
+                            </td>
 
-                        <td style='text-align:center;vertical-align:baseline'><img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> DALLAS COWBOYS
-                        </td>
-                        <td style='text-align:center;vertical-align:middle'>
-                            <h1> 0 - 0 </h1>
-                        </td>
-                        <td style='text-align:center;vertical-align:baseline'>DALLAS COWBOYS <img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
-                        </td>
-                    </tr>
+                            <td style='text-align:center;vertical-align:middle'>
+                                <h1> {{ score.team1Statistics.shots }} - {{ score.team2Statistics.shots }} </h1>
+                            </td>
+                            <td style='text-align:center;vertical-align:baseline'>{{ score.team2Statistics.name |upper }}
+                                <img
+                                        src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                            </td>
+                        </tr>
 
-                    <tr>
+                    {% endfor %}
 
-                        <td style='text-align:center;vertical-align:baseline'><img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> DALLAS COWBOYS
-                        </td>
-                        <td style='text-align:center;vertical-align:middle'>
-                            <h1> 0 - 0 </h1>
-                        </td>
-                        <td style='text-align:center;vertical-align:baseline'>DALLAS COWBOYS <img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td style='text-align:center;vertical-align:baseline'><img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> DALLAS COWBOYS
-                        </td>
-                        <td style='text-align:center;vertical-align:middle'>
-                            <h1> 0 - 0 </h1>
-                        </td>
-                        <td style='text-align:center;vertical-align:baseline'>DALLAS COWBOYS <img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td style='text-align:center;vertical-align:baseline'><img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> DALLAS COWBOYS
-                        </td>
-                        <td style='text-align:center;vertical-align:middle'>
-                            <h1> 0 - 0 </h1>
-                        </td>
-                        <td style='text-align:center;vertical-align:baseline'>DALLAS COWBOYS <img
-                                    src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
-                        </td>
-                    </tr>
-
-                    </tbody>
                 </table>
 
             </div>

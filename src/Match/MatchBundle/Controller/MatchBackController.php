@@ -55,7 +55,7 @@ class MatchBackController extends Controller
             $match->setTime($request->get('timepicker'));
             $scoreTeam1 = new Statistics($match->getTeam1(), $match, -1, -1, -1, -1, -1);
             $scoreTeam2 = new Statistics($match->getTeam2(), $match, -1, -1, -1, -1, -1);
-
+            $match->setPlayed(false);
             $em->persist($match);
             $em->persist($scoreTeam1);
             $em->persist($scoreTeam2);

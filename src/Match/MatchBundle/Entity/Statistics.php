@@ -22,14 +22,14 @@ class Statistics
     private $id;
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="TeamTest")
-     * @ORM\JoinColumn(name="id_team",referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="TeamTest", inversedBy="statistics")
+     * @ORM\JoinColumn(name="id_team",referencedColumnName="id", nullable=true)
      */
     private $team;
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Match")
-     * @ORM\JoinColumn(name="id_match",referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Match", inversedBy="statistics")
+     * @ORM\JoinColumn(name="id_match",referencedColumnName="id", nullable=true)
      */
 
     private $match;

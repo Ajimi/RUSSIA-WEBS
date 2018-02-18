@@ -10,5 +10,12 @@ namespace Match\MatchBundle\Repository;
  */
 class StatisticsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function gameResult()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT s FROM MatchBundle:Statistics s 
+                                WHERE s.shots > -1");
+        return $query->getResult();
+    }
 
 }

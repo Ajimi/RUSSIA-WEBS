@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,12 +58,28 @@ class Match
     private $time;
 
 
-
     /**
      * @var string
      * @ORM\Column(name="stadiums", type="string")
      */
     private $stadium;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="played", type="boolean")
+     */
+    private $played;
+
+    /**
+     * @var Statistics
+     * @ORM\OneToMany(targetEntity="Match\MatchBundle\Entity\Statistics",mappedBy="match")
+     */
+    private $statistics;
+
+    public function __construct()
+    {
+        $this->statistics = new ArrayCollection();
+    }
 
 
     /**
@@ -82,9 +99,6 @@ class Match
     }
 
 
-
-
-
     /**
      * Get id.
      *
@@ -94,7 +108,6 @@ class Match
     {
         return $this->id;
     }
-
 
 
     /**
@@ -239,5 +252,65 @@ class Match
     public function getStadium()
     {
         return $this->stadium;
+    }
+
+    /**
+     * Add statistic.
+     *
+     * @param \Match\MatchBundle\Entity\statistics $statistic
+     *
+     * @return Match
+     */
+    public function addStatistic(\Match\MatchBundle\Entity\statistics $statistic)
+    {
+        $this->statistics[] = $statistic;
+
+        return $this;
+    }
+
+    /**
+     * Remove statistic.
+     *
+     * @param \Match\MatchBundle\Entity\statistics $statistic
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeStatistic(\Match\MatchBundle\Entity\statistics $statistic)
+    {
+        return $this->statistics->removeElement($statistic);
+    }
+
+    /**
+     * Get statistics.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStatistics()
+    {
+        return $this->statistics;
+    }
+
+    /**
+     * Set played.
+     *
+     * @param bool $played
+     *
+     * @return Match
+     */
+    public function setPlayed($played)
+    {
+        $this->played = $played;
+
+        return $this;
+    }
+
+    /**
+     * Get played.
+     *
+     * @return bool
+     */
+    public function getPlayed()
+    {
+        return $this->played;
     }
 }
