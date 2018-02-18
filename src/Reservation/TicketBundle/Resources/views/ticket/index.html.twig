@@ -7,7 +7,15 @@
     </div>
     {{ render(controller('TicketBundle:Ticket:nextMatchTicket')) }}
 
-    {{ render(controller('TicketBundle:Ticket:allMatchesTicket')) }}
+    {{ render(controller('TicketBundle:Ticket:allMatchesTicket' , {'pagination': matches})) }}
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="group-sm">
+                {{ knp_pagination_render(matches) }}
+            </div>
+        </div>
+    </section>
+
 
 {% endblock %}
 
