@@ -55,7 +55,7 @@
                             <td class=" ">{{ m.level }}</td>
                             <td class=" ">8,674 tickets</td>
                             <td class="">
-                                <a href="{{ path('edit_match',{'id':m.id}) }}"
+                                <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
                                    class="btn btn-success btn-xs">Add Result </a>
 
                                 <a href="{{ path('edit_match',{'id':m.id}) }}"

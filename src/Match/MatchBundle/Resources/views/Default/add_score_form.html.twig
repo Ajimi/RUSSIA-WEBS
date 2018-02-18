@@ -1,11 +1,4 @@
 {% extends 'BackBundle:common:_base.html.twig' %}
-{% block stylesheets %}
-    <!-- bootstrap-daterangepicker -->
-    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
-    <!-- TimePicker -->
-    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
-{% endblock stylesheets %}
-
 {% block title %}Match | Game Result{% endblock %}
 
 {% block page_title %}Game Result{% endblock page_title %}
@@ -20,21 +13,19 @@
 
                 <table class="table table-hover">
 
-                    <form class="form-horizontal form-label-left input_mask">
-
+                    <form class="form-horizontal" method="POST">
                         <tbody>
                         <tr>
                             <td style='text-align:center;vertical-align:middle'>
                                 <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
                                 <br><br>
-                                DALLAS COWBOYS
-
+                                {{ team1.name |upper }}
                             </td>
                             <td style='text-align:center;vertical-align:middle'><h1>VS</h1></td>
                             <td style='text-align:center;vertical-align:middle'>
                                 <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
                                 <br><br>
-                                DALLAS COWBOYS
+                                {{ team2.name |upper }}
                             </td>
                         </tr>
                         <tr>
@@ -43,45 +34,88 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><input type="text" style="Text-ALIGN:center"
-                                       class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="0"></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1Shots" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
+                            </td>
+                            </td>
                             <td style='text-align:center;vertical-align:middle'><h3>Shots</h3></td>
-                            <td><input type="text" style="Text-ALIGN:center"
-                                       class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="0">
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2Shots" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
+                            </td>
 
                         </tr>
 
                         <tr>
-                            <td><input type="text" style="Text-ALIGN:center"
-                                       class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="0">
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1CornerKicks" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Corner Kicks</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2CornerKicks" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1Saves" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
                             </td>
                             <td style='text-align:center;vertical-align:middle'><h3>Saves</h3></td>
-                            <td><input type="text" style="Text-ALIGN:center"
-                                       class="form-control col-md-3 col-sm-3 col-xs-3" placeholder="0">
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2Saves" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3">
+                                </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><input type="text" style="Text-ALIGN:center"
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1YellowCards" type="number" style="Text-ALIGN:center"
                                        class="form-control col-md-3 col-sm-3 col-xs-3"
-                                       placeholder="0">
+                                    >
+                                </div>
                             </td>
                             <td style='text-align:center;vertical-align:middle'><h3>Yellow Cards</h3></td>
-                            <td><input type="text" style="Text-ALIGN:center"
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2YellowCards" type="number" style="Text-ALIGN:center"
                                        class="form-control col-md-3 col-sm-3 col-xs-3"
-                                       placeholder="0">
+                                    >
+                                </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><input type="text" style="Text-ALIGN:center"
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1RedCards" type="number" style="Text-ALIGN:center"
                                        class="form-control col-md-3 col-sm-3 col-xs-3"
-                                       placeholder="0">
+                                    >
+                                </div>
                             </td>
                             <td style='text-align:center;vertical-align:middle'><h3>Red Cards</h3></td>
-                            <td><input type="text" style="Text-ALIGN:center"
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2RedCards" type="number" style="Text-ALIGN:center"
                                        class="form-control col-md-3 col-sm-3 col-xs-3"
-                                       placeholder="0">
+                                    >
+                                </div>
                             </td>
                         </tr>
 
@@ -91,9 +125,11 @@
                             <td>
                                 <button class="btn btn-primary" type="reset">Reset</button>
                                 <button type="submit" class="btn btn-success">Save Result</button>
+
                             </td>
                         </tr>
                         </tbody>
+
                     </form>
                 </table>
 
@@ -102,3 +138,10 @@
     </div>
 
 {% endblock page_content %}
+
+{% block javascripts %}
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+{% endblock javascripts %}
