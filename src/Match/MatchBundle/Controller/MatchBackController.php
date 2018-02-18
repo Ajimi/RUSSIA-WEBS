@@ -130,33 +130,5 @@ class MatchBackController extends Controller
         }
 
     }
-    /**
-     * @Route("/test", name="match_test")
-     */
-    public function testTwigAction(Request $request)
-    {
-        $match = new Match();
-        $form = $this->createForm(MatchType::class, $match);
-        $form->handleRequest($request);
-        if ($form->isValid() & $form->isSubmitted()) {
-            dump($form->getData());
 
-            dump($match);
-            $em = $this->getDoctrine()->getManager();
-            $match->setDate($request->get('calendar'));
-            $match->setTime($request->get('timepicker'));
-
-            dump($match);
-
-            $em->persist($match);
-            $em->flush();
-            return $this->redirectToRoute('match_list');
-
-        }
-
-        return $this->render('MatchBundle:Default:test.html.twig', [
-            'editMatchForm' => $form->createView()
-        ]);
-
-    }
 }
