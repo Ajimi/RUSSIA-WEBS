@@ -1,6 +1,6 @@
 {% if pageCount > 1 %}
     <nav class="pagination-wrap" aria-label="Page navigation">
-        <ul class="pagination">
+        <ul class="pagination{{ (align is not defined) ? 'justify-content-center' : align=='center' ? ' justify-content-center' : (align=='right' ? ' justify-content-end' : '') }}">
 
             {% if previous is defined %}
                 <li class="page-item">
@@ -61,17 +61,19 @@
                        href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
                 </li>
             {% endif %}
+            {% if next is defined %}
+                <li class="page-item">
+                    <a class="page-link" rel="next"
+                       href="{{ path(route, query|merge({(pageParameterName): next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}
+                        &nbsp;&raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
+                </li>
+            {% endif %}
         </ul>
-        {% if next is defined %}
-            <li class="page-item">
-                <a class="page-link" rel="next"
-                   href="{{ path(route, query|merge({(pageParameterName): next})) }}">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}
-                    &nbsp;&raquo;</a>
-            </li>
-        {% else %}
-            <li class="page-item disabled">
-                <span class="page-link">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
-            </li>
-        {% endif %}
+
+
     </nav>
 {% endif %}
