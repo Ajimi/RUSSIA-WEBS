@@ -2,23 +2,24 @@
 
 namespace Reservation\CartBundle\EventListener;
 
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 /**
- * Created by PhpStorm.
- * User: hir0w
- * Date: 2/18/2018
- * Time: 9:27 AM
+ * Class CheckoutListener
+ * @package Reservation\CartBundle\EventListener
  */
 class CheckoutListener
 {
 
-
+    /** @var Session */
     private $session;
+    /** @var object|Router */
     private $router;
+    /** @var ContainerInterface */
     private $container;
 
     /**
@@ -53,7 +54,6 @@ class CheckoutListener
         if ($currentRoute === 'checkout_index') {
             if ($this->session->has('cart')) {
                 $cart = $this->session->get('cart');
-
                 if (count($cart) == 0)
                     $this->redirectTo($event, 'cart_index');
             }
@@ -71,7 +71,6 @@ class CheckoutListener
     /**
      * @param GetResponseEvent $event
      * @param string $route
-     * @return RedirectResponse
      * @throws \InvalidArgumentException
      */
     private function redirectTo(GetResponseEvent $event, $route = 'homepage')
@@ -103,7 +102,11 @@ class CheckoutListener
         return true;
     }
 
-    private function isAuthenticatedUserOnAnonymousPage($currentRoute)
+    /**
+     * @param $currentRoute
+     * @return bool
+     */
+    private function isAuthenticatedUserOnAnonymousPage($currentRoute): bool
     {
         if (!empty($currentRoute))
             return in_array($currentRoute, ['fos_user_security_login', 'fos_user_resetting_request', 'fos_user_registration_register', 'app_user_registration']);
