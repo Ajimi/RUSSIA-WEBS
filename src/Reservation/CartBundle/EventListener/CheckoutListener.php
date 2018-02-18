@@ -54,13 +54,15 @@ class CheckoutListener
         if ($currentRoute === 'checkout_index') {
             if ($this->session->has('cart')) {
                 $cart = $this->session->get('cart');
-                if (count($cart) == 0)
+                if (count($cart) == 0) {
+                    $this->session->getFlashBag()->add('notice', 'You need to have at least 1 item in order to checkout');
                     $this->redirectTo($event, 'cart_index');
+                }
             }
 
             if (!$this->isUserLogged()) {
-                $this->session->getFlashBag()->add('notice', 'You must login in order to acces to your cart');
-                $this->redirectTo($event, 'fos_user_security_login');
+                $this->session->getFlashBag()->add('error', 'You must login in order to acces to your cart');
+                $this->redirectTo($event, 'fos_user_registration_register');
             }
         }
 

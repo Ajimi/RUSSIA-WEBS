@@ -25,6 +25,13 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            {% if app.session.flashBag.has('notice') %}
+                <div class="alert alert-info">
+                    {% for msg in app.session.flashBag.get('notice') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </section>
 
