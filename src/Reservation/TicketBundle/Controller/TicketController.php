@@ -2,8 +2,11 @@
 
 namespace Reservation\TicketBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManager;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -13,21 +16,35 @@ class TicketController extends Controller
 {
     /**
      * @Route("/" , name="ticket_index")
+     * @throws \LogicException
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('TicketBundle:Matche');
+        /** @var EntityManager $em */
+        $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
+        $matches = $repo->findAllMatches();
 
-        $matches = $repo->findAll();
+        /**
+         * Filter Done here..
+         */
 
-        return $this->render('TicketBundle:ticket:index.html.twig', array('matches' => $matches));
+
+        $paginator = $this->get('knp_paginator');
+
+        /** @var PaginationInterface $ticketsMatches */
+        $ticketsMatches = $paginator->paginate(
+            $matches, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            9/*limit per page*/
+        );
+
+        return $this->render('TicketBundle:ticket:index.html.twig', array('matches' => $ticketsMatches));
     }
 
 
     /**
-     * @return
+     * @return Response
      */
     public function nextMatchTicketAction()
     {
@@ -45,13 +62,18 @@ class TicketController extends Controller
         return new Response("Empty");
     }
 
-    public function allMatchesTicketAction()
+    /**
+     * @param Request $request
+     * @return Response
+     * @throws \LogicException
+     */
+    public function allMatchesTicketAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $matches = $em->getRepository('TicketBundle:Matche')->findAll();
-        dump($matches);
-        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $matches));
+        /** @var PaginationInterface $pagination */
+        $pagination = $request->get('pagination');
+        dump($pagination);
+        // parameters to template
+        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $pagination));
 
     }
 }

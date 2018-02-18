@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Heading Component-->
 
-        <article class="heading-component">
+        <article class="heading-component row-30">
             <div class="heading-component-inner">
                 <h5 class="heading-component-title">Game schedule
                 </h5>
@@ -60,14 +60,18 @@
             </div>
         </article>
 
-        <div class="row row-30">
+        <div class="row" style="margin-top: 50px">
             {% for match in matches %}
                 <div class="col-lg-4">
                     {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match} %}
-
+                        {% block team1 %}{{ match.team1 }}{% endblock %}
+                        {% block team2 %}{{ match.team2 }}{% endblock %}
                     {% endembed %}
                 </div>
             {% endfor %}
+            {# display navigation #}
         </div>
     </div>
+
+
 </section>
