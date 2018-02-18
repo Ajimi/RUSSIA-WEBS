@@ -95,8 +95,17 @@ services:
         tags: [doctrine.fixture.orm]
 
     Reservation\HotelBundle\HotelManager\HotelManager: ~
+
     Reservation\HotelBundle\HotelManager\RoomManager: ~
+
     Common\LocationBundle\Manager\LocationManager: ~
+
     Common\RegionBundle\Manager\RegionManager: ~
+
     Common\BookingBundle\Manager\BookingManager: ~
+
     Common\BookingBundle\Manager\BillManager: ~
+
+    Reservation\CartBundle\EventListener\CheckoutListener:
+            tags:
+                - { name: kernel.event_listener, event: kernel.request }
