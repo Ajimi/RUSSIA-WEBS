@@ -5,6 +5,7 @@ namespace Reservation\CartBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CheckoutController
@@ -17,7 +18,7 @@ class CheckoutController extends Controller
     /**
      * @param Request $request
      * @Route("/", name="checkout_index",)
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexAction(Request $request)
     {
