@@ -3,7 +3,7 @@
 namespace Match\MatchBundle\Controller;
 
 use Match\MatchBundle\Entity\Match;
-use Match\MatchBundle\Entity\Score;
+use Match\MatchBundle\Entity\Statistics;
 use Match\MatchBundle\Form\MatchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -53,8 +53,8 @@ class MatchBackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
-            $scoreTeam1 = new Score($match->getTeam1(), $match, null);
-            $scoreTeam2 = new Score($match->getTeam2(), $match, null);
+            $scoreTeam1 = new Statistics($match->getTeam1(), $match, -1, -1, -1, -1, -1);
+            $scoreTeam2 = new Statistics($match->getTeam2(), $match, -1, -1, -1, -1, -1);
 
             $em->persist($match);
             $em->persist($scoreTeam1);
@@ -97,7 +97,7 @@ class MatchBackController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
-        $score = $em->getRepository('MatchBundle:Score')->findBy(array('match' => $match->getId()));
+        $score = $em->getRepository('MatchBundle:Statistics')->findBy(array('match' => $match->getId()));
         foreach ($score as $s)
             $em->remove($s);
         $em->remove($match);
