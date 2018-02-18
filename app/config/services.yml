@@ -107,5 +107,8 @@ services:
     Common\BookingBundle\Manager\BillManager: ~
 
     Reservation\CartBundle\EventListener\CheckoutListener:
-            tags:
-                - { name: kernel.event_listener, event: kernel.request }
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
+    redirect.after_login:
+        class: UserBundle\Redirection\AfterLoginRedirection
+
