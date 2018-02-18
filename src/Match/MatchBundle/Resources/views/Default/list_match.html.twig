@@ -55,17 +55,34 @@
                             <td class=" ">{{ m.level }}</td>
                             <td class=" ">8,674 tickets</td>
                             <td class="">
-                                <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
-                                   class="btn btn-success btn-xs">Add Result </a>
+                                {% if m.played == false %}
 
-                                <a href="{{ path('edit_match',{'id':m.id}) }}"
-                                   class="btn btn-info btn-xs">
-                                    <i class="fa fa-pencil"></i> Edit
-                                </a>
-                                <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
-                                   class="btn btn-danger btn-xs">
-                                    <i class="fa fa-trash-o"></i>
-                                    Delete </a>
+                                    <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
+                                       class="btn btn-success btn-xs">Add Result </a>
+                                    <a href="{{ path('edit_match',{'id':m.id}) }}"
+                                       class="btn btn-info btn-xs">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash-o"></i>
+                                        Delete </a>
+
+                                {% else %}
+
+                                    <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
+                                       class="btn btn-success btn-xs disabled">Add Result </a>
+
+                                    <a href="{{ path('edit_match',{'id':m.id}) }}"
+                                       class="btn btn-info btn-xs">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash-o"></i>
+                                        Delete </a>
+
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
