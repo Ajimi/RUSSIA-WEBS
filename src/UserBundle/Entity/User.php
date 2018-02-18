@@ -22,7 +22,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Assert\Length(
      *     min=3,
@@ -35,7 +35,7 @@ class User extends BaseUser
     protected $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Assert\Length(
      *     min=3,
@@ -48,7 +48,7 @@ class User extends BaseUser
     protected $lastname;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $birthday;
 
@@ -56,11 +56,9 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(
      *     targetEntity="Common\BookingBundle\Entity\Booking",
-     *     mappedBy="user",
-     *     fetch="EXTRA_LAZY",
-     *     orphanRemoval=true,
-     *     cascade={"persist"}
+     *     mappedBy="user"
      * )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $bookings;
 
