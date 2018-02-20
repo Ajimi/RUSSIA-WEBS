@@ -20,16 +20,19 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
         return $qb;
     }
 
-    public function findByCategory($region, $category)
+    public function findByCategory($region, $category, $hasPicture = true)
     {
         $qb = $this->createQueryBuilder('p')
             ->andWhere('p.region = :region')
-            ->andWhere('p.category = :category')
-            ->andWhere('p.previewText != \'\'')
-            ->andWhere('p.previewPicture NOT LIKE \'%no_img.png\' ')
-            ->setParameter('region', $region)
+            ->andWhere('p.category = :category');
+
+        if ($hasPicture) {
+            $qb = $qb->andWhere('p.previewText != \'\'')
+                ->andWhere('p.previewPicture NOT LIKE \'%no_img.png\' ');
+        }
+        $qb = $qb->setParameter('region', $region)
             ->setParameter('category', $category)
-            ->setMaxResults(10)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult();
         return $qb;

@@ -1,18 +1,35 @@
+{% set route = app.request.attributes.get('_route_params')['code'] %}
+
+
+{% set museum = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_MUSEUM') %}
+{% set attractions = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_ATTRACTION') %}
+{% set park = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_PARK') %}
+{% set entertainment = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_ENTERTAINMENT') %}
+{% set cafe = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_CAFE') %}
+{% set sport = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_SPORT') %}
+{% set religious = constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_RELEGIOUS') %}
+
+
 {% extends '@Front/common/_base.html.twig' %}
+
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-grid.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('test.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('modal/css/component.css') }}"/>
+    <style>
+        #mapid {
+            height: 40em;
+        }
+    </style>
 {% endblock %}
 {% block body %}
 
-
     {#TODO : Complete This page#}
 
-    <!-- Section Breadcrumbs-->
     {% set city =  (region.name ~ ' CITY') %}
     {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : city } %}
         {% block breadcrumbs_path %}
@@ -22,11 +39,242 @@
         {% endblock %}
     {% endembed %}
 
+
+    <!-- Section Breadcrumbs-->
+
     {% include '@Guide/place/modal-list.html.twig' %}
 
-    {{ render(controller('GuideBundle:City:renderPlace',
-    {'places' : places , 'category' : category , 'region': region})) }}
+
+    <section class="section section-md bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-xl-9">
+
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">{{ category.name }}
+                            </h5>
+                            <div class="heading-component-aside">
+                                <ul class="list-inline list-inline-xs list-inline-middle">
+                                    <li>
+                                        <select class="category select select-minimal"
+                                                data-placeholder="Select an option"
+                                                data-dropdown-class="select-minimal-dropdown" style="min-width: 124px;">
+                                            <option
+                                                    value="{{ attractions }}"
+                                                    {% if route == attractions %}selected{% endif %}>Landmarks
+                                            </option>
+                                            <option
+                                                    {% if route == museum %}selected{% endif %}
+                                                    value="{{ museum }}">
+                                                Museums and galleries
+                                            </option>
+                                            <option {% if route == park %}selected{% endif %}
+                                                    value="{{ park }}">
+                                                Parks
+                                            </option>
+                                            <option {% if route == entertainment %}selected{% endif %}
+                                                    value="{{ entertainment }}">
+                                                Entertainment
+                                            </option>
+                                            <option {% if route == cafe %}selected{% endif %}
+                                                    value="{{ cafe }}">
+                                                Restaurants and bars
+                                            </option>
+                                            <option {% if route == sport %}selected{% endif %}
+                                                    value="{{ sport }}">
+                                                Athletic facilities
+                                            </option>
+                                            <option {% if route == religious %}selected{% endif %}
+                                                    value="{{ religious }}">
+                                                Religious sites
+                                            </option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    {{ render(controller('GuideBundle:City:renderPlace',
+                    {'places' : places , 'category' : category , 'region': region})) }}
+                </div>
+
+                <div class="col-xl-3">
+                    <div class="row row-50">
+                        <div class="col-md-6 col-xl-12">
+                            <!-- Categories-->
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Categories
+                                    </h5>
+                                </div>
+                            </article>
+
+                            <div class="card-shop">
+                                <ul class="list-md form-wrap">
+                                    <li>
+                                        <label class="checkbox-inline checkbox-inline-lg">
+                                            <input name="input-checkbox-1" value="checkbox-1" type="checkbox"/>Shoes
+                                        </label><span class="checkbox-inline-count">2</span>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline checkbox-inline-lg">
+                                            <input name="input-checkbox-2" value="checkbox-1" type="checkbox"/>t-shirts
+                                        </label><span class="checkbox-inline-count">1</span>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline checkbox-inline-lg">
+                                            <input name="input-checkbox-3" value="checkbox-1" type="checkbox"/>BackPacks
+                                        </label><span class="checkbox-inline-count">1</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-12">
+                            <!-- Price-->
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Price
+                                    </h5>
+                                </div>
+                            </article>
+
+                            <div class="card-shop">
+                                <!-- RD Range-->
+                                <div class="rd-range-wrap">
+                                    <div class="rd-range-form-wrap">
+                                        <input class="rd-range-input rd-range-input-value-1" id="test" type="text"
+                                               name="value-1"/><span>$</span>
+                                    </div>
+                                    <div class="rd-range-divider"></div>
+                                    <div class="rd-range-form-wrap">
+                                        <input class="rd-range-input rd-range-input-value-2" type="text"
+                                               name="value-2"/><span>$</span>
+                                    </div>
+                                </div>
+                                <div class="rd-range" data-min="0" data-max="300" data-start="[50, 250]" data-step="1"
+                                     data-tooltip="false" data-min-diff="50" data-input=".rd-range-input-value-1"
+                                     data-input-2=".rd-range-input-value-2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-12">
+                            <!-- Colors-->
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Color
+                                    </h5>
+                                </div>
+                            </article>
+
+                            <div class="card-shop" style="min-height: 0; font-size: 0;">
+                                <ul class="list-inline list-inline-xs">
+                                    <li>
+                                        <label class="checkbox-inline input-filter">
+                                            <input name="input-checkbox-4" value="checkbox-1" type="checkbox"
+                                                   checked="checked"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-dark">
+                                            <input name="input-checkbox-5" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-danube">
+                                            <input name="input-checkbox-6" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-froly">
+                                            <input name="input-checkbox-7" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-deco">
+                                            <input name="input-checkbox-8" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-blue">
+                                            <input name="input-checkbox-9" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-filter input-filter-geraldine">
+                                            <input name="input-checkbox-9" value="checkbox-1" type="checkbox"/>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-12">
+                            <!-- Select size-->
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Select size
+                                    </h5>
+                                </div>
+                            </article>
+
+                            <div class="card-shop" style="font-size: 0;">
+                                <ul class="list-inline list-inline-xs">
+                                    <li>
+                                        <label class="checkbox-inline input-refilter">
+                                            <input name="input-checkbox-10" value="checkbox-1" type="checkbox"
+                                                   checked="checked"/><span>s</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-refilter">
+                                            <input name="input-checkbox-11" value="checkbox-1"
+                                                   type="checkbox"/><span>m</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-refilter">
+                                            <input name="input-checkbox-12" value="checkbox-1"
+                                                   type="checkbox"/><span>l</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-refilter">
+                                            <input name="input-checkbox-13" value="checkbox-1"
+                                                   type="checkbox"/><span>xl</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline input-refilter">
+                                            <input name="input-checkbox-14" value="checkbox-1" type="checkbox"/><span>xxl</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
     <div class="md-overlay"></div><!-- the overlay element -->
+    <section class="section bg-gray-100">
+        <div class="row row">
+            <div class="col-xl-12">
+                <div id="mapid">
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 
 {% endblock %}
@@ -38,9 +286,70 @@
     <script src="{{ asset('assets/js/axios.min.js') }}"></script>
     <script src="{{ asset('modal/js/cssParser.js') }}"></script>
     <script src="{{ asset('modal/js/classie.js') }}"></script>
-    <script src="{{ asset('modal/js/modalEffects.js') }}"></script>
+    <script src="{{ asset('modal/js/redirect.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script>
+        $(document).ready(function () {
 
+
+            var regionLat = '{{ region.location.geoCode.latitude }}';
+            var regionLong = '{{ region.location.geoCode.longitude }}';
+            console.log(regionLat);
+            var latlng = L.latLng(regionLong, regionLat);
+            var map = L.map('mapid', {
+                scrollWheelZoom: false
+            }).setView(latlng, 11);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            map.on('click', function () {
+                if (map.scrollWheelZoom.enabled()) {
+                    map.scrollWheelZoom.disable();
+                }
+                else {
+                    map.scrollWheelZoom.enable();
+                }
+            });
+
+            var markers = new Array();
+            {% for place in places %}
+            var longitutde = '{{ place.location.geoCode.latitude }}';
+            var latitude = '{{ place.location.geoCode.longitude }}';
+            markers.push([latitude, longitutde, "{{ place.name }}"]);
+            {% endfor %}
+            for (var i = 0; i < markers.length; i++) {
+
+                var lon = markers[i][0];
+                var lat = markers[i][1];
+                var popupText = markers[i][2];
+
+                var markerLocation = new L.LatLng(lat, lon);
+                var marker = new L.Marker(markerLocation);
+                map.addLayer(marker);
+
+                marker.bindPopup(popupText);
+
+            }
+
+//            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//                maxZoom: 18,
+//                id: 'mapbox.streets',
+//                accessToken: 'pk.eyJ1IjoiYWppbWkiLCJhIjoiY2pkdzAwbGd0MDBlMjMzbW80eHhiYmkwNiJ9.973ZN-TEe6UQHA13JGb_Bg\n'
+//            }).addTo(mymap);
+//            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+//                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+//            }).addTo(map);
+
+            $(".category").on('change', function () {
+                $item = $(this).val();
+                $route = Routing.generate('city_index', {'code': $item, 'slug': '{{ region.slug }}'});
+                console.log($route);
+                $.redirect($route);
+            });
+        });
     </script>
 
 {% endblock %}

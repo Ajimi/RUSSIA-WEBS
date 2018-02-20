@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CityController extends Controller
 {
     /**
-     * @Route("/city/{slug}/{code}", name="city_index")
+     * @Route("/city/{slug}/{code}", name="city_index", options={"expose" = true})
      * @param Request $request
      * @param $slug
      * @param $code
@@ -32,8 +32,11 @@ class CityController extends Controller
         $category = $em->getRepository('RegionBundle:Category')->findOneBy(["iconType" => $code]);
 
         /** @var Place[] $places */
-        $places = $repo->findByCategory($region, $category);
-        dump($places);
+        $places = $repo->findByCategory($region, $category, true);
+
+        if (count($places) < 3) {
+            $places = $repo->findByCategory($region, $category, false);
+        }
         return $this->render('GuideBundle:moscow:index.html.twig', array('places' => $places, 'region' => $region, 'category' => $category));
     }
 
@@ -54,5 +57,15 @@ class CityController extends Controller
         return $this->render('GuideBundle:moscow:place-category.html.twig', array('places' => $places, 'category' => $category, 'region' => $region));
     }
 
+    /**
+     * @param Request $request
+     * @Route("/map")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function testMap(Request $request)
+    {
+
+        return $this->render('@Guide/place/map.html.twig');
+    }
 
 }
