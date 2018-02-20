@@ -25,6 +25,7 @@
             <div class="promo-team-country">{% block nickname2 %}The Yanks{% endblock %}</div>
         </div>
     </div>
-    <a class="button button-primary button-block" href="{{ path('cart_add_item', {'match': match.id}) }}">Buy tickets
-        now</a>
+    <a class="js-buy button button-primary button-block disabled" data-url="{{ match.id }}"
+       href="{{ button is defined ? path('cart_index'): '#' }}">{{ button|default('Buy Ticket now') }}
+    </a>
 </div>

@@ -3,7 +3,7 @@
 <section class="section section-md bg-gray-100">
     <div class="container">
         <!-- Heading Component-->
-        {% include 'FrontBundle:other-component:_heading-component-title.html.twig' with {'heading-title' : 'Your Cart'} %}
+        {% include 'FrontBundle:other-component:_heading-component-title.html.twig' with {'heading_title' : 'Your Cart'} %}
         <div class="product-cart">
             <div class="table-custom-responsive">
                 <table class="table-custom table-product">
@@ -39,7 +39,8 @@
                 <div class="product-cart-footer">
                     <div class="product-cart-total"><span>Total</span><span class="product-cart-total-price"><span
                                     class="sup">$</span><span>{{ total }}</span></span></div>
-                    <a class="button button-lg button-primary" href="checkout.html">Proceed to Checkout</a>
+                    <a class="button button-lg button-primary" href="{{ path('checkout_index') }}">Proceed to
+                        Checkout</a>
                 </div>
             {% endif %}
         </div>
