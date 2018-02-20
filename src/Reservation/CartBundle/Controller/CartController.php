@@ -4,6 +4,7 @@ namespace Reservation\CartBundle\Controller;
 
 use Reservation\TicketBundle\Entity\Matche;
 use Reservation\TicketBundle\Entity\Ticket;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,12 @@ class CartController extends Controller
 {
 
     /**
-     * * @Route("/" , name="cart_index")
+     * * @Route("/" , name="cart_index", options={"expose" = true})
+     * @Method({"GET"})
      */
     public function indexAction(Request $request)
     {
+
         return $this->render('CartBundle:cart:index.html.twig');
     }
 
@@ -39,8 +42,7 @@ class CartController extends Controller
         $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
 
         $cart = $session->get('cart');
-        dump($cart);
-
+        $cart = $session->get('cart');
 
         /** @var Matche[] $matches */
         $matches = $repo->findAllBy(array_keys($cart));
@@ -67,8 +69,6 @@ class CartController extends Controller
         $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
 
         $cart = $session->get('cart');
-        dump($cart);
-
 
         /** @var Matche[] $matches */
         $matches = $repo->findAllBy(array_keys($cart));
@@ -80,6 +80,7 @@ class CartController extends Controller
      * @param Matche $match
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/add/{match}", name="cart_add_item", options={"expose" = true})
+     * @Method({"GET"})
      *
      */
     public function addToCartAction(Request $request, Matche $match)
