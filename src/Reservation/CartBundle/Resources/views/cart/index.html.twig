@@ -37,3 +37,15 @@
 
     {{ render(controller('CartBundle:Cart:ticketCart')) }}
 {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+{% endblock %}

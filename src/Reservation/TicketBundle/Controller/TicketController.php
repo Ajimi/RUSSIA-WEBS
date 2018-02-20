@@ -21,25 +21,43 @@ class TicketController extends Controller
     public function indexAction(Request $request)
     {
 
+        $session = $this->container->get('session');
+
+
         /** @var EntityManager $em */
         $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
-        $matches = $repo->findAllMatches();
+
+        $matchesDoctrine = $repo->findAllMatches();
+
 
         /**
          * Filter Done here..
          */
 
-
         $paginator = $this->get('knp_paginator');
 
         /** @var PaginationInterface $ticketsMatches */
         $ticketsMatches = $paginator->paginate(
-            $matches, /* query NOT result */
+            $matchesDoctrine, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
             9/*limit per page*/
         );
 
-        return $this->render('TicketBundle:ticket:index.html.twig', array('matches' => $ticketsMatches));
+        $matchesId = [];
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            $matchesId = array_keys($cart);
+        }
+
+        $parameters = [];
+        if (empty($matchesId)) {
+            $parameters = array('matches' => $ticketsMatches);
+        } else {
+            $parameters = array('matches' => $ticketsMatches, 'matchesInCart' => $matchesId);
+        }
+
+
+        return $this->render('TicketBundle:ticket:index.html.twig', $parameters);
     }
 
 
@@ -71,9 +89,17 @@ class TicketController extends Controller
     {
         /** @var PaginationInterface $pagination */
         $pagination = $request->get('pagination');
-        dump($pagination);
+
+        $session = $this->container->get('session');
+        $matchesId = [];
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            $matchesId = $cart;
+        }
+
+
         // parameters to template
-        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $pagination));
+        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $pagination, 'matchesId' => $matchesId));
 
     }
 }

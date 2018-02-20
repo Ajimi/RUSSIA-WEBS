@@ -7,22 +7,25 @@
     </div>
     {{ render(controller('TicketBundle:Ticket:nextMatchTicket')) }}
 
+
     {{ render(controller('TicketBundle:Ticket:allMatchesTicket' , {'pagination': matches})) }}
+
     <section class="section section-sm bg-gray-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    {{ knp_pagination_render(matches) }}
-                </div>
+
+        <div class="row">
+            <div class="text-center col-lg-12">
+                {{ knp_pagination_render(matches) }}
             </div>
         </div>
     </section>
-
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $("#groups").on('change', function () {
@@ -30,5 +33,6 @@
             });
         });
     </script>
+    <script src="{{ asset('assets/js/ticket/main.js') }}"></script>
 {% endblock %}
 

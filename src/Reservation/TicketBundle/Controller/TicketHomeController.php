@@ -23,7 +23,6 @@ class TicketHomeController extends Controller
         shuffle($matches);
         /** @var Matche $match */
         $match = $matches[0];
-        dump($match);
         if ($matches)
             return $this->render('TicketBundle:ticket/component:ticket-home.html.twig', array('match' => $match));
 

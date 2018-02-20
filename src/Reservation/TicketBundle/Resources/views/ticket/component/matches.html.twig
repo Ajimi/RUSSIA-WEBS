@@ -61,12 +61,25 @@
         </article>
 
         <div class="row" style="margin-top: 50px">
+
             {% for match in matches %}
+
+
+
                 <div class="col-lg-4">
-                    {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match} %}
-                        {% block team1 %}{{ match.team1 }}{% endblock %}
-                        {% block team2 %}{{ match.team2 }}{% endblock %}
-                    {% endembed %}
+                    {% if match.id in matchesId|keys %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART'} %}
+                            {% block team1 %}{{ match.team1 }}{% endblock %}
+                            {% block team2 %}{{ match.team2 }}{% endblock %}
+                        {% endembed %}
+
+                    {% else %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match   } %}
+                            {% block team1 %}{{ match.team1 }}{% endblock %}
+                            {% block team2 %}{{ match.team2 }}{% endblock %}
+                        {% endembed %}
+                    {% endif %}
+
                 </div>
             {% endfor %}
             {# display navigation #}
