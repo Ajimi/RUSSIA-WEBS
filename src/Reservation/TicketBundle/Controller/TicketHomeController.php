@@ -2,9 +2,9 @@
 
 namespace Reservation\TicketBundle\Controller;
 
-use Reservation\TicketBundle\Entity\Matche;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Match\MatchBundle\Entity\Match;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -19,9 +19,9 @@ class TicketHomeController extends Controller
         /**
          * TODO : Get only valid date
          */
-        $matches = $em->getRepository('TicketBundle:Matche')->findAll();
+        $matches = $em->getRepository('MatchBundle:Match')->findAll();
         shuffle($matches);
-        /** @var Matche $match */
+        /** @var Match $match */
         $match = $matches[0];
         if ($matches)
             return $this->render('TicketBundle:ticket/component:ticket-home.html.twig', array('match' => $match));

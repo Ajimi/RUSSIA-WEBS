@@ -25,7 +25,7 @@ class TicketController extends Controller
 
 
         /** @var EntityManager $em */
-        $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
+        $repo = $this->getDoctrine()->getManager()->getRepository('MatchBundle:Match');
 
         $matchesDoctrine = $repo->findAllMatches();
 
@@ -71,7 +71,7 @@ class TicketController extends Controller
         /**
          * TODO : Get only valid date
          */
-        $matches = $em->getRepository('TicketBundle:Matche')->findAll();
+        $matches = $em->getRepository('MatchBundle:Match')->findAll();
         shuffle($matches);
 
         if ($matches)

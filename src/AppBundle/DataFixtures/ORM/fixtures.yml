@@ -63,9 +63,9 @@ Reservation\HotelBundle\Entity\Hotel:
         stars:      <numberBetween(1,5)>
         availableRooms: <randomDigitNotNull()>
         location(unique):   '@location*'
-        region:     '@region*'
-
-Common\RegionBundle\Entity\Region:
-    region{1..5}:
-        name:       <cityPrefix()>
-        location(unique) :   '@location*'
+#        region:     '@region*'
+#
+#Common\RegionBundle\Entity\Region:
+#    region{1..5}:
+#        name:       <cityPrefix()>
+#        location(unique) :   '@location*'

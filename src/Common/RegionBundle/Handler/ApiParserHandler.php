@@ -45,6 +45,8 @@ class ApiParserHandler
         }
 
         $region = new Region();
+
+        // TODO ; ADD LOCATION & ADD Address
         $region->setName($name);
         $this->manager->persist($region);
         $this->manager->flush();
@@ -78,7 +80,7 @@ class ApiParserHandler
 
         $repoCategory = $this->getRepository('RegionBundle:Category');
 
-        $category = $repoCategory->findOneBy(['code' => $placeItem['category']['code']]);
+        $category = $repoCategory->findOneBy(['iconType' => $placeItem['category']['icon_type']]);
         if (!$category) {
             /** @var Category $category */
             $category = Category::fromJson($placeItem['category']);

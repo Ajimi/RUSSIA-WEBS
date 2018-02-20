@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +43,7 @@ class TeamTest
     {
         return $this->id;
     }
+
     /**
      * @var string
      * @ORM\Column(name="name", type="string")

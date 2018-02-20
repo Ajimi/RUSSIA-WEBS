@@ -25,6 +25,55 @@ class Parser extends Controller
 
 
     /**
+     * @Route("/all")
+     * @throws \InvalidArgumentException
+     */
+    public function parseAll(Request $request)
+    {
+
+        $city = ['Saint Petersburgh', 'Moscow', 'Samara', 'Kaliningrad', 'Kazan',
+            'Nizhny Novgorod', 'Sochi', 'Rostov On Don', 'Saransk', 'Volgograd', 'Ekaterinburg'];
+        $placeParser = PlaceParser::createPlaceParser($this->getDoctrine()->getManager());
+        for ($id = 154; $id < 165; $id++) {
+
+            $placeParser->createPlaces($id, $city[$id - 154]);
+        }
+        return new Response("Haha");
+    }
+
+    /**
+     * @Route("/first")
+     */
+    public function parseFirst()
+    {
+
+        $city = ['Saint Petersburgh', 'Moscow', 'Samara', 'Kaliningrad', 'Kazan'];
+
+        $placeParser = PlaceParser::createPlaceParser($this->getDoctrine()->getManager());
+        for ($id = 154; $id < 159; $id++) {
+
+            $placeParser->createPlaces($id, $city[$id - 154]);
+        }
+        return new Response("Haha");
+    }
+
+    /**
+     * @Route("/second")
+     */
+    public function parseSecond()
+    {
+
+        $city = ['Nizhny Novgorod', 'Sochi', 'Rostov On Don', 'Saransk', 'Volgograd', 'Ekaterinburg'];
+
+        $placeParser = PlaceParser::createPlaceParser($this->getDoctrine()->getManager());
+        for ($id = 159; $id < 165; $id++) {
+            $placeParser->createPlaces($id, $city[$id - 154]);
+        }
+        return new Response("Haha");
+    }
+
+
+    /**
      * @Route("/{id}/{city}")
      * @throws \InvalidArgumentException
      */

@@ -1,3 +1,7 @@
+{% set total = 0 %}
+{% for item in matches %}
+    {% set total= total + item.ticket.price %}
+{% endfor %}
 <li>
     <div class="cart-inline-toggled-outer">
         <!-- Link Cart-->
@@ -14,10 +18,10 @@
                         <h5 class="cart-inline-title">There's no Product in the cart</h5>
                     {% elseif counter == 1 %}
                         <h5 class="cart-inline-title">There one Product in the cart</h5>
-                        <p class="cart-inline-subtitle">total price: $750</p>
+                        <p class="cart-inline-subtitle">total price: ${{ total }}</p>
                     {% else %}
                         <h5 class="cart-inline-title">There {{ counter }} Products in the cart</h5>
-                        <p class="cart-inline-subtitle">total price: $750</p>
+                        <p class="cart-inline-subtitle">total price: ${{ total }}</p>
                     {% endif %}
 
                 </div>
@@ -35,7 +39,8 @@
                                                 alt="" width="67" height="30"/></a></div>
                                 <div class="product-inline-main">
                                     <p class="heading-7 product-inline-title"><a
-                                                href="product-page.html">{{ match.team1 }} vs {{ match.team2 }}</a>
+                                                href="product-page.html">{{ match.team1.name }}
+                                            vs {{ match.team2.name }}</a>
                                     </p>
                                     <ul class="product-inline-meta">
                                         <li>
@@ -55,14 +60,14 @@
                             {% endif %}
                         {% endfor %}
                     {% else %}
-                        <p>There's No Item</p>
+                        <p>There's Nothing in the cart </p>
                     {% endif %}
                     <!-- Product inline-->
                 </div>
                 <div class="cart-inline-footer"><a
                             class="button button-md button-default-outline"
                             href="{{ path('cart_index') }}">Go to Cart</a><a
-                            class="button button-md button-primary" href="checkout.html">Checkout</a>
+                            class="button button-md button-primary" href="{{ path('checkout_index') }}">Checkout</a>
                 </div>
             </div>
         </article>

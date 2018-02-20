@@ -10,4 +10,29 @@ namespace Common\RegionBundle\Repository;
  */
 class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByRegion($region)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.region = :region')
+            ->setParameter('region', $region)
+            ->getQuery()
+            ->getResult();
+        return $qb;
+    }
+
+    public function findByCategory($region, $category)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.region = :region')
+            ->andWhere('p.category = :category')
+            ->andWhere('p.previewText != \'\'')
+            ->andWhere('p.previewPicture NOT LIKE \'%no_img.png\' ')
+            ->setParameter('region', $region)
+            ->setParameter('category', $category)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+        return $qb;
+    }
+
 }

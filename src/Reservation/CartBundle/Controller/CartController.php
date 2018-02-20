@@ -2,6 +2,7 @@
 
 namespace Reservation\CartBundle\Controller;
 
+use Match\MatchBundle\Entity\Match;
 use Reservation\TicketBundle\Entity\Matche;
 use Reservation\TicketBundle\Entity\Ticket;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -30,7 +31,7 @@ class CartController extends Controller
 
 
     /**
-     * @Route(name="cart_modal")
+     * @Route("cart_modal", name="cart_modal")
      */
     public function cartModalAction(Request $request)
     {
@@ -39,12 +40,11 @@ class CartController extends Controller
         if (!$session->has('cart'))
             $session->set('cart', array());
 
-        $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
+        $repo = $this->getDoctrine()->getManager()->getRepository('MatchBundle:Match');
 
         $cart = $session->get('cart');
-        $cart = $session->get('cart');
 
-        /** @var Matche[] $matches */
+        /** @var Match[] $matches */
         $matches = $repo->findAllBy(array_keys($cart));
         return $this->render('CartBundle:cart:modal.html.twig',
             [
@@ -66,24 +66,23 @@ class CartController extends Controller
             $session->set('cart', array());
 
 
-        $repo = $this->getDoctrine()->getManager()->getRepository('TicketBundle:Matche');
+        $repo = $this->getDoctrine()->getManager()->getRepository('MatchBundle:Match');
 
         $cart = $session->get('cart');
 
-        /** @var Matche[] $matches */
+        /** @var Match[] $matches */
         $matches = $repo->findAllBy(array_keys($cart));
         return $this->render('CartBundle:component:ticket-cart.html.twig', array('matches' => $matches));
     }
 
     /**
      * @param Request $request
-     * @param Matche $match
+     * @param Match|Matche $match
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/add/{match}", name="cart_add_item", options={"expose" = true})
      * @Method({"GET"})
-     *
      */
-    public function addToCartAction(Request $request, Matche $match)
+    public function addToCartAction(Request $request, Match $match)
     {
         $session = $this->container->get('session');
 
@@ -103,11 +102,12 @@ class CartController extends Controller
 
     /**
      * @param Request $request
+     * @param Match $match
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("remove/{id}", name="cart_remove_item", options={"expose" = true})
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function removeFromCartAction(Request $request, Matche $match): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function removeFromCartAction(Request $request, Match $match): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         $session = $this->container->get('session');
 

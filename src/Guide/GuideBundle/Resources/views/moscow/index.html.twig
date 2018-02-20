@@ -4,89 +4,43 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-grid.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('test.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('modal/css/component.css') }}"/>
 {% endblock %}
 {% block body %}
 
-    {% block page %}
-        {#TODO : Complete This page#}
 
-        <!-- Section Breadcrumbs-->
-        {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'MOSCOW CITY'} %}
-            {% block breadcrumbs_path %}
-                <li><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="{{ path('guide_guide_default_index') }}">Fan Guide</a></li>
-                <li><a class="active" href="{{ path('moscow_city') }}">Fan Guide</a></li>
-            {% endblock %}
-        {% endembed %}
-        <section class="section section-md bg-gray-100">
-            <div class="container">
-                <h2 class="text-center">Welcome To Russia</h2>
-                <div class="navigation-custom">
-                    <button class="button navigation-custom-toggle" data-custom-toggle="#isotope-filters"
-                            data-custom-toggle-hide-on-blur="true">Filter
-                    </button>
-                    <div class="navigation-custom-content" id="isotope-filters">
-                        <ul class="isotope-filters isotope-filters-modern">
-                            <li><a class="active" data-isotope-filter="*" data-isotope-group="gallery"
-                                   href="#">All</a></li>
-                            <li>
-                                <a data-isotope-filter="city" data-isotope-group="gallery" href="#">Religious Sites</a>
-                            </li>
-                            <li>
-                                <a data-isotope-filter="accomodation" data-isotope-group="gallery" href="#">Shopping
-                                    Sites</a>
-                            </li>
-                            <li>
-                                <a data-isotope-filter="general" data-isotope-group="gallery"
-                                   href="#">Leisure</a>
-                            </li>
-                            <li>
-                                <a data-isotope-filter="matches" data-isotope-group="gallery"
-                                   href="#">Night Life</a>
-                            </li>
-                            <li>
-                                <a data-isotope-filter="visit" data-isotope-group="gallery"
-                                   href="#">Museums</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Isotope Content-->
+    {#TODO : Complete This page#}
 
-                <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+    <!-- Section Breadcrumbs-->
+    {% set city =  (region.name ~ ' CITY') %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : city } %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">{{ region.name|capitalize }}</a></li>
+        {% endblock %}
+    {% endembed %}
 
-                    <div class="row row-30">
-                        <div class="col-lg-8">
-                            {% embed '@Guide/Default/place-component.html.twig' %}
+    {% include '@Guide/place/modal-list.html.twig' %}
 
-                            {% endembed %}
-                        </div>
-                    </div>
-                    {#<div class="row row-10">#}
-                    {#<div class="col-md-6">#}
+    {{ render(controller('GuideBundle:City:renderPlace',
+    {'places' : places , 'category' : category , 'region': region})) }}
+    <div class="md-overlay"></div><!-- the overlay element -->
 
-                    {#</div>#}
-                    {#{% for i in 1..10 %}#}
-                    {#{% embed '@Guide/Default/place-component.html.twig' %}#}
-                    {#{% block title %} Title{% endblock %}#}
-                    {#{% block number %}{{ i }} {% endblock %}#}
-                    {#{% block information %}#}
-                    {#<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto consequatur#}
-                    {#dignissimos dolor dolorum ducimus enim esse et ex in ipsa minima non optio possimus#}
-                    {#quisquam ratione, saepe totam vero!#}
-                    {#</div>#}
-                    {#<div>Accusantium animi, dolor harum inventore labore magni nulla obcaecati quibusdam. Ad#}
-                    {#amet asperiores, blanditiis consequatur dicta distinctio doloremque ea eos esse#}
-                    {#expedita, hic libero natus officiis perferendis quae, quaerat quidem?#}
-                    {#</div>#}
-                    {#{% endblock %}#}
-                    {#{% endembed %}#}
-                    {#{% endfor %}#}
-                    {#</div>#}
 
-                </div>
-            </div>
-            </div>
-        </section>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script src="{{ asset('modal/js/cssParser.js') }}"></script>
+    <script src="{{ asset('modal/js/classie.js') }}"></script>
+    <script src="{{ asset('modal/js/modalEffects.js') }}"></script>
+    <script>
+
+    </script>
+
 {% endblock %}

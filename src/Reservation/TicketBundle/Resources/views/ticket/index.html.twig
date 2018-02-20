@@ -5,19 +5,94 @@
             <div class="preloader-item"></div>
         </div>
     </div>
-    {{ render(controller('TicketBundle:Ticket:nextMatchTicket')) }}
 
+    {% if matches|length != 0 %}
+        {{ render(controller('TicketBundle:Ticket:nextMatchTicket')) }}
 
-    {{ render(controller('TicketBundle:Ticket:allMatchesTicket' , {'pagination': matches})) }}
+        {{ render(controller('TicketBundle:Ticket:allMatchesTicket' , {'pagination': matches})) }}
 
-    <section class="section section-sm bg-gray-100">
+        <section class="section section-sm bg-gray-100">
 
-        <div class="row">
-            <div class="text-center col-lg-12">
-                {{ knp_pagination_render(matches) }}
+            <div class="row">
+                <div class="text-center col-lg-12">
+                    {{ knp_pagination_render(matches) }}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% else %}
+        <section class="section section-md bg-gray-100">
+            <div class="container">
+                <div class="row row-50 justify-content-md-center justify-content-xl-start">
+                    <div class="col-md-11 col-lg-10 col-xl-10">
+                        <!-- Heading Component-->
+                        <article class="heading-component">
+                            <div class="heading-component-inner">
+                                <h5 class="heading-component-title">No tickets
+                                </h5>
+                            </div>
+                        </article>
+
+                        <div class="row row-30">
+                            <div class="col-sm-6 col-md-auto col-xl-6">
+                                <!-- Box Minimal-->
+                                <article class="box-minimal">
+                                    <div class="box-minimal-header"><span
+                                                class="box-minimal-icon fl-bigmug-line-circular220"></span>
+                                        <h5 class="box-minimal-title">Professional Approach</h5>
+                                    </div>
+                                    <div class="box-minimal-text">
+                                        <p>Our professionalism allows us to reach more and do even more for our clients
+                                            all over the world.</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-md-auto col-xl-6">
+                                <!-- Box Minimal-->
+                                <article class="box-minimal">
+                                    <div class="box-minimal-header"><span
+                                                class="box-minimal-icon fl-bigmug-line-wallet26"></span>
+                                        <h5 class="box-minimal-title">Reasonable Prices</h5>
+                                    </div>
+                                    <div class="box-minimal-text">
+                                        <p>Our pricing policy is a guarantee of reasonable prices to all our clients,
+                                            both regular and new.</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-md-auto col-xl-6">
+                                <!-- Box Minimal-->
+                                <article class="box-minimal box-minimal-primary">
+                                    <div class="box-minimal-header"><span
+                                                class="box-minimal-icon fl-bigmug-line-hot67"></span>
+                                        <h5 class="box-minimal-title">Always New Ideas</h5>
+                                    </div>
+                                    <div class="box-minimal-text">
+                                        <p>Our team is a true generator of new ideas, which we use in our work to
+                                            improve our services.</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-sm-6 col-md-auto col-xl-6">
+                                <!-- Box Minimal-->
+                                <article class="box-minimal box-minimal-gray-2">
+                                    <div class="box-minimal-header"><span
+                                                class="box-minimal-icon fl-bigmug-line-headphones32"></span>
+                                        <h5 class="box-minimal-title">Cheerful Support 24\7</h5>
+                                    </div>
+                                    <div class="box-minimal-text">
+                                        <p>Our team provides full support to all our clients 24/7 regarding any issues
+                                            they may have.</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+    {% endif %}
+
+
 
 {% endblock %}
 

@@ -27,21 +27,21 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="teamName", type="string", length=255)
+     * @ORM\Column(name="teamName", type="string", length=255, nullable=true)
      */
     private $teamName;
 
     /**
      * @var string
      * @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
-     * @ORM\Column(name="teamLogo", type="string", length=255)
+     * @ORM\Column(name="teamLogo", type="string", length=255, nullable=true)
      */
     private $teamLogo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="teamShortcut", type="string", length=255)
+     * @ORM\Column(name="teamShortcut", type="string", length=255, nullable=true)
      */
     private $teamShortcut;
 
@@ -49,62 +49,62 @@ class Team
     /**
      * @var int
      *
-     * @ORM\Column(name="matchWon", type="integer")
+     * @ORM\Column(name="matchWon", type="integer", nullable=true)
      */
     private $matchWon;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="matchLoss", type="integer")
+     * @ORM\Column(name="matchLoss", type="integer", nullable=true)
      */
     private $matchLost;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="goalScored", type="integer")
+     * @ORM\Column(name="goalScored", type="integer", nullable=true)
      */
     private $goalScored;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="goalIn", type="integer")
+     * @ORM\Column(name="goalIn", type="integer", nullable=true)
      */
     private $goalIn;
     /**
      * @var int
      *
-     * @ORM\Column(name="matchDraw", type="integer")
+     * @ORM\Column(name="matchDraw", type="integer", nullable=true)
      */
     private $matchDraw;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="participation", type="integer")
+     * @ORM\Column(name="participation", type="integer", nullable=true)
      */
     private $participation;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="winner", type="integer")
+     * @ORM\Column(name="winner", type="integer", nullable=true)
      */
     private $winner;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="second", type="integer")
+     * @ORM\Column(name="second", type="integer", nullable=true)
      */
     private $second;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="third", type="integer")
+     * @ORM\Column(name="third", type="integer", nullable=true)
      */
     private $third;
 

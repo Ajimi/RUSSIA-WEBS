@@ -5,6 +5,7 @@ namespace Reservation\TicketBundle\Entity;
 use Common\BookingBundle\Entity\Booking;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Match\MatchBundle\Entity\Match;
 
 /**
  * Ticket
@@ -30,9 +31,9 @@ class Ticket
     private $quantity;
 
     /**
-     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Matche", inversedBy="ticket")
+     * @ORM\OneToOne(targetEntity="Match\MatchBundle\Entity\Match", inversedBy="ticket")
      */
-    private $matche;
+    private $match;
 
     /**
      * @var string
@@ -84,9 +85,9 @@ class Ticket
     }
 
     /**
-     * @return Matche
+     * @return Match
      */
-    public function getMatch(): Matche
+    public function getMatch(): Match
     {
         return $this->match;
     }
@@ -149,19 +150,4 @@ class Ticket
         $this->quantity = $quantity;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMatche()
-    {
-        return $this->matche;
-    }
-
-    /**
-     * @param mixed $matche
-     */
-    public function setMatche($matche)
-    {
-        $this->matche = $matche;
-    }
 }

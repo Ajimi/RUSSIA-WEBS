@@ -12,6 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+
+    const CATEGORY_TYPE_MUSEUM = 'museum';
+    const CATEGORY_TYPE_ATTRACTION = 'attractions';
+    const CATEGORY_TYPE_PARK = 'park';
+    const CATEGORY_TYPE_ENTERTAINMENT = 'entertainment';
+    const CATEGORY_TYPE_CAFE = 'cafe';
+    const CATEGORY_TYPE_SPORT = 'sport';
+    const CATEGORY_TYPE_RELEGIOUS = 'religious';
+    const CATEGORY_TYPE_THEATRE = 'theatre';
+
     /**
      * @var int
      *

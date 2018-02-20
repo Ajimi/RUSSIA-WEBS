@@ -59,7 +59,7 @@ class HotelApiController extends Controller
     /**
      * @param HotelManager $manager
      * @return Response
-     * @Route("/" , name="api_hotels_list")
+     * @Route("/" , name="api_hotels_list",  options={"expose" = true})
      * @Method({"GET"})
      */
     public function listHotel(HotelManager $manager)
