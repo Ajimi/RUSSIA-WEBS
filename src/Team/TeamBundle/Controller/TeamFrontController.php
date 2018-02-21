@@ -16,7 +16,7 @@ class TeamFrontController extends Controller
      */
     public function displayAction($Name)
     {
-        return $this->render('TeamBundle:Team:display.html.twig', array(
+        return $this->render('TeamBundle:TeamFront:display.html.twig', array(
             'name'=>$Name
         ));
     }
@@ -26,7 +26,7 @@ class TeamFrontController extends Controller
      */
     public function listAction()
     {
-        return $this->render('TeamBundle:Team:list.html.twig', array(// ...
+        return $this->render('TeamBundle:TeamFront:list.html.twig', array(// ...
         ));
     }
 }
