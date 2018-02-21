@@ -13,6 +13,10 @@ use Match\MatchBundle\Entity\Statistics;
 
 class TeamStatistics
 {
+
+    private $matchId;
+    private $teamId;
+    private $match;
     private $name;
     private $shots;
 
@@ -25,6 +29,9 @@ class TeamStatistics
         $team = new self();
         $team->setName($statistics->getTeam()->getName());
         $team->setShots($statistics->getShots());
+        $team->setMatch($statistics->getMatch()->getLevel());
+        $team->setMatchId($statistics->getMatch()->getId());
+        $team->setTeamId($statistics->getTeam()->getId());
 
         return $team;
     }
@@ -61,4 +68,52 @@ class TeamStatistics
         $this->shots = $shots;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getMatch()
+    {
+        return $this->match;
+    }
+
+    /**
+     * @param mixed $match
+     */
+    public function setMatch($match)
+    {
+        $this->match = $match;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatchId()
+    {
+        return $this->matchId;
+    }
+
+    /**
+     * @param mixed $matchId
+     */
+    public function setMatchId($matchId)
+    {
+        $this->matchId = $matchId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeamId()
+    {
+        return $this->teamId;
+    }
+
+    /**
+     * @param mixed $teamId
+     */
+    public function setTeamId($teamId)
+    {
+        $this->teamId = $teamId;
+    }
 }

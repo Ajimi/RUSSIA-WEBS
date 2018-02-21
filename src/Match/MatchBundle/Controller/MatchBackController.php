@@ -2,8 +2,10 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
+use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Form\MatchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -34,7 +36,7 @@ class MatchBackController extends Controller
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
         return $this->render('MatchBundle:Default:list_match.html.twig', array(
             'matchs' => $matchs,
-            'matchForm' => $form->createView()
+            'matchForm' => $form->createView(),
 
         ));
 
@@ -90,6 +92,7 @@ class MatchBackController extends Controller
 
 
     }
+
     /**
      * @Route("/delete/{id}", name="delete_match")
      */

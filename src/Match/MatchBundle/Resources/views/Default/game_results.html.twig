@@ -18,17 +18,20 @@
                 <table class="table table-hover">
                     {% for score in formatedResult %}
                         <tr>
-
-                            <td style='text-align:center;vertical-align:baseline'><img
-                                        src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> {{ score.team1Statistics.name |upper }}
+                            <td style='text-align:center;vertical-align:baseline'>
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> {{ score.team1Statistics.name |upper }}
                             </td>
 
                             <td style='text-align:center;vertical-align:middle'>
+                                <h2> {{ score.team1Statistics.match }}</h2>
                                 <h1> {{ score.team1Statistics.shots }} - {{ score.team2Statistics.shots }} </h1>
+                                <a href=""
+                                   class="btn btn-success btn-xs">
+                                    <i class="fa fa-pencil"></i> Update
+                                </a>
                             </td>
                             <td style='text-align:center;vertical-align:baseline'>{{ score.team2Statistics.name |upper }}
-                                <img
-                                        src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
                             </td>
                         </tr>
 

@@ -26,7 +26,6 @@ class StatisticsBackController extends Controller
 
         $i = 0;
 
-
         /** @var  StatisticDataFormat[] $formatedStatistics */
         $formatedStatistics = [];
         $statistics = [];

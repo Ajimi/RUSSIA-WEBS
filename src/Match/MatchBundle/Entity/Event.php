@@ -30,11 +30,18 @@ class Event
      */
     private $match;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\TeamTest")
+     * @ORM\JoinColumn(name="id_team",referencedColumnName="id")
+     */
+    private $team;
+
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Player\PlayerBundle\Entity\Player")
-     * @ORM\JoinColumn(name="id_match",referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\PlayerTest")
+     * @ORM\JoinColumn(name="id_player",referencedColumnName="id")
      */
     private $player;
 
@@ -43,13 +50,21 @@ class Event
      * @var string
      * @ORM\Column(name="times", type="string")
      */
-    private $time;
+    private $times;
 
     /**
      * @var string
      * @ORM\Column(name="type_event", type="string")
      */
     private $typeEvent;
+
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="string")
+     */
+    private $description;
+
 
     /**
      * Get id.
@@ -155,5 +170,77 @@ class Event
         $this->player = $player;
 
         return $this;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string $description
+     *
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set team.
+     *
+     * @param \Match\MatchBundle\Entity\TeamTest|null $team
+     *
+     * @return Event
+     */
+    public function setTeam(\Match\MatchBundle\Entity\TeamTest $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team.
+     *
+     * @return \Match\MatchBundle\Entity\TeamTest|null
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * Set times.
+     *
+     * @param string $times
+     *
+     * @return Event
+     */
+    public function setTimes($times)
+    {
+        $this->times = $times;
+
+        return $this;
+    }
+
+    /**
+     * Get times.
+     *
+     * @return string
+     */
+    public function getTimes()
+    {
+        return $this->times;
     }
 }
