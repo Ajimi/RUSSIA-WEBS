@@ -40,17 +40,11 @@ class ShoppingCart
         if ($this->products === null) {
             $productRepo = $this->em->getRepository('MatchBundle:Match');
             $ids = $this->session->get(self::CART_PRODUCTS_KEY, []);
-            $products = [];
-            foreach ($ids as $id) {
-                $product = $productRepo->find($id);
 
-                // in case a product becomes deleted
-                if ($product) {
-                    $products[] = $product;
-                }
-            }
+            $products = $productRepo->findAllBy(array_keys($ids));
 
             $this->products = $products;
+            dump($products);
         }
 
         return $this->products;
@@ -74,7 +68,7 @@ class ShoppingCart
     {
         $total = 0;
         foreach ($this->getProducts() as $product) {
-            $total += $product->getPrice();
+            $total += $product->getTicket()->getPrice();
         }
 
         return $total;
