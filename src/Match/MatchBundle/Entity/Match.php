@@ -70,16 +70,7 @@ class Match
      */
     private $played;
 
-    /**
-     * @var Statistics
-     * @ORM\OneToMany(targetEntity="Match\MatchBundle\Entity\Statistics",mappedBy="match")
-     */
-    private $statistics;
 
-    public function __construct()
-    {
-        $this->statistics = new ArrayCollection();
-    }
 
 
     /**
@@ -254,41 +245,8 @@ class Match
         return $this->stadium;
     }
 
-    /**
-     * Add statistic.
-     *
-     * @param \Match\MatchBundle\Entity\statistics $statistic
-     *
-     * @return Match
-     */
-    public function addStatistic(\Match\MatchBundle\Entity\statistics $statistic)
-    {
-        $this->statistics[] = $statistic;
 
-        return $this;
-    }
 
-    /**
-     * Remove statistic.
-     *
-     * @param \Match\MatchBundle\Entity\statistics $statistic
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeStatistic(\Match\MatchBundle\Entity\statistics $statistic)
-    {
-        return $this->statistics->removeElement($statistic);
-    }
-
-    /**
-     * Get statistics.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStatistics()
-    {
-        return $this->statistics;
-    }
 
     /**
      * Set played.

@@ -26,7 +26,7 @@ class Event
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\Match")
-     * @ORM\JoinColumn(name="id_match",referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_match",referencedColumnName="id", onDelete="CASCADE")
      */
     private $match;
 
