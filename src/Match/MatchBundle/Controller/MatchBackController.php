@@ -31,7 +31,6 @@ class MatchBackController extends Controller
         $match = new Match();
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
-
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
         return $this->render('MatchBundle:Default:list_match.html.twig', array(
@@ -55,12 +54,8 @@ class MatchBackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
-            $scoreTeam1 = new Statistics($match->getTeam1(), $match, -1, -1, -1, -1, -1);
-            $scoreTeam2 = new Statistics($match->getTeam2(), $match, -1, -1, -1, -1, -1);
             $match->setPlayed(false);
             $em->persist($match);
-            $em->persist($scoreTeam1);
-            $em->persist($scoreTeam2);
             $em->flush();
 
             return $this->redirectToRoute('match_list');
@@ -100,38 +95,35 @@ class MatchBackController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
-        $score = $em->getRepository('MatchBundle:Statistics')->findBy(array('match' => $match->getId()));
-        foreach ($score as $s)
-            $em->remove($s);
         $em->remove($match);
         $em->flush();
         return $this->redirectToRoute('match_list');
 
     }
 
-    /**
-     * @Route("/search", name="search_match")
-     */
 
-    public function searchAction(Request $request)
-    {
+    /*
+
+        public function searchAction(Request $request)
+        {
 
 
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            //$val = $request ->get('search')->getData();
-            $val = "se";
-            alert($val);
-            $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('MatchBundle:Match');
-            $match = $repo->searchDQL($val);
+            if ($request->isXmlHttpRequest()) {
+                $em = $this->getDoctrine()->getManager();
+                //$val = $request ->get('search')->getData();
+                $val = "se";
+                alert($val);
+                $em = $this->getDoctrine()->getManager();
+                $repo = $em->getRepository('MatchBundle:Match');
+                $match = $repo->searchDQL($val);
 
-            $s = new Serializer(array(new ObjectNormalizer()));
-            $data = $s->normalize($match);
-            return new JsonResponse($data);
+                $s = new Serializer(array(new ObjectNormalizer()));
+                $data = $s->normalize($match);
+                return new JsonResponse($data);
+
+            }
 
         }
-
-    }
+    */
 
 }
