@@ -125,3 +125,7 @@ services:
             - { name: kernel.event_listener, event: kernel.request }
     redirect.after_login:
         class: UserBundle\Redirection\AfterLoginRedirection
+
+    stripe_client:
+          class: Reservation\CartBundle\StripeClient
+          arguments: ['%stripe_secret_key%']
