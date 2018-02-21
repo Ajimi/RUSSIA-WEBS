@@ -37,9 +37,27 @@ class Skill
 
     /**
      * @ORM\ManyToOne(targetEntity="Player\PlayerBundle\Entity\Player", inversedBy="skills")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $player;
+
+    /**
+     * @return mixed
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * @param mixed $player
+     */
+    public function setPlayer($player)
+    {
+        $this->player = $player;
+    }
+
+
     /**
      * Get id.
      *

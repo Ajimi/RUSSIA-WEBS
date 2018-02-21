@@ -2,8 +2,11 @@
 
 namespace Player\PlayerBundle\Controller;
 
+use Player\PlayerBundle\Entity\Club;
 use Player\PlayerBundle\Entity\Player;
+use Player\PlayerBundle\Entity\Skill;
 use Player\PlayerBundle\Form\PlayerType;
+use Player\PlayerBundle\Form\SkillType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,22 +45,46 @@ class PlayerBackController extends Controller
     }
 
     /**
-     * @Route("/addSkill",name="addSkill")
+     * @Route("/addSkill/{id}",name="addSkill")
      */
-    public function addSkillAction()
+    public function addSkillAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $skill = new Skill();
+        $player = $em->getRepository("PlayerBundle:Player")->find($id);
+        $skill->setPlayer($player);
+        $formskill = $this->createForm(SkillType::class, $skill);
+        $formskill->handleRequest($request);
+        if ($formskill->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($skill);
+            $em->flush();
+            return $this->redirectToRoute('skillList',array('id' => $id));
+        }
         return $this->render('PlayerBundle:PlayerBack:add_skill.html.twig', array(
-            // ...
+            'form' => $formskill->createView()
         ));
     }
 
     /**
-     * @Route("/addClub",name="addClub")
+     * @Route("/addClub/{id}",name="addClub")
      */
-    public function addClubAction()
+    public function addClubAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $club = new Club();
+        $player = $em->getRepository("PlayerBundle:Player")->find($id);
+        $club->setPlayer($player);
+        $formclub = $this->createForm(SkillType::class, $club);
+        $formclub->handleRequest($request);
+        if ($formclub->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($club);
+            $em->flush();
+            return $this->redirectToRoute('playerList',array('id' => $id));
+        }
         return $this->render('PlayerBundle:PlayerBack:add_club.html.twig', array(
-            // ...
+            'form' => $formclub->createView()// ...
         ));
     }
 
@@ -84,53 +111,77 @@ class PlayerBackController extends Controller
     }
 
     /**
-     * @Route("/editSkill")
+     * @Route("/editSkill/{id}",name="skillEdit")
      */
-    public function editSkillAction()
+    public function editSkillAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $skill = $em->getRepository("PlayerBundle:Skill")->find($id);
+        $form = $this->createForm(SkillType::class, $skill);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->persist($skill);
+            $em->flush();
+            return $this->redirectToRoute('playerList');
+        }
         return $this->render('PlayerBundle:PlayerBack:edit_skill.html.twig', array(
-            // ...
+            'form' => $form->createView()// ...
         ));
     }
 
     /**
-     * @Route("/editClub")
+     * @Route("/editClub/{id}",name="clubEdit")
      */
-    public function editClubAction()
+    public function editClubAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $club = $em->getRepository("PlayerBundle:Club")->find($id);
+        $formclub = $this->createForm(SkillType::class, $club);
+        $formclub->handleRequest($request);
+        if ($formclub->isValid()) {
+            $em->persist($club);
+            $em->flush();
+            return $this->redirectToRoute('playerList');
+        }
         return $this->render('PlayerBundle:PlayerBack:edit_club.html.twig', array(
-            // ...
+            'form' => $formclub->createView()// ...
         ));
     }
 
     /**
-     * @Route("/deletePlayer",name="playerDelete")
+     * @Route("/deletePlayer/{id}",name="playerDelete")
      */
-    public function deletePlayerAction(Request $request)
+    public function deletePlayerAction($id)
     {
-        return $this->render('PlayerBundle:PlayerBack:delete_skill.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $player = $em->getRepository("PlayerBundle:Player")->find($id);
+        $em->remove($player);
+        $em->flush();
+        return $this->redirectToRoute('playerList');
     }
 
     /**
-     * @Route("/deleteSkill")
+     * @Route("/deleteSkill{id}",name="skillDelete")
      */
-    public function deleteSkillAction()
+    public function deleteSkillAction($id)
     {
-        return $this->render('PlayerBundle:PlayerBack:delete_skill.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $skill = $em->getRepository("PlayerBundle:Skill")->find($id);
+        $em->remove($skill);
+        $em->flush();
+        return $this->redirectToRoute('playerList');
     }
 
     /**
-     * @Route("/deleteClub")
+     * @Route("/deleteClub/{id}",name="clubDelete")
      */
-    public function deleteClubAction()
+    public function deleteClubAction($id)
     {
-        return $this->render('PlayerBundle:PlayerBack:delete_club.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $club = $em->getRepository("PlayerBundle:Club")->find($id);
+        $em->remove($club);
+        $em->flush();
+        return $this->redirectToRoute('playerList');
     }
 
     /**
@@ -143,6 +194,32 @@ class PlayerBackController extends Controller
 
         return $this->render('PlayerBundle:PlayerBack:list_player.html.twig', array(
             'players' => $players
+            // ...
+        ));
+    }
+    /**
+     * @Route("/listClub/{id}", name="clubList")
+     */
+    public function listClubAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $clubs = $em->getRepository("PlayerBundle:Club")->findbyPlayer($id);
+
+        return $this->render('PlayerBundle:PlayerBack:list_clubs.html.twig', array(
+            'clubs' => $clubs,'id'=> $id
+            // ...
+        ));
+    }
+    /**
+     * @Route("/listSkill/{id}", name="skillList")
+     */
+    public function listSkillAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $skills = $em->getRepository("PlayerBundle:Skill")->findbyPlayer($id);
+
+        return $this->render('PlayerBundle:PlayerBack:list_skills.html.twig', array(
+            'skills' => $skills,'id'=> $id
             // ...
         ));
     }

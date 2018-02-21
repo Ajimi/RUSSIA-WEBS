@@ -56,7 +56,7 @@ class Player
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="date")
+     * @ORM\Column(name="birthday", type="date",nullable=true)
      */
     private $birthday;
 
@@ -90,8 +90,8 @@ class Player
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team")
-     * @ORM\JoinColumn(name="id_team1",referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team", inversedBy="players")
+     * @ORM\JoinColumn(name="id_team1",referencedColumnName="id", onDelete="CASCADE")
      */
     private $nationalTeam;
 

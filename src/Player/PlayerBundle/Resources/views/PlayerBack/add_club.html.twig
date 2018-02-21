@@ -1,7 +1,98 @@
-{% extends "::base.html.twig" %}
+{% extends "BackBundle:common:_base.html.twig" %}
 
-{% block title %}PlayerBundle:PlayerBack:addClub{% endblock %}
+{% block stylesheets %}
+    <!-- NProgress -->
+    <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}Add Skill{% endblock %}
+
 
 {% block body %}
-<h1>Welcome to the PlayerBack:addClub page</h1>
+    {% block top_content_header %}
+
+    {% endblock %}
+    {% block page_content %}
+        <div class="row centered">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel ">
+                    <div class="x_title">
+                        <h2>Add Skill
+                        </h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <br/>
+                    {{ form_start(form, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+                    <div class="form-group">
+                        {{ form_label(form.clubName, 'Club Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.clubName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.seasonStart, 'Year Start*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.seasonStart, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.seasonEnd, 'Year End*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.seasonEnd, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.matchPlayed, 'Match Player*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.matchPlayed, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.goalScored, 'Goal Scored*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.goalScored, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <br>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            {{ form_widget(form.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
 {% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('assets/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <!-- NProgress -->
+    <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="{{ asset('assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+{% endblock javascripts %}
+
