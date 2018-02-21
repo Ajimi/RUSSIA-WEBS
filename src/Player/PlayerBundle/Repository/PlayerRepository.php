@@ -10,4 +10,69 @@ namespace Player\PlayerBundle\Repository;
  */
 class PlayerRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function goalScoredByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.goalScored)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+
+    }
+    public function shotsByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.shots)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function shotsOnTargetByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.shotsOnTarget)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function assistsByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.assists)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function passesByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.passes)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function foulsByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.fouls)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function yellowCardsByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.yellowCard)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function redCardsByTeam($id){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.id = :id')
+            ->setParameter('id',$id)
+            ->select('SUM(p.redCard)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
 }
