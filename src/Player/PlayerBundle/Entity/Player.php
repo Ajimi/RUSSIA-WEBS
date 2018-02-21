@@ -185,6 +185,39 @@ class Player
     }
 
     /**
+     * @return mixed
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param mixed $skills
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClubs()
+    {
+        return $this->clubs;
+    }
+
+    /**
+     * @param mixed $clubs
+     */
+    public function setClubs($clubs)
+    {
+        $this->clubs = $clubs;
+    }
+
+
+    /**
      * Get id.
      *
      * @return int

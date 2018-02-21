@@ -113,6 +113,23 @@ class Team
      * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="team")
      */
     private $players;
+
+    /**
+     * @return mixed
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * @param mixed $players
+     */
+    public function setPlayers($players)
+    {
+        $this->players = $players;
+    }
+
     /**
      * Get id
      *

@@ -13,12 +13,14 @@ class PlayerFrontController extends Controller
 {
 
     /**
-     * @Route("/display", name="player_Display")
+     * @Route("/display/{id}", name="player_Display")
      */
-    public function displayAction()
+    public function displayAction($id)
     {
-        return $this->render('PlayerBundle:Player:display.html.twig', array(
-            // ...
+        $em = $this->getDoctrine()->getManager();
+        $player=$em->getRepository("PlayerBundle:Player")->find($id);
+        return $this->render('PlayerBundle:PlayerFront:display.html.twig', array(
+            'player'=>$player// ...
         ));
     }
 
