@@ -1,3 +1,7 @@
+forum_subject:
+    resource: "@ForumBundle/Controller/SubjectController.php"
+    type:     annotation
+
 upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /

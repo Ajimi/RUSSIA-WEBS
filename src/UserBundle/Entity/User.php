@@ -115,6 +115,9 @@ class User extends BaseUser
         $this->lastname = $lastname;
     }
 
-
+    public function __toString()
+    {
+        return 'Malek';
+    }
 
 }

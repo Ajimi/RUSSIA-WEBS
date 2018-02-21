@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Propose_subjects list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propose_Subject in propose_Subjects %}
+            <tr>
+                <td><a href="{{ path('propose_subject_show', { 'id': propose_Subject.id }) }}">{{ propose_Subject.id }}</a></td>
+                <td>{% if propose_Subject.etat %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propose_subject_show', { 'id': propose_Subject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propose_subject_edit', { 'id': propose_Subject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propose_subject_new') }}">Create a new propose_Subject</a>
+        </li>
+    </ul>
+{% endblock %}
