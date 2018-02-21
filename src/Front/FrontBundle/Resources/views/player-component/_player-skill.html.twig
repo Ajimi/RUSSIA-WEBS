@@ -3,7 +3,7 @@
         <p>{% block skillLabel%}{% endblock %}</p>
     </div>
     <div class="progress-bar-linear-wrap">
-        <div class="progress-bar-linear" style="width: 95%;"></div>
+        <div class="progress-bar-linear" style="width: {% block skillValue%}{% endblock %}%;"></div>
     </div>
-    <span class="progress-value">{% block skillValue%}{% endblock %}</span>
+    <span class="progress-value">{{ block('skillValue') }}</span>
 </article>
