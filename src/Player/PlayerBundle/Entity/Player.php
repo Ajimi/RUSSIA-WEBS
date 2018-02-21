@@ -3,6 +3,8 @@
 namespace Player\PlayerBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Common\UploadBundle\Annotation\Uploadable;
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="Player\PlayerBundle\Repository\PlayerRepository")
+ * @Uploadable()
  */
 class Player
 {
@@ -38,16 +41,16 @@ class Player
 
     /**
      * @var string
-     *
+     * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
      * @ORM\Column(name="playerImage", type="string", length=255)
      */
     private $playerImage;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="playerPosition", type="string", length=255)
-     */
+    * @var string
+    *
+    * @ORM\Column(name="teamLogo", type="string", length=255)
+    */
     private $playerPosition;
 
     /**

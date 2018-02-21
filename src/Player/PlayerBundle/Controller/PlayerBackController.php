@@ -62,11 +62,23 @@ class PlayerBackController extends Controller
     }
 
     /**
-     * @Route("/editPlayer")
+     * @Route("/editPlayer/{id}", name="playerEdit")
      */
-    public function editPlayerAction()
+    public function editPlayerAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $player = $em->getRepository("PlayerBundle:Player")->find($id);
+        $form = $this->createForm(PlayerType::class, $player);
+        $form->remove('playerImage');
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->persist($player);
+            $em->flush();
+            return $this->redirectToRoute('playerList');
+        }
+
         return $this->render('PlayerBundle:PlayerBack:edit_player.html.twig', array(
+            'formplayer' => $form->createView()
             // ...
         ));
     }
@@ -92,11 +104,11 @@ class PlayerBackController extends Controller
     }
 
     /**
-     * @Route("/deletePlayer")
+     * @Route("/deletePlayer",name="playerDelete")
      */
-    public function deletePlayerAction()
+    public function deletePlayerAction(Request $request)
     {
-        return $this->render('PlayerBundle:PlayerBack:delete_player.html.twig', array(
+        return $this->render('PlayerBundle:PlayerBack:delete_skill.html.twig', array(
             // ...
         ));
     }
@@ -122,11 +134,15 @@ class PlayerBackController extends Controller
     }
 
     /**
-     * @Route("/listPlayer")
+     * @Route("/listPlayer", name="playerList")
      */
     public function listPlayerAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $players = $em->getRepository("PlayerBundle:Player")->findAll();
+
         return $this->render('PlayerBundle:PlayerBack:list_player.html.twig', array(
+            'players' => $players
             // ...
         ));
     }

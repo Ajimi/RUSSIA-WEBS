@@ -28,28 +28,28 @@
                         {{ form_start(formplayer, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerName, 'Player FirstName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerName, 'FirstName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerLastName, 'Player LastName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerLastName, 'LastName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerLastName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerImage, 'Player Image*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerImage, 'Image*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerImage, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerPosition, 'Player Position*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerPosition, 'Position*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerPosition, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
                             </div>
