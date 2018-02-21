@@ -104,6 +104,7 @@ class RegionAdminController extends Controller
         }
 
         return $this->render('@Region/Default/edit_region.html.twig', array(
+            'id' => $region->getId(),
             'region' => $regionData,
             'form' => $editForm->createView(),
         ));
