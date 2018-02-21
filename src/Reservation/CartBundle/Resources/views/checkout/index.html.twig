@@ -1,14 +1,185 @@
 {% extends '@Front/common/_base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="{{ asset('js/jquery.payment.min.js') }}"></script>
+
+    <script type="text/javascript">
+        Stripe.setPublishableKey('{{ stripe_public_key }}');
+
+        $(function () {
+            var $form = $('.js-checkout-form');
+
+            $form.find('.js-cc-number').payment('formatCardNumber');
+            $form.find('.js-cc-exp').payment('formatCardExpiry');
+            $form.find('.js-cc-cvc').payment('formatCardCVC');
+
+            $form.submit(function (event) {
+                event.preventDefault();
+
+                // Disable the submit button to prevent repeated clicks:
+                $form.find('.js-submit-button');
+
+                // Request a token from Stripe:
+                Stripe.card.createToken($form, stripeResponseHandler);
+            });
+        });
+
+        function stripeResponseHandler(status, response) {
+            // Grab the form:
+            var $form = $('.js-checkout-form');
+
+            if (response.error) { // Problem!
+
+                // Show the errors on the form:
+                $form.find('.js-checkout-error')
+                    .text(response.error.message)
+                    .removeClass('hidden');
+                $form.find('.js-submit-button').prop('disabled', false); // Re-enable submission
+
+            } else { // Token was created!
+                $form.find('.js-checkout-error')
+                    .addClass('hidden');
+
+                // Get the token ID:
+                var token = response.id;
+
+                // Insert the token ID into the form so it gets submitted to the server:
+                $form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+                // Submit the form:
+                $form.get(0).submit();
+            }
+        }
+    </script>
+{% endblock %}
+
 {% block body %}
     {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Store Cart'} %}
         {% block breadcrumbs_path %}
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li class=""><a href="{{ path('ticket_index') }}">Ticket</a></li>
-            <li class="active">Cart</li>
+            <li><a href="{{ path('cart_index') }}">Cart</a></li>
             <li class="active">Checkout</li>
         {% endblock %}
     {% endembed %}
+
+
+    <section class="section section-md bg-gray-100">
+        <div class="container text-center">
+            <div class="row row-50 text-left">
+
+                <div class="col-md-12">
+                    {% include '@Front/blog-component/_heading-component-title.html.twig' with {'title' : 'Your shopping cart'} %}
+                    {{ render(controller('CartBundle:Checkout:checkoutComponent')) }}
+                </div>
+                <div class="col-lg-6">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Payment Methods
+                            </h5>
+                        </div>
+                    </article>
+
+                    <div class="card-shop">
+                        <ul class="list-md form-wrap">
+                            <li>
+                                <div class="radio-panel">
+                                    <label class="radio-inline radio-inline-lg active">
+                                        <input name="input-radio" value="radio-1" type="radio" checked>Direct Bank
+                                        Transfer
+                                    </label>
+                                    <div class="radio-panel-content">
+                                        <p>
+                                            Make your payment directly to our bank account. Please use your OrderID as
+                                            the payment reference. Contact support for more information.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio-panel">
+                                    <label class="radio-inline radio-inline-lg">
+                                        <input name="input-radio" value="radio-2" type="radio">PayPal
+                                    </label>
+                                    <div class="radio-panel-content">
+                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                            account.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio-panel">
+                                    <label class="radio-inline radio-inline-lg">
+                                        <input name="input-radio" value="radio-3" type="radio">Cheque Payment
+                                    </label>
+                                    <div class="radio-panel-content">
+                                        <p>Please send a check to Store Name, Store Street, Store Town, Store State /
+                                            County, Store Postcode.</p>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Cart Total
+                            </h5>
+                        </div>
+                    </article>
+
+                    <div class="table-custom-responsive">
+                        <table class="table-custom card-shop-table">
+                            <tr>
+                                <td>cart subtotal</td>
+                                <td>${{ total }}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td>Free</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>${{ total }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="section section-md bg-gray-100">
+        <div class="container text-center">
+            <div class="row row-50 text-left">
+                <div class="col-lg-12">
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Payment
+                            </h5>
+                        </div>
+                    </article>
+
+                </div>
+                <div class="col-lg-3 col-lg-push-4">
+
+                </div>
+
+                <div class="col-lg-6">
+                    {% include '@Cart/component/form-card.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 
 {% endblock %}
