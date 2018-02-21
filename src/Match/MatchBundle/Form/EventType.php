@@ -18,7 +18,7 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('times')
+            ->add('minutes')
             ->add('typeEvent', ChoiceType::class, array(
                 'placeholder' => 'Choose an event',
                 'multiple' => false,
@@ -29,7 +29,8 @@ class EventType extends AbstractType
                     'Corner Kick' => 'Corner Kick',
                     'Penalty Kick' => 'Penalty Kick',
                     'Yellow Card' => 'Yellow Card',
-                    'Red Card' => 'Red Card')))
+                    'Red Card' => 'Red Card'
+                )))
             ->add('description', TextareaType::class)
             ->add('player', EntityType::class, array(
                 'class' => 'Match\MatchBundle\Entity\PlayerTest',
