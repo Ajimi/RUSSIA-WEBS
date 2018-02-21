@@ -26,7 +26,7 @@ class TeamFrontController extends Controller
         $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($id);
         $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($id);
         $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($id);
-        var_dump($goalScored);
+
         return $this->render('TeamBundle:TeamFront:display.html.twig', array(
             'team'=>$team,
             'gs'=>$goalScored,

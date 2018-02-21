@@ -26,8 +26,10 @@
                         {% block second %}{{ team.second }}{% endblock %}
                         {% block third %}{{ team.third }}{% endblock %}
                     {% endembed %}
+                <div class="block-player-info">
                     {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
                     {% endembed %}
+                </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="row row-30">
@@ -52,120 +54,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <!-- Player Info Modern-->
-                    {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' %}
-                        {% block player_image %}{{ asset('/assets/images/player-2-368x286.png') }} {% endblock %}
-                        {% block player_number %}06{% endblock %}
-                        {% block player_name %}Jack Windsor {% endblock %}
-                        {% block player_position %} Midfielder{% endblock %}
-                        {% block player_skills %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Pass acc{% endblock %}
-                                {% block skill_progress %}95{% endblock %}
-                            {% endembed %}
-                            {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                {% block skill_name %} Shots Acc{% endblock %}
-                                {% block skill_progress %}70{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
+                {% for player in team.players %}
+                    <div class="col-sm-6 col-lg-4">
+                        <!-- Player Info Modern-->
+                        {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' with {'imagePlayer': player.playerImage,'id':player.id} %}
+                            {% block player_image %} {% endblock %}
+                            {% block player_number %}{{ player.id }}{% endblock %}
+                            {% block player_name %}{{ player.playerName~" "~player.playerLastName }} {% endblock %}
+                            {% block player_position %} {{ player.playerPosition }}{% endblock %}
+                            {% block player_skills %}
+                                {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
+                                    {% block skill_name %} Pass acc{% endblock %}
+                                    {% block skill_progress %}95{% endblock %}
+                                {% endembed %}
+                                {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
+                                    {% block skill_name %} Shots Acc{% endblock %}
+                                    {% block skill_progress %}70{% endblock %}
+                                {% endembed %}
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

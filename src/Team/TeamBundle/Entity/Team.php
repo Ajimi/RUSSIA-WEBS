@@ -4,6 +4,7 @@ namespace Team\TeamBundle\Entity;
 
 use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -110,9 +111,17 @@ class Team
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="nationalTeam")
      */
     private $players;
+
+    /**
+     * Team constructor.
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
 
     /**
      * @return mixed
