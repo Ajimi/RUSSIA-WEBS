@@ -1,7 +1,8 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
 
  {% block body %}
-{% include '@Match/FrontViews/breadcrumbs.html.twig' %}
+{% include '@Match/Breadcrumbs/breadcrumbs_schedule.html.twig' %}
+
      <section class="section section-sm bg-gray-100">
          <div class="container">
              <div class="row row-50">
@@ -15,7 +16,7 @@
                          </div>
                      </article>
 
-                     {% include '@Match/FrontViews/single_game_result_modal.html.twig' %}
+                     {% include '@Match/FrontViews/single_game_schedule_modal.html.twig' %}
                  </div>
 
                  <div class="col-lg-4">
