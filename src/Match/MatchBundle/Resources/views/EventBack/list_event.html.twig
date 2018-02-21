@@ -1,0 +1,36 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Events</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <ul class="list-unstyled timeline">
+
+
+            {% for e in events %}
+
+                <li>
+                    <div class="block">
+
+                        <div class="block_content">
+                            <h2 class="title">
+                                <a>{{ e.typeEvent | upper }}</a>
+                            </h2>
+
+                            <div class="byline">
+                                <span>{{ e.times }}’</span>
+                            </div>
+
+                            <p class="excerpt"> {{ e.description }} </p>
+
+
+                        </div>
+                    </div>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+</div>
