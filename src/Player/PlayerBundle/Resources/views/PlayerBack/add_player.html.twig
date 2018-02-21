@@ -1,0 +1,150 @@
+{% extends "BackBundle:common:_base.html.twig" %}
+
+{% block stylesheets %}
+    <!-- NProgress -->
+    <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}Add Player{% endblock %}
+
+
+{% block body %}
+    {% block top_content_header %}
+
+    {% endblock %}
+    {% block page_content %}
+        <div class="row centered">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel ">
+                    <div class="x_title">
+                        <h2>Add Player
+                        </h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <br/>
+                        {{ form_start(formplayer, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.playerName, 'FirstName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.playerName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.playerLastName, 'LastName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.playerLastName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.playerImage, 'Image*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.playerImage, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.playerPosition, 'Position*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.playerPosition, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(formplayer.birthday, 'Birthday*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-3">
+                                <fieldset>
+                                    <input type="text" class="form-control has-feedback-left"
+                                           id="single_cal3" name="calendar" placeholder="Pick a Date"
+                                           aria-describedby="inputSuccess2Status3" required="required">
+                                    <span class="fa fa-calendar-o form-control-feedback left"
+                                          aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                {% do formplayer.birthday.setRendered %}
+                                </fieldset>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                            {{ form_label(formplayer.weight, 'Weight*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.weight, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.height, 'Height*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.height, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.totalGames, 'Total Games*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.totalGames, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.bio, 'Biographie*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.bio, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.nationalTeam, 'National Team*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.nationalTeam, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formplayer.team, 'Club*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(formplayer.team, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <br>
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                {{ form_widget(formplayer.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                            </div>
+                        </div>
+                    {{ form_end(formplayer) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('assets/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <!-- NProgress -->
+    <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="{{ asset('assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+{% endblock javascripts %}
+

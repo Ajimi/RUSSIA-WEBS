@@ -1,33 +1,30 @@
 <?php
 
-namespace Team\TeamBundle\Form;
+namespace Player\PlayerBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TeamType extends AbstractType
+class SkillType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teamName')->add('teamLogo',FileType::class)
-            ->add('teamShortcut')->add('participation')
-            ->add('winner')->add('second')->add('third')
-            ->add('create', SubmitType::class);;
+        $builder->add('label')->add('value')
+            ->add('create', SubmitType::class);
     }
-
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Team\TeamBundle\Entity\Team'
+            'data_class' => 'Player\PlayerBundle\Entity\Skill'
         ));
     }
 
@@ -36,7 +33,7 @@ class TeamType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'team_teambundle_team';
+        return 'player_playerbundle_skill';
     }
 
 
