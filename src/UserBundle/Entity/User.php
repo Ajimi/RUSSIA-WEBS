@@ -22,6 +22,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\Column(type="string", unique=true, nullable=true)
+     */
+    private $stripeCustomerId;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Assert\Length(
@@ -155,6 +160,22 @@ class User extends BaseUser
     public function getBookings()
     {
         return $this->bookings;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStripeCustomerId()
+    {
+        return $this->stripeCustomerId;
+    }
+
+    /**
+     * @param mixed $stripeCustomerId
+     */
+    public function setStripeCustomerId($stripeCustomerId)
+    {
+        $this->stripeCustomerId = $stripeCustomerId;
     }
 
 
