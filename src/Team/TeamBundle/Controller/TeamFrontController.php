@@ -12,21 +12,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class TeamFrontController extends Controller
 {
     /**
-     * @Route("/display/{Name}", name="team_display")
+     * @Route("/display/{id}", name="team_display")
      */
-    public function displayAction($Name)
+    public function displayAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $team=$em->getRepository("TeamBundle:Team")->find($id);
+        $goalScored = $em->getRepository("PlayerBundle:Player")->goalScoredByTeam($id);
+        $shots = $em->getRepository("PlayerBundle:Player")->shotsByTeam($id);
+        $shotsOnTarget = $em->getRepository("PlayerBundle:Player")->shotsOnTargetByTeam($id);
+        $assists = $em->getRepository("PlayerBundle:Player")->assistsByTeam($id);
+        $passes = $em->getRepository("PlayerBundle:Player")->passesByTeam($id);
+        $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($id);
+        $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($id);
+        $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($id);
+        var_dump($goalScored);
         return $this->render('TeamBundle:TeamFront:display.html.twig', array(
-            'name'=>$Name
+            'team'=>$team,
+            'gs'=>$goalScored,
+            'shots'=>$shots,
+            'sot'=>$shotsOnTarget,
+            'assists'=>$assists,
+            'passes'=>$passes,
+            'fouls'=>$fouls,
+            'yc'=>$yellowCards,
+            'rc'=>$redCards,
         ));
     }
 
-    /**
-     * @Route("/list", name="team_list")
-     */
-    public function listAction()
-    {
-        return $this->render('TeamBundle:TeamFront:list.html.twig', array(// ...
-        ));
-    }
 }
