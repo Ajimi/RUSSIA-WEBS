@@ -2,15 +2,13 @@
 
 namespace Common\RegionBundle\Controller;
 
-use Common\LocationBundle\Entity\GeoCode;
-use Common\LocationBundle\Entity\Location;
 use Common\RegionBundle\Entity\Region;
 use Common\RegionBundle\Form\RegionDataType;
 use Common\RegionBundle\Modal\RegionData;
 use Common\RegionBundle\Transformer\RegionDataTransformer;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -32,7 +30,7 @@ class RegionAdminController extends Controller
 
         $regions = $em->getRepository('RegionBundle:Region')->findAll();
 
-        return $this->render('RegionBundle:region:index.html.twig', array(
+        return $this->render('RegionBundle:Default:list_region.html.twig', array(
             'regions' => $regions,
         ));
     }
@@ -103,7 +101,7 @@ class RegionAdminController extends Controller
             $region = RegionDataTransformer::transform($regionData, $region);
             $em->persist($region);
             $em->flush();
-            return $this->redirectToRoute('admin_region_edit', array('id' => $region->getId()));
+            return $this->redirectToRoute('admin_region_index');
         }
 
         return $this->render('RegionBundle:region:edit.html.twig', array(
@@ -121,15 +119,9 @@ class RegionAdminController extends Controller
      */
     public function deleteAction(Request $request, Region $region)
     {
-        $form = $this->createDeleteForm($region);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($region);
-            $em->flush();
-        }
-
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($region);
+        $em->flush();
         return $this->redirectToRoute('admin_region_index');
     }
 
