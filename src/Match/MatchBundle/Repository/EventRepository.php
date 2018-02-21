@@ -10,4 +10,12 @@ namespace Match\MatchBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function gameResult()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT e FROM MatchBundle:Event e 
+                                WHERE s.shots > -1");
+        return $query->getResult();
+    }
 }
