@@ -1,1 +1,24 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
+ {% block body %}
+     <section class="section section-sm bg-gray-100">
+         <div class="container">
+             <div class="row row-50">
+                 <div class="col-lg-8">
+                     <!-- Heading Component-->
+                     <article class="heading-component">
+                         <div class="heading-component-inner">
+                             <h5 class="heading-component-title">Game schedule
+                             </h5>
+                         </div>
+                     </article>
+
+                     {% include '@Match/FrontViews/single_game_result_modal.html.twig' %}
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+
+
+ {% endblock %}

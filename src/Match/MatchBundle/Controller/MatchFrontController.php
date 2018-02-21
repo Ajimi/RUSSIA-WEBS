@@ -18,21 +18,14 @@ class MatchFrontController extends Controller
      * @Route("/schedule", name="gameschedule_list")
      */
 
-    public function displayAction(Request $request)
+    public function displayAction()
     {
-        /*   $match = new Match();
-           $form = $this->createForm(MatchType::class, $match);
-           $form->handleRequest($request);
-
-           $em = $this->getDoctrine()->getManager();
-          // $matchs = $em->getRepository("MatchBundle:Match")->findAll();
-
-           */
-        //
-        return $this->render('@Match/FrontViews/game_schedule.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $matchs = $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false));
+        return $this->render('@Match/FrontViews/game_schedule.html.twig',array(
+            'matchs'=>$matchs
+        ));
     }
 
-    public function addAction()
-    {
-    }
+
 }

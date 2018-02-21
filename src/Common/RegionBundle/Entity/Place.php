@@ -94,31 +94,6 @@ class Place
     private $location;
 
     /**
-     * @param array $item
-     * @param Region $region
-     * @return Place
-     */
-    public static function fromJson($item, Region $region): Place
-    {
-        /** @var Place $place */
-        $place = new Place();
-
-        $place->setName($item['name']);
-        $place->setType($item['type']);
-        $place->setPreviewText($item['preview_text']);
-        $place->setInformation($item['detail_text']);
-        $place->setPreviewPicture($item['preview_picture']);
-        $place->setRegion($region);
-        $place->setPhone($item['phone']);
-        $place->setSiteUrl($item['site_url']);
-
-        $location = Location::fromJson($item, $region);
-        $place->setLocation($location);
-        // Completed : setLocation Association
-        return $place;
-    }
-
-    /**
      * Get id
      *
      * @return int
