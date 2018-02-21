@@ -3,7 +3,9 @@
 namespace Match\MatchBundle\Controller;
 
 use Match\MatchBundle\Entity\Event;
+use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Form\EventType;
+use Match\MatchBundle\Model\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,14 +74,18 @@ class EventBackController extends Controller
     {
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
-        $event->setMatch($em->getRepository("MatchBundle:Match")->find($idm));
+        $match = $em->getRepository("MatchBundle:Match")->find($idm);
+        $event->setMatch($match);
+        $match->setPlayed(true);
         $event->setTimes(new \DateTime());
         $start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
         $diff = date_diff(new \DateTime(), $start->getTimes());
         $event->setMinutes($diff->format('%i minute'));
         $event->setTypeEvent("END OF THE GAME");
+        $em->persist($match);
         $em->persist($event);
         $em->flush();
+        $this->addScore($match);
         return $this->redirectToRoute('add_event', array(
             'idm' => $idm));
 
@@ -87,6 +93,23 @@ class EventBackController extends Controller
     }
 
 
+    private function addScore($match)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $eventsTeam1 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match->getId(), 'team' => $match->getTeam1(), 'typeEvent' => "goal"));
+        $eventsTeam2 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match->getId(), 'team' => $match->getTeam2(), 'typeEvent' => "goal"));
+        $goalseam1 = count($eventsTeam1);
+        $goalsTeam2 = count($eventsTeam2);
+
+
+        $score = new  \Match\MatchBundle\Entity\Score();
+        $score->setMatch($match);
+        $score->setScoreTeam1($goalseam1);
+        $score->setScoreTeam2($goalsTeam2);
+        $em->persist($score);
+        $em->flush();
+
+    }
 
 
 }
