@@ -319,6 +319,9 @@ class Place
         $place->setType($item['type']);
         $place->setPreviewText($item['preview_text']);
         $place->setInformation($item['detail_text']);
+        // TODO : get blocks and picture name
+        $picture = explode(',', $item['preview_picture']);
+
         $place->setPreviewPicture($item['preview_picture']);
         $place->setRegion($region);
         $place->setPhone($item['phone']);

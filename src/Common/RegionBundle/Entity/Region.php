@@ -37,7 +37,7 @@ class Region
     /**
      * @var Location
      *
-     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", inversedBy="region")
+     * @ORM\OneToOne(targetEntity="Common\LocationBundle\Entity\Location", inversedBy="region", cascade={"persist"})
      */
     private $location;
 

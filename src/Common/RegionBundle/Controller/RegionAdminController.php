@@ -2,7 +2,12 @@
 
 namespace Common\RegionBundle\Controller;
 
+use Common\LocationBundle\Entity\GeoCode;
+use Common\LocationBundle\Entity\Location;
 use Common\RegionBundle\Entity\Region;
+use Common\RegionBundle\Form\RegionDataType;
+use Common\RegionBundle\Modal\RegionData;
+use Common\RegionBundle\Transformer\RegionDataTransformer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,14 +16,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Region controller.
  *
- * @Route("region")
+ * @Route("admin/region")
  */
-class RegionController extends Controller
+class RegionAdminController extends Controller
 {
     /**
      * Lists all region entities.
      *
-     * @Route("/", name="region_index")
+     * @Route("/", name="admin_region_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -35,21 +40,24 @@ class RegionController extends Controller
     /**
      * Creates a new region entity.
      *
-     * @Route("/new", name="region_new")
+     * @Route("/new", name="admin_region_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, RegionDataTransformer $regionDataTransformer)
     {
-        $region = new Region();
-        $form = $this->createForm('Common\RegionBundle\Form\RegionType', $region);
+        $regionData = new RegionData();
+        $form = $this->createForm(RegionDataType::class, $regionData);
         $form->handleRequest($request);
-
+        /** @var Region $region */
+        $region = new Region();
+        $region->setName($regionData->getRegionName());
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $region = RegionDataTransformer::transform($regionData);
             $em->persist($region);
             $em->flush();
-
-            return $this->redirectToRoute('region_show', array('id' => $region->getId()));
+            return $this->redirectToRoute('admin_region_show', array('id' => $region->getId()));
         }
 
         return $this->render('RegionBundle:region:new.html.twig', array(
@@ -61,7 +69,7 @@ class RegionController extends Controller
     /**
      * Finds and displays a region entity.
      *
-     * @Route("/{id}", name="region_show")
+     * @Route("/{id}", name="admin_region_show")
      * @Method("GET")
      */
     public function showAction(Region $region)
@@ -75,40 +83,31 @@ class RegionController extends Controller
     }
 
     /**
-     * Creates a form to delete a region entity.
-     *
-     * @param Region $region The region entity
-     *
-     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
-     */
-    private function createDeleteForm(Region $region)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('region_delete', array('id' => $region->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
-    }
-
-    /**
      * Displays a form to edit an existing region entity.
      *
-     * @Route("/{id}/edit", name="region_edit")
+     * @Route("/{id}/edit", name="admin_region_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Region $region)
     {
+
         $deleteForm = $this->createDeleteForm($region);
-        $editForm = $this->createForm('Common\RegionBundle\Form\RegionType', $region);
+        $regionData = RegionDataTransformer::reverseTransform($region);
+        $editForm = $this->createForm(RegionDataType::class, $regionData);
         $editForm->handleRequest($request);
 
+        dump($regionData);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
 
-            return $this->redirectToRoute('region_edit', array('id' => $region->getId()));
+            $region = RegionDataTransformer::transform($regionData, $region);
+            $em->persist($region);
+            $em->flush();
+            return $this->redirectToRoute('admin_region_edit', array('id' => $region->getId()));
         }
 
         return $this->render('RegionBundle:region:edit.html.twig', array(
-            'region' => $region,
+            'region' => $regionData,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -117,7 +116,7 @@ class RegionController extends Controller
     /**
      * Deletes a region entity.
      *
-     * @Route("/{id}", name="region_delete")
+     * @Route("/{id}", name="admin_region_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Region $region)
@@ -131,6 +130,21 @@ class RegionController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('region_index');
+        return $this->redirectToRoute('admin_region_index');
+    }
+
+    /**
+     * Creates a form to delete a region entity.
+     *
+     * @param Region $region The region entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Region $region)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_region_delete', array('id' => $region->getId())))
+            ->setMethod('DELETE')
+            ->getForm();
     }
 }
