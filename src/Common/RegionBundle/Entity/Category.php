@@ -52,19 +52,6 @@ class Category
      */
     private $iconType;
 
-    /**
-     * @param $item
-     * @return Category
-     */
-    public static function fromJson($item): Category
-    {
-        $category = new Category();
-        $category->setName($item['name']);
-        $category->setCode($item['code']);
-        $category->setIconType($item['icon_type']);
-
-        return $category;
-    }
 
     /**
      * Get id
@@ -146,6 +133,21 @@ class Category
         $this->iconType = $iconType;
 
         return $this;
+    }
+
+
+    /**
+     * @param $item
+     * @return Category
+     */
+    public static function fromJson($item): Category
+    {
+        $category = new Category();
+        $category->setName($item['name']);
+        $category->setCode($item['code']);
+        $category->setIconType($item['icon_type']);
+
+        return $category;
     }
 }
 

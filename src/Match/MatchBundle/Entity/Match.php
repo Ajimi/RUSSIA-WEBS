@@ -4,6 +4,7 @@ namespace Match\MatchBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Reservation\TicketBundle\Entity\Ticket;
 
 /**
  * Match
@@ -71,6 +72,13 @@ class Match
     private $played;
 
 
+    /**
+     * @var Ticket
+     *
+     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match")
+     */
+    private $ticket;
+    
 
 
     /**
@@ -270,5 +278,21 @@ class Match
     public function getPlayed()
     {
         return $this->played;
+    }
+
+    /**
+     * @return Ticket
+     */
+    public function getTicket(): Ticket
+    {
+        return $this->ticket;
+    }
+
+    /**
+     * @param Ticket $ticket
+     */
+    public function setTicket(Ticket $ticket)
+    {
+        $this->ticket = $ticket;
     }
 }

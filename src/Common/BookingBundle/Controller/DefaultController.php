@@ -1,20 +1,17 @@
 <?php
 
-namespace Reservation\TicketBundle\Controller;
+namespace Common\BookingBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-/**
- * @Route("/ticket")
- */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/book")
      */
     public function indexAction()
     {
-        return $this->render('TicketBundle:Default:index.html.twig');
+        return $this->render('BookingBundle:Default:index.html.twig');
     }
 }

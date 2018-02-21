@@ -57,6 +57,19 @@ class LocationManager extends Manager
     }
 
     /**
+     * @param Location|null $location
+     * @return array
+     */
+    public function getLocation(Location $location = null)
+    {
+        $this->isEmpty($location, "Location Object not found");
+        $data = array('location' => array());
+        $data ['location'] = $this->serialize($location);
+        return $data;
+    }
+
+
+    /**
      * @param $locations
      * @return array
      */
@@ -86,18 +99,6 @@ class LocationManager extends Manager
             "longitude" => $location->getGeoCode()->getLongitude(),
             "latitude" => $location->getGeoCode()->getLatitude(),
         );
-    }
-
-    /**
-     * @param Location|null $location
-     * @return array
-     */
-    public function getLocation(Location $location = null)
-    {
-        $this->isEmpty($location, "Location Object not found");
-        $data = array('location' => array());
-        $data ['location'] = $this->serialize($location);
-        return $data;
     }
 
 }

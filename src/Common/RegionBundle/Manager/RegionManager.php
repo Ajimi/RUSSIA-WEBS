@@ -62,20 +62,17 @@ class RegionManager extends Manager
         return $this->serializer($regions);
     }
 
+
     /**
-     * @param array|Region[] $regions
+     * @param Region|null $region
      * @return array
-     * @internal param $
+     * @throws \AppBundle\Exception\ApiException
      */
-    private function serializer($regions)
+    public function getRegion(Region $region = null): array
     {
-        $data = array('regions' => array());
-        foreach ($regions as $region) {
-            $regionData = $this->serialize($region);
-            $hotels = $region->getHotels();
-            $regionData['hotels'] = $this->hotelManager->serializer($hotels)['hotels'];
-            $data['regions'][] = $regionData;
-        }
+        $this->isEmpty($region);
+        $data = array('region' => array());
+        $data ['region'] = $this->serializer(array($region))['regions'];
         return $data;
     }
 
@@ -94,15 +91,19 @@ class RegionManager extends Manager
     }
 
     /**
-     * @param Region|null $region
+     * @param array|Region[] $regions
      * @return array
-     * @throws \AppBundle\Exception\ApiException
+     * @internal param $
      */
-    public function getRegion(Region $region = null): array
+    private function serializer($regions)
     {
-        $this->isEmpty($region);
-        $data = array('region' => array());
-        $data ['region'] = $this->serializer(array($region))['regions'];
+        $data = array('regions' => array());
+        foreach ($regions as $region) {
+            $regionData = $this->serialize($region);
+            $hotels = $region->getHotels();
+            $regionData['hotels'] = $this->hotelManager->serializer($hotels)['hotels'];
+            $data['regions'][] = $regionData;
+        }
         return $data;
     }
 }

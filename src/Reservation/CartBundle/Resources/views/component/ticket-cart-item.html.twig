@@ -1,0 +1,34 @@
+<tr>
+    <td>
+        <div class="product-cart-name">
+            <p class="product-cart-title"><a href="#">{{ match.team1.name }}</a></p>
+        </div>
+    </td>
+    <td>
+        <div class="product-cart-name">
+            <p class="product-cart-title">VS</p>
+        </div>
+    </td>
+    <td>
+        <div class="product-cart-name">
+            <p class="product-cart-title"><a href="#">{{ match.team2.name }}</a></p>
+        </div>
+    </td>
+    <td>
+        <div class="stepper-modern">
+            <div class="stepper "><input class="form-input stepper-input" type="number" data-zeros="true" value="1"
+                                         min="1" max="100"><span class="stepper-arrow up"></span><span
+                        class="stepper-arrow down"></span></div>
+        </div>
+    </td>
+    <td>
+        <div class="product-cart-price"><span>{{ item.ticket.price }}</span></div>
+    </td>
+    <td>
+        <a href="{{ path('cart_remove_item', {'id': item.id}) }}">
+            <div class="product-cart-delete">
+                <span class="icon fl-bigmug-line-recycling10"></span>
+            </div>
+        </a>
+    </td>
+</tr>

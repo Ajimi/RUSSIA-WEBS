@@ -4,6 +4,8 @@ namespace Common\LocationBundle\Entity;
 
 use Common\RegionBundle\Entity\Region;
 use Doctrine\ORM\Mapping as ORM;
+use Faker\Generator;
+use Nelmio\Alice\Instances\Processor\Methods\Faker;
 use Reservation\HotelBundle\Entity\Hotel;
 
 /**
@@ -148,5 +150,32 @@ class Location
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * @param $item
+     * @param Region $city
+     * @return Location
+     */
+    public static function fromJson($item, Region $city): Location
+    {
+        $location = new Location();
+        $address = new Address();
+        $faker = new Generator();
+        $geocode = new GeoCode();
+
+
+        $address->setCity($city->getName());
+        $address->setState($city->getName());
+//        $address->setPostalcode($faker->postcode);
+//        $address->setStreet1($faker->streetAddress);
+
+        $geocodeArray = explode(',', $item['location']);
+        $geocode->setLatitude($geocodeArray[0]);
+        $geocode->setLongitude($geocodeArray[1]);
+
+        $location->setAddress($address);
+        $location->setGeoCode($geocode);
+        return $location;
     }
 }

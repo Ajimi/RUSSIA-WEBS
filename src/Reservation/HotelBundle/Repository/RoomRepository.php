@@ -2,6 +2,8 @@
 
 namespace Reservation\HotelBundle\Repository;
 
+use Reservation\HotelBundle\Entity\Hotel;
+
 /**
  * RoomRepository
  *
@@ -10,4 +12,12 @@ namespace Reservation\HotelBundle\Repository;
  */
 class RoomRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByHotel(Hotel $hotel)
+    {
+        $query = $this->createQueryBuilder('r')
+            ->andWhere("r.hotel = :hotel")
+            ->setParameter('hotel', $hotel)
+            ->getQuery();
+        return $query->getResult();
+    }
 }
