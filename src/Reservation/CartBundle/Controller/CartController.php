@@ -4,10 +4,9 @@ namespace Reservation\CartBundle\Controller;
 
 use Match\MatchBundle\Entity\Match;
 use Reservation\TicketBundle\Entity\Matche;
-use Reservation\TicketBundle\Entity\Ticket;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -25,13 +24,12 @@ class CartController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         return $this->render('CartBundle:cart:index.html.twig');
     }
 
 
     /**
-     * @Route("cart_modal", name="cart_modal")
+     * @Route("cart_modal", name="cart_modal", options={"expose" = true})
      */
     public function cartModalAction(Request $request)
     {
@@ -91,11 +89,11 @@ class CartController extends Controller
 
         $cart = $session->get('cart');
 
+
         $cart[$match->getId()] = 1;
         $session->set('cart', $cart);
 
-        $session->getFlashBag()->add('success', 'The ticket added perfectly');
-
+        $this->addFlash('success', 'The ticket added perfectly');
         // TODO : Change Route to CART and add more SESSION FLASHBAG SAME AS REMOVE
         return $this->redirectToRoute('cart_index');
     }

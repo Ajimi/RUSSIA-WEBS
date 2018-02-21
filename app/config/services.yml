@@ -78,6 +78,20 @@ services:
         exclude: '../../src/Common/BookingBundle/{Entity,Repository,Tests}'
 
     # controllers are imported separately to make sure they're public
+        # and have a tag that allows actions to type-hint services
+    Reservation\CartBundle\Controller\:
+        resource: '../../src/Reservation/CartBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    Reservation\CartBundle\:
+        resource: '../../src/Reservation/CartBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/Reservation/CartBundle/{Entity,Repository,Tests}'
+
+
+    # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
     Common\BookingBundle\Controller\:
         resource: '../../src/Common/BookingBundle/Controller'
@@ -111,4 +125,3 @@ services:
             - { name: kernel.event_listener, event: kernel.request }
     redirect.after_login:
         class: UserBundle\Redirection\AfterLoginRedirection
-

@@ -10,6 +10,13 @@ $(document).ready(function () {
             .then(function (response) {
                 $item.text('Go to cart');
                 $item.attr('href', Routing.generate('cart_index'));
+                axios.get(Routing.generate('cart_modal'))
+                    .then(function (response) {
+                        $('#js-iteme').empty().append(response.data);
+                    })
+                    .catch(function (err) {
+
+                    });
             }).catch(function (err) {
             console.log(err);
         });

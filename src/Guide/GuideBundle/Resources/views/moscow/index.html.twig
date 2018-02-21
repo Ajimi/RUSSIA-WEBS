@@ -313,7 +313,7 @@
                 }
             });
 
-            var markers = new Array();
+            var markers = [];
             {% for place in places %}
             var longitutde = '{{ place.location.geoCode.latitude }}';
             var latitude = '{{ place.location.geoCode.longitude }}';

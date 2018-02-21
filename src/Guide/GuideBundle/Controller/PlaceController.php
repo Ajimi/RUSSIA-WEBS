@@ -21,8 +21,6 @@ class PlaceController extends Controller
      */
     public function indexAction(Place $place)
     {
-
-
         return $this->render('@Guide/place/place.html.twig', array('place' => $place));
     }
 
@@ -33,8 +31,6 @@ class PlaceController extends Controller
      */
     public function modalAction(Place $place)
     {
-
-
         $rendered = $this->render('@Guide/place/place-modal.html.twig', array('place' => $place));
         return $rendered;
     }
