@@ -7,7 +7,7 @@
         {% block breadcrumbs_path %}
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="#">Team</a></li>
-            <li>{{ player.nationalTeam.teamName }}</li>
+            <li><a href="{{ path('team_display',{'id':player.nationalTeam.id}) }}">{{ player.nationalTeam.teamName }}</a></li>
             <li><a href="#">Player</a></li>
             <li class="active">{{ player.playerName~" "~player.playerLastName }}</li>
         {% endblock %}
