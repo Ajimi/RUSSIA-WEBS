@@ -7,6 +7,7 @@ use Player\PlayerBundle\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("/admin/player")
@@ -19,6 +20,15 @@ class PlayerBackController extends Controller
     public function addPlayerAction(Request $request)
     {
         $player = new Player();
+        $player->setGoalScored(0);
+        $player->setAssists(0);
+        $player->setFouls(0);
+        $player->setMinutesPlayed(0);
+        $player->setPasses(0);
+        $player->setRedCard(0);
+        $player->setYellowCard(0);
+        $player->setShots(0);
+        $player->setShotsOnTarget(0);
         $formplayer = $this->createForm(PlayerType::class, $player);
         $formplayer->handleRequest($request);
         if ($formplayer->isValid()) {
@@ -27,7 +37,7 @@ class PlayerBackController extends Controller
             $em->flush();
         }
         return $this->render('PlayerBundle:PlayerBack:add_player.html.twig', array(
-            'formplayer'=>$formplayer->createView()
+            'formplayer'=>$formplayer->createView(),
         ));
     }
 

@@ -20,10 +20,6 @@ class PlayerType extends AbstractType
             ->add('playerImage')->add('playerPosition')
             ->add('birthday')->add('weight')->add('height')
             ->add('totalGames')->add('bio')->add('team')
-            ->add('goalScored')->add('shots')->add('shotsOnTarget')
-            ->add('assists')->add('passes')->add('fouls')
-            ->add('minutesPlayed')->add('yellowCard')
-            ->add('redCard')
             ->add('nationalTeam',EntityType::class,array(
                 'class' => 'TeamBundle:Team',
                 'choice_label' => 'teamName', 'multiple' => false))
