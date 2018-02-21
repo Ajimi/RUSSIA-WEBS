@@ -23,21 +23,26 @@ class RegionDataType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('regionName')
-            ->add('longitude', TextType::class,
-                array(
-                    'attr' => array(
-                        'class' => 'js-lng'
-                    ),
+        $builder->add('regionName', TextType::class,
+            array(
+                'attr' => array(
+                    'required' => true
                 )
             )
-            ->add('latitude', TextType::class,
-                array(
-                    'attr' => array(
-                        'class' => 'js-lat'
-                    ),
-                )
-            );
+        )->add('longitude', TextType::class,
+            array(
+                'attr' => array(
+                    'class' => 'js-lng',
+                    'required' => true
+                ),
+            )
+        )->add('latitude', TextType::class,
+            array(
+                'attr' => array(
+                    'class' => 'js-lat'
+                ),
+            )
+        );
     }
 
     /**

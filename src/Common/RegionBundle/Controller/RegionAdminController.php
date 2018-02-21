@@ -55,10 +55,10 @@ class RegionAdminController extends Controller
             $region = RegionDataTransformer::transform($regionData);
             $em->persist($region);
             $em->flush();
-            return $this->redirectToRoute('admin_region_show', array('id' => $region->getId()));
+            return $this->redirectToRoute('admin_region_index', array('id' => $region->getId()));
         }
 
-        return $this->render('RegionBundle:region:new.html.twig', array(
+        return $this->render('RegionBundle:Default:add_region.html.twig', array(
             'region' => $region,
             'form' => $form->createView(),
         ));
@@ -89,7 +89,6 @@ class RegionAdminController extends Controller
     public function editAction(Request $request, Region $region)
     {
 
-        $deleteForm = $this->createDeleteForm($region);
         $regionData = RegionDataTransformer::reverseTransform($region);
         $editForm = $this->createForm(RegionDataType::class, $regionData);
         $editForm->handleRequest($request);
@@ -104,18 +103,16 @@ class RegionAdminController extends Controller
             return $this->redirectToRoute('admin_region_index');
         }
 
-        return $this->render('RegionBundle:region:edit.html.twig', array(
+        return $this->render('@Region/Default/edit_region.html.twig', array(
             'region' => $regionData,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
     /**
      * Deletes a region entity.
      *
-     * @Route("/{id}", name="admin_region_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="admin_region_delete", options={"expose" = true})
      */
     public function deleteAction(Request $request, Region $region)
     {
@@ -123,20 +120,5 @@ class RegionAdminController extends Controller
         $em->remove($region);
         $em->flush();
         return $this->redirectToRoute('admin_region_index');
-    }
-
-    /**
-     * Creates a form to delete a region entity.
-     *
-     * @param Region $region The region entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Region $region)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_region_delete', array('id' => $region->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
     }
 }
