@@ -47,8 +47,14 @@ class Event
 
 
     /**
-     * @var string
-     * @ORM\Column(name="times", type="string")
+     * @var integer
+     * @ORM\Column(name="minutes", type="integer")
+     */
+    private $minutes;
+
+    /**
+     * @var
+     * @ORM\Column(name="times", type="datetime")
      */
     private $times;
 
@@ -61,7 +67,7 @@ class Event
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="description", type="string", nullable=true)
      */
     private $description;
 
@@ -76,29 +82,6 @@ class Event
         return $this->id;
     }
 
-    /**
-     * Get time.
-     *
-     * @return string
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
-
-    /**
-     * Set time.
-     *
-     * @param string $time
-     *
-     * @return Event
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
 
     /**
      * Get typeEvent.
@@ -242,5 +225,29 @@ class Event
     public function getTimes()
     {
         return $this->times;
+    }
+
+    /**
+     * Set minutes.
+     *
+     * @param int $minutes
+     *
+     * @return Event
+     */
+    public function setMinutes($minutes)
+    {
+        $this->minutes = $minutes;
+
+        return $this;
+    }
+
+    /**
+     * Get minutes.
+     *
+     * @return int
+     */
+    public function getMinutes()
+    {
+        return $this->minutes;
     }
 }
