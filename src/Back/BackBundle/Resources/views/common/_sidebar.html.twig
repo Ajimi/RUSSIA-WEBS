@@ -16,7 +16,8 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Marhba</h2>
+                {#TODO : ADD ADMINISTRATEUR NAME#}
+                <h2></h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -103,11 +104,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a><i class="fa fa-book"></i> Team <span class="fa fa-chevron-down"></span></a>
+                        <a><i class="fa fa-book"></i> Region <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="http://symfony.com/doc/current/index.html">List</a>
+                            <li>
+                                <a href="{{ path('admin_region_index') }}">List</a>
                             </li>
-                            <li><a href="http://symfony.com/doc/current/index.html">Add</a>
+                            <li>
+                                <a href="{{ path('admin_region_new') }}">Add</a>
                             </li>
                         </ul>
                     </li>
