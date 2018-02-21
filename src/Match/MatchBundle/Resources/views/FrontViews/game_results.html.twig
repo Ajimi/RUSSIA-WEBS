@@ -38,42 +38,47 @@
                             <!-- Heading Component-->
                             <article class="heading-component">
                                 <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Player of the month
+                                    <h5 class="heading-component-title">Best striker
                                     </h5>
                                 </div>
                             </article>
                             {% include '@Front/player-component/_player-info-minimal.html.twig' %}
                         </div>
 
-                        <div class="col-md-6 col-lg-12 owl-carousel-outer-navigation">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Latest Game results
-                                    </h5>
-                                    <div class="owl-carousel-arrows-outline">
-                                        <div class="owl-nav">
-                                            <button class="owl-arrow owl-arrow-prev"></button>
-                                            <button class="owl-arrow owl-arrow-next"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
 
-                            <div class="owl-carousel" data-items="1" data-dots="false" data-nav="true" data-stage-padding="0" data-loop="false" data-margin="0" data-mouse-drag="false" data-nav-custom=".owl-carousel-outer-navigation">
-
-                                {% include 'MatchBundle:FrontViews:single_latest_game_result_modal.html.twig' %}
-                            </div>
-                        </div>
                         <div class="col-md-6 col-lg-12">
                             <!-- Heading Component-->
                             <article class="heading-component">
                                 <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Follow Us
+                                    <h5 class="heading-component-title">group points
                                     </h5>
                                 </div>
                             </article>
-                            {% include '@Front/social-component/_button-media.html.twig' %}
+
+                            <div class="table-custom-responsive">
+                                <table class="table-custom table-custom-bordered table-team-statistic">
+                                    <tr>
+                                        <td>
+                                            <p class="team-statistic-counter">109</p>
+                                            <p class="team-statistic-title">Groupe A</p>
+                                        </td>
+                                        <td>
+                                            <p class="team-statistic-counter">65</p>
+                                            <p class="team-statistic-title">Groupe B</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="team-statistic-counter">23</p>
+                                            <p class="team-statistic-title">Groupe C</p>
+                                        </td>
+                                        <td>
+                                            <p class="team-statistic-counter">102</p>
+                                            <p class="team-statistic-title">Groupe D</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
 
                     </div>
