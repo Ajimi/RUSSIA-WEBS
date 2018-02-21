@@ -1,9 +1,10 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
 
 {% block body %}
-    <h1>Articles list</h1>
 
-    <table>
+    <br><br><br><h1>Articles list</h1>
+    <div class="</div>">
+        <table class="table-active">
         <thead>
         <tr>
             <th>Id</th>
@@ -15,14 +16,14 @@
         {% for article in articles %}
             <tr>
                 <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.content }}</td>
+                <td>{{ article.content|raw }}</td>
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
+                            {#<a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>#}
                         </li>
                     </ul>
                 </td>
@@ -30,10 +31,10 @@
         {% endfor %}
         </tbody>
     </table>
-
+    </div>
     <ul>
         <li>
-            <a href="{{ path('article_new') }}">Create a new article</a>
+            {#<a href="{{ path('article_new') }}">Create a new article</a>#}
         </li>
     </ul>
 {% endblock %}

@@ -3,14 +3,26 @@
 {% block page_content %}
     <h1>Article creation</h1>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="Create"/>
+    {{ form_start(form , {'attr': {'class': 'form-horizontal form-label-left'}}) }}
+    <div class="item form-group">
+        {{ form_label(form.title, 'Title', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            {{ form_widget(form.title, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
+        </div>
+    </div>
+    {{ form_rest(form) }}
+
+
+    <div class="col-md-6 col-md-offset-3">
+        <button type="reset" class="btn btn-primary">cancel</button>
+        <button id="submit" type="submit" class="btn btn-success">Submit</button>
+    </div>
+
     {{ form_end(form) }}
 
     <ul>
-        <li>
-            <a href="{{ path('admin_article_index') }}">Back to the list</a>
-        </li>
+        {#<li>#}
+        {#<a href="{{ path('admin_article_index') }}">Back to the list</a>#}
+        {#</li>#}
     </ul>
 {% endblock %}
