@@ -35,11 +35,7 @@
                         <th class="column-title">TICKETS</th>
                         <th class="column-title">EDIT</th>
                         </th>
-                        <th class="bulk-actions" colspan="7">
-                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions (
-                                <span class="action-cnt"> </span> ) <i
-                                        class="fa fa-chevron-down"></i></a>
-                        </th>
+
                     </tr>
                     </thead>
 
@@ -70,11 +66,11 @@
 
                                 {% else %}
 
-                                    <a href="{{ path('add_event',{'idm':m.id}) }}"
-                                       class="btn btn-success btn-xs "> New Event </a>
+                                    <a href="#"
+                                       class="btn btn-success btn-xs disabled "> Highlights </a>
 
-                                    <a href="{{ path('edit_match',{'id':m.id}) }}"
-                                       class="btn btn-info btn-xs">
+                                    <a href="#"
+                                       class="btn btn-info btn-xs  disabled">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
                                     <a href="{{ path('delete_match',{'id':m.id}) }}"

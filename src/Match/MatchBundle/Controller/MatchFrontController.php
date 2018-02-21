@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MatchFrontController extends Controller
 {
     /**
-     * @Route("/schedule", name="gameschedule_list")
+     * @Route("/schedule", name="schedule_list")
      */
 
     public function displayAction()
