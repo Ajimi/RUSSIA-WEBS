@@ -1,0 +1,37 @@
+Team\TeamBundle\Entity\Team:
+    teame{1..32}:
+      teamName: <country()>
+      teamLogo: "argentina-hd-logo.png"
+      teamShortcut: <word()>
+      matchWon: <randomDigitNotNull()>
+      matchLost: <randomDigitNotNull()>
+      goalScored: <randomDigitNotNull()>
+      goalIn: <randomDigitNotNull()>
+      matchDraw: <randomDigitNotNull()>
+      participation: <randomDigitNotNull()>
+      winner: <randomDigitNotNull()>
+      second: <randomDigitNotNull()>
+      third: <randomDigitNotNull()>
+
+
+Match\MatchBundle\Entity\TeamTest:
+    teamee{1..32}:
+        name: <country()>
+
+Match\MatchBundle\Entity\Match:
+    match{1..50}:
+        team1: '@teamee*'
+        team2: '@teamee*'
+        level: "first"
+        date: <date()>
+        time: <time()>
+        stadium: <city()>
+        played: false
+
+
+
+Reservation\TicketBundle\Entity\Ticket:
+    ticket{1..50}:
+        match(unique): '@match*'
+        price: <numberBetween(100,300)>
+        quantity: <numberBetween(5000,8000)>
