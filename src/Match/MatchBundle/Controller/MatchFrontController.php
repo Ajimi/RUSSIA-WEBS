@@ -29,5 +29,17 @@ class MatchFrontController extends Controller
         ));
     }
 
+    /**
+     * @Route("/results", name="result_list")
+     */
+
+    public function displayResultsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $scores = $em->getRepository("MatchBundle:Score")->findAll();
+        return $this->render('@Match/FrontViews/game_results.html.twig',array(
+            'scores'=>$scores
+        ));
+    }
 
 }
