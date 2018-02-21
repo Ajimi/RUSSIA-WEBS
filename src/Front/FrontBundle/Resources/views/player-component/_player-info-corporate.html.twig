@@ -1,16 +1,16 @@
 <div class="player-info-corporate">
     <div class="player-info-figure">
         <div class="block-number"><span>11</span></div>
-        <div class="player-img"><img src="{{ asset('/asstes/images/player-1-368x300.png') }}" alt="" width="368"
+        <div class="player-img"><img src="{{ asset(playerImage~"") }}" alt="" width="368"
                                      height="300">
         </div>
-        <div class="team-logo-img"><img src="{{ asset('/asstes/images/logo-team-1-313x313.png') }}" alt="" width="313"
+        <div class="team-logo-img"><img src="{{ asset(teamImage~"") }}" alt="" width="313"
                                         height="313">
         </div>
     </div>
     <div class="player-info-main">
-        <h4 class="player-info-title">David Hawkins</h4>
-        <p class="player-info-subtitle">Defender</p>
+        <h4 class="player-info-title">{% block playerName%}{% endblock %}</h4>
+        <p class="player-info-subtitle">{% block playerPos%}{% endblock %}</p>
         <hr>
         <div class="player-info-table">
             <div class="table-custom-wrap">
@@ -18,19 +18,23 @@
                     <tbody>
                     <tr>
                         <th>Goals</th>
-                        <th>2</th>
+                        <th>{% block playerGoals%}{% endblock %}</th>
                         <th>Assists</th>
-                        <th>10</th>
+                        <th>{% block playerAssists%}{% endblock %}</th>
                     </tr>
                     <tr>
+                        <td>Shots </td>
+                        <td>{% block playerShot%}{% endblock %}</td>
                         <td>Shots on Target</td>
-                        <td>34 (2)</td>
-                        <td>Key Passes</td>
-                        <td>7</td>
+                        <td>{% block playerSot%}{% endblock %}</td>
                     </tr>
                     <tr>
-                        <td>Dribbles</td>
-                        <td>20</td>
+                        <td>playerPos</td>
+                        <td>{% block yellowCard%}{% endblock %}</td>
+                    </tr>
+                    <tr>
+                        <td>playerPos</td>
+                        <td>{% block redCard%}{% endblock %}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -38,26 +42,7 @@
         </div>
         <hr>
         <div class="player-info-progress">
-            <!-- Linear progress bar-->
-            <article class="progress-linear progress-bar-modern animated-first">
-                <div class="progress-header">
-                    <p>Pass Acc</p>
-                </div>
-                <div class="progress-bar-linear-wrap">
-                    <div class="progress-bar-linear" style="width: 95%;"></div>
-                </div>
-                <span class="progress-value">95</span>
-            </article>
-            <!-- Linear progress bar-->
-            <article class="progress-linear progress-bar-modern animated-first">
-                <div class="progress-header">
-                    <p>Shots Acc</p>
-                </div>
-                <div class="progress-bar-linear-wrap">
-                    <div class="progress-bar-linear" style="width: 70%;"></div>
-                </div>
-                <span class="progress-value">70</span>
-            </article>
+            {% block skills%}{% endblock %}
         </div>
     </div>
 </div>
