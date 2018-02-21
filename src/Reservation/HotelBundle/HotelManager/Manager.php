@@ -11,6 +11,10 @@ namespace Reservation\HotelBundle\HotelManager;
 
 use AppBundle\Exception\ApiException;
 
+/**
+ * Class Manager
+ * @package Reservation\HotelBundle\HotelManager
+ */
 class Manager
 {
     /**
@@ -19,7 +23,7 @@ class Manager
      * @param int $code
      * @throws ApiException
      */
-    public function throwApiException($entity, $message = "A problem Has been occured", $code = 401)
+    public function isEmpty($entity, $message = "A problem Has been occured", $code = 401)
     {
         if (!$entity || empty($entity))
             throw new ApiException($message, $code);

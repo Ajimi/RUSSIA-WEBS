@@ -1,0 +1,31 @@
+<div class="product-cart">
+    <div class="table-custom-responsive">
+        <table class="table-custom table-product">
+            <thead>
+            <tr>
+                <th>First Team</th>
+                <th></th>
+                <th>Second Team</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if matches|length != 0 %}
+                {% for item in matches %}
+                    {% embed '@Cart/component/checkout-cart-item.html.twig'  with {'match': item} %}
+                    {% endembed %}
+                {% endfor %}
+            {% else %}
+                <td colspan="6">
+                    <div class="product-cart-name" style=>
+                        {#TODO : GO BACK LINK#}
+                        <p class="product-cart-title">There's Nothing in the checkout go back</p>
+                    </div>
+                </td>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {{ total }}
+</div>

@@ -15,6 +15,10 @@ use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\HotelManager\HotelManager;
 use Reservation\HotelBundle\HotelManager\Manager;
 
+/**
+ * Class LocationManager
+ * @package Common\LocationBundle\Manager
+ */
 class LocationManager extends Manager
 {
     private $entityManager;
@@ -24,6 +28,7 @@ class LocationManager extends Manager
     /**
      * LocationManager constructor.
      * @param EntityManager $entityManager
+     * @param HotelManager $hotelManager
      */
     public function __construct(EntityManager $entityManager)
     {
@@ -40,20 +45,39 @@ class LocationManager extends Manager
     }
 
 
+    /**
+     * Returns All Locations
+     * @return array
+     */
     public function getList()
     {
         $locations = $this->repository->findAll();
-        $this->throwApiException($locations, "Empty list of location");
-        $data = $this->locationSerialization($locations);
+        $this->isEmpty($locations, "Empty list of location");
+        return $this->serializer($locations);
+    }
 
+    /**
+     * @param Location|null $location
+     * @return array
+     */
+    public function getLocation(Location $location = null)
+    {
+        $this->isEmpty($location, "Location Object not found");
+        $data = array('location' => array());
+        $data ['location'] = $this->serialize($location);
         return $data;
     }
 
-    private function locationSerialization($rooms): array
+
+    /**
+     * @param $locations
+     * @return array
+     */
+    private function serializer($locations): array
     {
         $data = array('locations' => array());
-        foreach ($rooms as $room) {
-            $data['locations'][] = $this->serializeLocation($room);
+        foreach ($locations as $location) {
+            $data['locations'][] = $this->serialize($location);
         }
         return $data;
     }
@@ -62,7 +86,7 @@ class LocationManager extends Manager
      * @param Location $location
      * @return array
      */
-    private function serializeLocation(Location $location)
+    private function serialize(Location $location)
     {
         return array(
             "id" => $location->getId(),
@@ -75,17 +99,6 @@ class LocationManager extends Manager
             "longitude" => $location->getGeoCode()->getLongitude(),
             "latitude" => $location->getGeoCode()->getLatitude(),
         );
-    }
-
-    /**
-     * @param Location|null $location
-     * @return array
-     */
-    public function getLocation(Location $location = null)
-    {
-        $this->throwApiException($location, "Location Object not found");
-        $data = array('hotel' => array());
-        return $data [] = $this->serializeLocation($location);
     }
 
 }

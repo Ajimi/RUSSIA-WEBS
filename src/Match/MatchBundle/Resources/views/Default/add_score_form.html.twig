@@ -1,0 +1,145 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block title %}Match | Game Result{% endblock %}
+
+{% block page_title %}Game Result{% endblock page_title %}
+{% block page_content %}
+
+    <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Result</h2>
+
+                <div class="clearfix"></div>
+
+                <table class="table table-hover">
+
+                    <form class="form-horizontal" method="POST">
+                        <tbody>
+                        <tr>
+                            <td style='text-align:center;vertical-align:middle'>
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                                <br><br>
+                                {{ team1.name |upper }}
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h1>VS</h1></td>
+                            <td style='text-align:center;vertical-align:middle'>
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
+                                <br><br>
+                                {{ team2.name |upper }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style='text-align:center;vertical-align:middle'><h1>STATISTICS</h1></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1Shots" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Shots</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2Shots" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1CornerKicks" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Corner Kicks</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2CornerKicks" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1Saves" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Saves</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2Saves" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1YellowCards" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Yellow Cards</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2YellowCards" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team1RedCards" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                            <td style='text-align:center;vertical-align:middle'><h3>Red Cards</h3></td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="team2RedCards" type="number" style="Text-ALIGN:center"
+                                           class="form-control col-md-3 col-sm-3 col-xs-3" required="required">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Save Results</button>
+                                </div>
+
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </form>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock page_content %}
+
+{% block javascripts %}
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+{% endblock javascripts %}

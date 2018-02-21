@@ -51,7 +51,7 @@ Reservation\HotelBundle\Entity\Room:
         type:         <roomType()>
         size:         <numberBetween(100,300)>
         bedNumber:    <numberBetween(1,7)>
-        price:        <randomDigitNotNull()>
+        price:        <randomFloat(4,1 ,4)>
         description:  <sentence(9)>
         available:  <boolean(80)>
         hotel:       '@hotel*'
@@ -63,9 +63,9 @@ Reservation\HotelBundle\Entity\Hotel:
         stars:      <numberBetween(1,5)>
         availableRooms: <randomDigitNotNull()>
         location(unique):   '@location*'
-        region:     '@region*'
-
-Common\RegionBundle\Entity\Region:
-    region{1..5}:
-        name:       <cityPrefix()>
-        location(unique) :   '@location*'
+#        region:     '@region*'
+#
+#Common\RegionBundle\Entity\Region:
+#    region{1..5}:
+#        name:       <cityPrefix()>
+#        location(unique) :   '@location*'

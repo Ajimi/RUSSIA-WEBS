@@ -1,16 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends '@Back/common/_base.html.twig' %}
 
-{% block body %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+    <style>
+        #mapid {
+            height: 40em;
+            width: 400px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block page_content %}
     <h1>Region edit</h1>
 
+    <div id="mapid">
+    </div>
+
     {{ form_start(edit_form) }}
+
     {{ form_widget(edit_form) }}
     <input type="submit" value="Edit"/>
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('region_index') }}">Back to the list</a>
+            <a href="{{ path('admin_region_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
@@ -18,4 +34,71 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('modal/js/redirect.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            var regionLong = '56.2851078';
+            var regionLat = '58.5906365';
+
+            if ('{{ region.longitude }}' != "") {
+                regionLong = '{{ region.longitude }}';
+
+            }
+            if ('{{ region.latitude }}' != "") {
+                regionLat = '{{ region.latitude }}';
+            }
+
+            var latlng = L.latLng(regionLat, regionLong);
+            var map = L.map('mapid', {
+                scrollWheelZoom: false
+            }).setView(latlng, 4);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+
+            var marker;
+            marker = new L.marker(latlng);
+            map.addLayer(marker);
+            var canAdd = true;
+            map.on('click', function (event) {
+                if (canAdd) {
+                    map.removeLayer(marker);
+                    addMarker(event);
+                }
+                else {
+                    addMarker(event);
+
+                }
+                $('.js-lng').val(event.latlng.lng);
+                $('.js-lat').val(event.latlng.lat);
+
+            });
+
+
+            map.addEventListener('mousemove', function (ev) {
+                lat = ev.latlng.lat;
+                lng = ev.latlng.lng;
+
+            });
+
+            function addMarker(e) {
+                console.log(marker);
+                marker = new L.marker(e.latlng);
+                map.addLayer(marker);
+                canAdd = false;
+            }
+        });
+
+
+    </script>
+
 {% endblock %}

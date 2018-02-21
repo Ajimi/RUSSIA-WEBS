@@ -11,7 +11,6 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Nelmio\Alice\Fixtures;
 
 class LoadFixtures implements FixtureInterface
@@ -26,8 +25,9 @@ class LoadFixtures implements FixtureInterface
     {
         $objects = Fixtures::load(
             [
-//                __DIR__ . '/fixtures.yml',
+                __DIR__ . '/fixtures.yml',
                 __DIR__ . '/user.yml',
+                __DIR__ . '/tickets.yml',
                 __DIR__ . '/article.yml',
             ],
             $manager,

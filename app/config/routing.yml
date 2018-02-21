@@ -1,3 +1,17 @@
+region_place:
+    resource: "@RegionBundle/Controller/PlaceController.php"
+    type:     annotation
+
+cart:
+    resource: "@CartBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+match:
+    resource: "@MatchBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /
@@ -5,6 +19,10 @@ upload:
 booking:
     resource: "@BookingBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /
 
 news:
@@ -21,7 +39,7 @@ location_address:
     type:     annotation
 
 region_region:
-    resource: "@RegionBundle/Controller/RegionController.php"
+    resource: "@RegionBundle/Controller/RegionAdminController.php"
     type:     annotation
 
 hotel_room:
@@ -100,7 +118,7 @@ user_yml:
     resource: "@UserBundle/Resources/config/routing.yml"
 
 fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+  resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 sg_datatables_bundle:
     resource: "@SgDatatablesBundle/Controller/"
     type:     annotation

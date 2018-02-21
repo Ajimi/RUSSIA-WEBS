@@ -22,9 +22,10 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
 
 
@@ -42,11 +43,13 @@ class AppKernel extends Kernel
             new Reservation\TicketBundle\TicketBundle(),
             new Group\GroupBundle\GroupBundle(),
             new Guide\GuideBundle\GuideBundle(),
+            new Match\MatchBundle\MatchBundle(),
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
             new Common\UploadBundle\UploadBundle(),
-            new News\NewsBundle\NewsBundle(),
             new Common\BookingBundle\BookingBundle(),
+            new Reservation\CartBundle\CartBundle(),
+            new News\NewsBundle\NewsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -58,7 +61,6 @@ class AppKernel extends Kernel
              * External Bundle
              */
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

@@ -22,15 +22,11 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(
-     *     targetEntity="Common\BookingBundle\Entity\Booking",
-     *     mappedBy="user",
-     *     fetch="EXTRA_LAZY",
-     *     orphanRemoval=true,
-     *     cascade={"persist"}
-     * )
+     * @ORM\Column(type="string", unique=true, nullable=true)
      */
-    private $bookings;
+    private $stripeCustomerId;
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -46,7 +42,7 @@ class User extends BaseUser
     protected $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @Assert\Length(
      *     min=3,
@@ -63,10 +59,19 @@ class User extends BaseUser
      */
     private $articles;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $birthday;
 
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity="Common\BookingBundle\Entity\Booking",
+     *     mappedBy="user"
+     * )
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $bookings;
 
     public function __construct()
     {
@@ -162,6 +167,21 @@ class User extends BaseUser
         $this->lastname = $lastname;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStripeCustomerId()
+    {
+        return $this->stripeCustomerId;
+    }
+
+    /**
+     * @param mixed $stripeCustomerId
+     */
+    public function setStripeCustomerId($stripeCustomerId)
+    {
+        $this->stripeCustomerId = $stripeCustomerId;
+    }
 
 
 }

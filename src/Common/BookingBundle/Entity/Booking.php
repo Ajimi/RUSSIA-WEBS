@@ -4,6 +4,7 @@ namespace Common\BookingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Reservation\HotelBundle\Entity\Hotel;
+use Reservation\TicketBundle\Entity\Ticket;
 use UserBundle\Entity\User;
 
 /**
@@ -43,6 +44,13 @@ class Booking
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @var Ticket
+     * @ORM\ManyToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket", inversedBy="bookings")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ticket;
 
     /**
      * @return Hotel
@@ -100,6 +108,22 @@ class Booking
     public function setUser(User $user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return Ticket
+     */
+    public function getTicket(): Ticket
+    {
+        return $this->ticket;
+    }
+
+    /**
+     * @param Ticket $ticket
+     */
+    public function setTicket(Ticket $ticket)
+    {
+        $this->ticket = $ticket;
     }
 
 }

@@ -1,0 +1,121 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+{% block title %}    Match | New Match  {% endblock title %}
+
+{% block top_content_header %}
+{% endblock top_content_header %}
+{% block page_content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel ">
+            <div class="x_title">
+                <h3>New Match
+                    <small>Let the game begin !</small>
+                </h3>
+
+                <div class="clearfix"></div>
+            </div>
+            <br/>
+            {{ form_start(matchForm, {'method': 'post', 'action': path('add_match'), 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+            <div class="form-group">
+                {{ form_label(matchForm.team1, 'Team Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(matchForm.team1, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(matchForm.team2, 'Team Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(matchForm.team2, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team2 @Required'} }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(matchForm.level, 'Level*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(matchForm.level, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@level @Required'} }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(matchForm.date, 'Date*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-3">
+                    <fieldset>
+                        <div class="control-group ">
+
+                            <input type="text" class="form-control has-feedback-left"
+                                   id="single_cal3" name="calendar" placeholder="Pick a Date"
+                                   aria-describedby="inputSuccess2Status3" required="required">
+                            <span class="fa fa-calendar-o form-control-feedback left"
+                                  aria-hidden="true"></span>
+                            <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                        </div>
+                        {% do matchForm.date.setRendered %}
+                    </fieldset>
+                </div>
+
+            </div>
+
+            <!-- TimePicker -->
+            <div class="form-group">
+                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12 ">
+                    Time<span class="required">*</span></label>
+                <div class="col-md-3">
+                    <div class="control-group ">
+                        <input type="text" id="timepicker" name="timepicker"
+                               class="form-control col-md-7 col-xs-12 has-feedback-left"/>
+
+                        <span class="fa fa-clock-o form-control-feedback left"
+                              aria-hidden="true"></span>
+                        {% do matchForm.time.setRendered %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(matchForm.stadium, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <br>
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                    {{ form_widget(matchForm.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                </div>
+            </div>
+
+        </div>
+        {{ form_end(matchForm) }}
+
+    </div>
+
+{% endblock page_content %}
+
+{% block javascripts %}
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+
+    <script src="{{ asset('assets/timepicker.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#timepicker').mdtimepicker(); //Initializes the time picker
+        });
+    </script>
+{% endblock javascripts %}

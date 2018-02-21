@@ -1,0 +1,90 @@
+<section class="section section-sm bg-gray-100">
+    <div class="container">
+        <!-- Heading Component-->
+
+        <article class="heading-component row-30">
+            <div class="heading-component-inner">
+                <h5 class="heading-component-title">Game schedule
+                </h5>
+                <div class="heading-component-aside">
+                    <ul class="list-inline list-inline-xs list-inline-middle">
+                        <li>
+                            <select class="select select-minimal" data-placeholder="Select an option"
+                                    data-dropdown-class="select-minimal-dropdown" id="groups">
+                                <option value="All" selected="">All Matches</option>
+                                <option value="A">Group A</option>
+                                <option value="B">Group B</option>
+                                <option value="C">Group C</option>
+                                <option value="D">Group D</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="select select-minimal" data-placeholder="Select an option"
+                                    data-dropdown-class="select-minimal-dropdown">
+                                <option value="all" selected="">All Teams</option>
+                                <option value="russia">Russia</option>
+                                <option value="saudi-Arabia">Saudi Arabia</option>
+                                <option value="costa-Rica">Costa Rica</option>
+                                <option value="serbia">Serbia</option>
+                                <option value="germany">Germany</option>
+                                <option value="mexico">Mexico</option>
+                                <option value="sweden">Sweden</option>
+                                <option value="korea-Republic">Korea Republic</option>
+                                <option value="belgium">Belgium</option>
+                                <option value="panama">Panama</option>
+                                <option value="tunisia">Tunisia</option>
+                                <option value="england">England</option>
+                                <option value="poland">Poland</option>
+                                <option value="senegal">Senegal</option>
+                                <option value="colombia">Colombia</option>
+                                <option value="japan">Japan</option>
+                                <option value="egypt">Egypt</option>
+                                <option value="uruguay">Uruguay</option>
+                                <option value="portugal">Portugal</option>
+                                <option value="morocco">Marocco</option>
+                                <option value="iran">Iran</option>
+                                <option value="spain">Spain</option>
+                                <option value="france">France</option>
+                                <option value="peru">Peru</option>
+                                <option value="denmark">Denmark</option>
+                                <option value="australia">Australia</option>
+                                <option value="argentina">Argentina</option>
+                                <option value="croaria">Croaria</option>
+                                <option value="nigeria">Nigeria</option>
+                                <option value="iceland">Iceland</option>
+                                <option value="brazil">Brazil</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <div class="row" style="margin-top: 50px">
+
+            {% for match in matches %}
+
+
+
+                <div class="col-lg-4">
+                    {% if match.id in matchesId|keys %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART'} %}
+                            {% block team1 %}{{ match.team1.name }}{% endblock %}
+                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                        {% endembed %}
+
+                    {% else %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match   } %}
+                            {% block team1 %}{{ match.team1.name }}{% endblock %}
+                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                        {% endembed %}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+            {# display navigation #}
+        </div>
+    </div>
+
+
+</section>

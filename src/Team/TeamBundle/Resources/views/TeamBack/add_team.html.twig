@@ -1,0 +1,150 @@
+{% extends "BackBundle:common:_base.html.twig" %}
+
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}Add Team{% endblock %}
+
+
+{% block body %}
+    {% block top_content_header %}
+
+    {% endblock %}
+    {% block page_content %}
+
+        <div class="row centered">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel ">
+                    <div class="x_title">
+                        <h2>Add Team
+                        </h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <br/>
+                    {{ form_start(form, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+                    <div class="form-group">
+                        {{ form_label(form.teamName, 'Team Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.teamName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.teamLogo, 'Team Logo*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.teamLogo, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.teamShortcut, 'Team shortcut*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.teamShortcut, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.participation, 'Participation*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.participation, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.winner, 'Winner*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.winner, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.second, 'Second*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.second, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.third, 'Third*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.third, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <br>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            {{ form_widget(form.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                        </div>
+                    </div>
+
+                </div>
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+        </div>
+    {% endblock %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('assets/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <!-- NProgress -->
+    <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
+    <!-- Chart.js -->
+    <script src="{{ asset('assets/vendors/Chart.js/dist/Chart.min.js') }}"></script>
+    <!-- gauge.js -->
+    <script src="{{ asset('assets/vendors/gauge.js/dist/gauge.min.js') }}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{ asset('assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
+    <!-- Skycons -->
+    <script src="{{ asset('assets/vendors/skycons/skycons.js') }}"></script>
+    <!-- Flot -->
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.time.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.stack.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Flot/jquery.flot.resize.js') }}"></script>
+    <!-- Flot plugins -->
+    <script src="{{ asset('assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
+    <script src="{{ asset('assets/vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/flot.curvedlines/curvedLines.js') }}"></script>
+    <!-- DateJS -->
+    <script src="{{ asset('assets/vendors/DateJS/build/date.js') }}"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('assets/vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+
+    <script src="{{ asset('assets/timepicker.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#timepicker').mdtimepicker(); //Initializes the time picker
+        });
+    </script>
+{% endblock javascripts %}

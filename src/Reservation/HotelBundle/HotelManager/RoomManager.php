@@ -15,11 +15,19 @@ use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\Entity\Hotel;
 use Reservation\HotelBundle\Entity\Room;
 
+/**
+ * Class RoomManager
+ * @package Reservation\HotelBundle\HotelManager
+ */
 class RoomManager extends Manager
 {
     private $entityManager;
     private $repository;
 
+    /**
+     * RoomManager constructor.
+     * @param EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -42,21 +50,19 @@ class RoomManager extends Manager
     public function getList()
     {
         $rooms = $this->repository->findAll();
-        $this->throwApiException($rooms, "Empty list of room");
-        $data = $this->roomsSerialization($rooms);
-
-        return $data;
+        $this->isEmpty($rooms, "Empty list of room");
+        return $this->serializer($rooms);
     }
 
     /**
      * @param $rooms
      * @return array
      */
-    private function roomsSerialization($rooms): array
+    private function serializer($rooms): array
     {
         $data = array('rooms' => array());
         foreach ($rooms as $room) {
-            $data['rooms'][] = $this->serializeRoom($room);
+            $data['rooms'][] = $this->serialize($room);
         }
         return $data;
     }
@@ -65,7 +71,7 @@ class RoomManager extends Manager
      * @param Room $room
      * @return array
      */
-    public function serializeRoom(Room $room)
+    public function serialize(Room $room)
     {
         return array(
             'room_id' => $room->getId(),
@@ -76,21 +82,29 @@ class RoomManager extends Manager
         );
     }
 
-    public function getRoom(Room $room = null)
+    /**
+     * @param Room|null $room
+     * @return array
+     */
+    public function getRoom(Room $room = null): array
     {
-        $this->throwApiException($room);
+        $this->isEmpty($room);
         $data = array('room' => array());
-        return $data [] = $this->serializeRoom($room);
+        return $data [] = $this->serialize($room);
     }
 
-    public function getHotelRooms(Hotel $hotel = null)
+    /**
+     * @param Hotel|null $hotel
+     * @return array
+     */
+    public function getHotelRooms(Hotel $hotel = null): array
     {
-        $this->throwApiException($hotel, "Hotel don't exist");
+        $this->isEmpty($hotel, "Hotel don't exist");
 
         $rooms = $this->repository->findByHotel($hotel);
         $data = array('rooms' => array());
         if (!empty($rooms) || $rooms)
-            $data = $this->roomsSerialization($rooms);
+            $data = $this->serializer($rooms);
 
         return $data;
     }

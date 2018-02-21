@@ -48,7 +48,7 @@ class Room
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=10)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
 

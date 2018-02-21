@@ -19,6 +19,10 @@ class BillManager extends Manager
     private $entityManager;
     private $repository;
 
+    /**
+     * BillManager constructor.
+     * @param EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;

@@ -10,11 +10,16 @@ namespace Reservation\HotelBundle\HotelManager;
 
 
 use AppBundle\Exception\ApiException;
+use Common\LocationBundle\Entity\Location;
 use Common\LocationBundle\Manager\LocationManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Reservation\HotelBundle\Entity\Hotel;
 
+/**
+ * Class HotelManager
+ * @package Reservation\HotelBundle\HotelManager
+ */
 class HotelManager extends Manager
 {
     private $entityManager;
@@ -52,13 +57,52 @@ class HotelManager extends Manager
     public function getList()
     {
         $hotels = $this->repository->findAll();
-        $this->throwApiException($hotels, "Empty list of hotels");
+        $this->isEmpty($hotels, "Empty list of hotels");
+
+        return $this->serializer($hotels);
+    }
 
 
-        $data = array('hotels' => array());
-        foreach ($hotels as $hotel) {
-            $data['hotels'][] = $this->serializeHotel($hotel);
-        }
+
+    /**
+     * @param Hotel $hotel
+     * @return array
+     * @throws ApiException
+     */
+    public function getHotel(Hotel $hotel = null)
+    {
+        $this->isEmpty($hotel, "Hotel Object not found");
+        $data = array('hotel' => array());
+        /** @var Hotel $hotel */
+        $data["hotel"] = $this->serialize($hotel);
+
+        $rooms = $this->roomManager->getHotelRooms($hotel);
+        $data["hotel"]["rooms"] = $rooms["rooms"];
+
+        $location = $this->locationManager->getLocation($hotel->getLocation());
+        $data["hotel"]["location"] = $location;
+
+        return $data;
+    }
+
+
+    /**
+     * @param Hotel|null $hotel
+     * @return array
+     * @throws ApiException
+     */
+    public function getHotelRooms(Hotel $hotel = null)
+    {
+
+        $this->isEmpty($hotel, "Hotel Object not found");
+        $data = array('hotel' => array());
+        $data["hotel"] = $this->serialize($hotel);
+
+        $rooms = $this->roomManager->getHotelRooms($hotel);
+        $data["hotel"]["rooms"] = $rooms["rooms"];
+
+        $location = $this->locationManager->getLocation($hotel->getLocation());
+        $data["hotel"]["location"] = $location;
 
         return $data;
     }
@@ -67,7 +111,7 @@ class HotelManager extends Manager
      * @param Hotel $hotel
      * @return array
      */
-    private function serializeHotel(Hotel $hotel)
+    private function serialize(Hotel $hotel)
     {
         return array(
             "id" => $hotel->getId(),
@@ -78,46 +122,35 @@ class HotelManager extends Manager
         );
     }
 
-    /**
-     * @param Hotel $hotel
-     * @return array
-     * @throws ApiException
-     */
-    public function getHotel(Hotel $hotel = null)
-    {
-        $this->throwApiException($hotel, "Hotel Object not found");
-        $data = array('hotel' => array());
-        $data["hotel"] = $this->serializeHotel($hotel);
-
-        $rooms = $this->roomManager->getHotelRooms($hotel);
-        $data["hotel"]["rooms"] = [];
-        $data["hotel"]["rooms"] = $rooms["rooms"];
-
-        $location = $this->locationManager->getLocation($hotel->getLocation());
-        $data["hotel"]["location"] = $location;
-
-        return $data;
-    }
 
     /**
-     * @param Hotel|null $hotel
+     * @param $hotels
      * @return array
-     * @throws ApiException
      */
-    public function getHotelRooms(Hotel $hotel = null)
+    public function serializer($hotels): array
     {
+        $data = array('hotels' => array());
+        foreach ($hotels as $hotel) {
+            $hotelData = $this->serialize($hotel);
+            try {
+                $rooms = $this->roomManager->getHotelRooms($hotel);
 
-        $this->throwApiException($hotel, "Hotel Object not found");
-        $data = array('hotel' => array());
-        $data["hotel"] = $this->serializeHotel($hotel);
+                $hotelData['rooms'] = $rooms["rooms"];
+            } catch (ApiException $exception) {
+                $hotelData['rooms'] = [];
+            }
 
-        $rooms = $this->roomManager->getHotelRooms($hotel);
-        $data["hotel"]["rooms"] = [];
-        $data["hotel"]["rooms"] = $rooms["rooms"];
+            try {
+                $location = $this->locationManager->getLocation($hotel->getLocation());
 
-        $location = $this->locationManager->getLocation($hotel->getLocation());
-        $data["hotel"]["location"] = $location;
+                $hotelData["location"] = $location["location"];
 
+            } catch (ApiException $exception) {
+                $hotelData['location'] = [];
+            }
+
+            $data['hotels'][] = $hotelData;
+        }
         return $data;
     }
 
