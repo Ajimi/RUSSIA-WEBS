@@ -10,67 +10,67 @@ namespace Player\PlayerBundle\Repository;
  */
 class PlayerRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function goalScoredByTeam($id){
+    public function goalScoredByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.goalScored)')
             ->getQuery();
         return $query->getSingleScalarResult();
 
     }
-    public function shotsByTeam($id){
+    public function shotsByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.shots)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function shotsOnTargetByTeam($id){
+    public function shotsOnTargetByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.shotsOnTarget)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function assistsByTeam($id){
+    public function assistsByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.assists)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function passesByTeam($id){
+    public function passesByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.passes)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function foulsByTeam($id){
+    public function foulsByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.fouls)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function yellowCardsByTeam($id){
+    public function yellowCardsByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.yellowCard)')
             ->getQuery();
         return $query->getSingleScalarResult();
     }
-    public function redCardsByTeam($id){
+    public function redCardsByTeam($team){
         $query= $this->createQueryBuilder('p')
-            ->where('p.id = :id')
-            ->setParameter('id',$id)
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
             ->select('SUM(p.redCard)')
             ->getQuery();
         return $query->getSingleScalarResult();
