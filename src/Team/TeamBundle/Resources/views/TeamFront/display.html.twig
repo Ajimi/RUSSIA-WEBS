@@ -14,10 +14,10 @@
     <section class="section section-sm bg-gray-100">
         <div class="container">
             <!-- Heading Component-->
-            {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Team Overview' } %}
-            {% endembed %}
             <div class="row row-30">
                 <div class="col-lg-8">
+                    {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Team Overview' } %}
+                    {% endembed %}
                     {% embed  'FrontBundle:team-component:_team-info-coprate.html.twig' with { 'imageLogo' : team.file } %}
                         {% block shortcut %}{{ team.teamShortcut }}{% endblock %}
                         {% block teamName %}{{ team.teamName }}{% endblock %}
@@ -26,21 +26,17 @@
                         {% block second %}{{ team.second }}{% endblock %}
                         {% block third %}{{ team.third }}{% endblock %}
                     {% endembed %}
-                <div class="block-player-info">
-                    {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
-                    {% endembed %}
-                </div>
+                    <div class="block-player-info">
+                        {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
+                        {% endembed %}
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="row row-30">
                         <div class="col-md-6 col-lg-12">
                             <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Statistics
-                                    </h5>
-                                </div>
-                            </article>
+                            {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Statistics' } %}
+                            {% endembed %}
                             {% embed  'FrontBundle:team-component:_team-stat.html.twig' %}
                                 {% block gs %}{{ gs }}{% endblock %}
                                 {% block shots %}{{ shots }}{% endblock %}
@@ -57,7 +53,7 @@
                 {% for player in team.players %}
                     <div class="col-sm-6 col-lg-4">
                         <!-- Player Info Modern-->
-                        {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' with {'imagePlayer': player.playerImage,'id':player.id} %}
+                        {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' with {'imagePlayer': player.file,'id':player.id} %}
                             {% block player_image %} {% endblock %}
                             {% block player_number %}{{ player.id }}{% endblock %}
                             {% block player_name %}{{ player.playerName~" "~player.playerLastName }} {% endblock %}

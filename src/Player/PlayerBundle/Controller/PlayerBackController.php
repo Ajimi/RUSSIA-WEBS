@@ -2,6 +2,7 @@
 
 namespace Player\PlayerBundle\Controller;
 
+use DateTime;
 use Player\PlayerBundle\Entity\Club;
 use Player\PlayerBundle\Entity\Player;
 use Player\PlayerBundle\Entity\Skill;
@@ -37,6 +38,7 @@ class PlayerBackController extends Controller
         $formplayer->handleRequest($request);
         if ($formplayer->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $player->setBirthday(new DateTime($request->get('calendar')));
             $em->persist($player);
             $em->flush();
         }
@@ -100,6 +102,7 @@ class PlayerBackController extends Controller
         $form->remove('playerImage');
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $player->setBirthday(new DateTime($request->get('calendar')));
             $em->persist($player);
             $em->flush();
             return $this->redirectToRoute('playerList');

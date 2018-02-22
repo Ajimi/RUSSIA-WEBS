@@ -18,14 +18,14 @@ class TeamFrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $team=$em->getRepository("TeamBundle:Team")->find($id);
-        $goalScored = $em->getRepository("PlayerBundle:Player")->goalScoredByTeam($id);
-        $shots = $em->getRepository("PlayerBundle:Player")->shotsByTeam($id);
-        $shotsOnTarget = $em->getRepository("PlayerBundle:Player")->shotsOnTargetByTeam($id);
-        $assists = $em->getRepository("PlayerBundle:Player")->assistsByTeam($id);
-        $passes = $em->getRepository("PlayerBundle:Player")->passesByTeam($id);
-        $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($id);
-        $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($id);
-        $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($id);
+        $goalScored = $em->getRepository("PlayerBundle:Player")->goalScoredByTeam($team);
+        $shots = $em->getRepository("PlayerBundle:Player")->shotsByTeam($team);
+        $shotsOnTarget = $em->getRepository("PlayerBundle:Player")->shotsOnTargetByTeam($team);
+        $assists = $em->getRepository("PlayerBundle:Player")->assistsByTeam($team);
+        $passes = $em->getRepository("PlayerBundle:Player")->passesByTeam($team);
+        $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($team);
+        $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($team);
+        $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($team);
 
         return $this->render('TeamBundle:TeamFront:display.html.twig', array(
             'team'=>$team,

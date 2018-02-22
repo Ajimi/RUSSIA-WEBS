@@ -17,14 +17,16 @@
                 <table class="table-custom">
                     <tbody>
                     <tr>
+                        <th>Age</th>
+                        <th>{% block playerAge%}{% endblock %}</th>
                         <th>Height</th>
                         <th>{% block playerHeight%}{% endblock %}</th>
-                        <th>Weight</th>
-                        <th>{% block playerWeight%}{% endblock %}</th>
                     </tr>
                     <tr>
                         <td>Total Games</td>
                         <td>{% block playerTg%}{% endblock %}</td>
+                        <th>Weight</th>
+                        <th>{% block playerWeight%}{% endblock %}</th>
                     </tr>
 
                     </tbody>

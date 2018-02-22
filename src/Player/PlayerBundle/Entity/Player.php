@@ -63,21 +63,21 @@ class Player
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="date",nullable=true)
+     * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="weight", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="weight", type="string")
      */
     private $weight;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="height", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="height",type="string")
      */
     private $height;
 
