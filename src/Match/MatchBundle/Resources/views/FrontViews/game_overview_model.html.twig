@@ -1,0 +1,49 @@
+<article class="game-result">
+    <div class="game-info game-info-classic">
+        <p class="game-info-subtitle">{{ s.match.stadium }} Stadium -
+            <time datetime="2017-04-17"> {{ s.match.date | slice(5,5) }}</time>
+        </p>
+        <h3 class="game-info-title">{{ s.match.level }}</h3>
+        <div class="game-info-main">
+            <div class="game-info-team game-info-team-first">
+                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100"
+                             height="100"/>
+                </figure>
+                <div class="game-result-team-name">{{ s.match.team1.name | slice(0,10) }}</div>
+                <div class="game-result-team-country">USA</div>
+            </div>
+            <div class="game-info-middle">
+                <div class="game-result-score-wrap">
+                    {% if s.scoreTeam1 > s.scoreTeam2 %}
+                        <div class="game-info-score game-result-team-win"> {{ s.scoreTeam1 }}</div>
+                        <div class="game-info-score">{{ s.scoreTeam2 }}</div>
+
+                    {% else %}
+                        {% if s.scoreTeam1 < s.scoreTeam2 %}
+                            <div class="game-info-score">{{ s.scoreTeam1 }}</div>
+                            <div class="game-info-score game-result-team-win"> {{ s.scoreTeam2 }}</div>
+                        {% else %}
+                            <div class="game-info-score">{{ s.scoreTeam1 }}</div>
+                            <div class="game-info-score">{{ s.scoreTeam2 }}</div>
+
+                        {% endif %}
+
+                    {% endif %}
+                </div>
+                <div class="game-result-divider-wrap"><span class="game-info-team-divider">VS</span>
+
+                </div>
+            </div>
+            <div class="game-info-team game-info-team-second">
+                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="75"
+                             height="106"/>
+                </figure>
+                <div class="game-result-team-name">{{ s.match.team2.name | slice(0,10) }}</div>
+                <div class="game-result-team-country">Spain</div>
+            </div>
+        </div>
+
+        {% include '@Match/FrontViews/table_game_info.html.twig' %}
+        {#% include '@Match/FrontViews/accuracy.html.twig' %}#}
+    </div>
+</article>

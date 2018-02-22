@@ -1,0 +1,62 @@
+<div class="game-highlights">
+    <ul class="game-highlights-list">
+
+        {% for e in events %}
+        <li>
+            {% if e.typeEvent == "START OF THE MATCH" %}
+                <p class="game-highlights-title">Start of the Match
+                </p><span class="game-highlights-minute">0’</span>
+            {% endif %}
+            {% if e.typeEvent == "Yellow Card" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-orange fa fa-file"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Red Card" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-red2 fa fa-file"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Save" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-life-ring"></span>Attempt saved</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Penalty Kick" %}
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-blue-boston fa fa-hand-o-right"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Corner Kick" %}
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-flag"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Shot(On Target)" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-flag"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Goal" %}
+                {% if e.team == m.team1 %}
+                    <p class="game-highlights-title team-primary"><span class="icon-xxs icon-primary fa fa-futbol-o"></span>
+                        <span class="game-highlights-goal">GOAL</span></p>
+                    <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+                {% else %}
+                    <p class="game-highlights-title team2-blue"><span class="icon icon-xxs icon-blue-boston fa fa-futbol-o"> </span>
+                        <span class="game-highlights-goal">GOAL</span></p>
+                        <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+                {% endif %}
+                {% endif %}
+            {% if e.typeEvent == "END OF THE GAME" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-flag-checkered"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+
+        </li>
+        {% endfor %}
+    </ul>
+</div>
