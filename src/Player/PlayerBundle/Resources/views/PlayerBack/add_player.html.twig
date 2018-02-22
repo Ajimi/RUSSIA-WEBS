@@ -28,33 +28,32 @@
                         {{ form_start(formplayer, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerName, 'Player FirstName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerName, 'FirstName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerLastName, 'Player LastName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerLastName, 'LastName*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerLastName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerImage, 'Player Image*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerImage, 'Image*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerImage, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(formplayer.playerPosition, 'Player Position*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                            {{ form_label(formplayer.playerPosition, 'Position*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.playerPosition, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
                             </div>
                         </div>
-
                         <div class="form-group">
                             {{ form_label(formplayer.birthday, 'Birthday*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-3">
@@ -70,8 +69,7 @@
                             </div>
                         </div>
 
-
-                        <div class="form-group">
+                    <div class="form-group">
                             {{ form_label(formplayer.weight, 'Weight*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 {{ form_widget(formplayer.weight, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
@@ -113,69 +111,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            {{ form_label(formplayer.goalScored, 'Goal Scored*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.goalScored, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.shots, 'Shots*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.shots, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.shotsOnTarget, 'Shots On target*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.shotsOnTarget, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.assists, 'Assists*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.assists, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.passes, 'Passes*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.passes, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.fouls, 'Fouls*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.fouls, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.minutesPlayed, 'Minutes Played*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.minutesPlayed, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.yellowCard, 'Yellow Cards*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.yellowCard, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(formplayer.redCard, 'Red Cards*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(formplayer.redCard, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
-                            </div>
-                        </div>
-
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <br>
@@ -205,6 +140,9 @@
     <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
     <!-- jQuery Smart Wizard -->
     <script src="{{ asset('assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 

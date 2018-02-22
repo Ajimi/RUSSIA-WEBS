@@ -5,6 +5,7 @@ namespace Player\PlayerBundle\Form;
 use Doctrine\DBAL\Types\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,13 +18,9 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('playerName')->add('playerLastName')
-            ->add('playerImage')->add('playerPosition')
+            ->add('playerImage',FileType::class)->add('playerPosition')
             ->add('birthday')->add('weight')->add('height')
             ->add('totalGames')->add('bio')->add('team')
-            ->add('goalScored')->add('shots')->add('shotsOnTarget')
-            ->add('assists')->add('passes')->add('fouls')
-            ->add('minutesPlayed')->add('yellowCard')
-            ->add('redCard')
             ->add('nationalTeam',EntityType::class,array(
                 'class' => 'TeamBundle:Team',
                 'choice_label' => 'teamName', 'multiple' => false))

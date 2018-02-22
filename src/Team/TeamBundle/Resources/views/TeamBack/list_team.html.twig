@@ -22,56 +22,60 @@
 
 {% block body %}
     {% block top_content_header %}
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Team
+                    <small>List</small>
+                </h3>
+            </div>
+
+        </div>
     {% endblock %}
     {% block page_content %}
             <div class="col-md-12 col-sm-12 col-xs-12">
+
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Team
-                            <small>List</small>
-                        </h2>
+                        <div class=" col-sm-2 col-xs-12">
+                            <a class="btn btn-success" href="{{ path('team_add') }}">New Team</a>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                         <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Logo</th>
                                 <th>Shortcut</th>
-                                <th>Win</th>
-                                <th>Loss</th>
-                                <th>Draw</th>
-                                <th>GoalScored</th>
-                                <th>GoalIn</th>
                                 <th>Participation</th>
                                 <th>Winner</th>
                                 <th>Second</th>
                                 <th>Third</th>
-                                <th>Modify</th>
-                                <th>Delete</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody id="costum-table">
                             {% for team in teams %}
                                 <tr>
-                                    <td>{{ team.id }}</td>
                                     <td>{{ team.teamName }}</td>
                                     <td><img src="{{ asset('/'~ team.teamLogo) }}"
-                                             alt="" width="50" height="34"/></td>
+                                             alt="" width="22" height="22"/></td>
                                     <td>{{ team.teamShortcut }}</td>
-                                    <td>{{ team.matchWon }}</td>
-                                    <td>{{ team.matchLost }}</td>
-                                    <td>{{ team.matchDraw }}</td>
-                                    <td>{{ team.goalScored }}</td>
-                                    <td>{{ team.goalIn }}</td>
                                     <td>{{ team.participation }}</td>
                                     <td>{{ team.winner }}</td>
                                     <td>{{ team.second }}</td>
                                     <td>{{ team.third }}</td>
-                                    <td><a href="" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a></td>
-                                    <td><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a></td>
+                                    <td>
+                                        <a href="{{ path('teamEdit',{'id':team.id}) }}"
+                                           class="btn btn-info btn-xs">
+                                            <i class="fa fa-pencil"></i>Edit
+                                        </a>
+                                        <a href="{{ path('teamDelete',{'id':team.id}) }}"
+                                           class="btn btn-danger btn-xs">
+                                            <i class="fa fa-trash-o"></i> Delete
+                                        </a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>

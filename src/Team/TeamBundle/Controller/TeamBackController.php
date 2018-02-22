@@ -19,12 +19,18 @@ class TeamBackController extends Controller
     public function addTeamAction(Request $request)
     {
         $team = new Team();
+        $team->setMatchWon(0);
+        $team->setMatchLost(0);
+        $team->setMatchDraw(0);
+        $team->setGoalScored(0);
+        $team->setGoalIn(0);
         $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
+            return $this->redirectToRoute('teamList');
         }
 
         return $this->render('TeamBundle:TeamBack:add_team.html.twig', array(
@@ -34,22 +40,37 @@ class TeamBackController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/edit/{id}", name="teamEdit")
      */
     public function editTeamAction(Request $request,$id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository("TeamBundle:Team")->find($id);
+        $form = $this->createForm(TeamType::class, $team);
+        $form->remove('teamLogo');
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->persist($team);
+            $em->flush();
+            return $this->redirectToRoute('teamList');
+        }
 
-        return $this->render('TeamBundle:TeamBack:edit_team.html.twig', array(// ...
+        return $this->render('TeamBundle:TeamBack:edit_team.html.twig', array(
+            'form' => $form->createView()
+            // ...
         ));
     }
 
     /**
-     * @Route("/delete")
+     * @Route("/delete/{id}", name="teamDelete")
      */
-    public function deleteTeamAction()
+    public function deleteTeamAction($id)
     {
-        return $this->render('TeamBundle:TeamBack:delete_team.html.twig', array(// ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository("TeamBundle:Team")->find($id);
+        $em->remove($team);
+        $em->flush();
+        return $this->redirectToRoute('teamList');
     }
 
     /**
