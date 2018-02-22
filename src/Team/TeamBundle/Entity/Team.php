@@ -6,6 +6,7 @@ use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Team
@@ -34,10 +35,17 @@ class Team
 
     /**
      * @var string
-     * @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
+     *
      * @ORM\Column(name="teamLogo", type="string", length=255)
      */
     private $teamLogo;
+
+    /**
+     * @var File
+     *
+     *  @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
+     */
+    private $file;
 
     /**
      * @var string
@@ -122,6 +130,24 @@ class Team
     {
         $this->players = new ArrayCollection();
     }
+
+    /**
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+
 
     /**
      * @return mixed

@@ -20,7 +20,7 @@
             {% endembed %}
             <div class="row row-30">
                 <div class="col-lg-8">
-                    {% embed  'FrontBundle:player-component:_player-info-corporate.html.twig' with { 'playerImage' :player.playerImage ,'teamImage':player.nationalTeam.teamLogo } %}
+                    {% embed  'FrontBundle:player-component:_player-info-corporate.html.twig' with { 'playerImage' :player.file ,'teamImage':player.nationalTeam.teamLogo } %}
                         {% block playerName%}{{ player.playerName~" "~player.playerLastName }}{% endblock %}
                         {% block playerPos%}{{ player.playerPosition }}{% endblock %}
                         {% block playerHeight%}{{ player.height }}{% endblock %}

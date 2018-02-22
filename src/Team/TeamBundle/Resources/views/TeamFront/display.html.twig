@@ -18,7 +18,7 @@
             {% endembed %}
             <div class="row row-30">
                 <div class="col-lg-8">
-                    {% embed  'FrontBundle:team-component:_team-info-coprate.html.twig' with { 'imageLogo' : team.teamLogo } %}
+                    {% embed  'FrontBundle:team-component:_team-info-coprate.html.twig' with { 'imageLogo' : team.file } %}
                         {% block shortcut %}{{ team.teamShortcut }}{% endblock %}
                         {% block teamName %}{{ team.teamName }}{% endblock %}
                         {% block participation %}{{ team.participation }}{% endblock %}
