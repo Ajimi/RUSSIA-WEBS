@@ -4,12 +4,8 @@
 
 {% block stylesheets %}
     <!-- iCheck -->
-    <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
 {% endblock stylesheets %}
-
-
-
-
 {% block page_content %}
 
     <div class="row">
@@ -33,13 +29,10 @@
                                 </a>
                             {% endif %}
                         {% endif %}
-
                     </div>
-
                     <div class="clearfix"></div>
                 </div>
                 {% include 'MatchBundle:EventBack:list_event.html.twig' %}
-
                 {% if events is not empty %}
                     {% set e = events|last %}
                     {% if e.typeEvent == "END OF THE GAME" %}
@@ -48,16 +41,13 @@
                            class="btn btn-danger btn-xs col-md-offset-2" disabled>
                             End
                         </a>
-
                     {% else %}
                         <a href="{{ path('end_game',{'idm':idm}) }}"
                            class="btn btn-danger btn-xs col-md-offset-2" id="end">
                             End
                         </a>
                     {% endif %}
-
                 {% endif %}
-
             </div>
         </div>
 
