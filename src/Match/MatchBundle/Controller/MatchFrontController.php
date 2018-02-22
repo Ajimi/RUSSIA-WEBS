@@ -2,11 +2,9 @@
 
 namespace Match\MatchBundle\Controller;
 
-use Match\MatchBundle\Entity\Match;
-use Match\MatchBundle\Form\MatchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Match\MatchBundle\Model\StatisticFormat;
 
 
 /**
@@ -40,6 +38,44 @@ class MatchFrontController extends Controller
         return $this->render('@Match/FrontViews/game_results.html.twig',array(
             'scores'=>$scores
         ));
+    }
+
+    /**
+     * @Route("/results/overview{idm}", name="game_overview")
+     */
+    public function gameOverviewAction($idm)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match'=>$idm));
+        $match = $em->getRepository('MatchBundle:Match')->find($idm);
+        $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
+        $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
+        $events = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm));
+
+        $statistic1 = new StatisticFormat();
+        $statistic2 = new StatisticFormat();
+
+
+        foreach ($eventsTeam1 as $e1)
+        {
+            $statistic1->dataFormat($e1);
+
+        }
+
+        foreach ($eventsTeam2 as $e2)
+        {
+            $statistic2->dataFormat($e2);
+        }
+
+      /*  dump($statistic1);
+          dump($statistic2);
+      */
+
+
+        return $this->render('@Match/FrontViews/game_overview.html.twig',array(
+            's'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match
+        ));
+
     }
 
 }
