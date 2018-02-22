@@ -47,6 +47,7 @@ class MatchFrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match'=>$idm));
+        $scores = $em->getRepository('MatchBundle:Score')->findThree();
         $match = $em->getRepository('MatchBundle:Match')->find($idm);
         $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
         $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
@@ -73,7 +74,8 @@ class MatchFrontController extends Controller
 
 
         return $this->render('@Match/FrontViews/game_overview.html.twig',array(
-            's'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match
+            'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
+            'scores'=>$scores
         ));
 
     }
