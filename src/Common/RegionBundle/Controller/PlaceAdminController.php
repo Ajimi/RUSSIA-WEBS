@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("admin/place")
  */
-class PlaceController extends Controller
+class PlaceAdminController extends Controller
 {
     /**
      * Lists all place entities.
@@ -22,9 +22,10 @@ class PlaceController extends Controller
      * @Route("/", name="admin_place_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
 
         $places = $em->getRepository('RegionBundle:Place')->findAll();
 
