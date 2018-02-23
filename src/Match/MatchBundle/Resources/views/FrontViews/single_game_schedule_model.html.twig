@@ -10,7 +10,7 @@
             <div class="game-info-team game-info-team-first">
                 <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
                 </figure>
-                <div class="game-result-team-name">{{ m.team1.name |slice(0,15) }}</div>
+                <div class="game-result-team-name">{{ m.team1.teamName |slice(0,15) }}</div>
                 <div class="game-result-team-country">USA</div>
             </div>
             <div class="game-info-middle game-info-middle-vertical">
@@ -26,17 +26,23 @@
                             <li class="game-info-share-item"><a class="icon fa fa-twitter" href="#"></a></li>
                             <li class="game-info-share-item"><a class="icon fa fa-google-plus" href="#"></a></li>
                         </ul>
-                    </div><a class="button button-sm button-primary" href="#">Buy tickets</a>
+                    </div>
+                    <a class="button button-sm button-primary" href="{{ path('cart_add_item',{'match':m.id}) }}">Buy tickets</a>
                 </div>
             </div>
             <div class="game-info-team game-info-team-second">
                 <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
                 </figure>
-                <div class="game-result-team-name">{{ m.team2.name |slice(0,15)}}</div>
+                <div class="game-result-team-name">{{ m.team2.teamName |slice(0,15)}}</div>
                 <div class="game-result-team-country">Spain</div>
             </div>
         </div>
+        <div>
+            {{ socialButtons() }}
+        </div>
     </div>
+
+
 </article>
 
 {% endfor %}

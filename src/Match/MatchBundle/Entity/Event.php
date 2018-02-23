@@ -32,7 +32,7 @@ class Event
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\TeamTest")
+     * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team")
      * @ORM\JoinColumn(name="id_team",referencedColumnName="id")
      */
     private $team;
@@ -40,7 +40,7 @@ class Event
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\PlayerTest")
+     * @ORM\ManyToOne(targetEntity="Player\PlayerBundle\Entity\Player")
      * @ORM\JoinColumn(name="id_player",referencedColumnName="id")
      */
     private $player;
@@ -179,58 +179,11 @@ class Event
         return $this->description;
     }
 
-    /**
-     * Set team.
-     *
-     * @param \Match\MatchBundle\Entity\TeamTest|null $team
-     *
-     * @return Event
-     */
-    public function setTeam(\Match\MatchBundle\Entity\TeamTest $team = null)
-    {
-        $this->team = $team;
-
-        return $this;
-    }
 
     /**
-     * Get team.
+     * Set minutes
      *
-     * @return \Match\MatchBundle\Entity\TeamTest|null
-     */
-    public function getTeam()
-    {
-        return $this->team;
-    }
-
-    /**
-     * Set times.
-     *
-     * @param string $times
-     *
-     * @return Event
-     */
-    public function setTimes($times)
-    {
-        $this->times = $times;
-
-        return $this;
-    }
-
-    /**
-     * Get times.
-     *
-     * @return string
-     */
-    public function getTimes()
-    {
-        return $this->times;
-    }
-
-    /**
-     * Set minutes.
-     *
-     * @param int $minutes
+     * @param integer $minutes
      *
      * @return Event
      */
@@ -242,12 +195,60 @@ class Event
     }
 
     /**
-     * Get minutes.
+     * Get minutes
      *
-     * @return int
+     * @return integer
      */
     public function getMinutes()
     {
         return $this->minutes;
+    }
+
+    /**
+     * Set times
+     *
+     * @param \DateTime $times
+     *
+     * @return Event
+     */
+    public function setTimes($times)
+    {
+        $this->times = $times;
+
+        return $this;
+    }
+
+    /**
+     * Get times
+     *
+     * @return \DateTime
+     */
+    public function getTimes()
+    {
+        return $this->times;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \Team\TeamBundle\Entity\Team $team
+     *
+     * @return Event
+     */
+    public function setTeam(\Team\TeamBundle\Entity\Team $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Team\TeamBundle\Entity\Team
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

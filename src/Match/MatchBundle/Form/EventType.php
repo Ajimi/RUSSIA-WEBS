@@ -33,8 +33,8 @@ class EventType extends AbstractType
                 )))
             ->add('description', TextareaType::class)
             ->add('player', EntityType::class, array(
-                'class' => 'Match\MatchBundle\Entity\PlayerTest',
-                'choice_label' => 'name'
+                'class' => 'Player\PlayerBundle\Entity\Player',
+                'choice_label' => 'playerName'
             ))
             ->add('save', SubmitType::class);
     }

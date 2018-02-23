@@ -26,14 +26,14 @@ class Match
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="TeamTest")
+     * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team")
      * @ORM\JoinColumn(name="id_team1",referencedColumnName="id")
      */
     private $team1;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="TeamTest")
+     * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team")
      * @ORM\JoinColumn(name="id_team2",referencedColumnName="id")
      */
     private $team2;
@@ -78,10 +78,35 @@ class Match
      * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match")
      */
     private $ticket;
-    
 
 
     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set level
+     *
+     * @param string $level
+     *
+     * @return Match
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
      * @return string
      */
     public function getLevel()
@@ -90,99 +115,7 @@ class Match
     }
 
     /**
-     * @param string $level
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-    }
-
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-
-    /**
-     * Set team1.
-     *
-     * @param \Match\MatchBundle\Entity\TeamTest $team1
-     *
-     * @return Match
-     */
-    public function setTeam1(\Match\MatchBundle\Entity\TeamTest $team1 = null)
-    {
-        $this->team1 = $team1;
-
-        return $this;
-    }
-
-    /**
-     * Get team1.
-     *
-     * @return \Match\MatchBundle\Entity\TeamTest
-     */
-    public function getTeam1()
-    {
-        return $this->team1;
-    }
-
-    /**
-     * Set team2.
-     *
-     * @param \Match\MatchBundle\Entity\TeamTest|null $team2
-     *
-     * @return Match
-     */
-    public function setTeam2(\Match\MatchBundle\Entity\TeamTest $team2 = null)
-    {
-        $this->team2 = $team2;
-
-        return $this;
-    }
-
-    /**
-     * Get team2.
-     *
-     * @return \Match\MatchBundle\Entity\TeamTest|null
-     */
-    public function getTeam2()
-    {
-        return $this->team2;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return Match
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set date.
+     * Set date
      *
      * @param string $date
      *
@@ -196,7 +129,7 @@ class Match
     }
 
     /**
-     * Get date.
+     * Get date
      *
      * @return string
      */
@@ -206,7 +139,7 @@ class Match
     }
 
     /**
-     * Set time.
+     * Set time
      *
      * @param string $time
      *
@@ -220,7 +153,7 @@ class Match
     }
 
     /**
-     * Get time.
+     * Get time
      *
      * @return string
      */
@@ -230,7 +163,7 @@ class Match
     }
 
     /**
-     * Set stadium.
+     * Set stadium
      *
      * @param string $stadium
      *
@@ -244,7 +177,7 @@ class Match
     }
 
     /**
-     * Get stadium.
+     * Get stadium
      *
      * @return string
      */
@@ -253,13 +186,10 @@ class Match
         return $this->stadium;
     }
 
-
-
-
     /**
-     * Set played.
+     * Set played
      *
-     * @param bool $played
+     * @param boolean $played
      *
      * @return Match
      */
@@ -271,9 +201,9 @@ class Match
     }
 
     /**
-     * Get played.
+     * Get played
      *
-     * @return bool
+     * @return boolean
      */
     public function getPlayed()
     {
@@ -281,18 +211,74 @@ class Match
     }
 
     /**
-     * @return Ticket
+     * Set team1
+     *
+     * @param \Team\TeamBundle\Entity\Team $team1
+     *
+     * @return Match
      */
-    public function getTicket(): Ticket
+    public function setTeam1(\Team\TeamBundle\Entity\Team $team1 = null)
     {
-        return $this->ticket;
+        $this->team1 = $team1;
+
+        return $this;
     }
 
     /**
-     * @param Ticket $ticket
+     * Get team1
+     *
+     * @return \Team\TeamBundle\Entity\Team
      */
-    public function setTicket(Ticket $ticket)
+    public function getTeam1()
+    {
+        return $this->team1;
+    }
+
+    /**
+     * Set team2
+     *
+     * @param \Team\TeamBundle\Entity\Team $team2
+     *
+     * @return Match
+     */
+    public function setTeam2(\Team\TeamBundle\Entity\Team $team2 = null)
+    {
+        $this->team2 = $team2;
+
+        return $this;
+    }
+
+    /**
+     * Get team2
+     *
+     * @return \Team\TeamBundle\Entity\Team
+     */
+    public function getTeam2()
+    {
+        return $this->team2;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \Reservation\TicketBundle\Entity\Ticket $ticket
+     *
+     * @return Match
+     */
+    public function setTicket(\Reservation\TicketBundle\Entity\Ticket $ticket = null)
     {
         $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \Reservation\TicketBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
     }
 }

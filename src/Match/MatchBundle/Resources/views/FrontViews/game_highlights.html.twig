@@ -4,16 +4,15 @@
         {% for e in events %}
         <li>
             {% if e.typeEvent == "START OF THE MATCH" %}
-                <p class="game-highlights-title">Start of the Match
+                <p class="game-highlights-title">{{ e.typeEvent }}
                 </p><span class="game-highlights-minute">0’</span>
             {% endif %}
             {% if e.typeEvent == "Yellow Card" %}
                 <p class="game-highlights-title"><span class="icon icon-xxs icon-orange fa fa-file"></span>{{ e.typeEvent }}</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
-
             {% endif %}
             {% if e.typeEvent == "Red Card" %}
-                <p class="game-highlights-title"><span class="icon icon-xxs icon-red2 fa fa-file"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-red-2 fa fa-file"></span>{{ e.typeEvent }}</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}
@@ -28,7 +27,7 @@
 
             {% endif %}
             {% if e.typeEvent == "Corner Kick" %}
-                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-flag"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-flag"></span>CORNER KICK</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}

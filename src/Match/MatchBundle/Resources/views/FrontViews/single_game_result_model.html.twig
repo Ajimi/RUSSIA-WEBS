@@ -10,7 +10,7 @@
                     <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100"
                                  height="100"/>
                     </figure>
-                    <div class="game-result-team-name">{{ s.match.team1.name | slice(0,10) }}</div>
+                    <div class="game-result-team-name">{{ s.match.team1.teamName | slice(0,10) }}</div>
                     <div class="game-result-team-country">USA</div>
                 </div>
                 <div class="game-info-middle">
@@ -42,7 +42,7 @@
                 <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="75"
                              height="106"/>
                 </figure>
-                <div class="game-result-team-name">{{ s.match.team2.name | slice(0,10) }}</div>
+                <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
                 <div class="game-result-team-country">Spain</div>
             </div>
         </div>

@@ -49,13 +49,12 @@ class MatchFrontController extends Controller
         $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match'=>$idm));
         $scores = $em->getRepository('MatchBundle:Score')->findThree();
         $match = $em->getRepository('MatchBundle:Match')->find($idm);
-        $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
-        $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
+
         $events = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm));
 
         $statistic1 = new StatisticFormat();
-        $statistic2 = new StatisticFormat();
-
+        $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
+        dump($eventsTeam1);
 
         foreach ($eventsTeam1 as $e1)
         {
@@ -63,6 +62,9 @@ class MatchFrontController extends Controller
 
         }
 
+        $statistic2 = new StatisticFormat();
+        $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
+        dump($eventsTeam2);
         foreach ($eventsTeam2 as $e2)
         {
             $statistic2->dataFormat($e2);

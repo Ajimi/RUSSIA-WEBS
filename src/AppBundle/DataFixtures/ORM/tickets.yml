@@ -14,14 +14,33 @@ Team\TeamBundle\Entity\Team:
       third: <randomDigitNotNull()>
 
 
-Match\MatchBundle\Entity\TeamTest:
-    teamee{1..32}:
-        name: <country()>
+
+Player\PlayerBundle\Entity\Player:
+    player{1..32}:
+        playerName: <word()>
+        playerLastName: <word()>
+        playerImage: <word()>
+        playerPosition: <word()>
+        bio: <word()>
+        weight: <numberBetween(0,11)>
+        height: <numberBetween(0,11)>
+        totalGames: <numberBetween(0,11)>
+        team: <word()>
+        goalScored: <numberBetween(0,11)>
+        shots: <numberBetween(0,11)>
+        shotsOnTarget: <numberBetween(0,11)>
+        assists: <numberBetween(0,11)>
+        fouls: <numberBetween(0,11)>
+        passes: <numberBetween(0,11)>
+        minutesPlayed: <numberBetween(0,11)>
+        yellowCard: <numberBetween(0,11)>
+        redCard: <numberBetween(0,11)>
+        nationalTeam: '@teame*'
 
 Match\MatchBundle\Entity\Match:
-    match{1..50}:
-        team1: '@teamee*'
-        team2: '@teamee*'
+    match{1..10}:
+        team1: '@teame*'
+        team2: '@teame*'
         level: "first"
         date: <date()>
         time: <time()>
@@ -31,7 +50,7 @@ Match\MatchBundle\Entity\Match:
 
 
 Reservation\TicketBundle\Entity\Ticket:
-    ticket{1..50}:
+    ticket{1..10}:
         match(unique): '@match*'
         price: <numberBetween(100,300)>
         quantity: <numberBetween(5000,8000)>

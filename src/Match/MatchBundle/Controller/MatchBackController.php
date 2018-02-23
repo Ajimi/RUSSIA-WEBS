@@ -7,6 +7,7 @@ use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
 use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Form\MatchType;
+use Reservation\TicketBundle\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,6 +56,12 @@ class MatchBackController extends Controller
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
             $match->setPlayed(false);
+            $t = new  Ticket();
+            $t->setMatch($match);
+            $match->setTicket($t);
+            $t->setPrice("");
+            $t->setQuantity(1000);
+            $em->persist($t);
             $em->persist($match);
             $em->flush();
 

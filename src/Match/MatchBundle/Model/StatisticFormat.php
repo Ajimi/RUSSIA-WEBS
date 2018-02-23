@@ -142,7 +142,7 @@ class StatisticFormat
         }
         else if ($event->getTypeEvent()=="Yellow Card")
         {
-            $this>setYellowCard($this->getYellowCard()+1);
+            $this->setYellowCard($this->getYellowCard()+1);
         }
         else if ($event->getTypeEvent()=="Red Card")
         {

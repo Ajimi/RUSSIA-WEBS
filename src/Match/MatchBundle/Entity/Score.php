@@ -24,7 +24,7 @@ class Score
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="Match\MatchBundle\Entity\Match")
-     * @ORM\JoinColumn(name="id_match",referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="id_match",referencedColumnName="id")
      */
     private $match;
 
@@ -42,10 +42,12 @@ class Score
     private $scoreTeam2;
 
 
+
+
     /**
-     * Get id.
+     * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -53,19 +55,9 @@ class Score
     }
 
     /**
-     * Get scoreTeam1.
+     * Set scoreTeam1
      *
-     * @return int
-     */
-    public function getScoreTeam1()
-    {
-        return $this->scoreTeam1;
-    }
-
-    /**
-     * Set scoreTeam1.
-     *
-     * @param int $scoreTeam1
+     * @param integer $scoreTeam1
      *
      * @return Score
      */
@@ -77,19 +69,19 @@ class Score
     }
 
     /**
-     * Get scoreTeam2.
+     * Get scoreTeam1
      *
-     * @return int
+     * @return integer
      */
-    public function getScoreTeam2()
+    public function getScoreTeam1()
     {
-        return $this->scoreTeam2;
+        return $this->scoreTeam1;
     }
 
     /**
-     * Set scoreTeam2.
+     * Set scoreTeam2
      *
-     * @param int $scoreTeam2
+     * @param integer $scoreTeam2
      *
      * @return Score
      */
@@ -101,19 +93,19 @@ class Score
     }
 
     /**
-     * Get match.
+     * Get scoreTeam2
      *
-     * @return \Match\MatchBundle\Entity\Match|null
+     * @return integer
      */
-    public function getMatch()
+    public function getScoreTeam2()
     {
-        return $this->match;
+        return $this->scoreTeam2;
     }
 
     /**
-     * Set match.
+     * Set match
      *
-     * @param \Match\MatchBundle\Entity\Match|null $match
+     * @param \Match\MatchBundle\Entity\Match $match
      *
      * @return Score
      */
@@ -122,5 +114,15 @@ class Score
         $this->match = $match;
 
         return $this;
+    }
+
+    /**
+     * Get match
+     *
+     * @return \Match\MatchBundle\Entity\Match
+     */
+    public function getMatch()
+    {
+        return $this->match;
     }
 }
