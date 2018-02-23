@@ -1,0 +1,172 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block title %}Events | New Event{% endblock %}
+{% block page_title %}Game Highlights {% endblock page_title %}
+
+{% block stylesheets %}
+    <!-- iCheck -->
+<link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+{% block page_content %}
+
+    <div class="row">
+
+        <div class="col-md-6 col-xs-12">
+
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="col-md-offset-2">
+                        {% if events is empty %}
+                            <a href="{{ path('start_game',{'idm':idm}) }}"
+                               class="btn btn-success btn-xs" id="start">
+                                Start
+                            </a>
+                        {% else %}
+                            {% if events.0.minutes == 0 %}
+
+                                <a href="" id="start"
+                                   class="btn btn-success btn-xs disabled">
+                                    Start
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                {% include 'MatchBundle:EventBack:list_event.html.twig' %}
+                {% if events is not empty %}
+                    {% set e = events|last %}
+                    {% if e.typeEvent == "END OF THE GAME" %}
+
+                        <a href="" id="end"
+                           class="btn btn-danger btn-xs col-md-offset-2" disabled>
+                            End
+                        </a>
+                    {% else %}
+                        <a href="{{ path('end_game',{'idm':idm}) }}"
+                           class="btn btn-danger btn-xs col-md-offset-2" id="end">
+                            End
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-xs-12" id="container">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>New Highlight
+
+
+                    </h2>
+
+                    <div class="clearfix"></div>
+                </div>
+                {{ form_start(eventForm, {'method':'POST','attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+                <div class="x_content">
+                    <br/>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Time:<span
+                                    class="required">*</span></label>
+                        <div class="col-md-2">
+                            {{ form_widget(eventForm.minutes, { 'attr': {'class': 'form-control col-md-2','type':'number','min':'0','data-constraints':'@minutes @Required'} }) }}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Event <span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            {{ form_widget(eventForm.typeEvent, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12', 'data-constraints':'@typeEvent @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Which team <span
+                                    class="required">*</span>
+                        </label>
+
+                        <div class="radio">
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+
+                                <label>
+                                    <input type="radio" class="flat" checked name="iCheck" value="{{ team1.id }}">
+                                    {{ team1.teamName | upper }}
+
+                                </label>
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" class="flat" checked name="iCheck" value=" {{ team2.id }}">
+                                        {{ team2.teamName | upper }}
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Who did it <span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ form_widget(eventForm.player, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description <span
+                                    class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            {{ form_widget(eventForm.description, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12', 'data-constraints':'@description @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-8">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            {% if events is empty %}
+                                {{ form_widget(eventForm.save, { 'attr': {'class': 'btn btn-success disabled', 'id':'save'} }) }}
+                            {% else %}
+                                {% if events|last.typeEvent =="END OF THE GAME" %}
+                                    {{ form_widget(eventForm.save, { 'attr': {'class': 'btn btn-success disabled', 'id':'save'} }) }}
+                                {% else %}
+                                    {{ form_widget(eventForm.save, { 'attr': {'class': 'btn btn-success', 'id':'save'} }) }}
+                                {% endif %}
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            {{ form_end(eventForm) }}
+
+
+        </div>
+
+
+    </div>
+
+{% endblock page_content %}
+
+{% block javascripts %}
+
+    <!-- iCheck -->
+    <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
+    <!-- Switchery -->
+    <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
+
+
+
+{% endblock  javascripts %}
+

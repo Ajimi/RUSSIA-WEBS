@@ -1,0 +1,82 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+
+ {% block body %}
+{% include '@Match/Breadcrumbs/breadcrumbs_schedule.html.twig' %}
+
+     <section class="section section-sm bg-gray-100">
+         <div class="container">
+             <div class="row row-50">
+                 <div class="col-lg-8">
+                     <!-- Heading Component-->
+                     <article class="heading-component">
+                         <div class="heading-component-inner">
+                             <h5 class="heading-component-title">Game schedule
+                             </h5>
+
+                         </div>
+                     </article>
+
+                     {% include '@Match/FrontViews/single_game_schedule_model.html.twig' %}
+                 </div>
+
+                 <div class="col-lg-4">
+                     <div class="row row-30">
+                         <div class="col-md-6 col-lg-12">
+                             <!-- Heading Component-->
+                             <article class="heading-component">
+                                 <div class="heading-component-inner">
+                                     <h5 class="heading-component-title">Standings
+                                     </h5>
+                                 </div>
+                             </article>
+                             {% include '@Front/standing-component/_table-standing-classic.html.twig' %}
+                         </div>
+
+                         <div class="col-md-6 col-lg-12">
+                             <!-- Heading Component-->
+                             <article class="heading-component">
+                                 <div class="heading-component-inner">
+                                     <h5 class="heading-component-title">Player of the month
+                                     </h5>
+                                 </div>
+                             </article>
+                             {% include '@Front/player-component/_player-info-minimal.html.twig' %}
+                         </div>
+
+                         <div class="col-md-6 col-lg-12 owl-carousel-outer-navigation">
+                             <!-- Heading Component-->
+                             <article class="heading-component">
+                                 <div class="heading-component-inner">
+                                     <h5 class="heading-component-title">Latest Game results
+                                     </h5>
+                                     <div class="owl-carousel-arrows-outline">
+                                         <div class="owl-nav">
+                                             <button class="owl-arrow owl-arrow-prev"></button>
+                                             <button class="owl-arrow owl-arrow-next"></button>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </article>
+
+                             <div class="owl-carousel" data-items="1" data-dots="false" data-nav="true" data-stage-padding="0" data-loop="false" data-margin="0" data-mouse-drag="false" data-nav-custom=".owl-carousel-outer-navigation">
+
+                             {% include 'MatchBundle:FrontViews:single_latest_game_result_model.html.twig' %}
+                             </div>
+                         </div>
+                         <div class="col-md-6 col-lg-12">
+                             <!-- Heading Component-->
+                             <article class="heading-component">
+                                 <div class="heading-component-inner">
+                                     <h5 class="heading-component-title">Follow Us
+                                     </h5>
+                                 </div>
+                             </article>
+                             {% include '@Front/social-component/_button-media.html.twig' %}
+                         </div>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+ {% endblock %}

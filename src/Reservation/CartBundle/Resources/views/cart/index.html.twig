@@ -1,0 +1,52 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block body %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Store Cart'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li class=""><a href="{{ path('ticket_index') }}">Ticket</a></li>
+            <li class="active">Cart</li>
+        {% endblock %}
+    {% endembed %}
+
+    <section class="section section-md bg-gray-100">
+        <div class="container">
+            {% if app.session.flashBag.has('success') %}
+                {% for msg in app.session.flashBag.get('success') %}
+
+                    <div class="alert alert-success">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if app.session.flashBag.has('error') %}
+                {% for msg in app.session.flashBag.get('error') %}
+                    <div class="alert alert-danger">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if app.session.flashBag.has('notice') %}
+                {% for msg in app.session.flashBag.get('notice') %}
+                    <div class="alert alert-info">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+
+    {{ render(controller('CartBundle:Cart:ticketCart')) }}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+{% endblock %}

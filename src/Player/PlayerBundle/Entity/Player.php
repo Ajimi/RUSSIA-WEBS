@@ -56,7 +56,7 @@ class Player
     /**
     * @var string
     *
-    * @ORM\Column(name="teamLogo", type="string", length=255)
+    * @ORM\Column(name="playerPosition", type="string", length=255)
     */
     private $playerPosition;
 
@@ -730,5 +730,73 @@ class Player
     public function getRedCard()
     {
         return $this->redCard;
+    }
+
+    /**
+     * Add skill
+     *
+     * @param \Player\PlayerBundle\Entity\Skill $skill
+     *
+     * @return Player
+     */
+    public function addSkill(\Player\PlayerBundle\Entity\Skill $skill)
+    {
+        $this->skills[] = $skill;
+
+        return $this;
+    }
+
+    /**
+     * Remove skill
+     *
+     * @param \Player\PlayerBundle\Entity\Skill $skill
+     */
+    public function removeSkill(\Player\PlayerBundle\Entity\Skill $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+
+    /**
+     * Get skills
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Add club
+     *
+     * @param \Player\PlayerBundle\Entity\Club $club
+     *
+     * @return Player
+     */
+    public function addClub(\Player\PlayerBundle\Entity\Club $club)
+    {
+        $this->clubs[] = $club;
+
+        return $this;
+    }
+
+    /**
+     * Remove club
+     *
+     * @param \Player\PlayerBundle\Entity\Club $club
+     */
+    public function removeClub(\Player\PlayerBundle\Entity\Club $club)
+    {
+        $this->clubs->removeElement($club);
+    }
+
+    /**
+     * Get clubs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClubs()
+    {
+        return $this->clubs;
     }
 }

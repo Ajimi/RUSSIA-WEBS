@@ -27,6 +27,9 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
 
 
             /*
@@ -47,6 +50,8 @@ class AppKernel extends Kernel
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
             new Common\UploadBundle\UploadBundle(),
+            new Common\BookingBundle\BookingBundle(),
+            new Reservation\CartBundle\CartBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -58,7 +63,6 @@ class AppKernel extends Kernel
              * External Bundle
              */
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-
 
             if ('dev' === $this->getEnvironment()) {
                 $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

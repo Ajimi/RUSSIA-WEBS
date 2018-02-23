@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +23,8 @@ class TeamTest
     private $id;
 
 
+
+
     /**
      * Get id.
      *
@@ -37,6 +40,32 @@ class TeamTest
      * @ORM\Column(name="name", type="string")
      */
     private $name;
+
+
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return TeamTest
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 
 
 }

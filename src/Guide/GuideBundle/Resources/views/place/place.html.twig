@@ -1,0 +1,27 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('modal/css/component.css') }}"/>
+
+{% endblock %}
+
+{% block body %}
+    {% embed '@Guide/place/_breadcrum-with-image.html.twig' with {'breadcrumbs_title' : place.name , 'image': asset('st_petersburg_russia_temple_the_savior_on_the_spilled_blood_dome_bridge_clouds_97337_2560x1600.jpg')} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li>
+                <a href="{{ path('city_index', {'slug': place.region.slug, 'code': "attractions" }) }}">
+                    {{ place.region.name|capitalize }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('city_index', {'slug': place.region.slug, 'code': place.category.iconType }) }}">
+                    {{ place.category.name|capitalize }}
+                </a>
+            </li>
+            <li><a class="active">{{ place.name|capitalize }}</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

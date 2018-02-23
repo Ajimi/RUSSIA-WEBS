@@ -1,0 +1,48 @@
+{% for m in matchs %}
+
+<article class="game-result">
+    <div class="game-info">
+        <p class="game-info-subtitle">{{ m.stadium }} -
+            <time datetime="08:30"> {{ m.time | slice(0,5)}} </time>
+        </p>
+        <h3 class="game-info-title">{{ m.level }}</h3>
+        <div class="game-info-main">
+            <div class="game-info-team game-info-team-first">
+                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
+                </figure>
+                <div class="game-result-team-name">{{ m.team1.teamName |slice(0,15) }}</div>
+                <div class="game-result-team-country">USA</div>
+            </div>
+            <div class="game-info-middle game-info-middle-vertical">
+                <time class="time-big" datetime="2017-04-17"><span class="heading-3">{{ m.date |slice(5,5)}}</span>
+                    May 2017
+
+                </time>
+                <div class="game-result-divider-wrap"><span class="game-info-team-divider">VS</span></div>
+                <div class="group-sm">
+                    <div class="button button-sm button-share-outline">Share
+                        <ul class="game-info-share">
+                            <li class="game-info-share-item"><a class="icon fa fa-facebook" href="#"></a></li>
+                            <li class="game-info-share-item"><a class="icon fa fa-twitter" href="#"></a></li>
+                            <li class="game-info-share-item"><a class="icon fa fa-google-plus" href="#"></a></li>
+                        </ul>
+                    </div>
+                    <a class="button button-sm button-primary" href="{{ path('cart_add_item',{'match':m.id}) }}">Buy tickets</a>
+                </div>
+            </div>
+            <div class="game-info-team game-info-team-second">
+                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
+                </figure>
+                <div class="game-result-team-name">{{ m.team2.teamName |slice(0,15)}}</div>
+                <div class="game-result-team-country">Spain</div>
+            </div>
+        </div>
+        <div>
+            {{ socialButtons() }}
+        </div>
+    </div>
+
+
+</article>
+
+{% endfor %}

@@ -1,0 +1,6 @@
+UserBundle\Entity\User:
+    user_{1..5}:
+        username (unique): <de_DE:username()>
+        email: othman+<current()>@gmail.com
+        plainPassword: rajel
+        roles: ['ROLE_ADMIN']

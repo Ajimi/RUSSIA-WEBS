@@ -3,6 +3,7 @@
 namespace Common\RegionBundle\Entity;
 
 use Common\LocationBundle\Entity\Location;
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -47,15 +48,25 @@ class Region
     private $hotels;
 
     /**
+     * One Region has Many Hotels.
+     * @ORM\OneToMany(targetEntity="Common\RegionBundle\Entity\Place", mappedBy="region")
+     */
+    private $places;
+
+    /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
 
+    /**
+     * Region constructor.
+     */
     public function __construct()
     {
         $this->hotels = new ArrayCollection();
+        $this->places = new ArrayCollection();
     }
 
 
@@ -127,6 +138,41 @@ class Region
         return $this->hotels;
     }
 
+    /**
+     * @param Place $place
+     */
+    public function addPlace(Place $place)
+    {
+        if ($this->places->contains($place)) {
+            return;
+        }
+
+        $this->places[] = $place;
+        // needed to update the owning side of the relationship!
+        $place->setRegion($this);
+    }
+
+    /**
+     * @param Place $place
+     */
+    public function removePlace(Place $place)
+    {
+        if (!$this->places->contains($place)) {
+            return;
+        }
+
+        $this->places->removeElement($place);
+        // needed to update the owning side of the relationship!
+        $place->setRegion(null);
+    }
+
+    /**
+     * @return ArrayCollection|Place[]
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
     /**
      * Set location
      *
