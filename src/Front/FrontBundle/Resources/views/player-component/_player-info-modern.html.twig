@@ -1,12 +1,12 @@
-<div class="player-info-modern"><a class="player-info-modern-figure" href="{{ path('player_Display') }}"><img
-                src="{% block player_image %}{% endblock %}" alt="" width="368" height="286"></a>
+<div class="player-info-modern"><a class="player-info-modern-figure" href="{{ path('player_Display',{'id':id}) }}"><img
+                src="{{ asset(imagePlayer~'') }}" alt="" width="368" height="286"></a>
     <div class="player-info-modern-footer">
         <div class="player-info-modern-number">
             <p>{% block player_number %} {% endblock %}</p>
         </div>
         <div class="player-info-modern-content">
             <div class="player-info-modern-title">
-                <h5><a href="player-page.html">{% block player_name %} {% endblock %}</a></h5>
+                <h5><a href="{{ path('player_Display',{'id':id}) }}">{% block player_name %} {% endblock %}</a></h5>
                 <p>{% block player_position %} {% endblock %}</p>
             </div>
             <div class="player-info-modern-progress">

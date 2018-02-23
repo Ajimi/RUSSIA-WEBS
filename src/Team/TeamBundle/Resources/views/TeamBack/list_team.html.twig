@@ -59,7 +59,7 @@
                             {% for team in teams %}
                                 <tr>
                                     <td>{{ team.teamName }}</td>
-                                    <td><img src="{{ asset('/'~ team.teamLogo) }}"
+                                    <td><img src="{{ asset(''~team.file) }}"
                                              alt="" width="22" height="22"/></td>
                                     <td>{{ team.teamShortcut }}</td>
                                     <td>{{ team.participation }}</td>
