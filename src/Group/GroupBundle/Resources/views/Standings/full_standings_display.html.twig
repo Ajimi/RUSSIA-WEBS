@@ -36,7 +36,7 @@
                             </div>
                             {% for s in st %}
                                <a href="{{ path('team_display',{'id':s.idTeam}) }}">
-                                {% embed '@Group/Standings/single_group_standings.html.twig' %}
+                                {% embed '@Group/Standings/single_group_standings.html.twig'with {'logo':s.logo} %}
                                     {% block teamName %} {{ s.teamName }}{% endblock teamName %}
                                     {% block shortCut %} {{ s.teamShortcut }} {% endblock shortCut %}
                                     {% block win %} {{ s.win }} {% endblock win %}

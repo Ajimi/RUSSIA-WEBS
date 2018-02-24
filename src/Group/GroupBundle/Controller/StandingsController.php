@@ -53,7 +53,9 @@ class StandingsController extends Controller
         $fullStandings = [];
         foreach ($groups as $g)
         {
+            /** @var StandingsFormat $standings */
             $standings = [];
+
             $s1 = new StandingsFormat();
             $s2 = new StandingsFormat();
             $s3 = new StandingsFormat();

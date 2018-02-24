@@ -1,4 +1,8 @@
 
+{% set picture = logo|default('assets/images/team-sevilla-45x35.png')  %}
+{{ dump(picture) }}
+{{ dump(logo)}}
+
     <!-- Bootstrap card-->
     <article class="card card-custom">
         <div class="card-standing-position card-standing-counter"></div>
@@ -6,7 +10,7 @@
             <div class="card-standing-team-item">
                 <div class="card-standing-team">
                     <div class="card-standing-team-figure"><img
-                                src="{{ asset('assets/images/team-sevilla-45x35.png')}}" alt="" width="45"
+                                src="{{ asset(picture)}}" alt="" width="45"
                                 height="35"/>
                     </div>
                     <div class="card-standing-team-title">

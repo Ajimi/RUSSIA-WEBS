@@ -8,6 +8,8 @@
 
 namespace Group\GroupBundle\Modele;
 
+use Symfony\Component\HttpFoundation\File\File;
+
 class StandingsFormat
 {
     public $group;
@@ -75,15 +77,15 @@ class StandingsFormat
     }
 
     /**
-     * @return mixed
+     * @return File
      */
-    public function getLogo()
+    public function getLogo():?File
     {
         return $this->logo;
     }
 
     /**
-     * @param mixed $logo
+     * @param File $logo
      */
     public function setLogo($logo)
     {
@@ -154,21 +156,6 @@ class StandingsFormat
         $this->points = $points;
     }
 
-    public function dataFormat(\Team\TeamBundle\Entity\Team $team)
-    {
-        $this->setIdTeam($team->getId());
-        $this->setDrow($team->getMatchDraw());
-        $this->setLogo($team->getTeamLogo());
-        $this->setTeamName($team->getTeamName());
-        $this->setTeamShortcut($team->getTeamShortcut());
-        $this->setWin($team->getMatchWon());
-        $this->setLost($team->getMatchLost());
-        $pts = ($team->getMatchWon() * 3) + ($team->getMatchDraw() + 1);
-        $this->setPoints($pts);
-        return $this;
-
-    }
-
     /**
      * @return mixed
      */
@@ -184,6 +171,23 @@ class StandingsFormat
     {
         $this->idTeam = $idTeam;
     }
+
+    public function dataFormat(\Team\TeamBundle\Entity\Team $team)
+    {
+        $this->setIdTeam($team->getId());
+        $this->setDrow($team->getMatchDraw());
+        $this->setLogo($team->getFile());
+        $this->setTeamName($team->getTeamName());
+        $this->setTeamShortcut($team->getTeamShortcut());
+        $this->setWin($team->getMatchWon());
+        $this->setLost($team->getMatchLost());
+        $pts = ($team->getMatchWon() * 3) + ($team->getMatchDraw() + 1);
+        $this->setPoints($pts);
+        return $this;
+
+    }
+
+
 
 
 }
