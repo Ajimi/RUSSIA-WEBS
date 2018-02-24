@@ -25,7 +25,7 @@ class EventType extends AbstractType
                 'choices' => array(
                     'Goal' => 'Goal',
                     'Shot(On Target)' => 'Shot(On Target)',
-                    'Save' => 'Saves',
+                    'Save' => 'Save',
                     'Corner Kick' => 'Corner Kick',
                     'Penalty Kick' => 'Penalty Kick',
                     'Yellow Card' => 'Yellow Card',
