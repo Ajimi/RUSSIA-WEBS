@@ -178,7 +178,7 @@ class Place
     /**
      * @return Region
      */
-    public function getRegion(): Region
+    public function getRegion(): ?Region
     {
         return $this->region;
     }
@@ -194,7 +194,7 @@ class Place
     /**
      * @return string
      */
-    public function getPreviewText(): string
+    public function getPreviewText(): ?string
     {
         return $this->previewText;
     }
@@ -210,7 +210,7 @@ class Place
     /**
      * @return string
      */
-    public function getPreviewPicture(): string
+    public function getPreviewPicture(): ?string
     {
         return $this->previewPicture;
     }
@@ -226,7 +226,7 @@ class Place
     /**
      * @return string
      */
-    public function getWorkingTime(): string
+    public function getWorkingTime(): ?string
     {
         return $this->workingTime;
     }
@@ -242,7 +242,7 @@ class Place
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -258,7 +258,7 @@ class Place
     /**
      * @return string
      */
-    public function getSiteUrl(): string
+    public function getSiteUrl(): ?string
     {
         return $this->siteUrl;
     }
@@ -274,7 +274,7 @@ class Place
     /**
      * @return \Common\RegionBundle\Entity\Category
      */
-    public function getCategory(): \Common\RegionBundle\Entity\Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
@@ -282,7 +282,7 @@ class Place
     /**
      * @param \Common\RegionBundle\Entity\Category $category
      */
-    public function setCategory(\Common\RegionBundle\Entity\Category $category)
+    public function setCategory(Category $category)
     {
         $this->category = $category;
     }
@@ -318,6 +318,9 @@ class Place
         $place->setType($item['type']);
         $place->setPreviewText($item['preview_text']);
         $place->setInformation($item['detail_text']);
+        // TODO : get blocks and picture name
+        $picture = explode(',', $item['preview_picture']);
+
         $place->setPreviewPicture($item['preview_picture']);
         $place->setRegion($region);
         $place->setPhone($item['phone']);

@@ -1,0 +1,149 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+    <style>
+        #mapid {
+            height: 40em;
+            width: 100%;
+        }
+    </style>
+{% endblock stylesheets %}
+{% block title %}    Region | Edit region{% endblock title %}
+
+{% block top_content_header %}
+{% endblock top_content_header %}
+{% block page_content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel ">
+            <div class="x_title">
+                <h3>Edit Region
+                    <small>Edit region {{ region.regionName }} !</small>
+                </h3>
+
+                <div class="clearfix"></div>
+            </div>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+            <div class="form-group">
+
+                {{ form_label(form.regionName, 'City Name (Region)*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.regionName, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+
+
+                <div id="mapid">
+
+                </div>
+
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <br>
+                <div class="col-md-3"></div>
+                <div class="col-md-3 col-sm-3">
+                    {{ form_label(form.longitude, 'Longitude*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                    {{ form_widget(form.longitude, { 'attr': {'class': 'js-lng form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    {{ form_label(form.latitude, 'Latitude*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                    {{ form_widget(form.latitude, { 'attr': {'class': 'js-lat form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <br>
+                <a href="{{ path('admin_region_delete', {'id': id }) }}">
+                    <button style="width: 80px;" class="btn btn-error">delete</button>
+                </a>
+
+                <button style="width: 80px;" class="btn btn-success" type="submit">Confirm</button>
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+    </div>
+
+{% endblock page_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('modal/js/redirect.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            var regionLong = '56.2851078';
+            var regionLat = '58.5906365';
+
+            if ('{{ region.longitude }}' != "") {
+                regionLong = '{{ region.longitude }}';
+
+            }
+            if ('{{ region.latitude }}' != "") {
+                regionLat = '{{ region.latitude }}';
+            }
+
+            var latlng = L.latLng(regionLat, regionLong);
+            var map = L.map('mapid', {
+                scrollWheelZoom: false
+            }).setView(latlng, 4);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+
+            var marker;
+            marker = new L.marker(latlng);
+            map.addLayer(marker);
+            var canAdd = true;
+            map.on('click', function (event) {
+                map.removeLayer(marker);
+                if (canAdd) {
+                    addMarker(event);
+                }
+                else {
+                    addMarker(event);
+
+                }
+                $('.js-lng').val(event.latlng.lng);
+                $('.js-lat').val(event.latlng.lat);
+
+            });
+
+
+            map.addEventListener('mousemove', function (ev) {
+                lat = ev.latlng.lat;
+                lng = ev.latlng.lng;
+
+            });
+
+            function addMarker(e) {
+                console.log(marker);
+                marker = new L.marker(e.latlng);
+                map.addLayer(marker);
+                canAdd = false;
+            }
+        });
+
+
+    </script>
+
+{% endblock %}

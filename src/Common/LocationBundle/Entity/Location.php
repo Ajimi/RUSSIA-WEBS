@@ -178,4 +178,9 @@ class Location
         $location->setGeoCode($geocode);
         return $location;
     }
+
+    public function __toString()
+    {
+        return 'location';
+    }
 }

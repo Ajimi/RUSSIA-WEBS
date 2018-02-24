@@ -1,3 +1,7 @@
+region_place:
+    resource: "@RegionBundle/Controller/PlaceController.php"
+    type:     annotation
+
 cart:
     resource: "@CartBundle/Controller/"
     type:     annotation
@@ -26,7 +30,7 @@ location_address:
     type:     annotation
 
 region_region:
-    resource: "@RegionBundle/Controller/RegionController.php"
+    resource: "@RegionBundle/Controller/RegionAdminController.php"
     type:     annotation
 
 hotel_room:

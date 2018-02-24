@@ -11,6 +11,7 @@ namespace Group\GroupBundle\Controller\Admin;
 use Doctrine\ORM\EntityManager;
 use Group\GroupBundle\Entity\Groupe;
 use Group\GroupBundle\Form\GroupeType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,13 +62,47 @@ class GroupAdminController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/delete/{id}",name="admin_group_delete")
      */
-    public function deleteGroupAction($id)
+
+    public function deleteGroupAction(Groupe $groupe = null)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('Group:groupe')->find($id);
-        $em->remove($repository);
-        $em->flush();
-        return $this->redirectToRoute("AfficheGroup");
+        $session = $this->get('session');
+
+        if ($groupe != null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($groupe);
+            $em->flush();
+            $session->getFlashBag()->add('success', 'Group deleted succesfully');
+            return $this->redirectToRoute("AfficheGroup");
+
+        }
+
+        return $this->redirectToRoute('AfficheGroup');
     }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/edit/{id}",name="admin_group_edit")
+     * @Method({"GET","POST"})
+     */
+    public function editAction(Request $request, Groupe $groupe)
+    {
+
+        $editForm = $this->createForm('Group\GroupBundle\Form\GroupeType', $groupe);
+        $editForm->handleRequest($request);
+        if ($editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('AfficheGroup', array('id' => $groupe->getId()));
+        }
+        return $this->render('GroupBundle:GroupController:modifierroup.html.twig', array('groupe' => $groupe,
+            'edit_form' => $editForm->createView(),
+
+        ));
+    }
+
+    private function createDeleteForm($groupe)
+    {
+    }
+
 
 }

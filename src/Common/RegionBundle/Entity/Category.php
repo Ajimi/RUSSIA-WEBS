@@ -149,5 +149,10 @@ class Category
 
         return $category;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
 

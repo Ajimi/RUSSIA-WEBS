@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'BackBundle:common:_base.html.twig' %}
 
-{% block body %}
-    <h1>Region edit</h1>
+{% block page_content %}
+
+    <h1>Place edit</h1>
 
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
@@ -10,7 +11,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_region_index') }}">Back to the list</a>
+            <a href="{{ path('admin_place_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -1,0 +1,54 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+
+{% block page_content %}
+
+    <h1>Places list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Information</th>
+            <th>Previewtext</th>
+            <th>Previewpicture</th>
+            <th>Workingtime</th>
+            <th>Phone</th>
+            <th>Siteurl</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for place in places %}
+            <tr>
+                <td><a href="{{ path('admin_place_show', { 'id': place.id }) }}">{{ place.id }}</a></td>
+                <td>{{ place.type }}</td>
+                <td>{{ place.name }}</td>
+                <td>{{ place.information }}</td>
+                <td>{{ place.previewText }}</td>
+                <td>{{ place.previewPicture }}</td>
+                <td>{{ place.workingTime }}</td>
+                <td>{{ place.phone }}</td>
+                <td>{{ place.siteUrl }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_place_show', { 'id': place.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_place_edit', { 'id': place.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_place_new') }}">Create a new place</a>
+        </li>
+    </ul>
+{% endblock %}
