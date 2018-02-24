@@ -70,7 +70,7 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
     }
 
     //Player_Stat_Update
-    public function UpdateTeamStat($player,$event){
+    public function UpdatePlayerStat($player,$event){
         $em = $this->getEntityManager();
         if($event == "Goal"){
             $query = $em->createQuery("Update PlayerBundle:Player p Set p.goalScored= p.goalScored + 1 where p.id= :id");
