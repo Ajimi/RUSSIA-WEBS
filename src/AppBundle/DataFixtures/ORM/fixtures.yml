@@ -68,3 +68,44 @@ Common\RegionBundle\Entity\Region:
         location:   '@location*'
         hotels:     ['@hotel*']
 
+Team\TeamBundle\Entity\Team:
+    teame{1..32}:
+      teamName: <country()>
+      teamLogo: "argentina-hd-logo.png"
+      teamShortcut: <word()>
+      matchWon: <randomDigitNotNull()>
+      matchLost: <randomDigitNotNull()>
+      goalScored: <randomDigitNotNull()>
+      goalIn: <randomDigitNotNull()>
+      matchDraw: <randomDigitNotNull()>
+      participation: <randomDigitNotNull()>
+      winner: <randomDigitNotNull()>
+      second: <randomDigitNotNull()>
+      third: <randomDigitNotNull()>
+
+
+
+Player\PlayerBundle\Entity\Player:
+    player{1..10}:
+        playerName: <word()>
+        playerLastName: <word()>
+        playerImage: <word()>
+        playerPosition: <word()>
+        playerNumber: <numberBetween(0,99)>
+        bio: <word()>
+        weight: <numberBetween(0,11)>
+        height: <numberBetween(0,11)>
+        totalGames: <numberBetween(0,11)>
+        team: <word()>
+        goalScored: <numberBetween(0,11)>
+        shots: <numberBetween(0,11)>
+        shotsOnTarget: <numberBetween(0,11)>
+        assists: <numberBetween(0,11)>
+        fouls: <numberBetween(0,11)>
+        passes: <numberBetween(0,11)>
+        yellowCard: <numberBetween(0,11)>
+        cornerKicks: <numberBetween(0,11)>
+        penaltyKicks: <numberBetween(0,11)>
+        redCard: <numberBetween(0,11)>
+        nationalTeam: '@teame*'
+

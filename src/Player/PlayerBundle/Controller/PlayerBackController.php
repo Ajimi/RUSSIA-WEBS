@@ -30,7 +30,7 @@ class PlayerBackController extends Controller
         $player->setFouls(0);
         $player->setPasses(0);
         $player->setRedCard(0);
-        $player->setPenalityKicks(0);
+        $player->setPenaltyKicks(0);
         $player->setCornerKicks(0);
         $player->setYellowCard(0);
         $player->setShots(0);

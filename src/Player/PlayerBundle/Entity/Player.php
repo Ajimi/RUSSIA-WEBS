@@ -163,7 +163,7 @@ class Player
      *
      * @ORM\Column(name="penalityKicks", type="integer")
      */
-    private $penalityKicks;
+    private $penaltyKicks;
 
     /**
      * @var int
@@ -225,17 +225,17 @@ class Player
     /**
      * @return int
      */
-    public function getPenalityKicks()
+    public function getPenaltyKicks()
     {
-        return $this->penalityKicks;
+        return $this->penaltyKicks;
     }
 
     /**
-     * @param int $penalityKicks
+     * @param int $penaltyKicks
      */
-    public function setPenalityKicks($penalityKicks)
+    public function setPenaltyKicks($penaltyKicks)
     {
-        $this->penalityKicks = $penalityKicks;
+        $this->penaltyKicks = $penaltyKicks;
     }
 
     /**
