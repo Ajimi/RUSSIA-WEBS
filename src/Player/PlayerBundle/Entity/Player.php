@@ -161,9 +161,9 @@ class Player
     /**
      * @var int
      *
-     * @ORM\Column(name="penalityKicks", type="integer")
+     * @ORM\Column(name="penaltyKicks", type="integer")
      */
-    private $penalityKicks;
+    private $penaltyKicks;
 
     /**
      * @var int
@@ -222,21 +222,7 @@ class Player
         $this->file = $file;
     }
 
-    /**
-     * @return int
-     */
-    public function getPenalityKicks()
-    {
-        return $this->penalityKicks;
-    }
 
-    /**
-     * @param int $penalityKicks
-     */
-    public function setPenalityKicks($penalityKicks)
-    {
-        $this->penalityKicks = $penalityKicks;
-    }
 
     /**
      * @return int
@@ -822,4 +808,28 @@ class Player
         $this->clubs->removeElement($club);
     }
 
+
+    /**
+     * Set penaltyKicks.
+     *
+     * @param int $penaltyKicks
+     *
+     * @return Player
+     */
+    public function setPenaltyKicks($penaltyKicks)
+    {
+        $this->penaltyKicks = $penaltyKicks;
+
+        return $this;
+    }
+
+    /**
+     * Get penaltyKicks.
+     *
+     * @return int
+     */
+    public function getPenaltyKicks()
+    {
+        return $this->penaltyKicks;
+    }
 }

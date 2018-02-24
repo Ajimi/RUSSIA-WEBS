@@ -13,6 +13,7 @@ class StandingsFormat
     public $group;
     public $logo;
     public $teamName;
+    public $idTeam;
     public $teamShortcut;
     public $win;
     public $lost;
@@ -155,7 +156,7 @@ class StandingsFormat
 
     public function dataFormat(\Team\TeamBundle\Entity\Team $team)
     {
-
+        $this->setIdTeam($team->getId());
         $this->setDrow($team->getMatchDraw());
         $this->setLogo($team->getTeamLogo());
         $this->setTeamName($team->getTeamName());
@@ -167,5 +168,22 @@ class StandingsFormat
         return $this;
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdTeam()
+    {
+        return $this->idTeam;
+    }
+
+    /**
+     * @param mixed $idTeam
+     */
+    public function setIdTeam($idTeam)
+    {
+        $this->idTeam = $idTeam;
+    }
+
 
 }
