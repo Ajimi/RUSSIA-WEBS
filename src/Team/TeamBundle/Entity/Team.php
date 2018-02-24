@@ -110,6 +110,10 @@ class Team
 
 
     /**
+     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="team")
+     */
+    private $players;
+    /**
      * Get id
      *
      * @return int

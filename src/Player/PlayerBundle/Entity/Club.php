@@ -47,7 +47,7 @@ class Club
      *
      * @ORM\Column(name="matchPlayer", type="integer")
      */
-    private $matchPlayer;
+    private $matchPlayed;
 
     /**
      * @var int
@@ -58,9 +58,26 @@ class Club
 
     /**
      * @ORM\ManyToOne(targetEntity="Player\PlayerBundle\Entity\Player", inversedBy="skills")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true,onDelete="CASCADE")
      */
     private $player;
+
+    /**
+     * @return mixed
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * @param mixed $player
+     */
+    public function setPlayer($player)
+    {
+        $this->player = $player;
+    }
+
 
     /**
      * Get id.
@@ -147,13 +164,13 @@ class Club
     /**
      * Set matchPlayer.
      *
-     * @param int $matchPlayer
+     * @param int $matchPlayed
      *
      * @return Club
      */
-    public function setMatchPlayer($matchPlayer)
+    public function setMatchPlayed($matchPlayed)
     {
-        $this->matchPlayer = $matchPlayer;
+        $this->matchPlayed = $matchPlayed;
 
         return $this;
     }
@@ -163,9 +180,9 @@ class Club
      *
      * @return int
      */
-    public function getMatchPlayer()
+    public function getMatchPlayed()
     {
-        return $this->matchPlayer;
+        return $this->matchPlayed;
     }
 
     /**
