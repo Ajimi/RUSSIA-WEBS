@@ -69,14 +69,14 @@
                 <div class="col-lg-4">
                     {% if match.id in matchesId|keys %}
                         {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART'} %}
-                            {% block team1 %}{{ match.team1.name }}{% endblock %}
-                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                            {% block team1 %}{{ match.team1.teamName }}{% endblock %}
+                            {% block team2 %}{{ match.team2.teamName }}{% endblock %}
                         {% endembed %}
 
                     {% else %}
                         {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match   } %}
-                            {% block team1 %}{{ match.team1.name }}{% endblock %}
-                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                            {% block team1 %}{{ match.team1.teamName }}{% endblock %}
+                            {% block team2 %}{{ match.team2.teamName }}{% endblock %}
                         {% endembed %}
                     {% endif %}
 
