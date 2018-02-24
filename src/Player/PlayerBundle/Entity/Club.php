@@ -35,12 +35,6 @@ class Club
      */
     private $seasonStart;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="seasonEnd", type="integer")
-     */
-    private $seasonEnd;
 
     /**
      * @var int
@@ -137,29 +131,6 @@ class Club
         return $this->seasonStart;
     }
 
-    /**
-     * Set seasonEnd.
-     *
-     * @param int $seasonEnd
-     *
-     * @return Club
-     */
-    public function setSeasonEnd($seasonEnd)
-    {
-        $this->seasonEnd = $seasonEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get seasonEnd.
-     *
-     * @return int
-     */
-    public function getSeasonEnd()
-    {
-        return $this->seasonEnd;
-    }
 
     /**
      * Set matchPlayer.

@@ -2,9 +2,11 @@
 
 namespace Player\PlayerBundle\Controller;
 
+use DateTime;
 use Player\PlayerBundle\Entity\Club;
 use Player\PlayerBundle\Entity\Player;
 use Player\PlayerBundle\Entity\Skill;
+use Player\PlayerBundle\Form\ClubType;
 use Player\PlayerBundle\Form\PlayerType;
 use Player\PlayerBundle\Form\SkillType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,6 +38,7 @@ class PlayerBackController extends Controller
         $formplayer->handleRequest($request);
         if ($formplayer->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $player->setBirthday(new DateTime($request->get('calendar')));
             $em->persist($player);
             $em->flush();
         }
@@ -75,7 +78,7 @@ class PlayerBackController extends Controller
         $club = new Club();
         $player = $em->getRepository("PlayerBundle:Player")->find($id);
         $club->setPlayer($player);
-        $formclub = $this->createForm(SkillType::class, $club);
+        $formclub = $this->createForm(ClubType::class, $club);
         $formclub->handleRequest($request);
         if ($formclub->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -99,6 +102,7 @@ class PlayerBackController extends Controller
         $form->remove('playerImage');
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $player->setBirthday(new DateTime($request->get('calendar')));
             $em->persist($player);
             $em->flush();
             return $this->redirectToRoute('playerList');

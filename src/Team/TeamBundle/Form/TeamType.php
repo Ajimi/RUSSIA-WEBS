@@ -15,7 +15,7 @@ class TeamType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teamName')->add('teamLogo',FileType::class)
+        $builder->add('teamName')->add('file',FileType::class,array('required' => false))
             ->add('teamShortcut')->add('participation')
             ->add('winner')->add('second')->add('third')
             ->add('create', SubmitType::class);;
