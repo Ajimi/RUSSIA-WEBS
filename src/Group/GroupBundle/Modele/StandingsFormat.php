@@ -176,7 +176,7 @@ class StandingsFormat
     {
         $this->setIdTeam($team->getId());
         $this->setDrow($team->getMatchDraw());
-        $this->setLogo($team->getFile());
+        $this->setLogo($team->getTeamLogo());
         $this->setTeamName($team->getTeamName());
         $this->setTeamShortcut($team->getTeamShortcut());
         $this->setWin($team->getMatchWon());

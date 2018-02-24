@@ -1,9 +1,5 @@
-
-{% set picture = logo|default('assets/images/team-sevilla-45x35.png')  %}
-{{ dump(picture) }}
-{{ dump(logo)}}
-
-    <!-- Bootstrap card-->
+{% set picture = 'assets/images/teamUploads/' ~ logo  %}
+ <!-- Bootstrap card-->
     <article class="card card-custom">
         <div class="card-standing-position card-standing-counter"></div>
         <div class="card-header" id="accordion1Heading2" role="tab">

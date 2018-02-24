@@ -67,6 +67,7 @@ class StandingsController extends Controller
             $s4->setGroup($g->getName());
 
             $s1->dataFormat($g->getTeam1());
+            dump($g->getTeam1());
             array_push($standings, $s1);
             $s2->dataFormat($g->getTeam2());
             array_push($standings, $s2);
