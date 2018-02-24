@@ -27,6 +27,7 @@ class RegionDataTransformer
         if ($region == null)
             $region = new Region();
         $region->setName($regionData->getRegionName());
+        $region->setFile($regionData->getFile());
         $location = new Location();
 
         $geo = new GeoCode();
@@ -64,6 +65,7 @@ class RegionDataTransformer
             $regionData->setLongitude('56.2851078');
         }
         $regionData->setRegionName($region->getName());
+        $regionData->setFile($region->getFile());
 
         return $regionData;
     }
