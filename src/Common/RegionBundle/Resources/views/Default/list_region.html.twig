@@ -1,0 +1,124 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+
+
+{% endblock stylesheets %}
+
+{% block title %}Region List{% endblock %}
+
+{% block page_title %}Region List{% endblock page_title %}
+{% block page_content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <a href="{{ path('admin_region_new') }}">
+                    <button class="btn btn-success " id="newMatchBtn">New
+                        Region
+                    </button>
+                </a>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content" id="tableDiv">
+
+                <table class="table table-striped jambo_table bulk_action" id="table">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">Country</th>
+                        <th class="column-title">State</th>
+                        <th class="column-title">Longitutde</th>
+                        <th class="column-title">Longitutde</th>
+                        <th class="column-title">Actions</th>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions (
+                                <span class="action-cnt"> </span> ) <i
+                                        class="fa fa-chevron-down"></i>
+                            </a>
+                        </th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    {% for region in regions %}
+                        <tr>
+                            <td>Russia</td>
+                            <td>{{ region.name }}</td>
+                            <td>
+                                {% if region.location is null %}55.235564{% else %}{{ region.location.geoCode.longitude }}{% endif %}
+                            </td>
+                            <td>
+                                {% if region.location is null %}55.235564{% else %}{{ region.location.geoCode.latitude }}{% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_region_edit',{'id':region.id}) }}"
+                                   class="btn btn-info btn-xs">
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a>
+                                <a href="#"
+                                   id="editBtn"
+                                   data-url="{{ region.id }}"
+                                   class="js-delete btn btn-danger btn-xs">
+                                    <i class="fa fa-trash-o"></i>
+                                    Delete </a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- New Match Modal -->
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <!-- FullCalendar -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.js-delete').on('click', function (ev) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                $item = $(this);
+                $id = $item.attr('data-url');
+                axios.get(Routing.generate('admin_region_delete', {'id': $id})).then(function (response) {
+                    console.log('Deleted');
+                    $item.closest('tr').remove();
+                }).catch(function () {
+
+                });
+            });
+        })
+    </script>
+{% endblock javascripts %}
+
+
+
+
+

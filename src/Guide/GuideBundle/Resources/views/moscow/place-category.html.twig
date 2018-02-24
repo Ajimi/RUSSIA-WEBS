@@ -7,6 +7,7 @@
                         <div class="col-sm-10 col-md-6 col-xl-12">
                             {% embed '@Guide/guide/place-component.html.twig'
                             with {url: path('place_show', {'id': place.id})} %}
+
                                 {% block image %}http://cdn.welcome2018.com/upload/iblock/04a/tass_12031814.jpg{% endblock %}
                                 {% block name %}
                                     {{ place.name }}
