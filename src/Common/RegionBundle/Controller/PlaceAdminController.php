@@ -4,9 +4,9 @@ namespace Common\RegionBundle\Controller;
 
 use Common\RegionBundle\Entity\Place;
 use Common\RegionBundle\Form\PlaceType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -19,20 +19,53 @@ class PlaceAdminController extends Controller
     /**
      * Lists all place entities.
      *
-     * @Route("/", name="admin_place_index")
-     * @Method("GET")
+     * @Route("/", name="admin_place_index" , options={"expose" = true})
+     * @throws \LogicException
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
 
-        $places = $em->getRepository('RegionBundle:Place')->findAll();
+        $regions = $em->getRepository('RegionBundle:Region')->findAll();
+        $placesQuery = $em->getRepository('RegionBundle:Place')->getBuilder();
+
+        $paginator = $this->get('knp_paginator');
+
+        if ($request->query->getAlnum('search')) {
+            $placesQuery
+                ->where('p.name LIKE :name')
+                ->setParameter('name', '%' . $request->query->getAlnum('search') . '%');
+        }
+
+        $regionId = 2;
+        if ($request->query->getAlnum('region')) {
+            $regionId = $request->query->getAlnum('region');
+            $placesQuery->andWhere('p.region = :region')
+                ->setParameter('region', $regionId);
+        } else {
+            $placesQuery->andWhere('p.region = :region')
+                ->setParameter('region', $regionId);
+        }
+
+
+        $region = $em->getRepository('RegionBundle:Region')->findOneBy(['id' => $regionId]);
+
+        /** @var Place[] $placesPagination */
+        $placesPagination = $paginator->paginate(
+            $placesQuery->getQuery(), /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            9/*limit per page*/
+        );
 
         return $this->render('RegionBundle:place:index.html.twig', array(
-            'places' => $places,
+            'places' => $placesPagination,
+            'regions' => $regions,
+            'region' => $region
+        ,
         ));
     }
+
 
     /**
      * Creates a new place entity.
@@ -68,28 +101,13 @@ class PlaceAdminController extends Controller
      */
     public function showAction(Place $place)
     {
-        $deleteForm = $this->createDeleteForm($place);
+
 
         return $this->render('RegionBundle:place:show.html.twig', array(
             'place' => $place,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Creates a form to delete a place entity.
-     *
-     * @param Place $place The place entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Place $place)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_place_delete', array('id' => $place->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
-    }
 
     /**
      * Displays a form to edit an existing place entity.
@@ -99,7 +117,6 @@ class PlaceAdminController extends Controller
      */
     public function editAction(Request $request, Place $place)
     {
-        $deleteForm = $this->createDeleteForm($place);
         $editForm = $this->createForm('Common\RegionBundle\Form\PlaceType', $place);
         $editForm->handleRequest($request);
 
@@ -112,26 +129,18 @@ class PlaceAdminController extends Controller
         return $this->render('RegionBundle:place:edit.html.twig', array(
             'place' => $place,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Deletes a place entity.
      *
-     * @Route("/{id}", name="admin_place_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="admin_place_delete")
      */
     public function deleteAction(Request $request, Place $place)
     {
-        $form = $this->createDeleteForm($place);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($place);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($place);
 
         return $this->redirectToRoute('admin_place_index');
     }

@@ -12,7 +12,7 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getBuilder()
     {
-        return $this->createQueryBuilder("t");
+        return $this->createQueryBuilder("p");
     }
 
     public function findByRegion($region)

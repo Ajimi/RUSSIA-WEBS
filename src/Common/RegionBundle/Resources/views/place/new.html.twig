@@ -14,7 +14,7 @@
         }
     </style>
 {% endblock stylesheets %}
-{% block title %}    Region | New  region  {% endblock title %}
+{% block title %}    Place | New  place{% endblock title %}
 
 {% block top_content_header %}
 {% endblock top_content_header %}
@@ -130,8 +130,8 @@
             var regionLat = '58.5906365';
             var latlng = L.latLng(regionLong, regionLat);
             var map = L.map('mapid', {
-                scrollWheelZoom: false
-            }).setView(latlng, 4);
+                scrollWheelZoom: true
+            }).setView(latlng, 7);
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -168,9 +168,9 @@
                 axios.get(Routing.generate('api_location_id', {'id': $id}))
                     .then(function (response) {
                         geoCode = response.data["data"];
-                        map.panTo(new L.LatLng(geoCode['latitude'], geoCode['longitude']));
+                        latlong = new L.LatLng(geoCode['latitude'], geoCode['longitude']);
+                        map.panTo(latlong);
                     }).catch(function (err) {
-                    console.log('erro');
                 });
             });
 
