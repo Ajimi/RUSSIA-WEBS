@@ -24,12 +24,15 @@ class EventType extends AbstractType
                 'multiple' => false,
                 'choices' => array(
                     'Goal' => 'Goal',
+                    'Assist'=>'Assist',
+                    'Shot'=>'Shot',
                     'Shot(On Target)' => 'Shot(On Target)',
-                    'Save' => 'Save',
+                    'Foul'=>'Foul',
                     'Corner Kick' => 'Corner Kick',
                     'Penalty Kick' => 'Penalty Kick',
                     'Yellow Card' => 'Yellow Card',
-                    'Red Card' => 'Red Card'
+                    'Red Card' => 'Red Card',
+                    'Pass'=>'Pass'
                 )))
             ->add('description', TextareaType::class)
             ->add('player', EntityType::class, array(

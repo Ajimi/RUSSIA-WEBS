@@ -9,12 +9,80 @@
 namespace  Match\MatchBundle\Model;
 class StatisticFormat
 {
-    private $saves=0;
+
     private $cornerKicks=0;
     private $penaltyKicks=0;
     private $yellowCard=0;
     private $redCards=0;
     private $shots=0;
+    private $shotsOnTarget=0;
+    private $passes=0;
+    private $assist=0;
+    private $fouls=0;
+
+    /**
+     * @return int
+     */
+    public function getShotsOnTarget(): int
+    {
+        return $this->shotsOnTarget;
+    }
+
+    /**
+     * @param int $shotsOnTarget
+     */
+    public function setShotsOnTarget(int $shotsOnTarget)
+    {
+        $this->shotsOnTarget = $shotsOnTarget;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPasses(): int
+    {
+        return $this->passes;
+    }
+
+    /**
+     * @param int $passes
+     */
+    public function setPasses(int $passes)
+    {
+        $this->passes = $passes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAssist(): int
+    {
+        return $this->assist;
+    }
+
+    /**
+     * @param int $assist
+     */
+    public function setAssist(int $assist)
+    {
+        $this->assist = $assist;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFouls()
+    {
+        return $this->fouls;
+    }
+
+    /**
+     * @param mixed $fouls
+     */
+    public function setFouls($fouls)
+    {
+        $this->fouls = $fouls;
+    }
 
     /**
      * StatisticFormat constructor.
@@ -124,6 +192,18 @@ class StatisticFormat
 
     public function  dataFormat( \Match\MatchBundle\Entity\Event $event)
     {
+        if ($event->getTypeEvent()=="Foul")
+        {
+            $this->setFouls($this->getFouls()+1);
+        }
+        else if ($event->getTypeEvent()=="Assist")
+        {
+            $this->setAssists($this->getAssist()+1);
+        }
+        else if ($event->getTypeEvent()=="Pass")
+        {
+            $this->setPasses($this->getPasses()+1);
+        }
         if ($event->getTypeEvent()=="Shot(On Target)")
         {
             $this->setShots($this->getShots()+1);

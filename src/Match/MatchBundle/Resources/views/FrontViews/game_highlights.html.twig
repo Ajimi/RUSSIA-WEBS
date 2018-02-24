@@ -16,8 +16,8 @@
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}
-            {% if e.typeEvent == "Save" %}
-                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-life-ring"></span>Attempt saved</p>
+            {% if e.typeEvent == "Foul" %}
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-orange-dark fa fa-exclamation"></span>{{ e.typeEvent }} BY {{ e.player.playerName }} {{ e.player.playerLastName }}</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}
