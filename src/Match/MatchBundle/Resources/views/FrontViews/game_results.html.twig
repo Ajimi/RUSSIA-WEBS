@@ -1,0 +1,94 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+
+{% block body %}
+
+    {% include '@Match/Breadcrumbs/breadcrumbs_results.html.twig' %}
+
+    {% if scores is empty %}
+        {% include '@Match/FrontViews/no_data_found.html.twig' %}
+    {% else %}
+
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-8">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Game Results
+                            </h5>
+
+                        </div>
+                    </article>
+
+                    {% include '@Match/FrontViews/single_game_result_model.html.twig' %}
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="row row-30">
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Standings
+                                    </h5>
+                                </div>
+                            </article>
+                            {% include '@Front/standing-component/_table-standing-classic.html.twig' %}
+                        </div>
+
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Best striker
+                                    </h5>
+                                </div>
+                            </article>
+                            {% include '@Front/player-component/_player-info-minimal.html.twig' %}
+                        </div>
+
+
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">group points
+                                    </h5>
+                                </div>
+                            </article>
+
+                            <div class="table-custom-responsive">
+                                <table class="table-custom table-custom-bordered table-team-statistic">
+                                    <tr>
+                                        <td>
+                                            <p class="team-statistic-counter">109</p>
+                                            <p class="team-statistic-title">Groupe A</p>
+                                        </td>
+                                        <td>
+                                            <p class="team-statistic-counter">65</p>
+                                            <p class="team-statistic-title">Groupe B</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="team-statistic-counter">23</p>
+                                            <p class="team-statistic-title">Groupe C</p>
+                                        </td>
+                                        <td>
+                                            <p class="team-statistic-counter">102</p>
+                                            <p class="team-statistic-title">Groupe D</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock body %}

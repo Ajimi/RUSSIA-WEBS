@@ -93,7 +93,6 @@ class Place
      */
     private $location;
 
-
     /**
      * Get id
      *
