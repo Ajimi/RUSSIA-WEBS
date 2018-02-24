@@ -54,9 +54,16 @@ class Player
     private $file;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="playerNumber", type="integer")
+     */
+    private $playerNumber;
+
+    /**
     * @var string
     *
-    * @ORM\Column(name="teamLogo", type="string", length=255)
+    * @ORM\Column(name="playerPosition", type="string", length=255)
     */
     private $playerPosition;
 
@@ -251,6 +258,23 @@ class Player
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getPlayerNumber()
+    {
+        return $this->playerNumber;
+    }
+
+    /**
+     * @param string $playerNumber
+     */
+    public function setPlayerNumber($playerNumber)
+    {
+        $this->playerNumber = $playerNumber;
+    }
+
 
     /**
      * Set playerName.

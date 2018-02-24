@@ -72,6 +72,13 @@ class Team
     /**
      * @var int
      *
+     * @ORM\Column(name="matchDraw", type="integer")
+     */
+    private $matchDraw;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="goalScored", type="integer")
      */
     private $goalScored;
@@ -82,12 +89,7 @@ class Team
      * @ORM\Column(name="goalIn", type="integer")
      */
     private $goalIn;
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="matchDraw", type="integer")
-     */
-    private $matchDraw;
+
 
     /**
      * @var int
