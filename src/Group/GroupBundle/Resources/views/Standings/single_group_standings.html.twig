@@ -1,0 +1,29 @@
+
+    <!-- Bootstrap card-->
+    <article class="card card-custom">
+        <div class="card-standing-position card-standing-counter"></div>
+        <div class="card-header" id="accordion1Heading2" role="tab">
+            <div class="card-standing-team-item">
+                <div class="card-standing-team">
+                    <div class="card-standing-team-figure"><img
+                                src="{{ asset('assets/images/team-sevilla-45x35.png')}}" alt="" width="45"
+                                height="35"/>
+                    </div>
+                    <div class="card-standing-team-title">
+                        <div class="card-standing-team-name">{% block teamName %} {% endblock teamName %}</div>
+                        <div class="card-standing-team-country">{% block shortCut %} {% endblock shortCut %}</div>
+                    </div>
+                </div>
+                <div class="card-standing-number">{% block win %} {% endblock win  %}</div>
+                <div class="card-standing-number">{% block loss %} {% endblock loss %}</div>
+                <div class="card-standing-number">{% block drow %} {% endblock drow %}</div>
+                <div class="card-standing-points">{% block points %} {% endblock points %}</div>
+
+            </div>
+        </div>
+    </article>
+
+
+
+
+

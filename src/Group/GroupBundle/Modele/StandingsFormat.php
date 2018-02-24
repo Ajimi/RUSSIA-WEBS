@@ -10,11 +10,44 @@ namespace Group\GroupBundle\Modele;
 
 class StandingsFormat
 {
+    public $group;
     public $logo;
     public $teamName;
     public $teamShortcut;
     public $win;
     public $lost;
+    public $drow;
+
+    /**
+     * @return mixed
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param mixed $group
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+    /**
+     * @return mixed
+     */
+    public function getDrow()
+    {
+        return $this->drow;
+    }
+
+    /**
+     * @param mixed $drow
+     */
+    public function setDrow($drow)
+    {
+        $this->drow = $drow;
+    }
     public $points;
 
     /**
@@ -123,6 +156,7 @@ class StandingsFormat
     public function dataFormat(\Team\TeamBundle\Entity\Team $team)
     {
 
+        $this->setDrow($team->getMatchDraw());
         $this->setLogo($team->getTeamLogo());
         $this->setTeamName($team->getTeamName());
         $this->setTeamShortcut($team->getTeamShortcut());
