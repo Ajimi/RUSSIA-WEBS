@@ -31,8 +31,7 @@ Common\LocationBundle\Entity\Address:
         country: <country()>
         city: <city()>
         state: <state()>
-        street1: <address()>
-        street2: <streetAddress()>
+        street1: <streetAddress()>
         postalcode: <postcode()>
 
 Common\LocationBundle\Entity\GeoCode:
@@ -47,25 +46,66 @@ Common\LocationBundle\Entity\Location:
         geocode (unique):    '@geocode*'
 
 Reservation\HotelBundle\Entity\Room:
-    room{1..150}:
+    room{1..50}:
         type:         <roomType()>
         size:         <numberBetween(100,300)>
         bedNumber:    <numberBetween(1,7)>
-        price:        <randomFloat(4,1 ,4)>
+        price:        <randomDigitNotNull()>
         description:  <sentence(9)>
-        available:  <boolean(80)>
         hotel:       '@hotel*'
 
 Reservation\HotelBundle\Entity\Hotel:
-    hotel{1..20}:
+    hotel{1..30}:
         name:       <streetName()>
         rate:       <numberBetween(0,5)>
         stars:      <numberBetween(1,5)>
         availableRooms: <randomDigitNotNull()>
-        location(unique):   '@location*'
-#        region:     '@region*'
-#
-#Common\RegionBundle\Entity\Region:
-#    region{1..5}:
-#        name:       <cityPrefix()>
-#        location(unique) :   '@location*'
+        location (unique):   '@location*'
+
+Common\RegionBundle\Entity\Region:
+    region{1..5}:
+        name:       <cityPrefix()>
+        location:   '@location*'
+        hotels:     ['@hotel*']
+
+Team\TeamBundle\Entity\Team:
+    teame{1..32}:
+      teamName: <country()>
+      teamLogo: "argentina-hd-logo.png"
+      teamShortcut: <word()>
+      matchWon: <randomDigitNotNull()>
+      matchLost: <randomDigitNotNull()>
+      goalScored: <randomDigitNotNull()>
+      goalIn: <randomDigitNotNull()>
+      matchDraw: <randomDigitNotNull()>
+      participation: <randomDigitNotNull()>
+      winner: <randomDigitNotNull()>
+      second: <randomDigitNotNull()>
+      third: <randomDigitNotNull()>
+
+
+
+Player\PlayerBundle\Entity\Player:
+    player{1..10}:
+        playerName: <word()>
+        playerLastName: <word()>
+        playerImage: <word()>
+        playerPosition: <word()>
+        playerNumber: <numberBetween(0,99)>
+        bio: <word()>
+        weight: <numberBetween(0,11)>
+        height: <numberBetween(0,11)>
+        totalGames: <numberBetween(0,11)>
+        team: <word()>
+        goalScored: <numberBetween(0,11)>
+        shots: <numberBetween(0,11)>
+        shotsOnTarget: <numberBetween(0,11)>
+        assists: <numberBetween(0,11)>
+        fouls: <numberBetween(0,11)>
+        passes: <numberBetween(0,11)>
+        yellowCard: <numberBetween(0,11)>
+        cornerKicks: <numberBetween(0,11)>
+        penaltyKicks: <numberBetween(0,11)>
+        redCard: <numberBetween(0,11)>
+        nationalTeam: '@teame*'
+

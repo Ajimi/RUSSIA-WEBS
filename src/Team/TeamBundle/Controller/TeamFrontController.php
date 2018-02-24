@@ -22,8 +22,9 @@ class TeamFrontController extends Controller
         $shots = $em->getRepository("PlayerBundle:Player")->shotsByTeam($team);
         $shotsOnTarget = $em->getRepository("PlayerBundle:Player")->shotsOnTargetByTeam($team);
         $assists = $em->getRepository("PlayerBundle:Player")->assistsByTeam($team);
-        $passes = $em->getRepository("PlayerBundle:Player")->passesByTeam($team);
         $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($team);
+        $corners = $em->getRepository("PlayerBundle:Player")->cornerByTeam($team);
+        $penalties = $em->getRepository("PlayerBundle:Player")->penaltyByTeam($team);
         $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($team);
         $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($team);
 
@@ -33,8 +34,9 @@ class TeamFrontController extends Controller
             'shots'=>$shots,
             'sot'=>$shotsOnTarget,
             'assists'=>$assists,
-            'passes'=>$passes,
             'fouls'=>$fouls,
+            'corners'=>$corners,
+            'penalties'=>$penalties,
             'yc'=>$yellowCards,
             'rc'=>$redCards,
         ));

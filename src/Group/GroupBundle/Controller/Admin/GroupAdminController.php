@@ -100,9 +100,4 @@ class GroupAdminController extends Controller
         ));
     }
 
-    private function createDeleteForm($groupe)
-    {
-    }
-
-
 }
