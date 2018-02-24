@@ -4,7 +4,9 @@ namespace Team\TeamBundle\Entity;
 
 use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Team
@@ -27,21 +29,28 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="teamName", type="string", length=255, nullable=true)
+     * @ORM\Column(name="teamName", type="string", length=255)
      */
     private $teamName;
 
     /**
      * @var string
-     * @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
-     * @ORM\Column(name="teamLogo", type="string", length=255, nullable=true)
+     *
+     * @ORM\Column(name="teamLogo", type="string", length=255)
      */
     private $teamLogo;
 
     /**
+     * @var File
+     *
+     *  @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
+     */
+    private $file;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="teamShortcut", type="string", length=255, nullable=true)
+     * @ORM\Column(name="teamShortcut", type="string", length=255)
      */
     private $teamShortcut;
 
@@ -49,70 +58,115 @@ class Team
     /**
      * @var int
      *
-     * @ORM\Column(name="matchWon", type="integer", nullable=true)
+     * @ORM\Column(name="matchWon", type="integer")
      */
     private $matchWon;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="matchLoss", type="integer", nullable=true)
+     * @ORM\Column(name="matchLoss", type="integer")
      */
     private $matchLost;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="goalScored", type="integer", nullable=true)
-     */
-    private $goalScored;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="goalIn", type="integer", nullable=true)
-     */
-    private $goalIn;
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="matchDraw", type="integer", nullable=true)
+     * @ORM\Column(name="matchDraw", type="integer")
      */
     private $matchDraw;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="participation", type="integer", nullable=true)
+     * @ORM\Column(name="goalScored", type="integer")
+     */
+    private $goalScored;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="goalIn", type="integer")
+     */
+    private $goalIn;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="participation", type="integer")
      */
     private $participation;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="winner", type="integer", nullable=true)
+     * @ORM\Column(name="winner", type="integer")
      */
     private $winner;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="second", type="integer", nullable=true)
+     * @ORM\Column(name="second", type="integer")
      */
     private $second;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="third", type="integer", nullable=true)
+     * @ORM\Column(name="third", type="integer")
      */
     private $third;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Player", mappedBy="nationalTeam")
      */
     private $players;
+
+    /**
+     * Team constructor.
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
+
+    /**
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * @param mixed $players
+     */
+    public function setPlayers($players)
+    {
+        $this->players = $players;
+    }
+
     /**
      * Get id
      *
