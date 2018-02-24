@@ -18,8 +18,9 @@ class ClubType extends AbstractType
         $builder->add('clubName')->add('seasonStart')
             ->add('seasonEnd')->add('matchPlayed')
             ->add('goalScored')
-        ->add('create', SubmitType::class);
+            ->add('create', SubmitType::class);
     }
+
     /**
      * {@inheritdoc}
      */

@@ -47,10 +47,10 @@ class Player
     private $playerImage;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="teamLogo", type="string", length=255)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="teamLogo", type="string", length=255)
+     */
     private $playerPosition;
 
     /**

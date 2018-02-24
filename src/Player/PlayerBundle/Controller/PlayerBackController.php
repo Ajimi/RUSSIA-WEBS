@@ -47,7 +47,7 @@ class PlayerBackController extends Controller
     /**
      * @Route("/addSkill/{id}",name="addSkill")
      */
-    public function addSkillAction(Request $request,$id)
+    public function addSkillAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $skill = new Skill();
@@ -59,7 +59,7 @@ class PlayerBackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($skill);
             $em->flush();
-            return $this->redirectToRoute('skillList',array('id' => $id));
+            return $this->redirectToRoute('skillList', array('id' => $id));
         }
         return $this->render('PlayerBundle:PlayerBack:add_skill.html.twig', array(
             'form' => $formskill->createView()
@@ -69,7 +69,7 @@ class PlayerBackController extends Controller
     /**
      * @Route("/addClub/{id}",name="addClub")
      */
-    public function addClubAction(Request $request,$id)
+    public function addClubAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $club = new Club();
@@ -81,7 +81,7 @@ class PlayerBackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($club);
             $em->flush();
-            return $this->redirectToRoute('playerList',array('id' => $id));
+            return $this->redirectToRoute('playerList', array('id' => $id));
         }
         return $this->render('PlayerBundle:PlayerBack:add_club.html.twig', array(
             'form' => $formclub->createView()// ...
@@ -91,7 +91,7 @@ class PlayerBackController extends Controller
     /**
      * @Route("/editPlayer/{id}", name="playerEdit")
      */
-    public function editPlayerAction(Request $request,$id)
+    public function editPlayerAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository("PlayerBundle:Player")->find($id);
@@ -113,7 +113,7 @@ class PlayerBackController extends Controller
     /**
      * @Route("/editSkill/{id}",name="skillEdit")
      */
-    public function editSkillAction(Request $request,$id)
+    public function editSkillAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $skill = $em->getRepository("PlayerBundle:Skill")->find($id);
@@ -132,7 +132,7 @@ class PlayerBackController extends Controller
     /**
      * @Route("/editClub/{id}",name="clubEdit")
      */
-    public function editClubAction(Request $request,$id)
+    public function editClubAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $club = $em->getRepository("PlayerBundle:Club")->find($id);
@@ -197,6 +197,7 @@ class PlayerBackController extends Controller
             // ...
         ));
     }
+
     /**
      * @Route("/listClub/{id}", name="clubList")
      */
@@ -206,10 +207,11 @@ class PlayerBackController extends Controller
         $clubs = $em->getRepository("PlayerBundle:Club")->findbyPlayer($id);
 
         return $this->render('PlayerBundle:PlayerBack:list_clubs.html.twig', array(
-            'clubs' => $clubs,'id'=> $id
+            'clubs' => $clubs, 'id' => $id
             // ...
         ));
     }
+
     /**
      * @Route("/listSkill/{id}", name="skillList")
      */
@@ -219,7 +221,7 @@ class PlayerBackController extends Controller
         $skills = $em->getRepository("PlayerBundle:Skill")->findbyPlayer($id);
 
         return $this->render('PlayerBundle:PlayerBack:list_skills.html.twig', array(
-            'skills' => $skills,'id'=> $id
+            'skills' => $skills, 'id' => $id
             // ...
         ));
     }
