@@ -18,7 +18,7 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('playerName')->add('playerLastName')
-            ->add('playerImage', FileType::class)->add('playerPosition')
+            ->add('file',FileType::class,array('required' => false))->add('playerPosition')
             ->add('birthday')->add('weight')->add('height')
             ->add('totalGames')->add('bio')->add('team')
             ->add('nationalTeam',EntityType::class,array(

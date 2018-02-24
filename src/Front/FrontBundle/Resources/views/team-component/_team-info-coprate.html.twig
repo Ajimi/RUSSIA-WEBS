@@ -1,0 +1,46 @@
+<div class="player-info-corporate">
+    <div class="player-info-figure">
+        <div class="block-number"><span>{% block shortcut %}{% endblock %}</span></div>
+        <div class="player-img"><img src="{{ asset(imageLogo~'') }}" alt="" width="368" height="286"/>
+        </div>
+    </div>
+    <div class="player-info-main">
+        <h4 class="player-info-title">{% block teamName %}{% endblock %}</h4>
+        <hr/>
+
+        <div class="player-info-progress">
+            <article class="progress-linear progress-bar-modern">
+                <div class="">
+                    <p>Participation</p>
+                </div>
+                <div class="">
+                    {% block participation %}{% endblock %}
+                </div>
+            </article>
+            <article class="progress-linear progress-bar-modern">
+                <div class="">
+                    <p>Winner</p>
+                </div>
+                <div class="">
+                    {% block winner %}{% endblock %}
+                </div>
+            </article>
+            <article class="progress-linear progress-bar-modern">
+                <div class="">
+                    <p>Second</p>
+                </div>
+                <div class="">
+                    {% block second %}{% endblock %}
+                </div>
+            </article>
+            <article class="progress-linear progress-bar-modern">
+                <div class="">
+                    <p>Third</p>
+                </div>
+                <div class="">
+                    {% block third %}{% endblock %}
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

@@ -16,11 +16,9 @@ class ClubType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('clubName')->add('seasonStart')
-            ->add('seasonEnd')->add('matchPlayed')
-            ->add('goalScored')
+            ->add('matchPlayed')->add('goalScored')
             ->add('create', SubmitType::class);
     }
-
     /**
      * {@inheritdoc}
      */

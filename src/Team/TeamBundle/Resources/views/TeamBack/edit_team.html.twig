@@ -43,6 +43,13 @@
                     </div>
 
                     <div class="form-group">
+                        {{ form_label(form.file, 'Team Logo*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.file, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         {{ form_label(form.participation, 'Participation*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {{ form_widget(form.participation, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
@@ -75,7 +82,7 @@
                         <br>
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <button class="btn btn-primary" type="reset">Reset</button>
-                            {{ form_widget(form.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                            {{ form_widget(form.create,{'label':'Edit', 'attr': {'class': 'btn btn-success'} }) }}
                         </div>
                     </div>
 

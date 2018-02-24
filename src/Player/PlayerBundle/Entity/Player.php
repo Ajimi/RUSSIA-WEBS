@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Player
@@ -41,10 +42,16 @@ class Player
 
     /**
      * @var string
-     * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
+     *
      * @ORM\Column(name="playerImage", type="string", length=255)
      */
     private $playerImage;
+    /**
+     * @var File
+     *
+    * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
+    */
+    private $file;
 
     /**
      * @var string
@@ -56,21 +63,21 @@ class Player
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="date",nullable=true)
+     * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="weight", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="weight", type="string")
      */
     private $weight;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="height", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="height",type="string")
      */
     private $height;
 
@@ -183,6 +190,57 @@ class Player
         $this->skills = new ArrayCollection();
         $this->clubs = new ArrayCollection();
     }
+
+    /**
+     * @return File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param mixed $skills
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClubs()
+    {
+        return $this->clubs;
+    }
+
+    /**
+     * @param mixed $clubs
+     */
+    public function setClubs($clubs)
+    {
+        $this->clubs = $clubs;
+    }
+
 
     /**
      * Get id.
