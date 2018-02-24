@@ -13,14 +13,14 @@ class TeamRepository extends \Doctrine\ORM\EntityRepository
     public function updateTeamGoalIn($team,$goals)
     {
         $em = $this->getEntityManager();
-        $query = $em->createQuery("Update TeamBundle:Team t Set  t.goalIn=:goals where t.id=:id");
+        $query = $em->createQuery("Update TeamBundle:Team t Set t.goalIn= t.goalIn+ :goals where t.id=:id");
         $query->setParameter('goals' , $goals)->setParameter('id',$team);
         $query->execute();
     }
     public function updateTeamGoalScored($team,$goals)
     {
         $em = $this->getEntityManager();
-        $query = $em->createQuery("Update TeamBundle:Team t Set  t.goalScored=:goals where t.id=:id");
+        $query = $em->createQuery("Update TeamBundle:Team t Set t.goalScored= t.goalScored + :goals where t.id=:id");
         $query->setParameter('goals' , $goals)->setParameter('id',$team);
         $query->execute();
     }
