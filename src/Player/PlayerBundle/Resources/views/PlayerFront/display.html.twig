@@ -20,7 +20,7 @@
             {% endembed %}
             <div class="row row-30">
                 <div class="col-lg-8">
-                    {% embed  'FrontBundle:player-component:_player-info-corporate.html.twig' with { 'playerImage' :player.file ,'teamImage':player.nationalTeam.teamLogo } %}
+                    {% embed  'FrontBundle:player-component:_player-info-corporate.html.twig' with { 'playerImage' :player.file ,'teamImage':'assets/images/teamUploads/'~player.nationalTeam.teamLogo } %}
                         {% block playerName%}{{ player.playerName~" "~player.playerLastName }}{% endblock %}
                         {% block playerPos%}{{ player.playerPosition }}{% endblock %}
                         {% block playerHeight%}{{ player.height }}{% endblock %}
@@ -66,8 +66,9 @@
                                 {% block shots %}{{ player.shots }}{% endblock %}
                                 {% block sot %}{{ player.shotsOnTarget }}{% endblock %}
                                 {% block assists %}{{ player.assists }}{% endblock %}
-                                {% block passes %}{{ player.passes }}{% endblock %}
                                 {% block fouls %}{{ player.fouls }}{% endblock %}
+                                {% block corners %}{{ player.cornerKicks }}{% endblock %}
+                                {% block penalties %}{{ player.penaltyKicks }}{% endblock %}
                                 {% block yc %}{{ player.yellowCard }}{% endblock %}
                                 {% block rc %}{{ player.redCard }}{% endblock %}
                             {% endembed %}

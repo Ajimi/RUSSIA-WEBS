@@ -42,8 +42,9 @@
                                 {% block shots %}{{ shots }}{% endblock %}
                                 {% block sot %}{{ sot }}{% endblock %}
                                 {% block assists %}{{ assists }}{% endblock %}
-                                {% block passes %}{{ passes }}{% endblock %}
                                 {% block fouls %}{{ fouls }}{% endblock %}
+                                {% block corners %}{{ corners }}{% endblock %}
+                                {% block penalties %}{{ penalties }}{% endblock %}
                                 {% block yc %}{{ yc }}{% endblock %}
                                 {% block rc %}{{ rc }}{% endblock %}
                             {% endembed %}
@@ -55,17 +56,17 @@
                         <!-- Player Info Modern-->
                         {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' with {'imagePlayer': player.file,'id':player.id} %}
                             {% block player_image %} {% endblock %}
-                            {% block player_number %}{{ player.id }}{% endblock %}
+                            {% block player_number %}{{ player.playerNumber }}{% endblock %}
                             {% block player_name %}{{ player.playerName~" "~player.playerLastName }} {% endblock %}
                             {% block player_position %} {{ player.playerPosition }}{% endblock %}
                             {% block player_skills %}
                                 {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
-                                    {% block skill_name %} Pass acc{% endblock %}
-                                    {% block skill_progress %}95{% endblock %}
+                                    {% block skill_name %} Finishing{% endblock %}
+                                    {% block skill_progress %}{{ player.goalScored*100/player.shotsOnTarget }}{% endblock %}
                                 {% endembed %}
                                 {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
                                     {% block skill_name %} Shots Acc{% endblock %}
-                                    {% block skill_progress %}70{% endblock %}
+                                    {% block skill_progress %}{{ player.shotsOnTarget*100/player.shots }}{% endblock %}
                                 {% endembed %}
                             {% endblock %}
                         {% endembed %}

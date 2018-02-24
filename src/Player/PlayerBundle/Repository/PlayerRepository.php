@@ -52,6 +52,23 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery();
         return $query->getSingleScalarResult();
     }
+    public function cornerByTeam($team){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
+            ->select('SUM(p.cornerKicks)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+    public function penaltyByTeam($team){
+        $query= $this->createQueryBuilder('p')
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team',$team)
+            ->select('SUM(p.penaltyKicks)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+    }
+
     public function yellowCardsByTeam($team){
         $query= $this->createQueryBuilder('p')
             ->where('p.nationalTeam = :team')
