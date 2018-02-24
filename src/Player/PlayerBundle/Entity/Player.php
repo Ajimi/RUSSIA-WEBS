@@ -161,9 +161,17 @@ class Player
     /**
      * @var int
      *
-     * @ORM\Column(name="minutesPlayed", type="integer")
+     * @ORM\Column(name="penalityKicks", type="integer")
      */
-    private $minutesPlayed;
+    private $penalityKicks;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cornerKicks", type="integer")
+     */
+    private $cornerKicks;
+
 
     /**
      * @var int
@@ -212,6 +220,38 @@ class Player
     public function setFile($file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPenalityKicks()
+    {
+        return $this->penalityKicks;
+    }
+
+    /**
+     * @param int $penalityKicks
+     */
+    public function setPenalityKicks($penalityKicks)
+    {
+        $this->penalityKicks = $penalityKicks;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCornerKicks()
+    {
+        return $this->cornerKicks;
+    }
+
+    /**
+     * @param int $cornerKicks
+     */
+    public function setCornerKicks($cornerKicks)
+    {
+        $this->cornerKicks = $cornerKicks;
     }
 
 
@@ -684,29 +724,6 @@ class Player
         return $this->fouls;
     }
 
-    /**
-     * Set minutesPlayed.
-     *
-     * @param int $minutesPlayed
-     *
-     * @return Player
-     */
-    public function setMinutesPlayed($minutesPlayed)
-    {
-        $this->minutesPlayed = $minutesPlayed;
-
-        return $this;
-    }
-
-    /**
-     * Get minutesPlayed.
-     *
-     * @return int
-     */
-    public function getMinutesPlayed()
-    {
-        return $this->minutesPlayed;
-    }
 
     /**
      * Set yellowCard.
