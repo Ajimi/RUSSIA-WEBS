@@ -29,6 +29,7 @@ class EventBackController extends Controller
 
         if ($form->isValid() && ($request->isMethod('POST'))) {
 
+            $em->getRepository('PlayerBundle:Player')->updatePlayerStat($event->getPlayer()->getId(),$event->getTypeEvent());
             $team = $em->getRepository('TeamBundle:Team')->find($request->get('iCheck'));
             $event->setMatch($match);
             $event->setTeam($team);
@@ -107,9 +108,6 @@ class EventBackController extends Controller
         $score->setScoreTeam2($goalsTeam2);
 
         $this->updateTeam($em,$match,$goalsTeam1,$goalsTeam2);
-
-
-
         $em->persist($score);
         $em->flush();
 
@@ -151,13 +149,7 @@ class EventBackController extends Controller
 
     }
 
-    private function passAccuracy($em,$match,$team)
-    {
-        $totalPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Pass")));
-        $teamPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'team'=>$team,'typeEvent'=>"Pass")));
 
-        return ($teamPasses * 100)/ $totalPasses;
-    }
 
 
 }

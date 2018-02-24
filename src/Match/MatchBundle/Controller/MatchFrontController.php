@@ -72,14 +72,29 @@ class MatchFrontController extends Controller
             $statistic2->dataFormat($e2);
         }
 
-      /*  dump($statistic1);
-          dump($statistic2);
-      */
+        $ballPossessionFirstTeam = $this->ballPossession($em,$match,$match->getTeam1());
+        $ballPossessionSecondTeam = $this->ballPossession($em,$match,$match->getTeam2());
+
+        $shotAccuracyFirstTeam = $this->shotAccuracy($em,$match,$match->getTeam1());
+        $shotAccuracySecondTeam = $this->shotAccuracy($em,$match,$match->getTeam2());
+
+        dump($shotAccuracySecondTeam);
+        dump($shotAccuracyFirstTeam);
+
+
+
+        /*  dump($statistic1);
+            dump($statistic2);
+        */
 
 
         return $this->render('@Match/FrontViews/game_overview.html.twig',array(
             'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
-            'scores'=>$scores
+            'scores'=>$scores,
+            'ballPossessionFirstTeam'=>$ballPossessionFirstTeam,
+            'ballPossessionSecondTeam'=>$ballPossessionSecondTeam,
+            'shotAccuracyFirstTeam'=>$shotAccuracyFirstTeam,
+            'shotAccuracySecondTeam'=>$shotAccuracySecondTeam
         ));
 
     }
@@ -152,6 +167,24 @@ class MatchFrontController extends Controller
           );
        */
 
+    }
+
+    private function ballPossession($em,$match,$team)
+    {
+        $totalPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Pass")));
+        $teamPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'team'=>$team,'typeEvent'=>"Pass")));
+
+        if ($teamPasses>0) { return ($totalPasses * 100)/ $teamPasses;}
+        else return 0;
+    }
+
+    private function shotAccuracy($em,$match,$team)
+    {
+        $shotsOnTarget = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Shot(On Target)")));
+        $shots = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'team'=>$team,'typeEvent'=>"Shot")));
+
+        if ($shotsOnTarget>0){ return ($shots * 100)/ $shotsOnTarget;}
+        else return 0;
     }
 
 }

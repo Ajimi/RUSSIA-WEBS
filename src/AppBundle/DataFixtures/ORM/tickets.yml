@@ -14,7 +14,6 @@ Team\TeamBundle\Entity\Team:
       third: <randomDigitNotNull()>
 
 
-
 Player\PlayerBundle\Entity\Player:
     player{1..32}:
         playerName: <word()>
