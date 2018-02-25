@@ -38,7 +38,8 @@ class PlaceAdminController extends Controller
                 ->setParameter('name', '%' . $request->query->getAlnum('search') . '%');
         }
 
-        $regionId = 2;
+        $regionName = $em->getRepository('RegionBundle:Region')->findOneBy([]);
+        $regionId = $regionName->getId();
         if ($request->query->getAlnum('region')) {
             $regionId = $request->query->getAlnum('region');
             $placesQuery->andWhere('p.region = :region')
