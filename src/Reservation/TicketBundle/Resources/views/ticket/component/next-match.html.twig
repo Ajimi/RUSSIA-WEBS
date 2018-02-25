@@ -32,24 +32,24 @@
                         </div>
                         <div class="promo-main promo-creative-main">
                             <div class="promo-team promo-creative-team">
-                                <figure class="promo-team-figure"><img
-                                            src="{{ asset('assets/images/team-atletico-37x37.png') }}" alt="" width="37"
-                                            height="37"/>
+                                <figure class="promo-team-figure">
+                                    <img src="{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}"
+                                         alt="" width="45" height="35"/>
                                 </figure>
                                 <div class="promo-team-title">
-                                    <div class="promo-team-name">{{ match.team1.teamName }}</div>
-                                    <div class="promo-team-country">USA</div>
+                                    <div class="promo-team-name">{{ match.team1.teamName|truncate(15) }}</div>
+                                    <div class="promo-team-country">{{ match.team1.teamShortcut }}</div>
                                 </div>
                             </div>
                             <div class="promo-creative-middle">VS</div>
                             <div class="promo-team promo-creative-team">
-                                <figure class="promo-team-figure"><img
-                                            src="{{ asset('assets/images/team-sevilla-45x35.png') }}" alt="" width="45"
-                                            height="35"/>
+                                <figure class="promo-team-figure">
+                                    <img src="{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}"
+                                         alt="" width="45" height="35"/>
                                 </figure>
                                 <div class="promo-team-title">
-                                    <div class="promo-team-name">{{ match.team2.teamName }}</div>
-                                    <div class="promo-team-country">Spain</div>
+                                    <div class="promo-team-name">{{ match.team2.teamName|truncate(15) }}</div>
+                                    <div class="promo-team-country">{{ match.team2.teamShortcut }}</div>
                                 </div>
                             </div>
                         </div>
