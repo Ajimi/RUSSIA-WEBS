@@ -10,6 +10,11 @@ namespace Common\RegionBundle\Repository;
  */
 class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBuilder()
+    {
+        return $this->createQueryBuilder("p");
+    }
+
     public function findByRegion($region)
     {
         $qb = $this->createQueryBuilder('p')

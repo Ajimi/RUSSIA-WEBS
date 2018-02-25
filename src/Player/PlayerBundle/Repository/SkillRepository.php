@@ -10,10 +10,11 @@ namespace Player\PlayerBundle\Repository;
  */
 class SkillRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findbyPlayer($id){
-        $qb =$this->createQueryBuilder('s')
+    public function findbyPlayer($id)
+    {
+        $qb = $this->createQueryBuilder('s')
             ->where('s.player= :id')
-            ->setParameter('id',$id)
+            ->setParameter('id', $id)
             ->getQuery();
 
         return $qb->execute();

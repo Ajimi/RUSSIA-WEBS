@@ -10,10 +10,11 @@ namespace Player\PlayerBundle\Repository;
  */
 class ClubRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findbyPlayer($id){
-        $qb =$this->createQueryBuilder('c')
+    public function findbyPlayer($id)
+    {
+        $qb = $this->createQueryBuilder('c')
             ->where('c.player= :id')
-            ->setParameter('id',$id)
+            ->setParameter('id', $id)
             ->getQuery();
 
         return $qb->execute();

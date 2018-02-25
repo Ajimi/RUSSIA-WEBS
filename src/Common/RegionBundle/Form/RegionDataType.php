@@ -11,6 +11,7 @@ namespace Common\RegionBundle\Form;
 
 use Common\RegionBundle\Modal\RegionData;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,7 +43,7 @@ class RegionDataType extends AbstractType
                     'class' => 'js-lat'
                 ),
             )
-        );
+        )->add('file', FileType::class);
     }
 
     /**

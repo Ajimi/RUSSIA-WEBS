@@ -18,6 +18,7 @@ class SkillType extends AbstractType
         $builder->add('label')->add('value')
             ->add('create', SubmitType::class);
     }
+
     /**
      * {@inheritdoc}
      */

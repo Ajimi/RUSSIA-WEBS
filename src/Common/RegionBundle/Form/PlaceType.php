@@ -23,7 +23,12 @@ class PlaceType extends AbstractType
             ->add('previewPicture')
             ->add('phone')
             ->add('siteUrl')
-            ->add('region')
+            ->add('region', null, array(
+                'placeholder' => 'Select your Region',
+                'attr' => array(
+                    'id' => 'js-region-select'
+                ),
+            ))
             ->add('location');
     }
 
