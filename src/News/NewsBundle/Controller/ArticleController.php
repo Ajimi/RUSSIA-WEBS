@@ -3,6 +3,7 @@
 namespace News\NewsBundle\Controller;
 
 use News\NewsBundle\Entity\Article;
+use News\NewsBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,10 +26,18 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('NewsBundle:Article')->findAll();
+        /** @var Article[] $spotlights */
 
-        return $this->render('NewsBundle:article:index.html.twig', array(
-            'articles' => $articles,
+        $spotlights = $em->getRepository('NewsBundle:Article')->findSpotLight();
+
+        /** @var Article $most */
+        $most = $em->getRepository('NewsBundle:Article')->findLatest();
+        /** @var Article $most */
+        $rated = $em->getRepository('NewsBundle:Article')->findRated(3);
+        return $this->render('NewsBundle:article:home.html.twig', array(
+            'spotlights' => $spotlights,
+            'most' => $most,
+            'mostRated' => $rated,
         ));
     }
 
@@ -98,7 +107,7 @@ class ArticleController extends Controller
     public function editAction(Request $request, Article $article)
     {
         $deleteForm = $this->createDeleteForm($article);
-        $editForm = $this->createForm('News\NewsBundle\Form\ArticleType', $article);
+        $editForm = $this->createForm(ArticleType::class, $article);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

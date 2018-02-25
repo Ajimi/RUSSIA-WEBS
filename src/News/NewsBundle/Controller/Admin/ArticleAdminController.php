@@ -3,6 +3,7 @@
 namespace News\NewsBundle\Controller\Admin;
 
 use News\NewsBundle\Entity\Article;
+use News\NewsBundle\Form\ArticleType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,7 +28,8 @@ class ArticleAdminController extends Controller
 
         $articles = $em->getRepository('NewsBundle:Article')->findAll();
 
-        return $this->render('NewsBundle:admin:home.html.twig', array(
+        dump($articles);
+        return $this->render('NewsBundle:admin:index.html.twig', array(
             'articles' => $articles,
         ));
     }
@@ -49,7 +51,7 @@ class ArticleAdminController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('admin_article_show', array('id' => $article->getId()));
+            return $this->redirectToRoute('admin_article_index', array('id' => $article->getId()));
         }
 
         return $this->render('NewsBundle:admin:new.html.twig', array(
@@ -66,27 +68,10 @@ class ArticleAdminController extends Controller
      */
     public function showAction(Article $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
 
         return $this->render('NewsBundle:admin:show.html.twig', array(
             'article' => $article,
-            'delete_form' => $deleteForm->createView(),
         ));
-    }
-
-    /**
-     * Creates a form to delete a article entity.
-     *
-     * @param Article $article The article entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Article $article)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_article_delete', array('id' => $article->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
     }
 
     /**
@@ -97,39 +82,30 @@ class ArticleAdminController extends Controller
      */
     public function editAction(Request $request, Article $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
-        $editForm = $this->createForm('News\NewsBundle\Form\ArticleType', $article);
+        $editForm = $this->createForm(ArticleType::class, $article);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_article_edit', array('id' => $article->getId()));
+            return $this->redirectToRoute('admin_article_index');
         }
 
         return $this->render('NewsBundle:admin:edit.html.twig', array(
             'article' => $article,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
         ));
     }
 
     /**
      * Deletes a article entity.
      *
-     * @Route("/{id}", name="admin_article_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="admin_article_delete")
      */
     public function deleteAction(Request $request, Article $article)
     {
-        $form = $this->createDeleteForm($article);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($article);
             $em->flush();
-        }
 
         return $this->redirectToRoute('admin_article_index');
     }

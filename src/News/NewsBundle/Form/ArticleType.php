@@ -3,7 +3,9 @@
 namespace News\NewsBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use News\NewsBundle\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,8 +18,15 @@ class ArticleType extends AbstractType
     {
         $builder->add('content', CKEditorType::class, array(
                 'config_name' => 'my_config',
+                'config' => array(
+                    'extraPlugins' => 'youtube',
+                )
             )
-        )->add('title');
+        )->add('title', TextType::class, array(
+            'attr' => array(
+                'required' => true,
+            )
+        ));
     }
 
     /**
@@ -26,7 +35,7 @@ class ArticleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'News\NewsBundle\Entity\Article'
+            'data_class' => Article::class
         ));
     }
 

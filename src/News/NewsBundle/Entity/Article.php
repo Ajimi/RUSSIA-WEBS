@@ -49,16 +49,16 @@ class Article
     private $author;
 
     /**
-     * @var date $created
-     * @ORM\Column(type="date")
+     * @var \DateTime $created
+     * @ORM\Column(type="date", nullable=true)
      * @Gedmo\Timestampable(on="create")
      */
     private $created;
 
     /**
-     * @var date $updated
+     * @var \DateTime $updated
      *
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      * @Gedmo\Timestampable
      */
     private $updated;
@@ -126,17 +126,17 @@ class Article
     }
 
     /**
-     * @return Date
+     * @return \DateTime
      */
-    public function getCreated(): Date
+    public function getCreated(): \DateTime
     {
         return $this->created;
     }
 
     /**
-     * @param Date $created
+     * @param \DateTime $created
      */
-    public function setCreated(Date $created)
+    public function setCreated(\DateTime $created)
     {
         $this->created = $created;
     }
@@ -144,31 +144,15 @@ class Article
     /**
      * @return \DateTime
      */
-    public function getContentChanged(): \DateTime
-    {
-        return $this->contentChanged;
-    }
-
-    /**
-     * @param \DateTime $contentChanged
-     */
-    public function setContentChanged(\DateTime $contentChanged)
-    {
-        $this->contentChanged = $contentChanged;
-    }
-
-    /**
-     * @return Date
-     */
-    public function getUpdated(): Date
+    public function getUpdated(): \DateTime
     {
         return $this->updated;
     }
 
     /**
-     * @param Date $updated
+     * @param \DateTime $updated
      */
-    public function setUpdated(Date $updated)
+    public function setUpdated(\DateTime $updated)
     {
         $this->updated = $updated;
     }
