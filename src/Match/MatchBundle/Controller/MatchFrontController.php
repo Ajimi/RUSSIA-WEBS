@@ -100,86 +100,40 @@ class MatchFrontController extends Controller
 
 
     /**
-     * @Route("/bla", name="get_as_pdf")
+     * @Route("/bla{idm}", name="get_as_pdf")
      */
-    public  function pdfAction()
+    public  function pdfAction($idm)
     {
+        $em = $this->getDoctrine()->getManager();
+        $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match'=>$idm));
+        $scores = $em->getRepository('MatchBundle:Score')->findThree();
+        $match = $em->getRepository('MatchBundle:Match')->find($idm);
 
-        $snappy = $this->get('knp_snappy.pdf');
-        $twig = $this->render('@Match/FrontViews/snappy.html.twig');
-        $filename = 'SnappyPDF';
-       // $url = 'www.google.com';
+        $events = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm));
 
-        return new Response(
-
-            $snappy->getOutputFromHtml($twig),200,array(
-
-                'Content-Type'          => 'application/pdf',
-
-                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
-
-            )
-
-        );
+        $statistic1 = new StatisticFormat();
+        $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
 
 
-    }
-        //->generate('http://127.0.0.1:8000/match/results/overview/pdf'.$idm, '/Users/BOOK/Desktop/pdfTest/file4.pdf');
-       // return $this->redirectToRoute('game_overview');
+        foreach ($eventsTeam1 as $e1)
+        {
+            $statistic1->dataFormat($e1);
+
+        }
+
+        $statistic2 = new StatisticFormat();
+        $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
+//        dump($eventsTeam2);
+        foreach ($eventsTeam2 as $e2)
+        {
+            $statistic2->dataFormat($e2);
+        }
 
 
-        /*
-                  $em = $this->getDoctrine()->getManager();
-                  $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match'=>$idm));
-                  $scores = $em->getRepository('MatchBundle:Score')->findThree();
-                  $match = $em->getRepository('MatchBundle:Match')->find($idm);
 
-                  $events = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm));
-
-                  $statistic1 = new StatisticFormat();
-                  $eventsTeam1 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam1()));
-                  dump($eventsTeam1);
-
-                  foreach ($eventsTeam1 as $e1)
-                  {
-                      $statistic1->dataFormat($e1);
-
-                  }
-
-                  $statistic2 = new StatisticFormat();
-                  $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match'=>$idm,'team'=>$match->getTeam2()));
-                  dump($eventsTeam2);
-                  foreach ($eventsTeam2 as $e2)
-                  {
-                      $statistic2->dataFormat($e2);
-                  }
-
-
-                $this->get('knp_snappy.pdf')->generateFromHtml(
-                    $this->renderView(
-                        '@Match/FrontViews/game_overview.html.twig',
-                        array(
-                            'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
-                            'scores'=>$scores
-                        )
-                    ),
-                    '/Users/BOOK/Desktop/pdfTest/file2.pdf'
-                );
-
-                return array(
-                    'pdf' => array(
-                        'enabled' => true,
-                        'binary' => '"/usr/local/bin/wkhtmltopdf"',
-                        'options' => array(),
-                    ));*/
-
-       /*
-
-           $html = $this->renderView('@Match/FrontViews/game_overview.html.twig', array(
-              'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
-              'scores'=>$scores
-          ));
-
+        $html = $this->renderView('@Match/FrontViews/snappy.html.twig',array(
+            'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
+            'scores'=>$scores));
           return new PdfResponse(
               $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
               'file.pdf'
@@ -187,13 +141,14 @@ class MatchFrontController extends Controller
 
     }
 
-       */
+
+
     private function ballPossession($em,$match,$team)
     {
         $totalPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Pass")));
         $teamPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'team'=>$team,'typeEvent'=>"Pass")));
 
-        if ($teamPasses>0) { return ($totalPasses * 100)/ $teamPasses;}
+        if ($teamPasses > 0) { return ($totalPasses * 100)/ $teamPasses;}
         else return 0;
     }
 
@@ -202,7 +157,7 @@ class MatchFrontController extends Controller
         $shotsOnTarget = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Shot(On Target)")));
         $shots = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'team'=>$team,'typeEvent'=>"Shot")));
 
-        if ($shotsOnTarget>0){ return ($shots * 100)/ $shotsOnTarget;}
+        if ($shotsOnTarget > 0){ return ($shots * 100)/ $shotsOnTarget;}
         else return 0;
     }
 

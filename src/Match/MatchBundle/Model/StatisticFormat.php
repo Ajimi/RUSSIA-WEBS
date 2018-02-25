@@ -19,6 +19,7 @@ class StatisticFormat
     private $passes=0;
     private $assist=0;
     private $fouls=0;
+    private $saves=0;
 
     /**
      * @return int
