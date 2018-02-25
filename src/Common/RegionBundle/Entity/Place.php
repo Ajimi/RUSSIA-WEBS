@@ -319,9 +319,8 @@ class Place
         $place->setPreviewText($item['preview_text']);
         $place->setInformation($item['detail_text']);
         // TODO : get blocks and picture name
-        $picture = explode(',', $item['preview_picture']);
 
-        $place->setPreviewPicture($item['preview_picture']);
+        $place->setPreviewPicture(self::getImageUrl($item['preview_picture']));
         $place->setRegion($region);
         $place->setPhone($item['phone']);
         $place->setSiteUrl($item['site_url']);
@@ -330,6 +329,26 @@ class Place
         $place->setLocation($location);
         // Completed : setLocation Association
         return $place;
+    }
+
+    public static function getImageUrl($pictureUrl)
+    {
+
+        $pictureArray = explode('/', $pictureUrl);
+
+        if ($pictureArray[5] == 'no_img.png') {
+            return $pictureUrl;
+        }
+
+        $block = $pictureArray[7];
+        $pictureFileArray = explode('?', $pictureArray[8]);
+
+        $pictureFileName = $pictureFileArray[0];
+
+
+        return "http://cdn.welcome2018.com/upload/iblock/$block/$pictureFileName";
+
+
     }
 }
 
