@@ -3,10 +3,10 @@
 namespace Group\GroupBundle\Controller;
 
 use Group\GroupBundle\Modele\StandingsFormat;
-use Match\MatchBundle\Model\StatisticFormat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class StandingsController
@@ -20,10 +20,19 @@ class StandingsController extends Controller
      * @Route("/standings" ,name="standings")
      */
 
-    public function displayAction()
+    public function displayAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $teams = $em->getRepository('TeamBundle:Team')->findAll();
+
+        $paginator = $this->get('knp_paginator');
+
+        /** @var PaginationInterface $fullStandings */
+        $fullStandings = $paginator->paginate(
+            $teams, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            9/*limit per page*/
+        );
         $standings = [];
 
         foreach ($teams as $t) {
@@ -45,10 +54,12 @@ class StandingsController extends Controller
      *@Route("/fullstandings" ,name="full_standings")
      */
 
-    public function standingsFullDisplayAction()
+    public function standingsFullDisplayAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('GroupBundle:Groupe')->findBy(array(), array('name' => 'asc'));
+        /** @var PaginationInterface $pagination */
+        $pagination = $request->get('pagination');
 
         $fullStandings = [];
         foreach ($groups as $g)
