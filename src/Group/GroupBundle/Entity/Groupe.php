@@ -4,6 +4,7 @@ namespace Group\GroupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Groupe
  *
@@ -29,6 +30,30 @@ class Groupe
     private $name;
 
     /**
+     * @var integer
+     * @ORM\Column(name="rating", type="integer")
+     */
+    private $rating;
+
+    /**
+     * @return int
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param int $rating
+     */
+    public function setRating(int $rating)
+    {
+        $this->rating = $rating;
+    }
+
+
+
+    /**
      * @var
      * @ORM\OneToOne(targetEntity="Team\TeamBundle\Entity\Team")
      * @ORM\JoinColumn(name="id_team1",referencedColumnName="id")
@@ -42,12 +67,7 @@ class Groupe
      */
     private $team2;
 
-    /**
-     * @var
-     * @ORM\OneToOne(targetEntity="Team\TeamBundle\Entity\Team")
-     * @ORM\JoinColumn(name="id_team3",referencedColumnName="id")
-     */
-    private $team3;
+
 
     /**
      * @var
@@ -65,12 +85,20 @@ class Groupe
     }
 
     /**
+     * @var
+     * @ORM\OneToOne(targetEntity="Team\TeamBundle\Entity\Team")
+     * @ORM\JoinColumn(name="id_team3",referencedColumnName="id")
+     */
+    private $team3;
+
+    /**
      * @param int $id
      */
     public function setId(int $id)
     {
         $this->id = $id;
     }
+
 
     /**
      * @return string
@@ -154,4 +182,3 @@ class Groupe
 
 
 }
-

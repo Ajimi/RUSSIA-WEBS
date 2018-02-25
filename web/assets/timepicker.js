@@ -49,9 +49,10 @@
 	var MDTimePicker = function (input, config) {
 		var that = this;
 
-		this.visible = false;
+
+        this.visible = false;
 		this.activeView = 'hours';
-		this.hTimeout = null;
+        this.hTimeout = null;
 		this.mTimeout = null;
 		this.input = $(input);
 		this.config = config;
@@ -435,6 +436,7 @@
 	}
 
 	$.fn.mdtimepicker.defaults = {
+        editable: false,
 		timeFormat: 'hh:mm:ss.000',	// format of the time value (data-time attribute)
 		format: 'h:mm tt',			// format of the input value
 		theme: 'blue',				// theme of the timepicker

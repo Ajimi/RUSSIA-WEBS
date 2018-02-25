@@ -10,4 +10,27 @@ namespace Match\MatchBundle\Repository;
  */
 class MatchRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchDQL($name)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT t FROM MatchBundle:MATCH t 
+                                WHERE t.team1 OR t.team2  LIKE :name")
+            ->setParameter('name', '%' . $name . '%');
+        return $query->getResult();
+
+    }
+
+    public function findAllBy($criteria)
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->andWhere('m.id in (:criteria)')
+            ->setParameter('criteria', $criteria);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findAllMatches()
+    {
+        return $this->createQueryBuilder("m");
+    }
 }

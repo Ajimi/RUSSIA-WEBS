@@ -1,0 +1,81 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+{% block title %}{{ player.playerName~" "~player.playerLastName }}{% endblock %}
+{% block header_team %}active{% endblock %}
+{% block body %}
+    <!-- Section Breadcrumbs-->
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Player Overview'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="{{ path('team_display',{'id':player.nationalTeam.id}) }}">{{ player.nationalTeam.teamName }}</a></li>
+            <li><a href="#">Player</a></li>
+            <li class="active">{{ player.playerName~" "~player.playerLastName }}</li>
+        {% endblock %}
+    {% endembed %}
+
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <!-- Heading Component-->
+            {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Player Overview' } %}
+            {% endembed %}
+            <div class="row row-30">
+                <div class="col-lg-8">
+                    {% embed  'FrontBundle:player-component:_player-info-corporate.html.twig' with { 'playerImage' :player.file ,'teamImage':'assets/images/teamUploads/'~player.nationalTeam.teamLogo } %}
+                        {% block playerName%}{{ player.playerName~" "~player.playerLastName }}{% endblock %}
+                        {% block playerPos%}{{ player.playerPosition }}{% endblock %}
+                        {% block playerHeight%}{{ player.height }}{% endblock %}
+                        {% block playerAge%}{{ age }}{% endblock %}
+                        {% block playerWeight%}{{ player.weight }}{% endblock %}
+                        {% block playerTg%}{{ player.totalGames }}{% endblock %}
+                        {% block skills%}
+                            {% for skill in player.skills %}
+                            {% embed  'FrontBundle:player-component:_player-skill.html.twig' %}
+                                {% block skillLabel%}{{ skill.label }}{% endblock %}
+                                {% block skillValue%}{{ skill.value }}{% endblock %}
+                            {% endembed %}
+                            {% endfor %}
+                        {% endblock %}
+                    {% endembed %}
+                    <div class="block-player-info">
+                        {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
+                        {% endembed %}
+                        <div class="block-player-info-timeline">
+                            {% for club in player.clubs %}
+                                {% embed  'FrontBundle:player-component:_player-info-timeline-item.html.twig' %}
+                                    {% block start%}{{ club.seasonStart }}{% endblock %}
+                                    {% block clubName%}{{ club.clubName }}{% endblock %}
+                                    {% block gs%}{{ club.goalScored }}{% endblock %}
+                                    {% block mp%}{{ club.matchPlayed }}{% endblock %}
+                                {% endembed %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row row-30">
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">Statistics
+                                    </h5>
+                                </div>
+                            </article>
+                            {% embed  'FrontBundle:team-component:_team-stat.html.twig' %}
+                                {% block gs %}{{ player.goalScored }}{% endblock %}
+                                {% block shots %}{{ player.shots }}{% endblock %}
+                                {% block sot %}{{ player.shotsOnTarget }}{% endblock %}
+                                {% block assists %}{{ player.assists }}{% endblock %}
+                                {% block fouls %}{{ player.fouls }}{% endblock %}
+                                {% block corners %}{{ player.cornerKicks }}{% endblock %}
+                                {% block penalties %}{{ player.penaltyKicks }}{% endblock %}
+                                {% block yc %}{{ player.yellowCard }}{% endblock %}
+                                {% block rc %}{{ player.redCard }}{% endblock %}
+                            {% endembed %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

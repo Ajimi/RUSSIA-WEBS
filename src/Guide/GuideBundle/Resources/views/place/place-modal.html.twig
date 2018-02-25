@@ -1,0 +1,14 @@
+<div class="md-content">
+    <h3>{{ place.name }}</h3>
+    <div class="row">
+
+        <div class="col-md-6">
+            <img src="{{ place.previewPicture }}" alt="">
+        </div>
+        <div class="col-md-6">
+            <p>{{ place.category.name }}</p>
+            {{ place.previewText|slice(1,600) }}
+        </div>
+    </div>
+</div>
+</div>

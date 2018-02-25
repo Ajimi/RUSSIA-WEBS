@@ -24,27 +24,27 @@
         {% block sidebar %}
             {% include '@Back/common/_sidebar.html.twig' %}
         {% endblock %}
-        {% block tonpav %}
+        {% block topnav %}
             {% include '@Back/common/_topnav.html.twig' %}
         {% endblock %}
 
-        <div class="right_col" role="main">
-            <div class="">
-                {% block body %}
 
-                    <!-- page content -->
+        {% block body %}
 
-
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
                     {% block top_content_header %}
                         <div class="page-title">
                             <div class="title_left">
-                                <h3>{% block page_title %}Page Title{% endblock page_title %}</h3>
+                                <h3>{% block page_title %}{% endblock page_title %}</h3>
                             </div>
 
                             <div class="title_right">
                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search for...">
+                                        <input {% block id %}id="search" {% endblock id %}name="search" type="text"
+                                               class="form-control" placeholder="Search for...">
                                         <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
@@ -60,13 +60,13 @@
                     {% block page_content %}{% endblock %}
 
 
-                    <!-- /page content -->
-
-                {% endblock %}
+                </div>
             </div>
-        </div>
-        {% block footer %}
-            {% include '@Back/common/_footer.html.twig' %}
+
+            <!-- /page content -->
+            {% block footer %}
+                {% include '@Back/common/_footer.html.twig' %}
+            {% endblock %}
         {% endblock %}
     </div>
 </div>

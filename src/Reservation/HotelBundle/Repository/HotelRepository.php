@@ -10,4 +10,6 @@ namespace Reservation\HotelBundle\Repository;
  */
 class HotelRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
 }

@@ -68,3 +68,5 @@ Common\RegionBundle\Entity\Region:
         location:   '@location*'
         hotels:     ['@hotel*']
 
+
+

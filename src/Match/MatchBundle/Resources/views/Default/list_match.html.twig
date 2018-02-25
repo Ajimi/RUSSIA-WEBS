@@ -1,0 +1,208 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    <!-- TimePicker -->
+    <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}Match | Game Schedule{% endblock %}
+
+{% block page_title %}Game Schedule{% endblock page_title %}
+{% block page_content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <button data-toggle="modal" data-target="#newMatchModal" class="btn btn-success " id="newMatchBtn">New
+                    Match
+                </button>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content" id="tableDiv">
+
+                <table class="table table-striped jambo_table bulk_action" id="table">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">DATE</th>
+                        <th class="column-title">TIME</th>
+                        <th class="column-title">TEAM</th>
+                        <th class="column-title">TEAM</th>
+                        <th class="column-title">STADIUM</th>
+                        <th class="column-title">LEVEL</th>
+                        <th class="column-title">TICKETS</th>
+                        <th class="column-title">EDIT</th>
+                        </th>
+
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    {% for m in matchs %}
+                        <tr>
+                            <td class=" ">{{ m.date }}</td>
+                            <td class=" ">{{ m.time }}</td>
+                            <td class=" ">{{ m.team1.teamName |slice(0,15) }}
+                            <td class=" ">{{ m.team2.teamName |slice(0,15)}}</td>
+                            <td class=" ">{{ m.stadium }}</td>
+                            <td class=" ">{{ m.level }}</td>
+                            <td class=" ">{{ m.ticket.quantity }} Tickets</td>
+                            <td class="">
+                                {% if m.played == false %}
+
+                                    <a href="{{ path('add_event',{'idm':m.id}) }}"
+                                       class="btn btn-success btn-xs "> Highlights </a>
+                                    <a href="{{ path('edit_match',{'id':m.id}) }}"
+                                       class="btn btn-info btn-xs">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash-o"></i>
+                                        Delete </a>
+
+                                {% else %}
+
+                                    <a href="#"
+                                       class="btn btn-success btn-xs disabled "> Highlights </a>
+
+                                    <a href="#"
+                                       class="btn btn-info btn-xs  disabled">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash-o"></i>
+                                        Delete </a>
+
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- New Match Modal -->
+    <div id="newMatchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">New Match</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="testmodal" style="padding: 5px 20px;">
+                        {{ form_start(matchForm, {'method': 'post', 'action': path('add_match'), 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+                        <div class="form-group">
+                            {{ form_label(matchForm.team1, 'Team Name*', {'label_attr':{'class': 'col-sm-3 control-label'}}) }}
+                            <div class="col-sm-9">
+                                {{ form_widget(matchForm.team1, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@team1 @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(matchForm.team2, 'Team Name*', {'label_attr':{'class': 'col-sm-3 control-label','display': 'inline'}}) }}
+                            <div class="col-sm-9">
+                                {{ form_widget(matchForm.team2, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@team2 @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(matchForm.level, 'Level*', {'label_attr':{'class': 'col-sm-3 control-label','display': 'inline'}}) }}
+                            <div class="col-sm-9">
+                                {{ form_widget(matchForm.level, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@level @Required'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(matchForm.date, 'Date*', {'label_attr':{'class': 'control-label col-sm-3','display': 'inline'}}) }}
+                            <div class="col-sm-9">
+
+                                <fieldset>
+                                    <div class="control-group ">
+
+                                        <input type="text" class="form-control has-feedback-left"
+                                               id="single_cal3" name="calendar" placeholder="Pick a Date"
+                                               aria-describedby="inputSuccess2Status3" required="required">
+                                        <span class="fa fa-calendar-o form-control-feedback left"
+                                              aria-hidden="true"></span>
+                                        <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                    </div>
+                                    {% do matchForm.date.setRendered %}
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Time<span class="required">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" id="timepicker" name="timepicker"
+                                       class="form-control col-md-7 col-xs-12"/>
+                                {% do matchForm.time.setRendered %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-sm-3'}}) }}
+                            <div class="col-sm-9">
+                                {{ form_widget(matchForm.stadium, { 'attr': {'class': 'form-control col-sm-9', 'data-constraints':'@stadium @Required'} }) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
+                    {{ form_widget(matchForm.create, {'attr': {'class': 'btn btn-success'} }) }}
+                    {{ form_end(matchForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <!-- FullCalendar -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+
+    <script src="{{ asset('assets/timepicker.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#timepicker').mdtimepicker(); //Initializes the time picker
+        });
+    </script>
+
+
+
+
+{% endblock javascripts %}
+
+
+
+
+
