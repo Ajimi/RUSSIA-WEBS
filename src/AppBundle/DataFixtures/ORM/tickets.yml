@@ -1,5 +1,5 @@
 Team\TeamBundle\Entity\Team:
-    teame{1..32}:
+    teame{1..16}:
       teamName: <country()>
       teamLogo: "argentina-hd-logo.png"
       teamShortcut: <word()>
@@ -15,12 +15,14 @@ Team\TeamBundle\Entity\Team:
 
 
 Player\PlayerBundle\Entity\Player:
-    player{1..32}:
+    player{1..1000}:
         playerName: <word()>
         playerLastName: <word()>
         playerImage: <word()>
         playerPosition: <word()>
+        playerNumber: <numberBetween(1,10)>
         bio: <word()>
+        birthday: <dateTimeBetween()>
         weight: <numberBetween(0,11)>
         height: <numberBetween(0,11)>
         totalGames: <numberBetween(0,11)>
@@ -31,8 +33,9 @@ Player\PlayerBundle\Entity\Player:
         assists: <numberBetween(0,11)>
         fouls: <numberBetween(0,11)>
         passes: <numberBetween(0,11)>
-        minutesPlayed: <numberBetween(0,11)>
         yellowCard: <numberBetween(0,11)>
+        penaltyKicks: <numberBetween(0,11)>
+        cornerKicks: <numberBetween(0,11)>
         redCard: <numberBetween(0,11)>
         nationalTeam: '@teame*'
 
@@ -45,7 +48,6 @@ Match\MatchBundle\Entity\Match:
         time: <time()>
         stadium: <city()>
         played: false
-
 
 
 Reservation\TicketBundle\Entity\Ticket:

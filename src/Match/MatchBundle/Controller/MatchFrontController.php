@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use GuzzleHttp\Psr7\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Match\MatchBundle\Model\StatisticFormat;
@@ -78,14 +79,11 @@ class MatchFrontController extends Controller
         $shotAccuracyFirstTeam = $this->shotAccuracy($em,$match,$match->getTeam1());
         $shotAccuracySecondTeam = $this->shotAccuracy($em,$match,$match->getTeam2());
 
-        dump($shotAccuracySecondTeam);
-        dump($shotAccuracyFirstTeam);
+        $playersT1 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam'=>$match->getTeam1()));
+        $playersT2 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam'=>$match->getTeam2()));
 
 
 
-        /*  dump($statistic1);
-            dump($statistic2);
-        */
 
 
         return $this->render('@Match/FrontViews/game_overview.html.twig',array(
@@ -94,19 +92,40 @@ class MatchFrontController extends Controller
             'ballPossessionFirstTeam'=>$ballPossessionFirstTeam,
             'ballPossessionSecondTeam'=>$ballPossessionSecondTeam,
             'shotAccuracyFirstTeam'=>$shotAccuracyFirstTeam,
-            'shotAccuracySecondTeam'=>$shotAccuracySecondTeam
-        ));
+            'shotAccuracySecondTeam'=>$shotAccuracySecondTeam,
+            'playersT1'=>$playersT1 ,'playersT2'=>$playersT2
+    ));
 
     }
 
 
     /**
-     * @Route("/results/overview/pdf{idm}", name="get_as_pdf")
+     * @Route("/bla", name="get_as_pdf")
      */
-    public  function pdfAction($idm)
+    public  function pdfAction()
     {
 
-     return   $this->get('knp_snappy.pdf')->generate('http://127.0.0.1:8000/match/results/overview/pdf'.$idm, '/Users/BOOK/Desktop/pdfTest/file4.pdf');
+        $snappy = $this->get('knp_snappy.pdf');
+        $twig = $this->render('@Match/FrontViews/snappy.html.twig');
+        $filename = 'SnappyPDF';
+       // $url = 'www.google.com';
+
+        return new Response(
+
+            $snappy->getOutputFromHtml($twig),200,array(
+
+                'Content-Type'          => 'application/pdf',
+
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+
+            )
+
+        );
+
+
+    }
+        //->generate('http://127.0.0.1:8000/match/results/overview/pdf'.$idm, '/Users/BOOK/Desktop/pdfTest/file4.pdf');
+       // return $this->redirectToRoute('game_overview');
 
 
         /*
@@ -165,10 +184,10 @@ class MatchFrontController extends Controller
               $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
               'file.pdf'
           );
-       */
 
     }
 
+       */
     private function ballPossession($em,$match,$team)
     {
         $totalPasses = count ($em->getRepository('MatchBundle:Event')->findBy(array('match'=>$match,'typeEvent'=>"Pass")));

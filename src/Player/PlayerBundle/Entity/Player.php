@@ -7,6 +7,7 @@ use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Team\TeamBundle\Entity\Team;
 
 /**
  * Player
@@ -105,7 +106,7 @@ class Player
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team", inversedBy="players")
-     * @ORM\JoinColumn(name="id_team1",referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="id_team1", referencedColumnName="id")
      */
     private $nationalTeam;
 
@@ -535,7 +536,7 @@ class Player
     /**
      * Get nationalTeam.
      *
-     * @return string
+     * @return Team
      */
     public function getNationalTeam()
     {
