@@ -1,6 +1,7 @@
 Team\TeamBundle\Entity\Team:
     teame{1..32}:
       teamName: <country()>
+      file: "argentina-hd-logo.png"
       teamLogo: "argentina-hd-logo.png"
       teamShortcut: <word()>
       matchWon: <randomDigitNotNull()>
@@ -36,9 +37,10 @@ Player\PlayerBundle\Entity\Player:
         yellowCard: <numberBetween(0,11)>
         redCard: <numberBetween(0,11)>
         nationalTeam: '@teame*'
+        birthday: <dateTimeThisDecade()>
 
 Match\MatchBundle\Entity\Match:
-    match{1..10}:
+    match{1..30}:
         team1: '@teame*'
         team2: '@teame*'
         level: "first"
@@ -50,7 +52,7 @@ Match\MatchBundle\Entity\Match:
 
 
 Reservation\TicketBundle\Entity\Ticket:
-    ticket{1..10}:
+    ticket{1..30}:
         match(unique): '@match*'
         price: <numberBetween(100,300)>
         quantity: <numberBetween(5000,8000)>
