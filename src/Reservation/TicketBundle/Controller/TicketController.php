@@ -4,6 +4,7 @@ namespace Reservation\TicketBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Match\MatchBundle\Entity\Match;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,13 +68,7 @@ class TicketController extends Controller
      */
     public function nextMatchTicketAction(): Response
     {
-        $em = $this->getDoctrine()->getManager();
-
-        /**
-         * TODO : Get only valid date
-         */
-        $matches = $em->getRepository('MatchBundle:Match')->findAll();
-        shuffle($matches);
+        $matches = $this->randomMatch($this->getDoctrine()->getManager());
 
         if ($matches)
             return $this->render('TicketBundle:ticket/component:next-match.html.twig', array('match' => $matches[0]));
@@ -111,5 +106,33 @@ class TicketController extends Controller
             )
         );
 
+    }
+
+
+    /**
+     * @param Request $request
+     * @Route("/randomTicket" , name="random_ticket")
+     * @return Response
+     * @throws \LogicException
+     */
+    public function ticketRandomAction(Request $request)
+    {
+        $match = $this->randomMatch($this->getDoctrine()->getManager());
+        return $this->render('@Guide/place/ticket-component.html.twig', array('match' => $match));
+    }
+
+    /**
+     * @param EntityManager $manager
+     * @return Match
+     */
+    private function randomMatch(EntityManager $manager)
+    {
+        /**
+         * TODO : Get only valid date
+         */
+        $matches = $manager->getRepository('MatchBundle:Match')->findAll();
+        shuffle($matches);
+
+        return $matches[random_int(0, count($matches))];
     }
 }

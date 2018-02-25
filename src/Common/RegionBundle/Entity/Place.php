@@ -93,6 +93,14 @@ class Place
      */
     private $location;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rating", type="integer", nullable=true)
+     */
+    private $rating;
+
     /**
      * Get id
      *
@@ -305,6 +313,22 @@ class Place
     }
 
     /**
+     * @return int
+     */
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param int $rating
+     */
+    public function setRating(int $rating)
+    {
+        $this->rating = $rating;
+    }
+
+    /**
      * @param array $item
      * @param Region $region
      * @return Place
@@ -318,7 +342,8 @@ class Place
         $place->setType($item['type']);
         $place->setPreviewText($item['preview_text']);
         $place->setInformation($item['detail_text']);
-        // TODO : get blocks and picture name
+        $place->setRating(random_int(1, 5));
+        // Completed : get blocks and picture name
 
         $place->setPreviewPicture(self::getImageUrl($item['preview_picture']));
         $place->setRegion($region);
@@ -331,12 +356,16 @@ class Place
         return $place;
     }
 
-    public static function getImageUrl($pictureUrl)
+    /**
+     * @param $pictureUrl
+     * @return string
+     */
+    public static function getImageUrl($pictureUrl): string
     {
 
         $pictureArray = explode('/', $pictureUrl);
 
-        if ($pictureArray[5] == 'no_img.png') {
+        if ($pictureArray[5] === 'no_img.png') {
             return $pictureUrl;
         }
 
@@ -350,5 +379,7 @@ class Place
 
 
     }
+
+
 }
 
