@@ -86,6 +86,7 @@ class ApiParserHandler
             $category = Category::fromJson($placeItem['category']);
         }
 
+
         $place->setCategory($category);
 
         $this->manager->persist($place);
