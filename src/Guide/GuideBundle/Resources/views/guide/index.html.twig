@@ -59,6 +59,7 @@
                         {% for region in regions %}
                             {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
                                 {% block title_isotope %}{{ region.name }}{% endblock %}
+                                {% block image_isotope %}{{ "/uploads/region/" ~ asset(region.file.filename) }}{% endblock %}
                                 {% block url_isotope %}{{ path('city_index',
                                 {'slug': region.slug, 'code': constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_ATTRACTION')}) }}{% endblock %}
                             {% endembed %}
