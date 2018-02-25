@@ -19,6 +19,5 @@ parameters:
     stripe_secret_key: sk_test_cmHlewUEjcBi8FuyxxRLFEQN
     stripe_public_key: pk_test_M1WP0SI1WxULGUevujzA4ytX
 
-
-     # set to https on production
+    # set to https on production
     secure_channel: http

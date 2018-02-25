@@ -3,11 +3,13 @@
 namespace Common\RegionBundle\Entity;
 
 use Common\LocationBundle\Entity\Location;
+use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Reservation\HotelBundle\Entity\Hotel;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 /**
@@ -15,6 +17,7 @@ use Reservation\HotelBundle\Entity\Hotel;
  *
  * @ORM\Table(name="region")
  * @ORM\Entity(repositoryClass="Common\RegionBundle\Repository\RegionRepository")
+ * @Uploadable()
  */
 class Region
 {
@@ -59,7 +62,23 @@ class Region
      */
     private $slug;
 
+    /**
+     * @var string $image
+     * @ORM\Column(name="image", type="string", nullable=true)
+     */
+    private $image;
 
+    /**
+     * @var File|null $file
+     * @UploadableField(filename="image", path="uploads/region")
+     */
+    private $file;
+
+    /**
+     * @var string
+     * @ORM\Column(name="youtube_video" , type="string" ,nullable=true)
+     */
+    private $youtubeVideo;
     /**
      * Region constructor.
      */
@@ -224,5 +243,53 @@ class Region
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File|null $file
+     */
+    public function setFile(?File $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return string
+     */
+    public function getYoutubeVideo()
+    {
+        return $this->youtubeVideo;
+    }
+
+    /**
+     * @param string $youtubeVideo
+     */
+    public function setYoutubeVideo($youtubeVideo)
+    {
+        $this->youtubeVideo = $youtubeVideo;
     }
 }

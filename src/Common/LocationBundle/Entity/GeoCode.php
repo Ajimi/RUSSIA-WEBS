@@ -117,4 +117,13 @@ class GeoCode
 
         return $this;
     }
+
+    public  static function transform(GeoCode $geoCode){
+        $data = [];
+        $data['longitude'] = $geoCode->getLongitude();
+        $data['latitude'] = $geoCode->getLatitude();
+
+
+        return $data;
+    }
 }

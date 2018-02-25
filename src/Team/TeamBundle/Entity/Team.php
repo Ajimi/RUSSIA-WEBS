@@ -36,7 +36,7 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="teamLogo", type="string", length=255)
+     * @ORM\Column(name="teamLogo", type="string", length=255, nullable=true)
      */
     private $teamLogo;
 
@@ -89,6 +89,7 @@ class Team
      * @ORM\Column(name="goalIn", type="integer")
      */
     private $goalIn;
+
 
 
     /**

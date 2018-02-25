@@ -15,21 +15,23 @@ use Symfony\Component\HttpFoundation\Response;
 class PlaceController extends Controller
 {
     /**
-     * @param $name
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Place $place
+     * @return Response
+     * @internal param $name
      * @Route("/{id}" , name="place_show")
      */
-    public function indexAction(Place $place)
+    public function indexAction(Place $place): Response
     {
         return $this->render('@Guide/place/place.html.twig', array('place' => $place));
     }
 
     /**
-     * @param $name
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Place $place
+     * @return Response
+     * @internal param $name
      * @Route("modal/{id}" , name="place_show_modal", options={"expose"=true})
      */
-    public function modalAction(Place $place)
+    public function modalAction(Place $place): Response
     {
         $rendered = $this->render('@Guide/place/place-modal.html.twig', array('place' => $place));
         return $rendered;

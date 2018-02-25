@@ -2,6 +2,8 @@
 
 namespace Common\RegionBundle\Modal;
 
+use Symfony\Component\HttpFoundation\File\File;
+
 class RegionData
 {
 
@@ -9,6 +11,11 @@ class RegionData
     private $latitude;
     private $longitude;
     private $regionName;
+    private $youtubeVideo;
+    /**
+     * @var File $file
+     */
+    private $file;
 
 
     /**
@@ -57,6 +64,38 @@ class RegionData
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File|null $file
+     */
+    public function setFile(?File $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutubeVideo()
+    {
+        return $this->youtubeVideo;
+    }
+
+    /**
+     * @param mixed $youtubeVideo
+     */
+    public function setYoutubeVideo($youtubeVideo)
+    {
+        $this->youtubeVideo = $youtubeVideo;
     }
 
 }

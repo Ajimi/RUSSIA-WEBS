@@ -33,18 +33,19 @@
                             <article class="product-inline">
                                 <div class="product-inline-aside"><a
                                             class="product-inline-figure"
-                                            href="product-page.html"><img
+                                            href="{{ path('cart_index') }}">
+                                        <img
                                                 class="product-inline-image"
-                                                src="{{ asset('assets/images/product-Nike-Air-Zoom-Pegasus-67x30.png') }}"
-                                                alt="" width="67" height="30"/></a></div>
+                                                src="{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}"
+                                                alt="" width="30" height="30"/></a></div>
                                 <div class="product-inline-main">
                                     <p class="heading-7 product-inline-title"><a
-                                                href="product-page.html">{{ match.team1.teamName }}
+                                                href="{{ path('cart_index') }}">{{ match.team1.teamName }}
                                             vs {{ match.team2.teamName }}</a>
                                     </p>
                                     <ul class="product-inline-meta">
                                         <li>
-                                            <p class="product-inline-price">{{ match.ticket.price }}</p>
+                                            <p class="product-inline-price">${{ match.ticket.price }}</p>
                                         </li>
                                     </ul>
                                 </div>
