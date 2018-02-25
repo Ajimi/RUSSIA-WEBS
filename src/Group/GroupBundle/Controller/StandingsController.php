@@ -48,7 +48,7 @@ class StandingsController extends Controller
     public function standingsFullDisplayAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $groups = $em->getRepository('GroupBundle:Groupe')->findAll();
+        $groups = $em->getRepository('GroupBundle:Groupe')->findBy(array(), array('name' => 'asc'));
 
         $fullStandings = [];
         foreach ($groups as $g)
