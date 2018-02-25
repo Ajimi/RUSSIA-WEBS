@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Team\TeamBundle\Entity\Team;
 
 /**
  * @Route("/ticket")
@@ -64,7 +65,7 @@ class TicketController extends Controller
     /**
      * @return Response
      */
-    public function nextMatchTicketAction()
+    public function nextMatchTicketAction(): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -85,7 +86,7 @@ class TicketController extends Controller
      * @return Response
      * @throws \LogicException
      */
-    public function allMatchesTicketAction(Request $request)
+    public function allMatchesTicketAction(Request $request): Response
     {
         /** @var PaginationInterface $pagination */
         $pagination = $request->get('pagination');
@@ -97,9 +98,18 @@ class TicketController extends Controller
             $matchesId = $cart;
         }
 
+        /** @var Team[] $teams */
+        $teams = $this->getDoctrine()->getManager()->getRepository('TeamBundle:Team')->findAll();
+
 
         // parameters to template
-        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $pagination, 'matchesId' => $matchesId));
+        return $this->render('TicketBundle:ticket/component:matches.html.twig',
+            array(
+                'matches' => $pagination,
+                'matchesId' => $matchesId,
+                'teams' => $teams
+            )
+        );
 
     }
 }
