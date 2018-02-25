@@ -29,14 +29,14 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="teamName", type="string", length=255, nullable=true)
+     * @ORM\Column(name="teamName", type="string", length=255)
      */
     private $teamName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="teamLogo", type="string", length=255)
+     * @ORM\Column(name="teamLogo", type="string", length=255, nullable=true)
      */
     private $teamLogo;
 
