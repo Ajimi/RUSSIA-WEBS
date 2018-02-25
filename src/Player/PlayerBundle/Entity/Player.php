@@ -43,7 +43,7 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="playerImage", type="string", length=255)
+     * @ORM\Column(name="playerImage", type="string", length=255, nullable=true)
      */
     private $playerImage;
     /**
@@ -756,15 +756,6 @@ class Player
         $this->skills->removeElement($skill);
     }
 
-    /**
-     * Get skills
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSkills()
-    {
-        return $this->skills;
-    }
 
     /**
      * Add club
@@ -790,13 +781,5 @@ class Player
         $this->clubs->removeElement($club);
     }
 
-    /**
-     * Get clubs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getClubs()
-    {
-        return $this->clubs;
-    }
+
 }
