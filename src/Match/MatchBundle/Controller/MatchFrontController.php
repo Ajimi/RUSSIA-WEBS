@@ -82,6 +82,11 @@ class MatchFrontController extends Controller
         $playersT1 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam'=>$match->getTeam1()));
         $playersT2 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam'=>$match->getTeam2()));
 
+        $bestScorerT1 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam1());
+        $bestScorerT2 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam2());
+
+        // dump($bestScorerT1);
+
 
 
 
@@ -93,7 +98,9 @@ class MatchFrontController extends Controller
             'ballPossessionSecondTeam'=>$ballPossessionSecondTeam,
             'shotAccuracyFirstTeam'=>$shotAccuracyFirstTeam,
             'shotAccuracySecondTeam'=>$shotAccuracySecondTeam,
-            'playersT1'=>$playersT1 ,'playersT2'=>$playersT2
+            'playersT1'=>$playersT1 ,'playersT2'=>$playersT2,
+            'bestScorerT1'=>$bestScorerT1,
+            'bestScorerT2'=>$bestScorerT2
     ));
 
     }

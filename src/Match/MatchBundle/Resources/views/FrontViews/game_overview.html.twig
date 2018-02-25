@@ -27,21 +27,31 @@
                     {% include '@Match/FrontViews/game_overview_model.html.twig' %}
 
 
-                    <div class="col-sm-12">
+
 
                         <br>
                         <!-- Heading Component-->
                         <article class="heading-component">
                             <div class="heading-component-inner">
 
-                                <h5 class="heading-component-title">Main Rosters
+                                <h5 class="heading-component-title">Team Players
                                 </h5>
                             </div>
                         </article>
                         <div class="row row-30">
-                            {% include '@Match/FrontViews/maint_roster.html.twig' %}
+                            {% include '@Match/FrontViews/main_roster.html.twig' %}
                         </div>
-                    </div>
+                    <br>
+
+                        <!-- Heading Component-->
+                        <article class="heading-component">
+                            <div class="heading-component-inner">
+                                <h5 class="heading-component-title">Best scorer
+                                </h5>
+                            </div>
+                        </article>
+
+                        {% include '@Match/FrontViews/best_scorer.html.twig' %}
                 </div>
 
                 <div class="col-lg-4">
@@ -67,7 +77,8 @@
                             </article>
                             {% include '@Match/FrontViews/single_latest_game_result_model.html.twig' %}
                         </div>
-                    </div>
+
+
                 </div>
 
 
