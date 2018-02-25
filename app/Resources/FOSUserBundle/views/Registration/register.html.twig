@@ -36,7 +36,7 @@
                             {% include "@FOSUser/Registration/register_content.html.twig" %}
                         </div>
                         <div class="card-form card-form-login">
-                            {{ include('@FOSUser/Security/login_content.html.twig') }}
+                            {% include "FOSUserBundle:Security:login_content.html.twig" %}
                         </div>
                     </div>
                 </div>
