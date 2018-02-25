@@ -10,26 +10,22 @@
                 </div>
                 <!-- List Inline-->
                 <ul class="list-inline list-inline-3">
-                    <li><a class="icon fa fa-star text-primary" href="#"></a>
-                    </li>
-                    <li><a class="icon fa fa-star text-primary" href="#"></a>
-                    </li>
-                    <li><a class="icon fa fa-star text-primary" href="#"></a>
-                    </li>
-                    <li><a class="icon fa fa-star text-primary" href="#"></a>
-                    </li>
+                    {% for i in 1..rating %}
+                        <li>
+                            <a class="icon fa fa-star text-primary" href="#"></a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="box-offer-caption-inner-right text-right">
                 <p class="text-extra-small text-spacing-500 text-silver-chalice">
-                    PRICE</p>
+                    PHONE</p>
                 <!-- List Inline-->
                 <ul class="list-inline inset-right-5">
                     <li class="text-extra-small text-black text-strike text-middle">
-                        $3,000
                     </li>
                     <li class="box-offer-price text-black text-ubold text-primary text-middle">
-                        $2,000
+                        {{ place.phone }}
                     </li>
                 </ul>
             </div>

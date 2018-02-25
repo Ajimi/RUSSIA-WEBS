@@ -59,7 +59,7 @@
 
                         {% for region in regions %}
 
-                            {% if region.file.filename is null %}
+                            {% if region.file is null %}
                                 {% set picture = "" %}
                             {% else %}
                                 {% set picture = "/uploads/region/" ~ asset(region.file.filename) %}
