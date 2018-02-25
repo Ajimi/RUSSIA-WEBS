@@ -62,11 +62,23 @@
                             {% block player_skills %}
                                 {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
                                     {% block skill_name %} Finishing{% endblock %}
-                                    {% block skill_progress %}{{ player.goalScored*100/player.shotsOnTarget }}{% endblock %}
+                                    {% block skill_progress %}
+                                        {% if player.shotsOnTarget!=0 %}
+                                            {{ player.goalScored*100/player.shotsOnTarget }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                    {% endblock %}
                                 {% endembed %}
                                 {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
                                     {% block skill_name %} Shots Acc{% endblock %}
-                                    {% block skill_progress %}{{ player.shotsOnTarget*100/player.shots }}{% endblock %}
+                                    {% block skill_progress %}
+                                        {% if player.shots!=0 %}
+                                            {{ player.shotsOnTarget*100/player.shots }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                    {% endblock %}
                                 {% endembed %}
                             {% endblock %}
                         {% endembed %}
