@@ -27,9 +27,10 @@ class EventBackController extends Controller
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($idm);
 
-        if ($form->isValid() && ($request->isMethod('POST'))) {
+        if ($form->isValid()) {
 
-            $team = $em->getRepository('MatchBundle:TeamTest')->find($request->get('iCheck'));
+            $em->getRepository('PlayerBundle:Player')->updatePlayerStat($event->getPlayer()->getId(),$event->getTypeEvent());
+            $team = $em->getRepository('TeamBundle:Team')->find($request->get('iCheck'));
             $event->setMatch($match);
             $event->setTeam($team);
             $event->setTimes(new \DateTime());
@@ -80,7 +81,7 @@ class EventBackController extends Controller
         $event->setTimes(new \DateTime());
         $start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
         $diff = date_diff(new \DateTime(), $start->getTimes());
-        $event->setMinutes($diff->format('%i minute'));
+        $event->setMinutes($diff->format('%s Seconds'));
         $event->setTypeEvent("END OF THE GAME");
         $em->persist($match);
         $em->persist($event);
@@ -92,24 +93,77 @@ class EventBackController extends Controller
 
     }
 
+    /**
+     * @Route("/event/{idm}", name="ajax_display_event", options={"expose" = true})
+     */
+    public function ajaxDisplayAction($idm)
+    {
+        $em= $this->getDoctrine()->getManager();
+        $events = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $idm), array('times' => 'asc'));
+        return $this->render('@Match/EventBack/list_event.html.twig',array(
+            'events'=>$events
+        ));
+
+
+    }
+
 
     private function addScore($match)
     {
         $em = $this->getDoctrine()->getManager();
-        $eventsTeam1 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match->getId(), 'team' => $match->getTeam1(), 'typeEvent' => "goal"));
-        $eventsTeam2 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match->getId(), 'team' => $match->getTeam2(), 'typeEvent' => "goal"));
-        $goalseam1 = count($eventsTeam1);
+        $eventsTeam1 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match, 'team' => $match->getTeam1(), 'typeEvent' => "Goal"));
+        $eventsTeam2 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match, 'team' => $match->getTeam2(), 'typeEvent' => "Goal"));
+        $goalsTeam1 = count($eventsTeam1);
         $goalsTeam2 = count($eventsTeam2);
-
 
         $score = new  \Match\MatchBundle\Entity\Score();
         $score->setMatch($match);
-        $score->setScoreTeam1($goalseam1);
+        $score->setScoreTeam1($goalsTeam1);
         $score->setScoreTeam2($goalsTeam2);
+
+        $this->updateTeam($em,$match,$goalsTeam1,$goalsTeam2);
         $em->persist($score);
         $em->flush();
 
     }
+
+    private  function  updateTeam($em,$match,$goalsTeam1,$goalsTeam2)
+    {
+        $em->getRepository('TeamBundle:Team')->updateTeamGoalIn($match->getTeam1()->getId(),$goalsTeam2);
+        $em->getRepository('TeamBundle:Team')->updateTeamGoalIn($match->getTeam2()->getId(),$goalsTeam1);
+
+        $em->getRepository('TeamBundle:Team')->updateTeamGoalScored($match->getTeam1()->getId(),$goalsTeam1);
+        $em->getRepository('TeamBundle:Team')->updateTeamGoalScored($match->getTeam2()->getId(),$goalsTeam2);
+
+        if ($goalsTeam1 > $goalsTeam2)
+        {
+            $em->getRepository('TeamBundle:Team')->updateTeamWin($match->getTeam1()->getId());
+            $em->getRepository('TeamBundle:Team')->updateTeamLoss($match->getTeam2()->getId());
+
+
+        }
+        else if ($goalsTeam1 < $goalsTeam2)
+        {
+            $em->getRepository('TeamBundle:Team')->updateTeamWin($match->getTeam2()->getId());
+            $em->getRepository('TeamBundle:Team')->updateTeamLoss($match->getTeam1()->getId());
+
+        }
+        else
+        {
+            $em->getRepository('TeamBundle:Team')->updateTeamDraw($match->getTeam1()->getId());
+            $em->getRepository('TeamBundle:Team')->updateTeamDraw($match->getTeam2()->getId());
+        }
+
+
+    }
+
+    private function updatePlayer()
+    {
+
+
+    }
+
+
 
 
 }

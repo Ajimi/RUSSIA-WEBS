@@ -1,24 +1,22 @@
+<div class="x_content">
+    <ul class="list-unstyled timeline">
+        {% for e in events %}
+            <li>
+                <div class="block">
 
-    <div class="x_content">
-        <ul class="list-unstyled timeline">
-            {% for e in events %}
-                <li>
-                    <div class="block">
+                    <div class="block_content">
+                        <h2 class="title">
+                            <a>{{ e.typeEvent | upper }}</a>
+                        </h2>
 
-                        <div class="block_content">
-                            <h2 class="title">
-                                <a>{{ e.typeEvent | upper }}</a>
-                            </h2>
-
-                            <div class="byline">
-                                <span>{{ e.minutes }}’</span>
-                            </div>
-
-                            <p class="excerpt"> {{ e.description }} </p>
+                        <div class="byline">
+                            <span>{{ e.minutes }}’</span>
                         </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
 
-    </div>
+                        <p class="excerpt"> {{ e.description }} </p>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

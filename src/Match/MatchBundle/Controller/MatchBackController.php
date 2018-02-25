@@ -98,7 +98,7 @@ class MatchBackController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);

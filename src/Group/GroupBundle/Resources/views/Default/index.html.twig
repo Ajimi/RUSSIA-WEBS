@@ -1,4 +1,5 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
+
 {% block title %}Group List{% endblock %}
 {% block header_team %}active{% endblock %}
 {% block body %}
@@ -10,7 +11,6 @@
             <li class="active">List</li>
         {% endblock %}
     {% endembed %}
-
     <section class="section section-sm bg-gray-100">
         <div class="container">
             <div class="row row-50">
@@ -20,21 +20,22 @@
                             <!-- Heading Component-->
                             {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Group List' } %}
                             {% endembed %}
-
                             <div class="card-standing card-group-custom card-standing-index" id="accordion1"
                                  role="tablist" aria-multiselectable="false">
                                 <div class="list-cos">
                                     <div class="card-header">
-                                        <div class="card-standing-caption-aside ">
-                                            <div class="card-standing-team">Group A</div>
 
-                                        </div>
                                     </div>
+                                    </table>
+
                                 </div>
+                                </div>
+                            {% for g in groups %}
                                 <!-- Bootstrap card-->
                                 <article class="card ">
                                     <div class="card-header" id="accordion1Heading1" role="tab">
-                                        <a href="{{ path('team_display',{'Name':'Russia'}) }}">
+
+                                        <a href="{{ path('team_display',{'id': g.team1.id}) }}">
                                             <div class="card-standing-team-item">
                                                 <div class="card-standing-team">
                                                     <div class="card-standing-team-figure"><img
@@ -42,83 +43,82 @@
                                                                 width="50" height="37"/>
                                                     </div>
                                                     <div class="card-standing-team-title">
-                                                        <div class="card-standing-team-name">RUSSIA</div>
+                                                        <div class="card-standing-team-name">{{ g.team1.teamName }}</div>
                                                     </div>
-
                                                 </div>
-
                                             </div>
                                         </a>
                                     </div>
                                 </article>
-                                <!-- Bootstrap card-->
-                                <article class="card ">
-                                    <div class="card-header" id="accordion1Heading2" role="tab">
-                                        <a href="{{ path('team_display',{'Name':'ArabieSaoudite'}) }}">
-                                            <div class="card-standing-team-item">
-                                                <div class="card-standing-team">
-                                                    <div class="card-standing-team-figure"><img
-                                                                src={{ asset('assets/images/ArabieSaoudite.png') }} alt=""
-                                                                width="50" height="37"/>
-                                                    </div>
-                                                    <div class="card-standing-team-title">
-                                                        <div class="card-standing-team-name">Saudi Arabia</div>
-
-                                                    </div>
+                            {% endfor %}
+                            <!-- Bootstrap card-->
+                            <article class="card ">
+                                <div class="card-header" id="accordion1Heading2" role="tab">
+                                    <a href="{{ path('team_display',{'Name':'ArabieSaoudite'}) }}">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/ArabieSaoudite.png') }} alt=""
+                                                            width="50" height="37"/>
                                                 </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Saudi Arabia</div>
 
-                                            </div>
-                                        </a>
-                                    </div>
-                                </article>
-                                <!-- Bootstrap card-->
-                                <article class="card ">
-                                    <div class="card-header" id="accordion1Heading3" role="tab">
-                                        <a href="{{ path('team_display',{'Name':'Egypt'}) }}">
-                                            <div class="card-standing-team-item">
-                                                <div class="card-standing-team">
-                                                    <div class="card-standing-team-figure"><img
-                                                                src={{ asset('assets/images/EgypteFlag.png') }} alt=""
-                                                                width="50" height="37"/>
-                                                    </div>
-                                                    <div class="card-standing-team-title">
-                                                        <div class="card-standing-team-name">Egypte</div>
-
-                                                    </div>
                                                 </div>
-
                                             </div>
-                                        </a>
-                                    </div>
-                                </article>
-                                <!-- Bootstrap card-->
-                                <article class="card ">
-                                    <div class="card-header" id="accordion1Heading4" role="tab">
-                                        <a href="{{ path('team_display',{'Name':'Uruguay'}) }}">
-                                            <div class="card-standing-team-item">
-                                                <div class="card-standing-team">
-                                                    <div class="card-standing-team-figure"><img
-                                                                src={{ asset('assets/images/Uruguay.png') }} alt=""
-                                                                width="37" height="34"/>
-                                                    </div>
-                                                    <div class="card-standing-team-title">
-                                                        <div class="card-standing-team-name">Ururuay</div>
 
-                                                    </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </article>
+                            <!-- Bootstrap card-->
+                            <article class="card ">
+                                <div class="card-header" id="accordion1Heading3" role="tab">
+                                    <a href="{{ path('team_display',{'Name':'Egypt'}) }}">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/EgypteFlag.png') }} alt=""
+                                                            width="50" height="37"/>
                                                 </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Egypte</div>
 
+                                                </div>
                                             </div>
-                                        </a>
-                                    </div>
 
-                                </article>
-                                <!-- Bootstrap card-->
+                                        </div>
+                                    </a>
+                                </div>
+                            </article>
+                            <!-- Bootstrap card-->
+                            <article class="card ">
+                                <div class="card-header" id="accordion1Heading4" role="tab">
+                                    <a href="{{ path('team_display',{'Name':'Uruguay'}) }}">
+                                        <div class="card-standing-team-item">
+                                            <div class="card-standing-team">
+                                                <div class="card-standing-team-figure"><img
+                                                            src={{ asset('assets/images/Uruguay.png') }} alt=""
+                                                            width="37" height="34"/>
+                                                </div>
+                                                <div class="card-standing-team-title">
+                                                    <div class="card-standing-team-name">Ururuay</div>
 
-                                <!-- Bootstrap card-->
-                                <article class="card ">
+                                                </div>
+                                            </div>
 
-                                </article>
-                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </article>
+                            <!-- Bootstrap card-->
+
+                            <!-- Bootstrap card-->
+                            <article class="card ">
+
+                            </article>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -518,7 +518,9 @@
                                                 </div>
 
                                             </div>
+                                        </a>
                                     </div>
+
                                 </article>
                                 <!-- Bootstrap card-->
                                 <article class="card ">

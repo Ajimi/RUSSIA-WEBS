@@ -15,8 +15,6 @@
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
 {% endblock stylesheets %}
-
-
 {% block title %}GroupBundle:GroupController:AfficherGroup{% endblock %}
 
 {% block body %}
@@ -45,8 +43,6 @@
                                 <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action"
                                        style="width: 750px;">
                                     <tr>
-
-
                                         <th>Group</th>
                                         <th>Team1</th>
                                         <th>Team2</th>
@@ -70,13 +66,14 @@
                                                 <td>{{ groups.team3.teamName }}</td>
                                                 <td>{{ groups.team4.teamName }}</td>
                                                 <td><a href="{{ path('admin_group_edit',{'id':groups.id}) }}"
-                                                       class="btn btn-warning"><i class="fa fa-edit"></i>
+                                                       class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
                                                         Edit</a></td>
                                                 <td><a href="{{ path('admin_group_delete',{'id':groups.id}) }}"
-                                                       class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                                       class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                                                        Delete</a>
                                                 </td>
                                                 <td>
-                                                    {{ groups.rating|rating(5, "fa-x") }}
+                                                    {{ groups.rating|rating(5, "fa- 0x") }}
 
                                                 </td>
 

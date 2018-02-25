@@ -17,14 +17,14 @@
                     {% for score in scores %}
                         <tr>
                             <td style='text-align:center;vertical-align:baseline'>
-                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> {{ score.match.team1.name |upper |slice(0,8) }}
+                                <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}"> {{ score.match.team1.teamName |upper |slice(0,8) }}
                             </td>
 
                             <td style='text-align:center;vertical-align:middle'>
                                 <h2> {{ score.match.level }}</h2>
                                 <h1> {{ score.scoreTeam1 }} - {{ score.scoreTeam2 }} </h1>
                             </td>
-                            <td style='text-align:center;vertical-align:baseline'>{{ score.match.team2.name | upper|slice(0,8) }}
+                            <td style='text-align:center;vertical-align:baseline'>{{ score.match.team2.teamName | upper|slice(0,8) }}
                                 <img src="{{ asset('assets/images/teamUploads/teamFlag.png') }}">
                             </td>
                         </tr>

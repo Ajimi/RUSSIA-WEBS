@@ -50,7 +50,7 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="teamShortcut", type="string", length=255, nullable=true)
+     * @ORM\Column(name="teamShortcut", type="string", length=255)
      */
     private $teamShortcut;
 
@@ -58,62 +58,65 @@ class Team
     /**
      * @var int
      *
-     * @ORM\Column(name="matchWon", type="integer", nullable=true)
+     * @ORM\Column(name="matchWon", type="integer")
      */
     private $matchWon;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="matchLoss", type="integer", nullable=true)
+     * @ORM\Column(name="matchLoss", type="integer")
      */
     private $matchLost;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="goalScored", type="integer", nullable=true)
-     */
-    private $goalScored;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="goalIn", type="integer", nullable=true)
-     */
-    private $goalIn;
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="matchDraw", type="integer", nullable=true)
+     * @ORM\Column(name="matchDraw", type="integer")
      */
     private $matchDraw;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="participation", type="integer", nullable=true)
+     * @ORM\Column(name="goalScored", type="integer")
+     */
+    private $goalScored;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="goalIn", type="integer")
+     */
+    private $goalIn;
+
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="participation", type="integer")
      */
     private $participation;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="winner", type="integer", nullable=true)
+     * @ORM\Column(name="winner", type="integer")
      */
     private $winner;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="second", type="integer", nullable=true)
+     * @ORM\Column(name="second", type="integer")
      */
     private $second;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="third", type="integer", nullable=true)
+     * @ORM\Column(name="third", type="integer")
      */
     private $third;
 

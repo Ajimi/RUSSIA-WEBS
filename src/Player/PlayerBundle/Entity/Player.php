@@ -7,6 +7,7 @@ use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Team\TeamBundle\Entity\Team;
 
 /**
  * Player
@@ -43,7 +44,7 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="playerImage", type="string", length=255, nullable=true)
+     * @ORM\Column(name="playerImage", type="string", length=255)
      */
     private $playerImage;
     /**
@@ -52,6 +53,13 @@ class Player
     * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
     */
     private $file;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="playerNumber", type="integer")
+     */
+    private $playerNumber;
 
     /**
     * @var string
@@ -98,7 +106,7 @@ class Player
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team", inversedBy="players")
-     * @ORM\JoinColumn(name="id_team1",referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="id_team1", referencedColumnName="id")
      */
     private $nationalTeam;
 
@@ -154,9 +162,17 @@ class Player
     /**
      * @var int
      *
-     * @ORM\Column(name="minutesPlayed", type="integer")
+     * @ORM\Column(name="penaltyKicks", type="integer")
      */
-    private $minutesPlayed;
+    private $penaltyKicks;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cornerKicks", type="integer")
+     */
+    private $cornerKicks;
+
 
     /**
      * @var int
@@ -210,6 +226,24 @@ class Player
 
 
     /**
+     * @return int
+     */
+    public function getCornerKicks()
+    {
+        return $this->cornerKicks;
+    }
+
+    /**
+     * @param int $cornerKicks
+     */
+    public function setCornerKicks($cornerKicks)
+    {
+        $this->cornerKicks = $cornerKicks;
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getSkills()
@@ -251,6 +285,23 @@ class Player
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getPlayerNumber()
+    {
+        return $this->playerNumber;
+    }
+
+    /**
+     * @param string $playerNumber
+     */
+    public function setPlayerNumber($playerNumber)
+    {
+        $this->playerNumber = $playerNumber;
+    }
+
 
     /**
      * Set playerName.
@@ -485,7 +536,7 @@ class Player
     /**
      * Get nationalTeam.
      *
-     * @return string
+     * @return Team
      */
     public function getNationalTeam()
     {
@@ -660,29 +711,6 @@ class Player
         return $this->fouls;
     }
 
-    /**
-     * Set minutesPlayed.
-     *
-     * @param int $minutesPlayed
-     *
-     * @return Player
-     */
-    public function setMinutesPlayed($minutesPlayed)
-    {
-        $this->minutesPlayed = $minutesPlayed;
-
-        return $this;
-    }
-
-    /**
-     * Get minutesPlayed.
-     *
-     * @return int
-     */
-    public function getMinutesPlayed()
-    {
-        return $this->minutesPlayed;
-    }
 
     /**
      * Set yellowCard.
@@ -782,4 +810,28 @@ class Player
     }
 
 
+
+    /**
+     * Set penaltyKicks.
+     *
+     * @param int $penaltyKicks
+     *
+     * @return Player
+     */
+    public function setPenaltyKicks($penaltyKicks)
+    {
+        $this->penaltyKicks = $penaltyKicks;
+
+        return $this;
+    }
+
+    /**
+     * Get penaltyKicks.
+     *
+     * @return int
+     */
+    public function getPenaltyKicks()
+    {
+        return $this->penaltyKicks;
+    }
 }
