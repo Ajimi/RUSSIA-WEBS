@@ -8,12 +8,12 @@
                             {% embed '@Guide/guide/place-component.html.twig'
                             with {url: path('place_show', {'id': place.id})} %}
 
-                                {% block image %}http://cdn.welcome2018.com/upload/iblock/04a/tass_12031814.jpg{% endblock %}
+                                {% block image %}{{ place.previewPicture }}{% endblock %}
                                 {% block name %}
                                     {{ place.name }}
                                 {% endblock %}
                                 {% block description %}
-                                    {{ place.previewText|slice(0,100)|raw }} ...
+                                    {{ place.previewText|truncate(100)|raw }} ...
                                 {% endblock %}
                             {% endembed %}
                         </div>
