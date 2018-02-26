@@ -46,7 +46,7 @@ Match\MatchBundle\Entity\Match:
         team1: '@teame*'
         team2: '@teame*'
         level: "first"
-        date: <date()>
+        date: <dateTime()>
         time: <time()>
         stadium: <city()>
         played: false
