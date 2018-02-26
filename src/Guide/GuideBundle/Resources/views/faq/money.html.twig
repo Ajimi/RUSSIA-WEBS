@@ -1,5 +1,17 @@
 {% extends 'GuideBundle:component:_base.html.twig' %}
 
+{% block title %}Guide | Money and Payment{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Money and Payment' } %}
+        {% block image %}{{ asset('assets/images/guide/money.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Money and Payment</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
 {% block page_content %}
     <section class="cd-faq">
         <ul class="cd-faq-categories">

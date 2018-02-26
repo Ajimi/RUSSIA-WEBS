@@ -1,5 +1,16 @@
 {% extends 'GuideBundle:component:_base.html.twig' %}
 
+{% block title %}Guide | How to stay connected{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'How to stay connected' } %}
+        {% block image %}{{ asset('assets/images/guide/connected.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">How to stay connected</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
 {% block page_content %}
     <section class="cd-faq">
         <ul class="cd-faq-categories">

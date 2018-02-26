@@ -1,5 +1,19 @@
 {% extends 'GuideBundle:component:_base.html.twig' %}
 
+
+{% block title %}Guide | Accommodations Options{% endblock %}
+
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Accommodations Options' } %}
+        {% block image %}{{ asset('assets/images/guide/options.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Accommodations Options</a></li>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
 {% block page_content %}
     <section class="cd-faq">
         <ul class="cd-faq-categories">
