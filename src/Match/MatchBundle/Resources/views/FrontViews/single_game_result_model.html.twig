@@ -49,7 +49,9 @@
         </div>
     </article>
 {% endfor %}
+
 <br>
 <div class="navigation text-center">
-    {{ knp_pagination_render(scores) }}
+    {% do scores.setTemplate('paginator/custom_without_next_and_previous.html.twig') %}
+{#{{knp_pagination_render(scores,'paginator/custom_without_next_and_previous.html.twig')}}#}
 </div>

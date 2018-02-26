@@ -50,7 +50,7 @@ class MatchFrontController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-       // $scores = $em->getRepository("MatchBundle:Score")->findAll();
+        $scores = $em->getRepository("MatchBundle:Score")->findAll();
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $em->getRepository("MatchBundle:Score")->findAll(), /* query NOT result */
@@ -154,8 +154,6 @@ class MatchFrontController extends Controller
         {
             $statistic2->dataFormat($e2);
         }
-
-
 
         $html = $this->renderView('@Match/FrontViews/snappy.html.twig',array(
             'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
