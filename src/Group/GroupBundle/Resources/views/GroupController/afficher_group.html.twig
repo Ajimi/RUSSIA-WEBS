@@ -17,7 +17,7 @@
 {% endblock stylesheets %}
 {% block title %}GroupBundle:GroupController:AfficherGroup{% endblock %}
 
-{% block body %}
+
     {% block page_content %}
         <a href="/" style="margin-top: 10px;" class="btn btn-success">Back to the application</a>
         <div class="row centered">
@@ -38,10 +38,11 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="ln_solid"></div>
                                 <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action"
-                                       style="width: 750px;">
+                                >
+                                    <thead>
                                     <tr>
                                         <th>Group</th>
                                         <th>Team1</th>
@@ -53,11 +54,10 @@
                                         <th>Rating</th>
 
                                     </tr>
+                                    </thead>
 
                                     <tbody id="costum-table">
                                     {% for groups in G %}
-
-
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                             <tr>
                                                 <td>{{ groups.name }}</td>
@@ -94,7 +94,7 @@
             </div>
         </div>
     {% endblock %}
-{% endblock %}
+
 {% block javascripts %}
 
     <!-- iCheck -->
@@ -115,7 +115,6 @@
     <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>

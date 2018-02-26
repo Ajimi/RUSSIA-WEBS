@@ -1,7 +1,6 @@
 <?php
 
 namespace Group\GroupBundle\Controller;
-
 use Group\GroupBundle\Modele\StandingsFormat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,15 +23,6 @@ class StandingsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $teams = $em->getRepository('TeamBundle:Team')->findAll();
-
-        $paginator = $this->get('knp_paginator');
-
-        /** @var PaginationInterface $fullStandings */
-        $fullStandings = $paginator->paginate(
-            $teams, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            9/*limit per page*/
-        );
         $standings = [];
 
         foreach ($teams as $t) {
