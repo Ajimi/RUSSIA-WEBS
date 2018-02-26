@@ -1,0 +1,189 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#ticket">Type and categories</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="service" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Types and categories</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Ticket Classes{% endblock %}
+                    {% block faq_content %}
+
+                        Four classes of tickets will be on offer for individuals wishing to attend the matches of the 2018 FIFA World Cup Russia™. Tickets in first class are the highest priced tickets for top-of-the-line seats. Second and third class tickets are for seats outside the “first class” area. Fourth class is for specially priced (from 1280 rubles up), affordable tickets available to host country residents, i.e. Russian citizens and foreign nationals who are long-time residents of Russia. Those wishing to purchase a fourth class ticket will be asked to present official documentary evidence of their Russian resident status.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Special Access tickets{% endblock %}
+                    {% block faq_content %}
+
+                        FIFA also offers special tickets for disabled people, people with limited mobility and obese people. There are four types of tickets:
+                        <br>
+                        <ul>
+                            <li>"Wheelchair User” - for wheelchair users;</li>
+                            <li>"Easy Access Standard" - for disabled people, people with limited mobility and people
+                                with other medical
+                                conditions;
+                            </li>
+                            <li>"Easy Access Amenity" - for people with guide dogs or people with a medical condition
+                                requiring
+                                assistance dogs, and people that need additional leg space due to limited mobility;
+                            </li>
+                            <li>"Obese Persons (easy access, extra-width seats)" - for people with a BMI that is <a
+                                        href="https://www.wikiwand.com/en/Body_mass_index" target="_blank">equal to or
+                                    exceeds 35
+                                    kg/m<sup>2</sup></a>.
+                            </li>
+                        </ul>
+                        The number of tickets in these categories is limited, and seat location will be determined separately for each stadium and match.
+                        <br>
+                        <br>
+                        Please note that customers who apply for and purchase Special Access tickets are required to provide proof of eligibility documents as part of the Ticket Application process. This can be a medical certificate or other proof that is commonly and widely accepted in the Ticket Applicant’s country of residence. For Obese Person tickets, presentation of a signed doctor’s note stating the person’s BMI will be required.
+                        <br>
+                        <br>
+                        With the sole exception of obese people, successful disabled Ticket Applicants for Special Access will be offered the opportunity to receive, on a complimentary basis, one additional ticket for a companion to assist and accompany them to the match. The companion will be seated as close as possible to the Special Access ticket customer, but the exact location of the seat cannot be guaranteed.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Phases of Ticket Sales{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            <b>Sales phase 1 (two periods)</b>
+                        </p>
+                        <u>14 September – 12 October
+                            2017</u>&nbsp;– This was period 1 of phase 1 of ticket sales on FIFA.com/bilet. Ticket requests were accepted during this period. Chances were equal for all ticket requests irrespective of submission dates. If ticket requests happened to outnumber the seats available, then tickets would be awarded by means of a random selection draw. All ticket requesters were notified of their request status before 16 November 2017, regardless of whether the request was satisfied fully, partially, or denied.
+                        <br>
+                        <p>
+                        </p>
+                        <p>
+                            <u>16–28 November 2017</u>&nbsp;– This was period 2 of phase 1 of ticket sales, when tickets
+                            continued to be
+                            sold online on FIFA.com/bilet. During this time tickets were sold on a “first come, first
+                            served” basis.
+                            Sales were transacted and purchases confirmed in real time.
+                        </p>
+                        <p>
+                            <b>Sales phase 2 (two periods, tickets only available online on <a
+                                        href="http://FIFA.com/bilet">FIFA.com/bilet</a>)</b><br>
+                        </p>
+                        <p>
+                            <u>5 December 2017 – 31 January 2018 </u>&nbsp;– This was period 1 of ticket sales phase 2.
+                            Ticket requests
+                            were accepted during this period. Chances are equal for all ticket requests irrespective of
+                            submission
+                            dates. If ticket requests happen to outnumber the seats available, then tickets will be
+                            awarded by means of
+                            a random selection draw. All ticket requesters will be notified of their request status,
+                            regardless of
+                            whether their request is satisfied fully, partially, or denied.
+                        </p>
+                        <p>
+                            <u>13 March – 3 April 2018</u>&nbsp;– This is period 2 of ticket sales phase 2. Tickets will
+                            be sold on a
+                            “first come, first served” basis during this time.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            Tickets purchased during sales phases 1 and 2 will be delivered free of charge within a few
+                            weeks prior to
+                            the 2018 FIFA World Cup Russia™. Ticket deliveries will not commence earlier than late April
+                            or May 2018
+                            (subject to change).
+                        </p>
+                        <p>
+                            <b>Last Minute Sales</b>
+                        </p>
+                        <p>
+                            The Last Minute phase of ticket sales will be the last chance to purchase tickets for 2018
+                            World Cup
+                            football matches. Tickets will be sold on a “first come, first served” basis during this
+                            time. Tickets will
+                            be available both on <a href="http://FIFA.com/bilet">FIFA.com/bilet</a>, and at the FIFA
+                            Venue Ticketing
+                            Centres in the 2018 World Cup host cities. The final phase of ticket sales will commence on
+                            18 April and end
+                            on 15 July 2018, the day of the World Cup Final. <br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Payment methods{% endblock %}
+                    {% block faq_content %}
+
+                        During the VISA Pre-sale period, the only acceptable form of payment was a valid VISA payment card. During the Random Selection Draw and First Come First Served Sales Phases, it will be possible to pay for the tickets both by VISA cards and other payment methods. International bank transfers will be possible for non-Russian residents, using a downloadable Ticket Application form. During the Last Minute Sales Phase, cash purchases will be available, but only at the FIFA Ticketing Centers in the host cities.
+                        <p></p>
+                        <p>
+                            If the tickets are not paid for in full, FIFA has a right to annul them and refund you the
+                            sum that was
+                            spent on the partial payment.
+                        </p>
+                        <p>
+                            Please, keep in mind an important qualification: the tickets can only be paid for by persons
+                            who submit
+                            applications for their purchase. This means that you cannot use your friend’s, spouse’s or
+                            relative’s card
+                            to pay for the tickets if you were the one making the application. If you do so, your
+                            tickets will be
+                            annulled, 20% of the tickets’ cost will be deducted from the rebate, and if the annulment
+                            takes place less
+                            than 48 hours prior to the game, there will be no refund at all.
+                        </p>{% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Return and ticket cancellation policy{% endblock %}
+                    {% block faq_content %}
+                        Important information: you cannot exchange or return a ticket for any of the 2018 FIFA World Cup matches. If you cannot make it to the game, your ticket can be put up for sale, but only use FIFA’s official platform for this. Such rules are put in place to prevent circulation of fake tickets and to enhance security at the matches.
+                        <br>
+                        <br>
+                        For its part, FIFA has a right to fully or partially cancel your tickets if one of the purchase conditions was violated. This can happen if the client submitted incorrect information during the application/purchase period, or if the sales team discovers payment violations. In this case, 20% of the ticket’s cost will be deducted from the rebate, and there may be no refund at all if cancellation takes place less than 48 hours before the game date.
+                        <br>
+                        <br>
+                        Tickets will also be cancelled if their owner violates the rules of conduct at the stadium or in the nearby areas: such visitors won’t be allowed into the stadium, or will be led away from the arena.
+                        <br>
+                        <br>
+                        If the tickets were annulled, because the game itself was cancelled, FIFA will refund you the money, but association won’t compensate any additional costs, such as travel and hotel.
+
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Transfer and resale of tickets{% endblock %}
+                    {% block faq_content %}
+
+                        Another important detail to keep in mind: ticket owners are forbidden from gifting or donating them, and cannot offer the tickets at auctions and lotteries without preliminary written agreement from FIFA. Any misconduct with a ticket will lead to its automatic cancellation. Following that, FIFA may forbid the offender from entering a stadium, confiscate his ticket and cancel other tickets that were purchased or reserved. The ticket owner also risks a lawsuit from FIFA.
+                        <br>
+                        <br>
+                        Tickets can only be resold or transferred via FIFA’s official platform. The football association will review each request for resale or transfer individually.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}FIFA Ticketing Call Centre{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            For information on ticket request submission, ticketing products, ticket sales timeline
+                            and/or any other
+                            information regarding the ticketing programme of the 2018 FIFA World Cup Russia™, please
+                            refer to the <a
+                                    href="http://www.fifa.com/worldcup/organisation/ticketing/index.html">FIFA</a>
+                            website.
+                            Alternatively, you can contact the call centre hotline of the 2018 FIFA World Cup Ticketing
+                            Centre at +7
+                            (495) 787-2018 (if a resident of Russia), or + 4 (144) 563-2018 (if a foreign national).
+                        </p>
+                        Answers to the Frequently Asked Questions (FAQ) in connection with the ticketing programme of the 2018 FIFA World Cup Russia™ can be
+                        <a href="https://tickets.fifa.com/FAQ/en?platform=desktop&amp;lang=en">found</a> at the official FIFA website.
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}
