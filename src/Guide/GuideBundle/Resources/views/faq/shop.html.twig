@@ -1,0 +1,313 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#where">Where to shop</a></li>
+            <li><a href="#how">How to shop</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="medicine" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>How to shop</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Historic department stores{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/75e/tass_10610070.jpg?14796635561143579"
+                                 alt="Historic department stores" title="Historic department stores">
+                            <figcaption>Sergei Fadeichev/ТАSS</figcaption>
+                        </figure>
+
+                        <p>
+                            In many cities there are malls that are not only viable places for shopping, but also
+                            tourist attractions by
+                            themselves. In Moscow that would be the department store GUM (Glavnyi Universalnyi
+                            Magazin, literally
+                            translated
+                            as "main universal store"). It is located on the Red Square and the building itself is
+                            an architectural
+                            landmark. The Central Children's Shop on Lubyanka is another notable department store
+                            which received the
+                            honour
+                            of becoming part of Moscow’s architectural heritage; it was recently reopened after
+                            renovations. Nearby one
+                            can
+                            find yet another landmark store: Eliseevsky Gastronomic Shop on Tverskaya. St.
+                            Petersburg’s counterparts are
+                            the
+                            Gostiny Dvor (literally translated as “guest court”) and Eliseyev Emporium on Nevsky
+                            Prospect.
+                        </p>
+                        <p>
+                            Downtown areas of large cities usually have dedicated shopping streets, many of them
+                            solely pedestrian, with
+                            a
+                            variety of shops of international brands as well as smaller local shops and souvenirs
+                            stalls. In Moscow one
+                            can
+                            find this at Ulitsa Arbat, the pedestrian parts of Stoleshnikov Pereulok and the
+                            Tretyakovsky Passage. In St
+                            Petersburg it's Nevsky Prospect; in Nizhny Novgorod Bolshaya Pokrovskaya Ulitsa and
+                            Rozhdestvenskaya Ulitsa
+                            play
+                            the part; Ulitsa Vaynera in Ekaterinburg and the streets around the tram station
+                            Komsomolskaya in Volgograd
+                            are
+                            such shopping streets.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Shopping malls{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Shopping malls are usually situated in the outskirts of the city. You can often get
+                            there by shuttle bus
+                            service
+                            from downtown, or the metro station closest to the mall.
+                        </p>
+                        <p>
+                            Large shopping centres are open seven days a week, from 10 a.m. to 10 p.m. or 11 p.m.;
+                            some malls operate
+                            24/7
+                        </p>
+                        <p>
+                            Such malls over a wide variety of services, entertainment and shops: movie theatres,
+                            restaurants,
+                            pharmacies,
+                            electronic, apparel and hardware stores, beauty salons, etc. Malls usually have at least
+                            one or two grocery
+                            stores.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Consumer electronics{% endblock %}
+                    {% block faq_content %}
+
+
+                        Electronics, from home appliances to computers, gadgets or mobile phones, can be found in
+                        specialized franchises as
+                        well as department stores and malls. Both local and European retailers are represented on the
+                        Russian market.
+                        Pricing polices are about the same when across major retail chains.
+
+
+                        <div class="clearfix"></div>
+
+
+
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Premium grocery stores{% endblock %}
+                    {% block faq_content %}
+
+
+                        The range of high-end grocery stores offers mainly expensive foodstuffs from Russia and abroad. Here you can not
+                        only find delicacies from all around the world, but also a wide range of organic, vegetarian, halal and diet food,
+                        as well as food for people with common allergies. Ready meals can also be found here, hot and cold, often cooked in
+                        the store's own kitchen.
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Shops within walking distance{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            There will always be a shop within walking distance, no matter where you reside. It might be
+                            a
+                            smaller
+                            convenience store or just a kiosk offering little more than the most basic items, such as
+                            bread,
+                            milk and
+                            processed meat or ready meals (refrigerated sandwiches and snacks). Usually such stores
+                            don't offer
+                            vegetables,
+                            fruit or specialty foods. As a rule, these kiosks are open 24/7.
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Marketplaces{% endblock %}
+                    {% block faq_content %}
+
+
+                        Produce from local farmers can be bought not only in specialty stores but in marketplaces as well. Usually the
+                        markets are named after the area or region in which it's located: e. g. In Moscow the markets are called
+                        Preobrazhensky, Dobryninsky, Tishinsky, Petrovsky and so on. In other cities the largest markets are usually called
+                        Tsentralny (”Central”). Marketplaces generally offer get vegetables, fruit, spices, honey and and other farmer's
+                        goods. Also, typically every urban residential zone (microraion or microdistrict), has its own temporary weekend
+                        markets.
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="how" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>How to shop</h2>
+                </li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Payment{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            You can pay with bank and credit cards at malls, supermarkets and retail chains; for local
+                            shops, kiosks,
+                            stalls
+                            and marketplaces it is recommended that you carry cash.
+                        </p>
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Refunds and exchanges{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/0fd/refunds.png?1499685052239533"
+                                 alt="Refunds and exchanges"
+                                 title="Refunds and exchanges">
+                        </figure>
+
+                        <p>
+                            According to Russian law, a buyer is entitled to a refund of any purchase, as long as the
+                            item has not been
+                            used, in 14 days from the day of purchase. Some stores voluntarily prolong this period up to
+                            30 days – such
+                            policies are usually stated on the doors of the store and on the cash register receipt.
+                        </p>
+                        <p>
+                            To return or exchange an item you must bring your passport and the credit card if it was
+                            used to pay for the
+                            item. You are also advised to keep all your receipts, since it will hasten the paperwork
+                            required to process
+                            the
+                            refund. In order to qualify for a refund the item must not have been used, it is still in
+                            marketable
+                            condition,
+                            and the labels and tags have not been removed.
+                        </p>
+                        <p>
+                            Some goods are not subject to refund or exchange: this includes groceries, pharmacy
+                            products, underwear,
+                            socks
+                            and stockings, personal hygiene items, bedding and linen, books, and a number of other
+                            goods. Further
+                            information on non-refundable items and the store refund and exchange policy can be obtained
+                            from staff and
+                            signs by the cash registers.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            Goods sold in unacceptable condition (such as manufacturing defects) can be returned to the
+                            retailer within
+                            the
+                            warranty period. Electronics and home appliances are usually subject to repair, not
+                            exchange. The warranty
+                            period is found on the warranty certificate.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Rules{% endblock %}
+                    {% block faq_content %}
+
+
+                        When purchasing electronics or home appliances, make sure it is tested it at the store and the warranty certificate
+                        is properly registered. br&gt;
+                        <br>
+                        It is not recommended to purchase any goods from persons outside of designated retail areas. Even at weekend markets
+                        every vendor has a stall, a storefront, and a cash register.<br>
+                        <br>
+                        According to the law “On Protection Of Consumer Rights”, a customer can demand to see the copy of the license and
+                        conformity certificate for every item offered.<br>
+                    {% endblock %}
+                {% endembed %}
+
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Restriction of sale of certain goods{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In Russia, as in many countries, sale of alcohol and tobacco is restricted. Specifically,
+                            alcohol and
+                            tobacco
+                            sale is prohibited to those under the age of 18. The vendor has a right to demand a
+                            customer’s ID (any
+                            official
+                            document containing a photo of the customer, and their date of birth).
+                        </p>
+                        <p>
+                            Alcohol can also only be sold during specific hours. The federal law in general allows
+                            retail sale during
+                            the
+                            hours 8am to 11pm; however, regional governments are allowed to impose further restrictions.
+                            In
+                            Saint-Petersburg
+                            alcohol sale is prohibited from 10 pm to 11 am; in Kazan, Samara and Kaliningrad the ‘dry
+                            hours’ are between
+                            10
+                            pm and 10 am.
+                        </p>
+                        <p>
+                            It is also prohibited to sale alcohol at any time of day in locations of festivities and
+                            sporting events,
+                            including football matches. Serving of alcohol in dining establishments is regulated
+                            separately and is only
+                            limited by patron age, but not time of day.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            Tobacco advertisement is prohibited under Russian law. This includes display of cigarette
+                            packaging. Thus
+                            these
+                            items are not openly displayed in stores, but are sold on request at the cash register, or
+                            over the counter.
+                            Tobacco products are not subject to discounts, sales or loyalty programs.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}
