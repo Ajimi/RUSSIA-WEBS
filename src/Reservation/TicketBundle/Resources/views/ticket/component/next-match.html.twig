@@ -9,10 +9,12 @@
             <div class="unit unit-md-horizontal align-items-center align-items-md-stretch">
                 <div class="unit-body">
                     <div class="promo-creative-meta">
-                        <time class="promo-creative-time" datetime="2017-05-17"><span class="heading-1">17</span><span
-                                    class="heading-5">May</span></time>
+                        <time class="promo-creative-time" datetime="{{ match.date|date("Y-m-d") }}"><span
+                                    class="heading-1">{{ match.date|date("j") }}</span><span
+                                    class="heading-5">{{ match.date|date("M") }}</span></time>
                         <div class="promo-creative-meta-description"><span
-                                    class="text-primary">08:30 pm</span><span>Saturday</span></div>
+                                    class="text-primary">{{ match.date|date("h:i a") }}</span><span>{{ match.date|date("l") }}</span>
+                        </div>
                     </div>
                     <div class="promo-creative-figure"><img
                                 src="{{ asset('assets/images/sport-elements-1-357x321.jpg') }}"
@@ -25,9 +27,11 @@
                         <p class="promo-creative-location">
                             <span class="icon icon-gray-800 mdi mdi-map-marker"></span>
                             Moscow Staduim
+                            {#Todo : Get the staduim name#}
                         </p>
                         <div class="promo-creative-countdown">
-                            <div class="countdown countdown-bordered" data-type="until" data-time="31 Nov 2018 16:00"
+                            <div class="countdown countdown-bordered" data-type="until"
+                                 data-time="{{ match.date|date("j M Y h:i") }}"
                                  data-format="dhms" data-style="short"></div>
                         </div>
                         <div class="promo-main promo-creative-main">
