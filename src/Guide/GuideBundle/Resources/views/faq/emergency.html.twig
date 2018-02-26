@@ -1,0 +1,161 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#difficult">What to do in difficult situations</a></li>
+            <li><a href="#what">What to do if...</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="difficult" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>What to do in difficult situations</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Recommendations{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Russia is no more dangerous than other countries. The few districts that outsiders would do
+                            well to avoid are located in the remote city outskirts, and they are more difficult to find
+                            than similar areas in Paris or New York. There are pickpockets, especially in popular
+                            tourist spots. To avoid them, use the same rules as everywhere — keep your wallet close to
+                            your heart and don’t carry too much cash with you.
+                        </p>
+                        <p>
+                        </p>
+                        The Russian police has a right to stop pedestrians to check their documents, so carry your passport or its copy with a visa and registration stamp with you at all times.
+                        <p>
+                        </p>
+                        Be careful when crossing the streets or getting into taxis. The best way to get a taxi is to use an online service or a mobile app. There are almost no private cab drivers left in Russia.
+                        <p>
+                        </p>
+                        Also remember that the sale of alcohol in stores is forbidden from 11pm to 8am, and don’t buy it from people on the streets.
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="what" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>What to do if ... ?</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Your documents are lost or stolen{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/c97/1.jpg?1480889557171098"
+                                 alt="Your documents are lost or stolen" title="Your documents are lost or stolen">
+                        </figure>
+
+                        <p>
+                            Make a call, and file a report at a police station. You'll need to fill out a loss/theft of
+                            passport form
+                            and get a receipt, confirming the loss of your passport. You should then contact your
+                            embassy or consulate.
+                            The procedure varies depending on your home country, but you will need confirmation of
+                            passport loss from
+                            the police and a passport photo (the photo can be taken in a mini-studio or even a photo
+                            booth, which can be
+                            found in almost any shopping mall in Russia). After you receive your new passport or another
+                            transit
+                            document, you will need to apply for an exit visa. A ticket back to your home country is
+                            typically required
+                            for an exit visa.
+                        </p>
+                        <br>
+
+
+                        <div class="clearfix"></div>
+
+
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Your money or bank cards are lost or stolen{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/eee/1.jpg?1480889585109953"
+                                 alt="Your money or bank cards are lost or stolen"
+                                 title="Your money or bank cards are lost or stolen">
+                        </figure>
+
+                        First, you should block your card(s). In order to do this, you need to contact the bank or the international payment system that issued your card. You should also contact your embassy or consulate – they should be able to help in working with the police to obtain the necessary documents for the insurance company or bank. Your tourist insurance will typically pay a certain amount for necessities in such emergency cases. You can use money transfer services to get extra funds from relatives and friends.
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}You are lost{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/6d0/1.jpg?1480889818122888"
+                                 alt="You are lost"
+                                 title="You are lost">
+                        </figure>
+
+                        We recommend that you register with your embassy or consulate when you arrive in Russia, and write down emergency phone numbers in case you get lost. Using any mobile map service that supports GPS will also help you find your way. It's a good idea to have your hotel and/or residence address written down in Russian, in case your cell phone runs out of battery. Locals or police can help you get around in large cities, or you can check maps located at public transportation stops.
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}You are a victim of a wrongdoing{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/4ea/1.jpg?1480889882140496"
+                                 alt="You are a victim of a wrongdoing" title="You are a victim of a wrongdoing">
+                        </figure>
+
+                        The first thing to do is get in touch with your embassy or consulate. Embassy/consulate specialists will help you with police inquiries and, if necessary, help you hire a lawyer. Remember that you are not obligated to talk to the police without a lawyer and an interpreter present, and you have a right to one phone call if you have been arrested. You should contact your insurance company for any financial or physical damage (including medical expenses) compensation.
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}You need emergency medical assistance{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/2f3/1.jpg?1480889924117892"
+                                 alt="You need emergency medical assistance"
+                                 title="You need emergency medical assistance">
+                        </figure>
+
+                        <p>
+                            Just like in other scenarios, it's best to first contact your embassy or consulate, or ask
+                            for help from the
+                            hotel
+                            staff, since emergency services (reached by dialing 112 or 103) may only speak Russian. You
+                            may also want to
+                            contact
+                            your insurance company representative. Emergency medical aid in Russia is free of charge,
+                            regardless of
+                            citizenship
+                            or available documents. However, to continue treatment either in-hospital or as an
+                            out-patient, you will
+                            need your
+                            ID documents and a printed copy of your insurance contract. You should also inform hospital
+                            staff of any
+                            chronic
+                            conditions, allergies, or other medical issues.
+                        </p>
+                        <br>
+
+
+
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

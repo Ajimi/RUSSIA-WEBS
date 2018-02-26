@@ -1,0 +1,290 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#service">Mobile services and the Internet</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="service" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Mobile services and the Internet</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Buying a SIM card{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/17b/1.jpg?1480881232110511"
+                                 alt="Buying a SIM card"
+                                 title="Buying a SIM card">
+                        </figure>
+
+                        <p>
+                            Most popular mobile plans in Russia are pay-as-you-go. Set-up packages (a SIM card and
+                            instructions) are
+                            sold in most malls, many supermarkets and hypermarkets, airports, train stations and in
+                            shops near subway
+                            stations. Staff at airport mobile shops generally speak foreign languages (primarily
+                            English). There are
+                            operator-owned shops and general mobile shops, which sell SIM cards of most major mobile
+                            service providers.
+                        </p>
+                        <p>
+                            In order to purchase a SIM card, one has to produce personal ID (such as one’s passport or
+                            driver’s
+                            license). This is dictated on the Russian law “On Connectivity” and it conforms to
+                            international practices.
+                            One should not buy second-hand SIM cards – only purchase from official mobile and operator
+                            shops and stalls
+                            are recommended.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Mobile fees{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            The SIM cards sold by vendors already has a credit balance, usually 100 to 200 roubles,
+                            which equals to or
+                            exceeds the cost of the package, which may be reduced as a promotional offer.
+                        </p>
+                        <p>
+                            There are five major mobile carriers in Russia: MTS, Beeline, MegaPhone, Tele2 and Yota.
+                            These companies
+                            offer comparable services: for example, a plan with 3 to 5 Gb data and 300 to 500 minutes
+                            (and typically
+                            free in-carrier calls) and a couple of hundred SMS costs around 500 roubles. It is advisable
+                            to read
+                            contracts thoroughly: typically, free bundles have limitations. For example, even with a
+                            free SMS package
+                            costs may be incurred for sending text messages to numbers registered in other cities (5 to
+                            12 roubles);
+                            text messages sent to international numbers cost extra.
+                        </p>
+                        <p>
+                            Carriers offer special packages for international calls, with fees as low as 5 to 10 roubles
+                            per minute when
+                            calling European and American numbers.
+                        </p>
+                        <p>
+                            There are also special plans for mobile routers (Wi-Fi hot-spots), typically offering 5 to
+                            15 Gb of data for
+                            300 to 500 roubles per month.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Regional roaming{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In Russia all mobile numbers have assigned regions, at which they were registered. This
+                            means that any
+                            package is active only when operating in the said region. If one uses the mobile device in
+                            another region,
+                            which may mean just moving to a nearby town, extra costs are likely to be incurred. This is
+                            called “internal
+                            roaming” – phone calls in this mode typically cost 9 roubles per minute.
+                        </p>
+                        <p>
+                            Carriers offer special packages for those who expect to travel across regions – typically,
+                            these cost 5-10
+                            roubles extra per day. However, large volume data plans are typically exempt from internal
+                            roaming charges
+                            and will work across Russia with no extra fees.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Customer support{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/f22/customer_support.png?149968501089774"
+                                 alt="Customer support" title="Customer support">
+                        </figure>
+
+                        Major carriers offer free 24/7 customer support and have English-speaking staff. Clients can also manage their accounts online though the carrier website or use dedicated smartphone apps.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Customer support{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/f22/customer_support.png?149968501089774"
+                                 alt="Customer support" title="Customer support">
+                        </figure>
+
+                        Major carriers offer free 24/7 customer support and have English-speaking staff. Clients can also manage their accounts online though the carrier website or use dedicated smartphone apps.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Topping up / adding credit{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/38c/1.jpg?148088138558416"
+                                 alt="Topping up / adding credit" title="Topping up / adding credit">
+                        </figure>
+
+                        <p>
+                            As most mobile plans are pay-as-you-go, typically service halts when the phone account
+                            balance reaches zero.
+                            Carriers offer USSD commands for clients to check the balance free of charge, as well as
+                            other options, such
+                            as SIM menu commands or an automatic hotline with programmed English and Russian languages.
+                            A SIM card which
+                            has not been used for 60 to 180 days (depending on the carrier and contract) is blocked
+                            automatically.
+                        </p>
+                        <p>
+                            It’s very easy to top up a mobile account. The first option is to pay directly through the
+                            carrier’s website
+                            with a plastic card. ATMs of almost every bank also offer this service and typically do not
+                            charge
+                            commission.
+                        </p>
+                        <p>
+                            One can top up with cash at carrier-specific or general mobile shops. Payment terminals is
+                            another cash
+                            option: although they are located almost everywhere, from transport hubs to remote
+                            residential areas, they
+                            charge a high commission (12 to 15 percent).
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Mobile network standards{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Russian mobile carriers employ GSM/EDGE in frequencies of 900/1800 MHz. This is compatible
+                            with networks
+                            used by European carriers, but not North American.
+                        </p>
+                        <p>
+                            3G/HSPA+ networks are also supported in Russia, typically at 2100 or 900 MHz. LTE and
+                            LTE-Advanced networks
+                            mostly use 2600 MHz (FDD Band 7), as well as 800 MHz (Band 20) and 1800 MHz (Band 3).
+                            American carriers use
+                            different LTE bands, and most European smartphones are limited to Band 3 LTE. However, most
+                            modern devices
+                            are sold with multiregional support, thus they are capable of working on at least one band
+                            available in
+                            Russia, either 3G or 4G.
+                        </p>
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Mobile devices{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            It’s important to note that in order to be able to use a local SIM card your phone must not
+                            be locked by its
+                            original carrier. Such locked contract phones are widely used in the United States and
+                            Europe. If it’s
+                            impossible to unlock a phone, there are two options for affordable connectivity. The first
+                            option is to
+                            purchase an inexpensive phone, costing in the range of 500 roubles. The second option is
+                            purchasing a Wi-Fi
+                            router to act as a mobile hotspot – these are typically locked to a specific carrier.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Getting connected{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Open Wi-Fi networks, to which one can connect freely and start using them immediately are
+                            usually limited to
+                            smaller hotels and cafés. In most cases you are required to pass authorization, usually
+                            bundled with a
+                            commercial message.
+                        </p>
+                        <p>
+                            If a network has restricted access, such as those found in hotels or business lounges at
+                            airports, the login
+                            information may be requested from an administrator.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Finding a hotspot{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/cc8/1.jpg?1480881445181560"
+                                 alt="Finding a hotspot"
+                                 title="Finding a hotspot">
+                        </figure>
+
+                        <p>
+                            Russian cities often have municipal Wi-Fi networks open to the public in such places as
+                            central streets,
+                            parks and tourist attractions. Commercial Wi-Fi access with hourly fees, popular in some
+                            parts of the world,
+                            is rarely found in Russia.
+                        </p>
+                        <p>
+                            Wi-Fi spots are found in nearly all airports and railway stations. The Moscow Subway has a
+                            fully functioning
+                            Wi-Fi network which operates even in deep tunnels. Certain taxi companies offer Wi-Fi access
+                            as well:
+                            Internet-ready cars usually have distinct markings.
+                        </p>
+                        <p>
+                            Hotels and hostels in large cities usually offer free Wi-Fi access. In economy-class hotels
+                            Wi-Fi acess may
+                            be limited to the lobby area, with rooms having no coverage. Although some hotels will
+                            charge you for Wi-Fi
+                            internet access, these are rare exceptions in Russia.
+                        </p>
+                        <p>
+                            Most restaurants, cafés and food courts usually have Wi-Fi hotspots. You will most certainly
+                            find Wi-Fi
+                            access in the franchise restaurants and cafés.
+                        </p>
+                        <p>
+                            Shopping malls are not guaranteed to offer Wi-Fi access.
+                        </p>
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Staying secure{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/1f2/security.png?149968518696340"
+                                 alt="Staying secure"
+                                 title="Staying secure">
+                        </figure>
+
+                        As in most countries in the world, free public Wi-Fi in Russia's is a prime target for hackers. To shield yourself from theft of confidential information, do not use networks that appear suspicious. It is good practice to turn off automatic Wi-Fi connectivity on your mobile device, or use an encrypted VPN channel when connecting to the Internet.
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}
