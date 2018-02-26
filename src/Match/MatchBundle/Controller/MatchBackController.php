@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Faker\Provider\DateTime;
 use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
@@ -53,7 +54,7 @@ class MatchBackController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $match->setDate($request->get('calendar'));
+            $match->setDate(new \DateTime($request->get('calendar')));
             $match->setTime($request->get('timepicker'));
             $match->setPlayed(false);
             $t = new  Ticket();
