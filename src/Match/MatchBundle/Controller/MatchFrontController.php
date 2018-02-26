@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Group\GroupBundle\Modele\StandingsDataFormat;
 use Group\GroupBundle\Modele\StandingsFormat;
 use GuzzleHttp\Psr7\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,6 +29,10 @@ class MatchFrontController extends Controller
             return $a->getMatch()->getDate() < $b->getMatch()->getDate();
             });
 
+
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
+        $standings = StandingsDataFormat::oneGroupStandingFormat($g);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false)), /* query NOT result */
@@ -38,7 +43,8 @@ class MatchFrontController extends Controller
 
         return $this->render('@Match/FrontViews/game_schedule.html.twig',array(
             'matchs'=>$pagination,
-            'scores'=>$scores
+            'scores'=>$scores,
+            'standings'=>$standings
         ));
     }
 
@@ -50,7 +56,9 @@ class MatchFrontController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $scores = $em->getRepository("MatchBundle:Score")->findAll();
+       // $scores = $em->getRepository("MatchBundle:Score")->findAll();
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
+        $standings = StandingsDataFormat::oneGroupStandingFormat($g);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $em->getRepository("MatchBundle:Score")->findAll(), /* query NOT result */
@@ -59,7 +67,8 @@ class MatchFrontController extends Controller
 
         );
         return $this->render('@Match/FrontViews/game_results.html.twig',array(
-            'scores'=>$pagination
+            'scores'=>$pagination,
+            'standings'=>$standings
 
         ));
     }

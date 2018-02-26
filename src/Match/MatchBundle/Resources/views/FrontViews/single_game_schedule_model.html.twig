@@ -1,4 +1,6 @@
 {% for m in matchs %}
+    {% set logoT1 = 'assets/images/teamUploads/' ~ m.team1.teamLogo %}
+    {% set logoT2 = 'assets/images/teamUploads/' ~ m.team2.teamLogo %}
 <article class="game-result">
     <div class="game-info">
         <p class="game-info-subtitle">{{ m.stadium }} -
@@ -7,14 +9,14 @@
         <h3 class="game-info-title">{{ m.level }}</h3>
         <div class="game-info-main">
             <div class="game-info-team game-info-team-first">
-                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
+                <figure><img src="{{ asset(logoT1) }}" alt="" width="100" height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ m.team1.teamName |slice(0,15) }}</div>
                 <div class="game-result-team-country">USA</div>
             </div>
             <div class="game-info-middle game-info-middle-vertical">
-                <time class="time-big" datetime="2017-04-17"><span class="heading-3">{{ m.date |date("m/d/Y")}}</span>
-                    May 2017
+                <time class="time-big" datetime="2017-04-17"><span class="heading-3">{{ m.date |date('D')|slice(0,3)}} {{ m.date |date('d')}} </span>
+                    {{ m.date |date('F')|slice(0,3)}} {{ m.date |date('Y')}}
 
                 </time>
                 <div class="game-result-divider-wrap"><span class="game-info-team-divider">VS</span></div>
@@ -30,7 +32,7 @@
                 </div>
             </div>
             <div class="game-info-team game-info-team-second">
-                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100" height="100"/>
+                <figure><img src="{{ asset(logoT2) }}" alt="" width="100" height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ m.team2.teamName |slice(0,15)}}</div>
                 <div class="game-result-team-country">Spain</div>
