@@ -43,7 +43,7 @@
                     <tbody>
                     {% for m in matchs %}
                         <tr>
-                            <td class=" ">{{ m.date }}</td>
+                            <td class=" ">{{ m.date |date("m/d/Y") }}</td>
                             <td class=" ">{{ m.time }}</td>
                             <td class=" ">{{ m.team1.teamName |slice(0,15) }}
                             <td class=" ">{{ m.team2.teamName |slice(0,15)}}</td>

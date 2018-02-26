@@ -2,7 +2,7 @@
     <article class="game-result">
         <div class="game-info game-info-classic">
             <p class="game-info-subtitle">{{ s.match.stadium }} Stadium -
-                <time datetime="2017-04-17"> {{ s.match.date | slice(5,5) }}</time>
+                <time datetime="2017-04-17"> {{ s.match.date | |date("m/d/Y") }}</time>
             </p>
             <h3 class="game-info-title">{{ s.match.level }}</h3>
             <div class="game-info-main">

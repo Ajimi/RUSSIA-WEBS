@@ -49,12 +49,13 @@
                 <div class="col-md-3">
                     <fieldset>
                         <div class="control-group ">
-                            {{ form_widget(matchForm.date, {'attr':{'type':'text', 'class':'form-control has-feedback-left',
-                                'id':'single_cal3','name':'calendar','placeholder':'Pick a Date',
-                                'aria-describedby':'inputSuccess2Status3','required':'required'}}) }}
+                             <input type="text" class="form-control has-feedback-left"
+                                    id="single_cal3" name="calendar" placeholder="Pick a Date"
+                                    aria-describedby="inputSuccess2Status3" value="{{ matchForm.vars.value.date |date("m/d/Y")  }}">
                             <span class="fa fa-calendar-o form-control-feedback left"
                                   aria-hidden="true"></span>
                             <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                            {% do matchForm.date.setRendered %}
                         </div>
                     </fieldset>
                 </div>
@@ -68,10 +69,12 @@
                 <div class="col-md-3">
                     <div class="control-group ">
 
-                        {{ form_widget(matchForm.time, {'attr':{'type':'text', 'class':'form-control has-feedback-left col-md-7 col-xs-12',
-                            'id':'timepicker','name':'timepicker','required':'required'}}) }}
+                        <input type="text" id="timepicker" name="timepicker"
+                               class="form-control col-md-7 col-xs-12 has-feedback-left" value="{{ matchForm.vars.value.time}}"/>
+
                         <span class="fa fa-clock-o form-control-feedback left"
                               aria-hidden="true"></span>
+                        {% do matchForm.time.setRendered %}
                     </div>
                 </div>
             </div>
