@@ -68,10 +68,10 @@ class TicketController extends Controller
      */
     public function nextMatchTicketAction(): Response
     {
-        $matches = $this->randomMatch($this->getDoctrine()->getManager());
+        $match = $this->randomMatch($this->getDoctrine()->getManager());
 
-        if ($matches)
-            return $this->render('TicketBundle:ticket/component:next-match.html.twig', array('match' => $matches[0]));
+        if ($match)
+            return $this->render('TicketBundle:ticket/component:next-match.html.twig', array('match' => $match));
 
         return new Response("Empty");
     }
