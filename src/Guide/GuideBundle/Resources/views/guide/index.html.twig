@@ -13,7 +13,8 @@
     {% block page %}
 
         <!-- Section Breadcrumbs-->
-        {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'FAN GUIDE'} %}
+        {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'FAN GUIDE'} %}
+        {% block image %}{{ asset('assets/images/guide/people.jpg') }}{% endblock %}
             {% block breadcrumbs_path %}
                 <li><a href="{{ path('homepage') }}">Home</a></li>
                 <li><a class="active">Fan Guide</a></li>
