@@ -1,0 +1,53 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+{% endblock %}
+
+{% block title %}Article | {{ article.title }}{% endblock %}
+{% block body %}
+
+
+    <section class="section section-md gray-10">
+        <div class="container">
+            <h1>Article</h1>
+
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ article.id }}</td>
+                </tr>
+                <tr>
+                    <th>Content</th>
+                    <td>{{ article.content|raw }}</td>
+                </tr>
+                <tr>
+                    <a data-url="{{ article.id }}" class="js-voteup" href="#">
+                        <button class="button button-block button-primary button-icon button-icon-left" type="button">
+                            <span id="js-icon" class="icon material-icons-thumb_up"></span><span
+                                    id="js-total-votes">{{ votes }}</span></button>
+                    </a>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script src="{{ asset('modal/js/redirect.js') }}"></script>
+    <script src="{{ asset('assets/js/voteup.js') }}"></script>
+
+{% endblock %}
