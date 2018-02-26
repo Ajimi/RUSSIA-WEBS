@@ -2080,7 +2080,7 @@
 
         // Classic style
         if ($countDownItem.attr('data-style') === 'short') {
-          settings['labels'] = ['Yeas', 'Mons', 'Weks', 'Days', 'Hors', 'Mins', 'Secs'];
+            settings['labels'] = ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'];
         }
 
         d.setTime(Date.parse(time)).toLocaleString();
