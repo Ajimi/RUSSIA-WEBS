@@ -2,6 +2,7 @@
 
 namespace Reservation\TicketBundle\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Match\MatchBundle\Entity\Match;
@@ -125,7 +126,7 @@ class TicketController extends Controller
      * @param EntityManager $manager
      * @return Match
      */
-    private function randomMatch(EntityManager $manager)
+    private function randomMatch(ObjectManager $manager)
     {
         /**
          * TODO : Get only valid date
