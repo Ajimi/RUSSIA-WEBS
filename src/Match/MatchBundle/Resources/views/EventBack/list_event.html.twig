@@ -3,16 +3,13 @@
         {% for e in events %}
             <li>
                 <div class="block">
-
                     <div class="block_content">
                         <h2 class="title">
                             <a>{{ e.typeEvent | upper }}</a>
                         </h2>
-
                         <div class="byline">
                             <span>{{ e.minutes }}’</span>
                         </div>
-
                         <p class="excerpt"> {{ e.description }} </p>
                     </div>
                 </div>

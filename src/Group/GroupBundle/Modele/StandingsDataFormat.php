@@ -79,8 +79,9 @@ class StandingsDataFormat
             });
 
             array_push($fullStandings,$standings);
-
         }
+
+        return $fullStandings;
 
     }
 

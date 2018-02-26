@@ -21,7 +21,9 @@ class StandingsController extends Controller
      * @Route("/standings" ,name="standings")
      */
 
-    public function displayAction()
+ /*
+
+     public function displayAction()
     {
         $em = $this->getDoctrine()->getManager();
         $teams = $em->getRepository('TeamBundle:Team')->findAll();
@@ -41,6 +43,7 @@ class StandingsController extends Controller
             // ...
         ));
     }
+ */
 
     /**
      *@Route("/fullstandings" ,name="full_standings")

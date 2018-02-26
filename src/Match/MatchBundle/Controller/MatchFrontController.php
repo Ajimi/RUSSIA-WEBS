@@ -59,6 +59,7 @@ class MatchFrontController extends Controller
        // $scores = $em->getRepository("MatchBundle:Score")->findAll();
         $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($g);
+        $bestScorer = $em->getRepository('PlayerBundle:Player')->bestScorer();
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $em->getRepository("MatchBundle:Score")->findAll(), /* query NOT result */
@@ -68,7 +69,8 @@ class MatchFrontController extends Controller
         );
         return $this->render('@Match/FrontViews/game_results.html.twig',array(
             'scores'=>$pagination,
-            'standings'=>$standings
+            'standings'=>$standings,
+            'bestScorer'=>$bestScorer
 
         ));
     }
