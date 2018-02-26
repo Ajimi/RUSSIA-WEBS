@@ -2,12 +2,13 @@
 
 {% block body %}
 
+
     {% include '@Match/Breadcrumbs/breadcrumbs_results.html.twig' %}
 
-    {% if scores is empty %}
+  {#  {% if scores is empty %}
         {% include '@Match/FrontViews/no_data_found.html.twig' %}
     {% else %}
-
+#}
     <section class="section section-sm bg-gray-100">
         <div class="container">
             <div class="row row-50">
@@ -37,16 +38,18 @@
                             {% include '@Front/standing-component/_table-standing-classic.html.twig' %}
                         </div>
 
+                      {#
                         <div class="col-md-6 col-lg-12">
                             <!-- Heading Component-->
                             <article class="heading-component">
                                 <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Best striker
+                                    <h5 class="heading-component-title">Best scorer
                                     </h5>
                                 </div>
                             </article>
                             {% include '@Front/player-component/_player-info-minimal.html.twig' %}
                         </div>
+                        #}
 
 
                         <div class="col-md-6 col-lg-12">
@@ -89,6 +92,6 @@
             </div>
         </div>
     </section>
-{% endif %}
+    {#{% endif %}#}
 
 {% endblock body %}

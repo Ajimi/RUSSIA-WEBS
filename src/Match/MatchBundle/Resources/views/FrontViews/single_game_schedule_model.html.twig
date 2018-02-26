@@ -1,5 +1,4 @@
 {% for m in matchs %}
-
 <article class="game-result">
     <div class="game-info">
         <p class="game-info-subtitle">{{ m.stadium }} -
@@ -46,3 +45,7 @@
 </article>
 
 {% endfor %}
+<br>
+<div class="navigation text-center">
+    {{ knp_pagination_render(matchs) }}
+</div>

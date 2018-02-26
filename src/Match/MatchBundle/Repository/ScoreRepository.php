@@ -13,8 +13,15 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
     public  function findThree()
     {
         $query = $this->getEntityManager()
-            ->createQuery("SELECT s FROM MatchBundle:Score s")
+            ->createQuery("SELECT s FROM MatchBundle:Score s ")
             ->setMaxResults(3);
         return $query->getResult();
+    }
+
+    public function findByTeam($team)
+    {
+       /* $query = $this->getEntityManager()
+            ->createQuery("SELECT s FROM MatchBundle:Score s WHERE s.team = team")
+       */
     }
 }

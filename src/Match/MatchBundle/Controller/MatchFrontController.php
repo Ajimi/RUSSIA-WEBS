@@ -2,12 +2,13 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Group\GroupBundle\Modele\StandingsFormat;
 use GuzzleHttp\Psr7\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Match\MatchBundle\Model\StatisticFormat;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
-
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -19,13 +20,24 @@ class MatchFrontController extends Controller
      * @Route("/schedule", name="schedule_list")
      */
 
-    public function displayAction()
+    public function displayAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $matchs = $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false));
         $scores = $em->getRepository("MatchBundle:Score")->findThree();
+        usort($scores,function ($a,$b){
+            return $a->getMatch()->getDate() < $b->getMatch()->getDate();
+            });
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false)), /* query NOT result */
+            $request->query->getInt('page', 1),/*page number*/
+            $request->query->get('limit',3)
+
+        );
+
         return $this->render('@Match/FrontViews/game_schedule.html.twig',array(
-            'matchs'=>$matchs,
+            'matchs'=>$pagination,
             'scores'=>$scores
         ));
     }
@@ -34,12 +46,21 @@ class MatchFrontController extends Controller
      * @Route("/results", name="result_list")
      */
 
-    public function displayResultsAction()
+    public function displayResultsAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
-        $scores = $em->getRepository("MatchBundle:Score")->findAll();
+       // $scores = $em->getRepository("MatchBundle:Score")->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $em->getRepository("MatchBundle:Score")->findAll(), /* query NOT result */
+            $request->query->getInt('page', 1),/*page number*/
+            $request->query->get('limit',2)
+
+        );
         return $this->render('@Match/FrontViews/game_results.html.twig',array(
-            'scores'=>$scores
+            'scores'=>$pagination
+
         ));
     }
 
@@ -88,9 +109,6 @@ class MatchFrontController extends Controller
         // dump($bestScorerT1);
 
 
-
-
-
         return $this->render('@Match/FrontViews/game_overview.html.twig',array(
             'score'=>$score,'stat1'=>$statistic1,'stat2'=>$statistic2,'events'=>$events,'m'=>$match,
             'scores'=>$scores,
@@ -100,7 +118,8 @@ class MatchFrontController extends Controller
             'shotAccuracySecondTeam'=>$shotAccuracySecondTeam,
             'playersT1'=>$playersT1 ,'playersT2'=>$playersT2,
             'bestScorerT1'=>$bestScorerT1,
-            'bestScorerT2'=>$bestScorerT2
+            'bestScorerT2'=>$bestScorerT2,
+           // 'standings'=>$fullStandings
     ));
 
     }
