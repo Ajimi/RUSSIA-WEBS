@@ -1,0 +1,46 @@
+{% extends '@Front/common/_base.html.twig' %}
+{#Heading component variable example#}
+{% set headingTitle = "In the spot light" %}
+{% set heading = "News" %}
+{% set link = "#" %}
+{% block body %}
+
+    <section class="section section-md bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-12">
+
+                    <div class="main-component">
+                        <div class="main-component">
+
+                            <!-- Heading Component-->
+                            {% include 'FrontBundle:news-main-component:_heading-component.html.twig'  with {'headingTitle': headingTitle , 'heading' : heading, 'link' : link } %}
+
+                            <div class="row row-30">
+                                <div class="col-lg-8">
+                                    {% for article in articles %}
+                                        {% set title = article.title %}
+                                        {% set content = article.content|striptags %}
+                                        {% set badge = "THE LEAGUE" %}
+                                        {% if loop.index % 2 == 0 %}
+                                            {% embed '@Front/post-component/_post-corporate.html.twig' %}
+                                                {% block title %}{{ title|raw }}{% endblock %}
+                                                {% block text %}{{ content|slice(0,150) }}{% endblock %}
+                                            {% endembed %}
+                                        {% else %}
+                                            {% embed '@Front/post-component/_post-miranda.html.twig' %}
+                                                {% block title %}{{ title }}{% endblock %}
+                                                {% block text %}{{ content|slice(0,150) }}{% endblock %}
+                                            {% endembed %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div/>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
