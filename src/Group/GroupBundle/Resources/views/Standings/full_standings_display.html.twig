@@ -1,98 +1,94 @@
 {% extends '@Front/common/_base.html.twig' %}
-
 {% block body %}
-
     {% include '@Front/common/_breadcrumbs.html.twig' %}
-
-
 
     <section class="section section-sm bg-gray-100">
         <div class="container">
             <div class="row row-50">
+
                 <div class="col-lg-7 col-xl-8">
-                    <!-- Heading Component-->
+                    <div class="owl-carousel-outer-navigation">
+                        <div class="owl-carousel" data-items="1" data-dots="false" data-nav="true"
+                             data-stage-padding="0"
+                             data-loop="false" data-margin="0" data-mouse-drag="false"
+                             data-nav-custom=".owl-carousel-outer-navigation">
 
-                    {% for key, st in fullStandings %}
+                            {% for key, st in fullStandings %}
+                                <div class="owl-carousel-outer-navigation">
+                                    <article class="heading-component">
+                                        <div class="heading-component-inner">
+                                            <h5 class="heading-component-title">Groupe {{ st[key].group }}
+                                            </h5>
+                                            <div class="owl-carousel-arrows-outline">
+                                                <div class="owl-nav">
+                                                    <button class="owl-arrow owl-arrow-prev"></button>
+                                                    <button class="owl-arrow owl-arrow-next"></button>
+                                                </div>
+                                            </div>
 
-                        <article class="heading-component">
-                            <div class="heading-component-inner">
-                                <h5 class="heading-component-title">Groupe {{ st[key].group }}
-                                </h5>
+                                        </div>
+                                    </article>
+                                    <div class="card-standing card-group-custom card-standing-index" id="accordion1"
+                                         role="tablist" aria-multiselectable="false">
+                                        <div class="card-standing-caption">
+                                            <div class="card-standing-position">Pos</div>
+                                            <div class="card-standing-caption-aside">
+                                                <div class="card-standing-team">Team</div>
+                                                <div class="card-standing-number">W</div>
+                                                <div class="card-standing-number">L</div>
+                                                <div class="card-standing-number">D</div>
+                                                <div class="card-standing-points">PTS</div>
+                                            </div>
+                                        </div>
 
-                            </div>
-                        </article>
+                                        {% for s in st %}
+                                            {% embed'@Group/Standings/single_group_standings.html.twig' with {'s':s,'logo':s.logo} %} {% endembed %}
+                                        {% endfor %}
 
-                        <div class="card-standing card-group-custom card-standing-index" id="accordion1"
-                             role="tablist" aria-multiselectable="false">
-                            <div class="card-standing-caption">
-                                <div class="card-standing-position">Pos</div>
-                                <div class="card-standing-caption-aside">
-                                    <div class="card-standing-team">Team</div>
-                                    <div class="card-standing-number">W</div>
-                                    <div class="card-standing-number">L</div>
-                                    <div class="card-standing-number">D</div>
-                                    <div class="card-standing-points">PTS</div>
+                                    </div>
                                 </div>
-                            </div>
-                            {% for s in st %}
-                               <a href="{{ path('team_display',{'id':s.idTeam}) }}">
-                                {% embed '@Group/Standings/single_group_standings.html.twig'with {'logo':s.logo} %}
-                                    {% block teamName %} {{ s.teamName }}{% endblock teamName %}
-                                    {% block shortCut %} {{ s.teamShortcut }} {% endblock shortCut %}
-                                    {% block win %} {{ s.win }} {% endblock win %}
-                                    {% block loss %} {{ s.lost }} {% endblock loss %}
-                                    {% block drow %} {{ s.drow }} {% endblock drow %}
-                                    {% block points %} {{ s.points }} {% endblock points %}
-                                {% endembed %}
-                               </a>
                             {% endfor %}
                         </div>
-                        <br><br>
-                    {% endfor %}
+                    </div>
 
 
-                    <div class="col-12">
-                        <!-- Heading Component-->
-                        <article class="heading-component">
-                            <div class="heading-component-inner">
-                                <h5 class="heading-component-title">Glossary Terms
-                                </h5>
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Glossary Terms
+                            </h5>
+                        </div>
+                    </article>
+
+                    <div class="game-glossary">
+                        <div class="game-glossary-wrap row-10">
+                            <div class="game-glossary-column">
+                                <table class="game-glossary-terms">
+                                    <tr>
+                                        <td>W:</td>
+                                        <td>Wins</td>
+                                    </tr>
+                                    <tr>
+                                        <td>L:</td>
+                                        <td>Loses</td>
+                                    </tr>
+                                </table>
                             </div>
-                        </article>
-
-                        <div class="game-glossary">
-                            <div class="game-glossary-wrap row-10">
-                                <div class="game-glossary-column">
-                                    <table class="game-glossary-terms">
-                                        <tr>
-                                            <td>W:</td>
-                                            <td>Wins</td>
-                                        </tr>
-                                        <tr>
-                                            <td>L:</td>
-                                            <td>Loses</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="game-glossary-column">
-                                    <table class="game-glossary-terms">
-                                        <tr>
-                                            <td>D:</td>
-                                            <td>Drows</td>
-                                        </tr>
-                                        <tr>
-                                            <td>PTS:</td>
-                                            <td>Winning Percentage</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div class="game-glossary-column">
+                                <table class="game-glossary-terms">
+                                    <tr>
+                                        <td>D:</td>
+                                        <td>Drows</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PTS:</td>
+                                        <td>Winning Percentage</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
                 <div class="col-lg-5 col-xl-4">
                     <div class="row row-30">
                         <div class="col-md-6 col-lg-12">
