@@ -2,14 +2,10 @@
     <!-- Heading Component-->
     <article class="heading-component">
         <div class="heading-component-inner">
-            <h5 class="heading-component-title">STANDINGS
+            <h5 class="heading-component-title">Groupe {{ standings[0].group }}
             </h5>
-            <div class="owl-carousel-arrows-outline">
-                <div class="owl-nav">
-                    <button class="owl-arrow owl-arrow-prev"></button>
-                    <button class="owl-arrow owl-arrow-next"></button>
-                </div>
-            </div>
+            <a class="button button-xs button-gray-outline" href="{{ path('full_standings') }}">Full
+                Standings</a>
         </div>
     </article>
 
