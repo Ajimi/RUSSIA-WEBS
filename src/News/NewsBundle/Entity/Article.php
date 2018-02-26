@@ -2,6 +2,7 @@
 
 namespace News\NewsBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -70,6 +71,18 @@ class Article
      */
     private $slug;
 
+
+    /**
+     * @var VoteUp[] $voteUp
+     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\VoteUp" , mappedBy="article")
+     */
+    private $votes;
+
+
+    public function __construct()
+    {
+        $this->votes = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -189,5 +202,39 @@ class Article
     {
         $this->author = $author;
     }
-}
 
+
+    /**
+     * Add vote
+     *
+     * @param \News\NewsBundle\Entity\VoteUp $vote
+     *
+     * @return Article
+     */
+    public function addVote(\News\NewsBundle\Entity\VoteUp $vote)
+    {
+        $this->votes[] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Remove vote
+     *
+     * @param \News\NewsBundle\Entity\VoteUp $vote
+     */
+    public function removeVote(\News\NewsBundle\Entity\VoteUp $vote)
+    {
+        $this->votes->removeElement($vote);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+}

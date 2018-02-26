@@ -26,6 +26,8 @@
                                             {% embed '@Front/post-component/_post-corporate.html.twig' %}
                                                 {% block title %}{{ title|raw }}{% endblock %}
                                                 {% block text %}{{ content|slice(0,150) }}{% endblock %}
+                                                {% block view_number %}{{ article.votes|length }}{% endblock %}
+                                                {% block url %}{{ path('article_show' , {'id' : article.id}) }}{% endblock %}
                                             {% endembed %}
                                         {% else %}
                                             {% embed '@Front/post-component/_post-miranda.html.twig' %}

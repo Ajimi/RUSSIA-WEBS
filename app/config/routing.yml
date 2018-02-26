@@ -21,10 +21,6 @@ booking:
     type:     annotation
     prefix:   /
 
-upload:
-    resource: "@UploadBundle/Resources/config/routing.yml"
-    prefix:   /
-
 news:
     resource: "@NewsBundle/Controller/"
     type:     annotation
