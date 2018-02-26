@@ -99,7 +99,15 @@
                                     </h5>
                                 </div>
                             </article>
-                            {% include '@Match/FrontViews/single_latest_game_result_model.html.twig' %}
+                            {% if scores is not empty %}
+                                {% include '@Match/FrontViews/single_latest_game_result_model.html.twig' %}
+                            {% else %}
+                                <article class="game-result game-result-classic text-center">
+                                    <div class="game-result-main justify-content-center">
+                                        <p> No game result yet !</p>
+                                    </div>
+                                </article>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ class EventBackController extends Controller
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($idm);
 
-        if ($form->isValid() && ($request->isMethod('POST'))) {
+        if ($form->isValid()) {
 
             $em->getRepository('PlayerBundle:Player')->updatePlayerStat($event->getPlayer()->getId(),$event->getTypeEvent());
             $team = $em->getRepository('TeamBundle:Team')->find($request->get('iCheck'));
@@ -89,6 +89,20 @@ class EventBackController extends Controller
         $this->addScore($match);
         return $this->redirectToRoute('add_event', array(
             'idm' => $idm));
+
+
+    }
+
+    /**
+     * @Route("/event/{idm}", name="ajax_display_event", options={"expose" = true})
+     */
+    public function ajaxDisplayAction($idm)
+    {
+        $em= $this->getDoctrine()->getManager();
+        $events = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $idm), array('times' => 'asc'));
+        return $this->render('@Match/EventBack/list_event.html.twig',array(
+            'events'=>$events
+        ));
 
 
     }

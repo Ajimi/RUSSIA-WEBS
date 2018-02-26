@@ -129,3 +129,9 @@ services:
     stripe_client:
           class: Reservation\CartBundle\StripeClient
           arguments: ['%stripe_secret_key%']
+
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

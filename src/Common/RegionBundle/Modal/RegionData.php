@@ -11,6 +11,7 @@ class RegionData
     private $latitude;
     private $longitude;
     private $regionName;
+    private $youtubeVideo;
     /**
      * @var File $file
      */
@@ -79,6 +80,22 @@ class RegionData
     public function setFile(?File $file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutubeVideo()
+    {
+        return $this->youtubeVideo;
+    }
+
+    /**
+     * @param mixed $youtubeVideo
+     */
+    public function setYoutubeVideo($youtubeVideo)
+    {
+        $this->youtubeVideo = $youtubeVideo;
     }
 
 }

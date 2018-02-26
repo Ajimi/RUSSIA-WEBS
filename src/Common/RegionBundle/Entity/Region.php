@@ -75,6 +75,11 @@ class Region
     private $file;
 
     /**
+     * @var string
+     * @ORM\Column(name="youtube_video" , type="string" ,nullable=true)
+     */
+    private $youtubeVideo;
+    /**
      * Region constructor.
      */
     public function __construct()
@@ -270,5 +275,21 @@ class Region
     public function setFile(?File $file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return string
+     */
+    public function getYoutubeVideo()
+    {
+        return $this->youtubeVideo;
+    }
+
+    /**
+     * @param string $youtubeVideo
+     */
+    public function setYoutubeVideo($youtubeVideo)
+    {
+        $this->youtubeVideo = $youtubeVideo;
     }
 }

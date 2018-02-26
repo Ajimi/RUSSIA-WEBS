@@ -28,6 +28,7 @@ class RegionDataTransformer
             $region = new Region();
         $region->setName($regionData->getRegionName());
         $region->setFile($regionData->getFile());
+        $region->setYoutubeVideo($regionData->getYoutubeVideo());
         $location = new Location();
 
         $geo = new GeoCode();
@@ -66,6 +67,8 @@ class RegionDataTransformer
         }
         $regionData->setRegionName($region->getName());
         $regionData->setFile($region->getFile());
+        $regionData->setYoutubeVideo($region->getYoutubeVideo());
+
 
         return $regionData;
     }

@@ -43,7 +43,8 @@ class RegionDataType extends AbstractType
                     'class' => 'js-lat'
                 ),
             )
-        )->add('file', FileType::class);
+        )->add('file', FileType::class, array('required' => false))
+            ->add('youtubeVideo');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Match\MatchBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Faker\Provider\DateTime;
 use Reservation\TicketBundle\Entity\Ticket;
 
 /**
@@ -46,8 +47,8 @@ class Match
 
 
     /**
-     * @var string
-     * @ORM\Column(name="dates", type="string")
+     * @var DateTime
+     * @ORM\Column(name="dates", type="date")
      */
     private $date;
 
@@ -75,7 +76,7 @@ class Match
     /**
      * @var Ticket
      *
-     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match")
+     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match", cascade={"remove"})
      */
     private $ticket;
 
@@ -114,29 +115,7 @@ class Match
         return $this->level;
     }
 
-    /**
-     * Set date
-     *
-     * @param string $date
-     *
-     * @return Match
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
 
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set time
@@ -280,5 +259,29 @@ class Match
     public function getTicket()
     {
         return $this->ticket;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param \DateTime $date
+     *
+     * @return Match
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date.
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

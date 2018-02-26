@@ -46,8 +46,8 @@
                                             <input {% block id %}id="search" {% endblock id %}name="search" type="text"
                                                    class="form-control" placeholder="Search for...">
                                             <span class="input-group-btn">
-                                              <button class="btn btn-default" type="button">Go!</button>
-                                            </span>
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
                                         </div>
                                     </div>
                                 </div>
@@ -70,14 +70,13 @@
             {% endblock %}
         </div>
     </div>
-    {% include '@Back/common/_js.html.twig' %}
-    {% block javascripts %}
-
-    {% endblock javascripts %}
-
-    {% block modals %}{% endblock modals %}
-
 {% endblock %}
+{% include '@Back/common/_js.html.twig' %}
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+{% block modals %}{% endblock modals %}
 
 
 </body>

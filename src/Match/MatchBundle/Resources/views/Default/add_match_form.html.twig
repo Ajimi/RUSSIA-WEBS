@@ -65,19 +65,19 @@
 
             <!-- TimePicker -->
             <div class="form-group">
-                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12 ">
+                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
                     Time<span class="required">*</span></label>
                 <div class="col-md-3">
                     <div class="control-group ">
                         <input type="text" id="timepicker" name="timepicker"
-                               class="form-control col-md-7 col-xs-12 has-feedback-left"/>
-
+                               class="form-control col-md-7 col-xs-12 has-feedback-left" data-constraints="@Required"/>
                         <span class="fa fa-clock-o form-control-feedback left"
                               aria-hidden="true"></span>
                         {% do matchForm.time.setRendered %}
                     </div>
                 </div>
             </div>
+
 
             <div class="form-group">
                 {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
@@ -111,11 +111,11 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 
-
     <script src="{{ asset('assets/timepicker.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#timepicker').mdtimepicker(); //Initializes the time picker
+            $('#timepicker').mdtimepicker();//Initializes the time picker
+            $('#timepicker').attr('required', true);
         });
     </script>
 {% endblock javascripts %}

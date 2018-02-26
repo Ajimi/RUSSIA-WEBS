@@ -19,6 +19,7 @@ class StatisticFormat
     private $passes=0;
     private $assist=0;
     private $fouls=0;
+    private $saves=0;
 
     /**
      * @return int
@@ -198,7 +199,7 @@ class StatisticFormat
         }
         else if ($event->getTypeEvent()=="Assist")
         {
-            $this->setAssists($this->getAssist()+1);
+            $this->setAssist($this->getAssist()+1);
         }
         else if ($event->getTypeEvent()=="Pass")
         {

@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Faker\Provider\DateTime;
 use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
@@ -53,7 +54,7 @@ class MatchBackController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $match->setDate($request->get('calendar'));
+            $match->setDate(new \DateTime($request->get('calendar')));
             $match->setTime($request->get('timepicker'));
             $match->setPlayed(false);
             $t = new  Ticket();
@@ -84,6 +85,7 @@ class MatchBackController extends Controller
         $Form = $this->createForm(MatchType::class, $match);
         $Form->handleRequest($request);
         if ($Form->isValid()) {
+            $match->setDate(new \DateTime($request->get('calendar')));
             $em->persist($match);
             $em->flush();
             return $this->redirectToRoute('match_list');
@@ -98,7 +100,7 @@ class MatchBackController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);

@@ -93,6 +93,14 @@ class Place
      */
     private $location;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rating", type="integer", nullable=true)
+     */
+    private $rating;
+
     /**
      * Get id
      *
@@ -305,6 +313,22 @@ class Place
     }
 
     /**
+     * @return int
+     */
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param int $rating
+     */
+    public function setRating(int $rating)
+    {
+        $this->rating = $rating;
+    }
+
+    /**
      * @param array $item
      * @param Region $region
      * @return Place
@@ -318,10 +342,10 @@ class Place
         $place->setType($item['type']);
         $place->setPreviewText($item['preview_text']);
         $place->setInformation($item['detail_text']);
-        // TODO : get blocks and picture name
-        $picture = explode(',', $item['preview_picture']);
+        $place->setRating(random_int(1, 5));
+        // Completed : get blocks and picture name
 
-        $place->setPreviewPicture($item['preview_picture']);
+        $place->setPreviewPicture(self::getImageUrl($item['preview_picture']));
         $place->setRegion($region);
         $place->setPhone($item['phone']);
         $place->setSiteUrl($item['site_url']);
@@ -331,5 +355,31 @@ class Place
         // Completed : setLocation Association
         return $place;
     }
+
+    /**
+     * @param $pictureUrl
+     * @return string
+     */
+    public static function getImageUrl($pictureUrl): string
+    {
+
+        $pictureArray = explode('/', $pictureUrl);
+
+        if ($pictureArray[5] === 'no_img.png') {
+            return $pictureUrl;
+        }
+
+        $block = $pictureArray[7];
+        $pictureFileArray = explode('?', $pictureArray[8]);
+
+        $pictureFileName = $pictureFileArray[0];
+
+
+        return "http://cdn.welcome2018.com/upload/iblock/$block/$pictureFileName";
+
+
+    }
+
+
 }
 
