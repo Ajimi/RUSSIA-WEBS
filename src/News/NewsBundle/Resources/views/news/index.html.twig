@@ -1,36 +1,36 @@
 {% extends '@Front/common/_base.html.twig' %}
 {#Heading component variable example#}
-{% set headingTitle = "In the spot light" %}
-{% set heading = "News" %}
-{% set link = "#" %}
+{% set headingTitle = "News Feed" %}
 {% block body %}
 
     <section class="section section-md bg-gray-100">
         <div class="container">
             <div class="row row-50">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
 
                     <div class="main-component">
                         <div class="main-component">
 
                             <!-- Heading Component-->
-                            {% include 'FrontBundle:news-main-component:_heading-component.html.twig'  with {'headingTitle': headingTitle , 'heading' : heading, 'link' : link } %}
+                            {% include 'FrontBundle:news-main-component:_heading-component-title.html.twig'  with {'title': headingTitle  } %}
 
                             <div class="row row-30">
-                                <div class="col-lg-8">
+                                <div class="col-lg-12">
                                     {% for article in articles %}
                                         {% set title = article.title %}
                                         {% set content = article.content|striptags %}
                                         {% set badge = "THE LEAGUE" %}
                                         {% if loop.index % 2 == 0 %}
-                                            {% embed '@Front/post-component/_post-corporate.html.twig' %}
+                                            {% embed '@Front/post-component/_post-corporate.html.twig' with {'article' : article} %}
+                                                {% block badge_class %}{{ article.badge.class }}{% endblock %}
+                                                {% block badge_title %}{{ article.category.name }}{% endblock %}
                                                 {% block title %}{{ title|raw }}{% endblock %}
                                                 {% block text %}{{ content|slice(0,150) }}{% endblock %}
                                                 {% block view_number %}{{ article.votes|length }}{% endblock %}
                                                 {% block url %}{{ path('article_show' , {'id' : article.id}) }}{% endblock %}
                                             {% endembed %}
                                         {% else %}
-                                            {% embed '@Front/post-component/_post-miranda.html.twig' %}
+                                            {% embed '@Front/post-component/_post-miranda.html.twig' with {'article' : article} %}
                                                 {% block title %}{{ title }}{% endblock %}
                                                 {% block text %}{{ content|slice(0,150) }}{% endblock %}
                                             {% endembed %}
@@ -40,8 +40,18 @@
                             </div>
                         </div>
                     </div>
-                    <div/>
+                    {{ knp_pagination_render(articles) }}
+
                 </div>
+                <div class="col-lg-4">
+                    <div class="block-aside">
+
+                        {{ render(controller('NewsBundle:Category:category')) }}
+                        {{ render(controller('NewsBundle:ArticleComponent:spotLightAside')) }}
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

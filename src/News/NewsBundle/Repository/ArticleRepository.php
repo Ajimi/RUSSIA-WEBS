@@ -10,6 +10,11 @@ namespace News\NewsBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getQueryBuilder()
+    {
+        return $this->createQueryBuilder('a');
+    }
     public function findSpotLight($max = 2)
     {
 

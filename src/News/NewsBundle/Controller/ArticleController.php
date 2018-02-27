@@ -2,6 +2,7 @@
 
 namespace News\NewsBundle\Controller;
 
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use News\NewsBundle\Entity\Article;
 use News\NewsBundle\Entity\LikeArticle;
 use News\NewsBundle\Form\ArticleType;
@@ -24,15 +25,30 @@ class ArticleController extends Controller
      * @Route("/", name="article_index")
      * @Method("GET")
      */
-    public function articleAction()
+    public function articleAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         /** @var Article[] $spotlights */
-        $articles = $em->getRepository('NewsBundle:Article')->findAll();
+        $paginator = $this->get('knp_paginator');
+
+        $articlesQuery = $em->getRepository('NewsBundle:Article')->getQueryBuilder();
+
+        if ($request->query->getAlnum('category')) {
+            $articlesQuery
+                ->where('a.category = :category')
+                ->setParameter('category', $request->query->getAlnum('category'));
+        }
+        /** @var PaginationInterface $articlesPagination */
+        $articlesPagination = $paginator->paginate(
+            $articlesQuery, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+
 
         return $this->render('NewsBundle:news:index.html.twig', array(
-            'articles' => $articles,
+            'articles' => $articlesPagination,
         ));
     }
 

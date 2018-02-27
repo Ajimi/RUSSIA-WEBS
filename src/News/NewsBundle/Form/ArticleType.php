@@ -35,9 +35,11 @@ class ArticleType extends AbstractType
         ))
             ->add('badge', null, array(
                 'required' => false,
-                'placeholder' => 'Choose a badge',
-            ))
-            ->add('badgeName');
+                'placeholder' => 'Choose a badge',))
+            ->add('category', null, array(
+                'required' => false,
+                'placeholder' => 'Choose a category',
+            ));
     }
 
     /**

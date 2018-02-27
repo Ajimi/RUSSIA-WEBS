@@ -76,7 +76,11 @@ class Article
 
     /**
      * @var VoteUp[] $voteUp
-     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\VoteUp" , mappedBy="article")
+     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\VoteUp" , mappedBy="article", fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     * )
+     *
      */
     private $votes;
 
@@ -94,9 +98,15 @@ class Article
 
     /**
      * @var Badge
-     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Badge")
+     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Badge", cascade={"persist"})
      */
     private $badge;
+
+    /**
+     * @var Category | null
+     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Category", cascade={"persist"})
+     */
+    private $category;
 
     /**
      * @var string $badgeName
@@ -266,7 +276,7 @@ class Article
     /**
      * @return string
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
@@ -274,7 +284,7 @@ class Article
     /**
      * @param string $image
      */
-    public function setImage(string $image)
+    public function setImage($image)
     {
         $this->image = $image;
     }
@@ -325,6 +335,22 @@ class Article
     public function setBadgeName($badgeName)
     {
         $this->badgeName = $badgeName;
+    }
+
+    /**
+     * @return Category|null
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category|null $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 
 
