@@ -2,6 +2,7 @@
 
 namespace Group\GroupBundle\Controller;
 
+use Group\GroupBundle\Modele\StandingsDataFormat;
 use Group\GroupBundle\Modele\StandingsFormat;
 use Match\MatchBundle\Model\StatisticFormat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +21,9 @@ class StandingsController extends Controller
      * @Route("/standings" ,name="standings")
      */
 
-    public function displayAction()
+ /*
+
+     public function displayAction()
     {
         $em = $this->getDoctrine()->getManager();
         $teams = $em->getRepository('TeamBundle:Team')->findAll();
@@ -40,6 +43,7 @@ class StandingsController extends Controller
             // ...
         ));
     }
+ */
 
     /**
      *@Route("/fullstandings" ,name="full_standings")
@@ -49,48 +53,13 @@ class StandingsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('GroupBundle:Groupe')->findAll();
-
-        $fullStandings = [];
-        foreach ($groups as $g)
-        {
-            /** @var StandingsFormat $standings */
-            $standings = [];
-
-            $s1 = new StandingsFormat();
-            $s2 = new StandingsFormat();
-            $s3 = new StandingsFormat();
-            $s4 = new StandingsFormat();
-
-            $s1->setGroup($g->getName());
-            $s2->setGroup($g->getName());
-            $s3->setGroup($g->getName());
-            $s4->setGroup($g->getName());
-
-            $s1->dataFormat($g->getTeam1());
-            dump($g->getTeam1());
-            array_push($standings, $s1);
-            $s2->dataFormat($g->getTeam2());
-            array_push($standings, $s2);
-            $s3->dataFormat($g->getTeam3());
-            array_push($standings, $s3);
-            $s4->dataFormat($g->getTeam4());
-            array_push($standings, $s4);
-
-            usort($standings, function ($a, $b) {
-                return $a->points < $b->points;
-            });
-
-            array_push($fullStandings,$standings);
-
-        }
-
-        //dump($standings);
-
+        $fullStandings = StandingsDataFormat::fullStandings($groups);
         $score = $em->getRepository('MatchBundle:Score')->findThree();
         return $this->render('@Group/Standings/full_standings_display.html.twig', array(
             'fullStandings' => $fullStandings,
             'scores'=>$score
         ));
+
 
     }
 

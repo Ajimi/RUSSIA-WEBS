@@ -10,11 +10,17 @@
                 <div class="post-miranda-view"><span class="icon fl-justicons-visible6"></span>234
                 </div>
             </div>
-            <h4 class="post-miranda-title"><a href="blog-post.html">Unheralded Phil Jones has made
-                    an impressive start to the season</a></h4>
+            <h4 class="post-miranda-title">
+                <a href="blog-post.html">
+                    {% block title %}Unheralded Phil Jones has made
+                        an impressive start to the season
+                    {% endblock %}
+                </a>
+
+            </h4>
             <div class="post-miranda-text">
-                <p>If Manchester United hadn't started the season playing attacking football so
-                    effectively, there would have been...</p>
+                {% block text %}<p>If Manchester United hadn't started the season playing attacking football so
+                    effectively, there would have been...</p>{% endblock %}
             </div>
         </div>
         <div class="post-miranda-aside"><a class="post-miranda-figure" href="blog-post.html"><img

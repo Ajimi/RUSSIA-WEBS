@@ -44,7 +44,6 @@ twig:
     strict_variables: '%kernel.debug%'
     paths:
             "%kernel.root_dir%": app
-
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -88,6 +87,18 @@ stof_doctrine_extensions:
         default:
             sluggable:   true
             timestampable: true
+
+ivory_ck_editor:
+    configs:
+        my_config:
+            skin: "kama,/bundles/ivoryckeditor/skins/kama/"
+    plugins:
+        youtube:
+            path:     "/bundles/ivoryckeditor/plugins/youtube/"
+            filename: "plugin.js"
+
+
+
 
 knp_paginator:
     page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)

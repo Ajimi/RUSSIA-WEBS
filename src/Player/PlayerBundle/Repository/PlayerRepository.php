@@ -140,6 +140,12 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
         $query->execute();
     }
 
+    public function bestScorer()
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT p FROM PlayerBundle:Player p  ORDER BY p.goalScored DESC")
+            ->setMaxResults(1);
+        return $query->getResult();
+    }
     public function findBestScorer($team)
     {
         $query = $this->getEntityManager()->createQuery("SELECT p FROM PlayerBundle:Player p WHERE p.nationalTeam = :team ORDER BY p.goalScored DESC")

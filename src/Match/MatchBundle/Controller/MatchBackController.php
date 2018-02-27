@@ -85,6 +85,7 @@ class MatchBackController extends Controller
         $Form = $this->createForm(MatchType::class, $match);
         $Form->handleRequest($request);
         if ($Form->isValid()) {
+            $match->setDate(new \DateTime($request->get('calendar')));
             $em->persist($match);
             $em->flush();
             return $this->redirectToRoute('match_list');

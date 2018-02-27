@@ -19,7 +19,8 @@ Player\PlayerBundle\Entity\Player:
     player{1..1000}:
         playerName: <word()>
         playerLastName: <word()>
-        playerImage: <word()>
+        file: "player-3-368x286.png"
+        playerImage: "player-3-368x286.png"
         playerPosition: <word()>
         playerNumber: <numberBetween(1,10)>
         bio: <word()>

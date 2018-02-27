@@ -2,6 +2,7 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Group\GroupBundle\Modele\StandingsDataFormat;
 use Group\GroupBundle\Modele\StandingsFormat;
 use GuzzleHttp\Psr7\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +20,6 @@ class MatchFrontController extends Controller
     /**
      * @Route("/schedule", name="schedule_list")
      */
-
     public function displayAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -28,9 +28,13 @@ class MatchFrontController extends Controller
             return $a->getMatch()->getDate() < $b->getMatch()->getDate();
             });
 
+
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
+        $standings = StandingsDataFormat::oneGroupStandingFormat($g);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false)), /* query NOT result */
+            $em->getRepository("MatchBundle:Match")->findBy(array('played'=>false),array('date'=>'desc')), /* query NOT result */
             $request->query->getInt('page', 1),/*page number*/
             $request->query->get('limit',3)
 
@@ -38,7 +42,8 @@ class MatchFrontController extends Controller
 
         return $this->render('@Match/FrontViews/game_schedule.html.twig',array(
             'matchs'=>$pagination,
-            'scores'=>$scores
+            'scores'=>$scores,
+            'standings'=>$standings
         ));
     }
 
@@ -50,16 +55,25 @@ class MatchFrontController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
+        $standings = StandingsDataFormat::oneGroupStandingFormat($g);
+        $bestScorer = $em->getRepository('PlayerBundle:Player')->bestScorer();
         $scores = $em->getRepository("MatchBundle:Score")->findAll();
+        usort($scores,function ($a,$b){
+            return $a->getMatch()->getDate() < $b->getMatch()->getDate();
+        });
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $em->getRepository("MatchBundle:Score")->findAll(), /* query NOT result */
+            $scores, /* query NOT result */
             $request->query->getInt('page', 1),/*page number*/
             $request->query->get('limit',2)
 
         );
         return $this->render('@Match/FrontViews/game_results.html.twig',array(
-            'scores'=>$pagination
+            'scores'=>$pagination,
+            'standings'=>$standings,
+            'bestScorer'=>$bestScorer
 
         ));
     }
@@ -106,7 +120,8 @@ class MatchFrontController extends Controller
         $bestScorerT1 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam1());
         $bestScorerT2 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam2());
 
-        // dump($bestScorerT1);
+        $group = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
+        $standings = StandingsDataFormat::oneGroupStandingFormat($group);
 
 
         return $this->render('@Match/FrontViews/game_overview.html.twig',array(
@@ -119,14 +134,14 @@ class MatchFrontController extends Controller
             'playersT1'=>$playersT1 ,'playersT2'=>$playersT2,
             'bestScorerT1'=>$bestScorerT1,
             'bestScorerT2'=>$bestScorerT2,
-           // 'standings'=>$fullStandings
+            'standings'=>$standings
     ));
 
     }
 
 
     /**
-     * @Route("/bla{idm}", name="get_as_pdf")
+     * @Route("/download{idm}", name="get_as_pdf")
      */
     public  function pdfAction($idm)
     {

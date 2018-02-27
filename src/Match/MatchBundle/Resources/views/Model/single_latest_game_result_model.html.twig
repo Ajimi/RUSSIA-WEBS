@@ -1,10 +1,12 @@
 {% for s in scores %}
+    {% set logoT1 = 'assets/images/teamUploads/' ~ s.match.team1.teamLogo %}
+    {% set logoT2 = 'assets/images/teamUploads/' ~ s.match.team2.teamLogo %}
 
 <article class="game-result game-result-classic">
     <div class="game-result-main">
         <div class="game-result-team game-result-team-first">
             <figure class="game-result-team-figure game-result-team-figure-big"><img
-                        src="{{ asset('/assets/images/team-atletico-55x55.png') }}" alt="" width="55" height="55"/>
+                        src="{{ asset(logoT1) }}" alt="" width="55" height="55"/>
             </figure>
             <div class="game-result-team-name">{{ s.match.team1.teamName | slice(0,10)}}</div>
             <div class="game-result-team-country">USA</div>
@@ -40,7 +42,7 @@
         </div>
         <div class="game-result-team game-result-team-second">
             <figure class="game-result-team-figure game-result-team-figure-big"><img
-                        src="{{ asset('/assets/images/team-real-madrid-41x59.png') }}" alt="" width="41" height="59"/>
+                        src="{{ asset(logoT2) }}" alt="" width="41" height="59"/>
             </figure>
             <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
             <div class="game-result-team-country">Spain</div>
@@ -50,7 +52,7 @@
         <ul class="game-result-details">
             <li>{{ s.match.stadium }} Stadium</li>
             <li>
-                <time datetime="2017-04-14">{{ s.match.date }}</time>
+                <time datetime="2017-04-14">{{ s.match.date |date("m/d/Y") }}</time>
             </li>
         </ul>
     </div>

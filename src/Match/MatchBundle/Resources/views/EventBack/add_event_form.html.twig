@@ -168,28 +168,30 @@
     <!-- Switchery -->
     <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
 
-    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
-    <script>
-        $(document).ready(function () {
-            var id = {{ idm }}
-           $('.js-add').on('click',function (ev) {
-               $.ajax({
-                   url:Routing.generate('ajax_display_event',{'id':id})
-               }).done(function (response) {
-                   $('.js-event').html(response);
-               }).fail(function (error) {
-
-               })
-
-           });
-
-        });
-
-    </script>
+    {#
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
 
+        <script>
+            $(document).ready(function () {
+                var id = {{ idm }}
+               $('.js-add').on('click',function (ev) {
+                   $.ajax({
+                       url:Routing.generate('ajax_display_event',{'id':id})
+                   }).done(function (response) {
+                       $('.js-event').html(response);
+                   }).fail(function (error) {
+
+                   })
+
+               });
+
+            });
+
+        </script>
+
+    #}
 
 {% endblock  javascripts %}
 

@@ -12,13 +12,18 @@ match:
     type:     annotation
     prefix:   /
 
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
 booking:
     resource: "@BookingBundle/Controller/"
     type:     annotation
     prefix:   /
 
-upload:
-    resource: "@UploadBundle/Resources/config/routing.yml"
+news:
+    resource: "@NewsBundle/Controller/"
+    type:     annotation
     prefix:   /
 
 location_location:
@@ -110,3 +115,7 @@ user_yml:
 
 fos_js_routing:
   resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation
+    prefix:   /sg
