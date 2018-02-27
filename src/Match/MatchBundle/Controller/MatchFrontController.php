@@ -177,6 +177,39 @@ class MatchFrontController extends Controller
     }
 
 
+    /**
+     * @Route(name="search_schedule")
+     */
+    public function searchScheduleAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            $val = $request->get('s')->getData();
+            $em = $this->getDoctrine()->getManager();
+            $repo= $em->getRepository('MatchBundle:Match');
+            $match = $repo->searchDQL($val);
+
+            $s = new Serializer(array(new ObjectNormalizer()));
+            $data = $s->normalize($match);
+            return new JsonResponse($data);
+
+        }
+
+    }
+
+
+    public function headerHomeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $matches = $em->getRepository('MatchBundle:Match')->findBy(array('played'=>false),array('date'=>'asc'));
+        return $this->render('@Front/navbar-component/_nav-panel-carousel.html.twig',array(
+            'matches'=>$matches
+
+        ));
+
+    }
+
+
     private function ballPossession($em, $match, $team)
     {
         $totalPasses = count($em->getRepository('MatchBundle:Event')->findBy(array('match' => $match, 'typeEvent' => "Pass")));

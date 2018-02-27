@@ -71,7 +71,7 @@ class EventBackController extends Controller
      * @Route("/end/{idm}", name="end_game")
      */
 
-    public function endGameAction($idm)
+    public function endGameAction(Request $request,$idm)
     {
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
@@ -80,8 +80,9 @@ class EventBackController extends Controller
         $match->setPlayed(true);
         $event->setTimes(new \DateTime());
         $start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
-        $diff = date_diff(new \DateTime(), $start->getTimes());
-        $event->setMinutes($diff->format('%s Seconds'));
+        //$diff = date_diff(new \DateTime(), $start->getTimes());
+       // $event->setMinutes($diff->format('%s Minutes'));
+        $event->setMinutes($request->get('end_game_time'));
         $event->setTypeEvent("END OF THE GAME");
         $em->persist($match);
         $em->persist($event);
@@ -96,7 +97,7 @@ class EventBackController extends Controller
     /**
      * @Route("/event/{idm}", name="ajax_display_event", options={"expose" = true})
      */
-    public function ajaxDisplayAction($idm)
+/*    public function ajaxDisplayAction($idm)
     {
         $em= $this->getDoctrine()->getManager();
         $events = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $idm), array('times' => 'asc'));
@@ -107,7 +108,7 @@ class EventBackController extends Controller
 
     }
 
-
+*/
     private function addScore($match)
     {
         $em = $this->getDoctrine()->getManager();

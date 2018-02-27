@@ -43,11 +43,17 @@
                            class="btn btn-danger btn-xs col-md-offset-2" disabled>
                             End
                         </a>
+
                     {% else %}
-                        <a href="{{ path('end_game',{'idm':idm}) }}"
-                           class="btn btn-danger btn-xs col-md-offset-2" id="end">
-                            End
-                        </a>
+                <form method="POST">
+                <div class="col-md-2">
+                        <input type="number" min="0" name="end_game_time" class="form-control col-md-2">
+                </div>
+                    <a href="{{ path('end_game',{'idm':idm}) }}"
+                       class="btn btn-danger btn-xs" id="end">
+                        End
+                    </a>
+                </form>
                     {% endif %}
                 {% endif %}
             </div>
