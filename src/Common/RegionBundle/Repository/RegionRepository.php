@@ -10,4 +10,8 @@ namespace Common\RegionBundle\Repository;
  */
 class RegionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBuilder()
+    {
+        return $this->createQueryBuilder("r");
+    }
 }
