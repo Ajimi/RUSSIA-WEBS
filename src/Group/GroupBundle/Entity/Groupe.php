@@ -3,7 +3,7 @@
 namespace Group\GroupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Groupe
@@ -29,9 +29,14 @@ class Groupe
      */
     private $name;
 
+
     /**
      * @var integer
      * @ORM\Column(name="rating", type="integer")
+     *
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 5)
      */
     private $rating;
 
@@ -52,7 +57,6 @@ class Groupe
     }
 
 
-
     /**
      * @var
      * @ORM\OneToOne(targetEntity="Team\TeamBundle\Entity\Team")
@@ -66,7 +70,6 @@ class Groupe
      * @ORM\JoinColumn(name="id_team2",referencedColumnName="id")
      */
     private $team2;
-
 
 
     /**
