@@ -1,0 +1,23 @@
+{% set headingTitle = "LATEST NEWS" %}
+{% set heading = "SEE ALL NEWS" %}
+{% set link = path('article_index') %}
+
+<div class="rd-megamenu-item rd-megamenu-item-content">
+    <!-- Heading Component-->
+    {% include 'FrontBundle:news-main-component:_heading-component.html.twig'with {'headingTitle': headingTitle , 'heading' : heading, 'headingLink' : link } %}
+
+    <div class="row row-20">
+
+
+        {% for article in articles %}
+
+            {% set date = article.created %}
+            {% set url = path('article_show' , {'id' : article.id}) %}
+            <div class="col-lg-6">
+                {% embed '@News/component/post-classic.html.twig' with {'url' : url , 'date' : date} %}
+                    {% block title %}{{ article.title }}{% endblock %}
+                {% endembed %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
