@@ -10,8 +10,13 @@
             width: 100%;
         }
     </style>
+
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block title %}    Place | List places{% endblock title %}
 {% block top_content_header %}
     <div class="page-title">
         <div class="title_left">
@@ -77,6 +82,14 @@
 
 {% block page_content %}
 
+    {% if app.session.flashBag.has('success') %}
+        {% for msg in app.session.flashBag.get('success') %}
+            <input class="js-input-session" type="text" value="{{ msg }}" data-action="true" hidden>
+        {% endfor %}
+    {% else %}
+        <input class="js-input-session" type="text" hidden>
+    {% endif %}
+
     <div class="col-md-12">
         <div class="x_panel">
             <div class="x_title">
@@ -88,6 +101,7 @@
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                 </ul>
+
 
                 <div class="clearfix"></div>
 
@@ -137,13 +151,13 @@
                                                     data-place="{{ place.name }}"
                                                     data-content="{{ place.previewText }}"
                                                     data-toggle="modal" data-target=".bs-example-modal-lg"
-                                                    class="js-view-map btn btn-success btn-xs">
+                                                    class="js-view-map btn btn-primary btn-xs">
                                                 <i class="fa fa-map-marker"></i> See map
                                             </button>
 
-                                            <a href="{{ path('admin_place_show', {'id' : place.id}) }}">
-                                                <button type="button" class="btn btn-primary btn-xs">
-                                                    <i class="fa fa-user"> </i> View Place
+                                            <a href="{{ path('admin_place_edit', {'id' : place.id}) }}">
+                                                <button type="button" class="btn btn-success btn-xs">
+                                                    <i class="fa fa-pencil"> </i> Edit Place
                                                 </button>
                                             </a>
                                         </div>
@@ -209,8 +223,24 @@
     <script src="{{ asset('modal/js/redirect.js') }}"></script>
     <script src="{{ asset('assets/js/lodash.js') }}"></script>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <!-- PNotify -->
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+
     <script>
         $(document).ready(function () {
+            $input = $('.js-input-session');
+            $data = $input.attr('data-action');
+            console.log($data);
+            if ($data) {
+                console.log("hello");
+                new PNotify({
+                    title: $input.val(),
+                    type: 'info',
+                    styling: 'bootstrap3'
+                });
+            }
             var latlng = L.latLng(55.55, 55.331);
 
             var marker = new L.Marker();

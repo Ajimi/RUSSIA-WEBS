@@ -36,7 +36,7 @@
 
                 {{ form_label(form.name, 'Place Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.name, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.name, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
 
                 {{ form_label(form.information, 'Information*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.information, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.information, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
 
                 {{ form_label(form.previewText, 'Preview Text*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.previewText, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.previewText, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
 
                 {{ form_label(form.previewPicture, 'Picture LINK*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.previewPicture, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.previewPicture, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
 
                 {{ form_label(form.phone, 'PHONE*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.phone, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.phone, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -76,7 +76,7 @@
 
                 {{ form_label(form.siteUrl, 'Site URL*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.siteUrl, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.siteUrl, { 'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -85,7 +85,14 @@
 
                 {{ form_label(form.region, 'REGION *', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(form.region, { 'id': 'js-region' ,'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+                    {{ form_widget(form.region, { 'id': 'js-region' ,'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
+                </div>
+            </div>
+            <div class="form-group">
+
+                {{ form_label(form.category, 'Category *', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(form.category, { 'id': 'js-region' ,'attr': {'class': 'form-control col-md-7 col-xs-12'} }) }}
                 </div>
             </div>
 
@@ -96,6 +103,19 @@
 
                 </div>
 
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <br>
+                <div class="col-md-3"></div>
+                <div class="col-md-3 col-sm-3">
+                    {{ form_label(form.longitude, 'Longitude*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                    {{ form_widget(form.longitude, { 'attr': {'class': 'js-lng form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    {{ form_label(form.latitude, 'Latitude*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                    {{ form_widget(form.latitude, { 'attr': {'class': 'js-lat form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
             </div>
 
             <div class="ln_solid"></div>
