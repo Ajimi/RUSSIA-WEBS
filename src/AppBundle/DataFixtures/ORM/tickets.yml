@@ -58,3 +58,12 @@ Reservation\TicketBundle\Entity\Ticket:
         match(unique): '@match*'
         price: <numberBetween(100,300)>
         quantity: <numberBetween(5000,8000)>
+
+Group\GroupBundle\Entity\Groupe:
+      group{1..4}:
+          name:   "A"
+          rating: 2
+          team1(unique): '@team*'
+          team2(unique): '@team*'
+          team3(unique): '@team*'
+          team4(unique): '@team*'
