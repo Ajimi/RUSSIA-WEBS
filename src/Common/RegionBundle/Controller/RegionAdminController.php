@@ -9,6 +9,7 @@ use Common\RegionBundle\Transformer\RegionDataTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -107,5 +108,46 @@ class RegionAdminController extends Controller
         $em->remove($region);
         $em->flush();
         return $this->redirectToRoute('admin_region_index');
+    }
+
+
+    /**
+     * @param Request $request
+     * @Route("/search_regions" , name="search_region_ajax" , options={"expose"=true})
+     * @return JsonResponse
+     */
+    public function searchAction(Request $request)
+    {
+        /** @var Region[] $regions */
+        $regions = $this->getDoctrine()->getManager()->getRepository('RegionBundle:Region')->findAll();
+        return new JsonResponse($this->serialize($regions));
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/search_region/{name}" , name="search_region_ajax_name" , options={"expose"=true})
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchRegionNameAction(Request $request, $name)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('RegionBundle:Region');
+
+        $regions = $repo->findByName($name);
+
+        return $this->render('@Region/component/table-component.html.twig', array('regions' => $regions));
+    }
+
+    /**
+     * @param Region[] $regions
+     * @return array
+     */
+    public function serialize($regions)
+    {
+        $data = array();
+        foreach ($regions as $region) {
+            array_push($data, $region->getName());
+        }
+        return $data;
     }
 }

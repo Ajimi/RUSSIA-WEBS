@@ -14,4 +14,13 @@ class RegionRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder("r");
     }
+
+    public function findByName($name)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

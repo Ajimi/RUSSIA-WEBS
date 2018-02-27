@@ -5,13 +5,38 @@
     <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/typeahead.css') }}" rel="stylesheet">
+    <style>
+        #custom-templates .empty-message {
+            padding: 5px 10px;
+            text-align: center;
+        }
+    </style>
 
 
 {% endblock stylesheets %}
 
 {% block title %}Region List{% endblock %}
 
-{% block page_title %}Region | Region List{% endblock page_title %}
+{% block top_content_header %}
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{% block page_title %}Region list{% endblock page_title %}</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="form-group">
+
+                    <input {% block id %}id="custom-templates" {% endblock id %}name="search" type="text"
+                           class="form-control js-data typeahead" placeholder="Search for...">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock top_content_header %}
+
+
 {% block page_content %}
 
     {% if app.session.flashBag.has('success') %}
@@ -35,7 +60,7 @@
 
             <div class="x_content" id="tableDiv">
 
-                <table class="table table-striped jambo_table bulk_action" id="table">
+                <table class="table table-striped jambo_table bulk_action js-table" id="table">
                     <thead>
                     <tr class="headings">
                         <th class="column-title">Country</th>
@@ -117,6 +142,7 @@
     <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.js') }}"></script>
     <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
     <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead.js') }}"></script>
 
 
     <script>
@@ -150,6 +176,64 @@
 
                 });
             });
+
+
+            var substringMatcher = function (strs) {
+                return function findMatches(q, cb) {
+                    var matches, substringRegex;
+
+                    // an array that will be populated with substring matches
+                    matches = [];
+
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function (i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            var regions;
+            axios.get('{{ path('search_region_ajax') }}')
+                .then(function (response) {
+                    console.log(response);
+                    regions = response["data"];
+                    $('.typeahead').typeahead({
+                            hint: true,
+                            highlight: true,
+                            minLength: 1
+                        },
+                        {
+                            name: 'regions',
+                            source: substringMatcher(regions)
+                            // templates: {
+                            //     empty: [
+                            //         '<div class="empty-message">',
+                            //         'unable to find any Best Picture winners that match the current query',
+                            //         '</div>'
+                            //     ].join('\n')
+                            // }
+                        });
+                });
+
+            $('.js-data').on('keyup', function (event) {
+                $value = $(this).val();
+                console.log($value);
+                axios.get(Routing.generate('search_region_ajax_name', {'name': $value}))
+                    .then(function (response) {
+                        $('.js-table').html(response['data']);
+                    }).catch(function (reason) {
+
+                });
+            });
+
         })
     </script>
 {% endblock javascripts %}
