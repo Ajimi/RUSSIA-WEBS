@@ -1,5 +1,14 @@
 {% extends '@Front/common/_base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
 
