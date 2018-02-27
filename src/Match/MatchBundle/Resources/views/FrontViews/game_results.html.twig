@@ -7,7 +7,7 @@
 
 
     {% if scores.getTotalItemCount == 0 %}
-        {% include '@Match/FrontViews/no_data_found.html.twig' %}
+        {% include '@Match/Model/no_data_found_model.html.twig' %}
     {% else %}
 
         <section class="section section-sm bg-gray-100">
@@ -22,8 +22,8 @@
 
                             </div>
                         </article>
+                        {% include '@Match/Model/single_game_result_model.html.twig' %}
 
-                        {% include '@Match/FrontViews/single_game_result_model.html.twig' %}
                     </div>
 
 
