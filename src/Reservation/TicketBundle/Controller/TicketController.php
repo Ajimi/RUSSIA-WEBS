@@ -123,7 +123,7 @@ class TicketController extends Controller
     }
 
     /**
-     * @param EntityManager $manager
+     * @param ObjectManager $manager
      * @return Match
      */
     private function randomMatch(ObjectManager $manager)

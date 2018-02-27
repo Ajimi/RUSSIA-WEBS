@@ -66,6 +66,8 @@ class PlaceDataTransformer
     public static function reverseTransform(Place $place)
     {
 
+        // TODO : Sanity check for nullability
+        // if(is_null())
         $placeData = new PlaceData();
 
         if (($location = $place->getLocation()) && $geocode = $location->getGeoCode()) {

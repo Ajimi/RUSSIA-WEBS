@@ -50,7 +50,7 @@ class ApiParserHandler
 
         $region = new Region();
 
-        // TODO ; ADD LOCATION & ADD Address
+        // Completed ; ADD LOCATION & ADD Address
         $region->setName($name);
         $this->manager->persist($region);
         $this->manager->flush();

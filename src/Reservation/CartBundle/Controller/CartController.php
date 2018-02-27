@@ -94,7 +94,7 @@ class CartController extends Controller
         $session->set('cart', $cart);
 
         $this->addFlash('success', 'The ticket added perfectly');
-        // TODO : Change Route to CART and add more SESSION FLASHBAG SAME AS REMOVE
+        // Completed : Change Route to CART and add more SESSION FLASHBAG SAME AS REMOVE
         return $this->redirectToRoute('cart_index');
     }
 
