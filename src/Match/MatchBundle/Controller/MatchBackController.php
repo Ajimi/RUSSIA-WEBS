@@ -2,9 +2,12 @@
 
 namespace Match\MatchBundle\Controller;
 
+use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
+use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Form\MatchType;
+use Reservation\TicketBundle\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,12 +32,11 @@ class MatchBackController extends Controller
         $match = new Match();
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
-
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
         return $this->render('MatchBundle:Default:list_match.html.twig', array(
             'matchs' => $matchs,
-            'matchForm' => $form->createView()
+            'matchForm' => $form->createView(),
 
         ));
 
@@ -53,12 +55,14 @@ class MatchBackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $match->setDate($request->get('calendar'));
             $match->setTime($request->get('timepicker'));
-            $scoreTeam1 = new Statistics($match->getTeam1(), $match, -1, -1, -1, -1, -1);
-            $scoreTeam2 = new Statistics($match->getTeam2(), $match, -1, -1, -1, -1, -1);
             $match->setPlayed(false);
+            $t = new  Ticket();
+            $t->setMatch($match);
+            $match->setTicket($t);
+            $t->setPrice("");
+            $t->setQuantity(1000);
+            $em->persist($t);
             $em->persist($match);
-            $em->persist($scoreTeam1);
-            $em->persist($scoreTeam2);
             $em->flush();
 
             return $this->redirectToRoute('match_list');
@@ -90,45 +94,43 @@ class MatchBackController extends Controller
 
 
     }
+
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
-        $score = $em->getRepository('MatchBundle:Statistics')->findBy(array('match' => $match->getId()));
-        foreach ($score as $s)
-            $em->remove($s);
         $em->remove($match);
         $em->flush();
         return $this->redirectToRoute('match_list');
 
     }
 
-    /**
-     * @Route("/search", name="search_match")
-     */
 
-    public function searchAction(Request $request)
-    {
+    /*
+
+        public function searchAction(Request $request)
+        {
 
 
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            //$val = $request ->get('search')->getData();
-            $val = "se";
-            alert($val);
-            $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('MatchBundle:Match');
-            $match = $repo->searchDQL($val);
+            if ($request->isXmlHttpRequest()) {
+                $em = $this->getDoctrine()->getManager();
+                //$val = $request ->get('search')->getData();
+                $val = "se";
+                alert($val);
+                $em = $this->getDoctrine()->getManager();
+                $repo = $em->getRepository('MatchBundle:Match');
+                $match = $repo->searchDQL($val);
 
-            $s = new Serializer(array(new ObjectNormalizer()));
-            $data = $s->normalize($match);
-            return new JsonResponse($data);
+                $s = new Serializer(array(new ObjectNormalizer()));
+                $data = $s->normalize($match);
+                return new JsonResponse($data);
+
+            }
 
         }
-
-    }
+    */
 
 }

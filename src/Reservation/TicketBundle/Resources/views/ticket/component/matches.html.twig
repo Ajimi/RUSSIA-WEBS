@@ -20,39 +20,11 @@
                         </li>
                         <li>
                             <select class="select select-minimal" data-placeholder="Select an option"
-                                    data-dropdown-class="select-minimal-dropdown">
+                                    data-dropdown-class="select-minimal-dropdown" id="js-team-select">
                                 <option value="all" selected="">All Teams</option>
-                                <option value="russia">Russia</option>
-                                <option value="saudi-Arabia">Saudi Arabia</option>
-                                <option value="costa-Rica">Costa Rica</option>
-                                <option value="serbia">Serbia</option>
-                                <option value="germany">Germany</option>
-                                <option value="mexico">Mexico</option>
-                                <option value="sweden">Sweden</option>
-                                <option value="korea-Republic">Korea Republic</option>
-                                <option value="belgium">Belgium</option>
-                                <option value="panama">Panama</option>
-                                <option value="tunisia">Tunisia</option>
-                                <option value="england">England</option>
-                                <option value="poland">Poland</option>
-                                <option value="senegal">Senegal</option>
-                                <option value="colombia">Colombia</option>
-                                <option value="japan">Japan</option>
-                                <option value="egypt">Egypt</option>
-                                <option value="uruguay">Uruguay</option>
-                                <option value="portugal">Portugal</option>
-                                <option value="morocco">Marocco</option>
-                                <option value="iran">Iran</option>
-                                <option value="spain">Spain</option>
-                                <option value="france">France</option>
-                                <option value="peru">Peru</option>
-                                <option value="denmark">Denmark</option>
-                                <option value="australia">Australia</option>
-                                <option value="argentina">Argentina</option>
-                                <option value="croaria">Croaria</option>
-                                <option value="nigeria">Nigeria</option>
-                                <option value="iceland">Iceland</option>
-                                <option value="brazil">Brazil</option>
+                                {% for team in teams %}
+                                    <option value="{{ team.id }}">{{ team.teamName|truncate(15) }}</option>
+                                {% endfor %}
                             </select>
                         </li>
                     </ul>
@@ -60,29 +32,36 @@
             </div>
         </article>
 
-        <div class="row" style="margin-top: 50px">
+        <div class="row row-30" style="margin-top: 50px">
 
             {% for match in matches %}
-
-
 
                 <div class="col-lg-4">
                     {% if match.id in matchesId|keys %}
                         {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART'} %}
-                            {% block team1 %}{{ match.team1.name }}{% endblock %}
-                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                            {% block team1 %}{{ match.team1.teamName|slice(15) }}{% endblock %}
+                            {% block team2 %}{{ match.team2.teamName|slice(15) }}{% endblock %}
+                            {% block team_shortcut1 %}{{ match.team1.teamShortcut }}{% endblock %}
+                            {% block team_shortcut2 %}{{ match.team2.teamShortcut }}{% endblock %}
+                            {% block team_image1 %}{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}{% endblock %}
+                            {% block team_image2 %}{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}{% endblock %}
+                            {% block time %}{{ match.date }}{% endblock %}
                         {% endembed %}
 
                     {% else %}
                         {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match   } %}
-                            {% block team1 %}{{ match.team1.name }}{% endblock %}
-                            {% block team2 %}{{ match.team2.name }}{% endblock %}
+                            {% block team1 %}{{ match.team1.teamName|truncate(15) }}{% endblock %}
+                            {% block team2 %}{{ match.team2.teamName|slice(15) }}{% endblock %}
+                            {% block team_shortcut1 %}{{ match.team1.teamShortcut }}{% endblock %}
+                            {% block team_shortcut2 %}{{ match.team2.teamShortcut }}{% endblock %}
+                            {% block team_image1 %}{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}{% endblock %}
+                            {% block team_image2 %}{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}{% endblock %}
+                            {% block time %}{{ match.date }}{% endblock %}
                         {% endembed %}
                     {% endif %}
 
                 </div>
             {% endfor %}
-            {# display navigation #}
         </div>
     </div>
 

@@ -1,54 +1,259 @@
 {% extends 'BackBundle:common:_base.html.twig' %}
 
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+    <style>
+        #mapid {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block top_content_header %}
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{% block page_title %}Places List{% endblock page_title %}</h3>
+
+            <div class="col-md-3">
+
+                <a href="{{ path('admin_place_new') }}">
+                    <button id="compose" class="btn btn-sm btn-success btn-block" type="button">
+                        Create new place
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-12 col-sm-12 col-xs-12 form-group pull-right top_search">
+                <form action="" method="get">
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <select id="js-region" name="region"
+                                    class="form-control">
+                                <option value="">Select your Region</option>
+                                {% for reg in regions %}
+                                    <option {% if reg.id == region.id %}selected{% endif %}
+                                            value="{{ reg.id }}">{{ reg.name }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="form-group">
+
+                                    <div class="col-md-8">
+                                        <input {% block id %}id="js-input-search" {% endblock id %}name="search"
+                                               type="text"
+                                               class="form-control" placeholder="Search for...">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="input-group-btn">
+                                            <button id="js-go-search" class="btn btn-primary" style="color: white;"
+                                                    type="submit">Go!</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock top_content_header %}
+
+
 {% block page_content %}
 
-    <h1>Places list</h1>
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Information</th>
-            <th>Previewtext</th>
-            <th>Previewpicture</th>
-            <th>Workingtime</th>
-            <th>Phone</th>
-            <th>Siteurl</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for place in places %}
-            <tr>
-                <td><a href="{{ path('admin_place_show', { 'id': place.id }) }}">{{ place.id }}</a></td>
-                <td>{{ place.type }}</td>
-                <td>{{ place.name }}</td>
-                <td>{{ place.information }}</td>
-                <td>{{ place.previewText }}</td>
-                <td>{{ place.previewPicture }}</td>
-                <td>{{ place.workingTime }}</td>
-                <td>{{ place.phone }}</td>
-                <td>{{ place.siteUrl }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_place_show', { 'id': place.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_place_edit', { 'id': place.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <h2>{{ region.name|upper }}
+                    <small>Places</small>
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_place_new') }}">Create a new place</a>
-        </li>
-    </ul>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        {{ knp_pagination_render(places, '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig') }}
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    {% if places|length != 0 %}
+                        {% for place in places %}
+                            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12">
+                                        <div class="left col-xs-7">
+                                            <h2>{{ place.name }}</h2>
+                                            <p><strong>About: </strong> {{ place.category }}</p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-building"></i>
+                                                    Address:{{ place.location.address.city }}</li>
+                                                <li><i class="fa fa-phone"></i> Phone #: {{ place.phone }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="right col-xs-5 text-center">
+                                            <img src="{{ place.previewPicture }}" width="134" height="150" alt=""
+                                                 class="img-circle">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 bottom text-center">
+                                        <div class="col-xs-12 col-sm-6 emphasis">
+                                            <p class="ratings">
+                                                <a href="{{ path('admin_place_delete', {'id' : place.id}) }}">
+                                                    <button type="button" class="btn btn-danger btn-xs">
+                                                        <i class="fa fa-trash"> </i> Delete
+                                                    </button>
+                                                </a>
+
+                                            </p>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 emphasis">
+                                            <button type="button"
+                                                    data-long="{{ place.location.geoCode.longitude }}"
+                                                    data-lat="{{ place.location.geoCode.latitude }}"
+                                                    data-place="{{ place.name }}"
+                                                    data-content="{{ place.previewText }}"
+                                                    data-toggle="modal" data-target=".bs-example-modal-lg"
+                                                    class="js-view-map btn btn-success btn-xs">
+                                                <i class="fa fa-map-marker"></i> See map
+                                            </button>
+
+                                            <a href="{{ path('admin_place_show', {'id' : place.id}) }}">
+                                                <button type="button" class="btn btn-primary btn-xs">
+                                                    <i class="fa fa-user"> </i> View Place
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    {% else %}
+                        <div class="row">
+
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-3 col-offset-lg-3">
+
+                                <h1 class="text-lg-center"> There's no place with this name </h1>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <input type="hidden" id="longitude">
+                    <input type="hidden" id="latitude">
+
+                    <div id="js-map-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                                aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="js-placeName"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="js-preview"></div>
+
+                                    <div id="mapid">
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script src="{{ asset('modal/js/redirect.js') }}"></script>
+    <script src="{{ asset('assets/js/lodash.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script>
+        $(document).ready(function () {
+            var latlng = L.latLng(55.55, 55.331);
+
+            var marker = new L.Marker();
+            var map = L.map('mapid', {
+                scrollWheelZoom: false
+            }).setView(latlng, 16);
+
+
+            $('.js-view-map').on('click', function (ev) {
+                var longitude = $(this).data('long');
+                var latitude = $(this).data('lat');
+                var place = $(this).data('place');
+                var preview = $(this).data('content');
+
+                $('#js-placeName').text(place);
+                $('.js-preview').html(preview);
+
+                var latlng = L.latLng(latitude, longitude);
+
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+
+                map.removeLayer(marker);
+
+                marker = new L.Marker(latlng);
+                map.addLayer(marker);
+
+                map.panTo(latlng);
+                marker.bindPopup(place);
+
+
+            });
+        });
+        //        $(document).ready(function () {
+        //            $('#js-input-search').on('change input paste keyup', function () {
+        //                _.delay(function (text) {
+        //                    value = $('#js-input-search').val();
+        //                    $route = Routing.generate('admin_place_index', {'search': value, 'region': 'moscow'});
+        //                    $('#js-href').attr('href', $route);
+        //                }, 1000);
+        //            });
+        //        });
+    </script>
 {% endblock %}

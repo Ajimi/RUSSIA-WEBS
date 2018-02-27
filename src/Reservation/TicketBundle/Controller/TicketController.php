@@ -4,10 +4,12 @@ namespace Reservation\TicketBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Match\MatchBundle\Entity\Match;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Team\TeamBundle\Entity\Team;
 
 /**
  * @Route("/ticket")
@@ -31,7 +33,7 @@ class TicketController extends Controller
 
 
         /**
-         * Filter Done here..
+         * TODO : Filter Done here..
          */
 
         $paginator = $this->get('knp_paginator');
@@ -64,15 +66,9 @@ class TicketController extends Controller
     /**
      * @return Response
      */
-    public function nextMatchTicketAction()
+    public function nextMatchTicketAction(): Response
     {
-        $em = $this->getDoctrine()->getManager();
-
-        /**
-         * TODO : Get only valid date
-         */
-        $matches = $em->getRepository('MatchBundle:Match')->findAll();
-        shuffle($matches);
+        $matches = $this->randomMatch($this->getDoctrine()->getManager());
 
         if ($matches)
             return $this->render('TicketBundle:ticket/component:next-match.html.twig', array('match' => $matches[0]));
@@ -85,7 +81,7 @@ class TicketController extends Controller
      * @return Response
      * @throws \LogicException
      */
-    public function allMatchesTicketAction(Request $request)
+    public function allMatchesTicketAction(Request $request): Response
     {
         /** @var PaginationInterface $pagination */
         $pagination = $request->get('pagination');
@@ -97,9 +93,46 @@ class TicketController extends Controller
             $matchesId = $cart;
         }
 
+        /** @var Team[] $teams */
+        $teams = $this->getDoctrine()->getManager()->getRepository('TeamBundle:Team')->findAll();
+
 
         // parameters to template
-        return $this->render('TicketBundle:ticket/component:matches.html.twig', array('matches' => $pagination, 'matchesId' => $matchesId));
+        return $this->render('TicketBundle:ticket/component:matches.html.twig',
+            array(
+                'matches' => $pagination,
+                'matchesId' => $matchesId,
+                'teams' => $teams
+            )
+        );
 
+    }
+
+
+    /**
+     * @param Request $request
+     * @Route("/randomTicket" , name="random_ticket")
+     * @return Response
+     * @throws \LogicException
+     */
+    public function ticketRandomAction(Request $request)
+    {
+        $match = $this->randomMatch($this->getDoctrine()->getManager());
+        return $this->render('@Guide/place/ticket-component.html.twig', array('match' => $match));
+    }
+
+    /**
+     * @param EntityManager $manager
+     * @return Match
+     */
+    private function randomMatch(EntityManager $manager)
+    {
+        /**
+         * TODO : Get only valid date
+         */
+        $matches = $manager->getRepository('MatchBundle:Match')->findAll();
+        shuffle($matches);
+
+        return $matches[random_int(0, count($matches))];
     }
 }

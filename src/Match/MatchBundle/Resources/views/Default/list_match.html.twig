@@ -35,11 +35,7 @@
                         <th class="column-title">TICKETS</th>
                         <th class="column-title">EDIT</th>
                         </th>
-                        <th class="bulk-actions" colspan="7">
-                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions (
-                                <span class="action-cnt"> </span> ) <i
-                                        class="fa fa-chevron-down"></i></a>
-                        </th>
+
                     </tr>
                     </thead>
 
@@ -49,35 +45,35 @@
                         <tr>
                             <td class=" ">{{ m.date }}</td>
                             <td class=" ">{{ m.time }}</td>
-                            <td class=" ">{{ m.team1.name }}
-                            <td class=" ">{{ m.team2.name }}</td>
+                            <td class=" ">{{ m.team1.teamName |slice(0,15) }}
+                            <td class=" ">{{ m.team2.teamName |slice(0,15)}}</td>
                             <td class=" ">{{ m.stadium }}</td>
                             <td class=" ">{{ m.level }}</td>
-                            <td class=" ">8,674 tickets</td>
+                            <td class=" ">{{ m.ticket.quantity }} Tickets</td>
                             <td class="">
                                 {% if m.played == false %}
 
-                                    <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
-                                       class="btn btn-success btn-xs">Add Result </a>
+                                    <a href="{{ path('add_event',{'idm':m.id}) }}"
+                                       class="btn btn-success btn-xs "> Highlights </a>
                                     <a href="{{ path('edit_match',{'id':m.id}) }}"
                                        class="btn btn-info btn-xs">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
-                                    <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}"
                                        class="btn btn-danger btn-xs">
                                         <i class="fa fa-trash-o"></i>
                                         Delete </a>
 
                                 {% else %}
 
-                                    <a href="{{ path('add_score',{'idm':m.id, 'idt1':m.team1.id,'idt2':m.team2.id}) }}"
-                                       class="btn btn-success btn-xs disabled">Add Result </a>
+                                    <a href="#"
+                                       class="btn btn-success btn-xs disabled "> Highlights </a>
 
-                                    <a href="{{ path('edit_match',{'id':m.id}) }}"
-                                       class="btn btn-info btn-xs">
+                                    <a href="#"
+                                       class="btn btn-info btn-xs  disabled">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
-                                    <a href="{{ path('delete_match',{'id':m.id}) }}" id="editBtn"
+                                    <a href="{{ path('delete_match',{'id':m.id}) }}"
                                        class="btn btn-danger btn-xs">
                                         <i class="fa fa-trash-o"></i>
                                         Delete </a>
@@ -177,6 +173,8 @@
             </div>
         </div>
     </div>
+
+
 
 
 {% endblock %}

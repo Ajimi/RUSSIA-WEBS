@@ -1,0 +1,53 @@
+<div class="col-sm-6">
+    <!-- Table Roster-->
+
+    <div class="table-custom-responsive">
+        <table class="table-custom table-roster">
+            <thead>
+            <tr>
+                <th colspan="3">{{ m.team1.teamName }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>NBR</td>
+                <td>Player name</td>
+                <td>Position</td>
+            </tr>
+            {% for playersFirstTeam in playersT1|slice(0,10) %}
+            <tr>
+                <td>{{ playersFirstTeam.playerNumber }}</td>
+                <td>{{ playersFirstTeam.playerName }} {{ playersFirstTeam.playerName }}</td>
+                <td>{{ playersFirstTeam.playerPosition }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-sm-6">
+    <!-- Table Roster-->
+    <div class="table-custom-responsive">
+        <table class="table-custom table-roster team2-blue">
+            <thead>
+            <tr>
+                <th colspan="3">{{ m.team2.teamName }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>NBR</td>
+                <td>Player name</td>
+                <td>Position</td>
+            </tr>
+            {% for playerSecondTeam in playersT2|slice(0,10) %}
+            <tr>
+                <td>{{ playerSecondTeam.playerNumber }}</td>
+                <td>{{ playerSecondTeam.playerName }} {{ playerSecondTeam.playerLastName }}</td>
+                <td>{{ playerSecondTeam.playerPosition }}</td>
+            </tr>
+          {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

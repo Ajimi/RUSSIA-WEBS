@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Group\GroupBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -7,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use blackknight467\StarRatingBundle\Form\RatingType;
 
 class GroupeType extends AbstractType
 {
@@ -28,7 +30,12 @@ class GroupeType extends AbstractType
             ->add('team4', EntityType::class, array(
                 'class' => 'TeamBundle:Team',
                 'choice_label' => 'teamName', 'multiple' => false))
-            ->add('create', SubmitType::class);;
+            ->add('create', SubmitType::class)
+            ->add('rating', RatingType::class, [
+                'label' => 'Rating']);
+
+
+        // ...
     }
 
     /**

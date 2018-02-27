@@ -5,12 +5,11 @@ namespace Common\RegionBundle\Controller\Api;
 use AppBundle\Exception\ApiException;
 use Common\RegionBundle\Entity\Region;
 use Common\RegionBundle\Manager\RegionManager;
-use Reservation\HotelBundle\Entity\Hotel;
-use Reservation\HotelBundle\HotelManager\HotelManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -57,5 +56,21 @@ class RegionApiController extends Controller
         return new JsonResponse($regionsResponse);
     }
 
+    /**
+     * @param Request $request
+     * @Route("/getLocation/{id}", name="api_location_id" , options={"expose" = true})
+     * @return JsonResponse
+     */
+    public function getLocation(Request $request, Region $region)
+    {
+
+        return new JsonResponse(
+            array('data' => array(
+                'latitude' => $region->getLocation()->getGeoCode()->getLatitude(),
+                'longitude' => $region->getLocation()->getGeoCode()->getLongitude()
+            )
+            )
+        );
+    }
 
 }

@@ -19,12 +19,12 @@ class MatchType extends AbstractType
         $builder
             ->add('team1', EntityType::class,
                 array(
-                    'class' => 'MatchBundle:TeamTest',
-                    'choice_label' => 'name'))
+                    'class' => 'Team\TeamBundle\Entity\Team',
+                    'choice_label' => 'teamName'))
             ->add('team2', EntityType::class,
                 array(
-                    'class' => 'MatchBundle:TeamTest',
-                    'choice_label' => 'name'))
+                    'class' => 'Team\TeamBundle\Entity\Team',
+                    'choice_label' => 'teamName'))
             ->add('level', ChoiceType::class, array(
                 'choices' => array('Final' => 'Final', 'SemiFinal' => 'SemiFinal'),
                 'multiple' => false))

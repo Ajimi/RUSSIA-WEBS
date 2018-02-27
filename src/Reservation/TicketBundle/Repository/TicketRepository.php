@@ -11,6 +11,7 @@ namespace Reservation\TicketBundle\Repository;
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
 
+
     public function findAllBy($criteria)
     {
 

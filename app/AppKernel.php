@@ -1,10 +1,13 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    /**
+     * @return array
+     */
     public function registerBundles()
     {
         $bundles = [
@@ -16,13 +19,16 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+
             /*
              * External Bundles
              */
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
