@@ -21,13 +21,13 @@ class CheckoutController extends Controller
 
     /**
      * @param Request $request
-     * @Route("/", name="checkout_index",)
+     * @param ShoppingCart $shoppingCart
+     * @param StripeClient $stripeClient
      * @return Response
+     * @Route("/", name="checkout_index",)
      */
     public function indexAction(Request $request, ShoppingCart $shoppingCart, StripeClient $stripeClient)
     {
-        $matches = $shoppingCart->getProducts();
-
         $total = $shoppingCart->getTotal();
         $error = false;
 
