@@ -28,6 +28,8 @@ class PlaceDataTransformer
         if ($place == null)
             $place = new Place();
 
+        // TODO : Sanity check for nullability
+        // if(is_null())
         $place->setName($placeData->getName());
         $place->setInformation($placeData->getInformation());
         $place->setPreviewText($placeData->getPreviewText());
