@@ -35,8 +35,15 @@ class MatchBackController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $matchs, /* query NOT result */
+            $request->query->getInt('page', 1),/*page number*/
+            $request->query->get('limit',8));
+
         return $this->render('MatchBundle:Default:list_match.html.twig', array(
-            'matchs' => $matchs,
+            'matchs' => $pagination,
             'matchForm' => $form->createView(),
 
         ));
@@ -57,12 +64,13 @@ class MatchBackController extends Controller
             $match->setDate(new \DateTime($request->get('calendar')));
             $match->setTime($request->get('timepicker'));
             $match->setPlayed(false);
-            $t = new  Ticket();
-            $t->setMatch($match);
-            $match->setTicket($t);
-            $t->setPrice("");
-            $t->setQuantity(1000);
-            $em->persist($t);
+            $ticket = new  Ticket();
+            $ticket->setMatch($match);
+            $ticket->setQuantity($request->get('tickets'));
+            $ticket->setPrice($request->get('price'));
+            $match->setTicket($ticket);
+
+            $em->persist($ticket);
             $em->persist($match);
             $em->flush();
 

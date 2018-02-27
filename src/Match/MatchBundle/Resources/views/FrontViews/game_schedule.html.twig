@@ -1,4 +1,13 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
+
+{% block metadata %}
+    <meta property="og:url"           content="http://127.0.0.1:8000/match/schedule" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Russia 2018 2018 2018 2018 " />
+    <meta property="og:description"   content="My description" />
+    {#<meta property="og:image"         content="" />#}
+{% endblock metadata %}
+
  {% block body %}
      {% include '@Match/Breadcrumbs/breadcrumbs_schedule.html.twig' %}
 
