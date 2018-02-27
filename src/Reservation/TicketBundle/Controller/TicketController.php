@@ -109,7 +109,6 @@ class TicketController extends Controller
 
     }
 
-
     /**
      * @param Request $request
      * @Route("/randomTicket" , name="random_ticket")
