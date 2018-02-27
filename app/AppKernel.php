@@ -56,6 +56,7 @@ class AppKernel extends Kernel
             new Common\UploadBundle\UploadBundle(),
             new Common\BookingBundle\BookingBundle(),
             new Reservation\CartBundle\CartBundle(),
+            new News\NewsBundle\NewsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
