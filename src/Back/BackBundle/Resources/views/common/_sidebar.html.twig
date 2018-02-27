@@ -83,16 +83,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a><i class="fa fa-book"></i> News <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="#">List</a>
-                            </li>
-                            <li><a href="#">Add</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
                 </ul>
             </div>
 
@@ -107,6 +97,45 @@
                     </li>
                 </ul>
 
+            </div>
+
+            <div class="menu_section">
+                <h3>News Feed</h3>
+                <ul class="nav side-menu">
+                    <li>
+                        <a><i class="fa fa-book"></i> Article <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ path('admin_article_index') }}">List</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_article_new') }}">Add</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-book"></i> Badge <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ path('admin_badge_index') }}">List</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_badge_new') }}">Add</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-book"></i> Category <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ path('admin_category_index') }}">List</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_category_new') }}">Add</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             {# SECTION RESERVATION  #}
