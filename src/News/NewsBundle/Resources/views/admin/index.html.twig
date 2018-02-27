@@ -16,11 +16,11 @@
           rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block title %}Add Article{% endblock %}
+{% block title %}News | Article List{% endblock %}
 
+{% block page_title %}Article List{% endblock %}
 
 {% block page_content %}
-
     <div class="x_panel">
         <div class="x_title">
             <div class=" col-sm-2 col-xs-12">
@@ -60,9 +60,6 @@
                                 <i class="fa fa-trash-o"></i>
                                 Delete </a>
                         </td>
-
-
-                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -74,6 +71,7 @@
 {% endblock %}
 
 {% block javascripts %}
+
 
     <!-- iCheck -->
     <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
@@ -93,7 +91,7 @@
     <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    {{ parent() }}
 
 {% endblock javascripts %}
 

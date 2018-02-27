@@ -37,6 +37,61 @@ class ArticleController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/spotlight" , name ="article_spotlight")
+     */
+    public function spotlightNewsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Article[] $spotlights */
+
+        $spotlights = $em->getRepository('NewsBundle:Article')->findSpotLight();
+
+        return $this->render('NewsBundle:article:home.html.twig', array(
+            'spotlights' => $spotlights,
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/popular" , name ="article_popular")
+     */
+    public function popularNewsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Article[] $spotlights */
+
+        $spotlights = $em->getRepository('NewsBundle:Article')->findSpotLight();
+
+        return $this->render('NewsBundle:article:home.html.twig', array(
+            'spotlights' => $spotlights,
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/latest" , name ="article_latest")
+     */
+    public function latestNewsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Article[] $spotlights */
+
+        $spotlights = $em->getRepository('NewsBundle:Article')->findSpotLight();
+
+        return $this->render('NewsBundle:article:home.html.twig', array(
+            'spotlights' => $spotlights,
+        ));
+    }
+
+
+    /**
      * Lists all article entities.
      *
      * @Route("/second", name="article_second")

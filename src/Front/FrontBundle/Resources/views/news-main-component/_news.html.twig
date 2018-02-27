@@ -1,7 +1,8 @@
 <section class="section section-md bg-gray-100">
     <div class="container">
         <div class="row row-50">
-            {% include "FrontBundle:news-main-component:_latest-news-carousel.html.twig" %}
+            {{ render(controller('NewsBundle:ArticleComponent:latestNewsCarousel')) }}
+            {#{% include "FrontBundle:news-main-component:_latest-news-carousel.html.twig" %}#}
 
             <!-- Center Block-->
             <div class="col-lg-8">
@@ -13,7 +14,7 @@
             <!-- Aside block -->
             <div class="col-lg-4">
                 <aside class="aside-components">
-                    {% include "FrontBundle:news-main-component:_spotlight-aside.html.twig" %}
+                    {{ render(controller('NewsBundle:ArticleComponent:spotLightAside')) }}
                     {% include "FrontBundle:news-main-component:_latest-game.html.twig" %}
                     {% include "FrontBundle:news-main-component:_award-carousel.html.twig" %}
                     {% include "FrontBundle:news-main-component:_follow-us.html.twig" %}
