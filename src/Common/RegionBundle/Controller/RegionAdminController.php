@@ -55,28 +55,13 @@ class RegionAdminController extends Controller
             $region = RegionDataTransformer::transform($regionData);
             $em->persist($region);
             $em->flush();
+            $this->addFlash('success', 'The region `' . $region->getName() . '` was added successfully');
             return $this->redirectToRoute('admin_region_index', array('id' => $region->getId()));
         }
 
         return $this->render('RegionBundle:Default:add_region.html.twig', array(
             'region' => $region,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a region entity.
-     *
-     * @Route("/{id}", name="admin_region_show")
-     * @Method("GET")
-     */
-    public function showAction(Region $region)
-    {
-        $deleteForm = $this->createDeleteForm($region);
-
-        return $this->render('RegionBundle:region:show.html.twig', array(
-            'region' => $region,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -100,6 +85,7 @@ class RegionAdminController extends Controller
             $region = RegionDataTransformer::transform($regionData, $region);
             $em->persist($region);
             $em->flush();
+            $this->addFlash('success', 'The region `' . $region->getName() . '` was edited successfully');
             return $this->redirectToRoute('admin_region_index');
         }
 
