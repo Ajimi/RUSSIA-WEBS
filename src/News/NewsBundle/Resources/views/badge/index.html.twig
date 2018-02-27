@@ -1,0 +1,89 @@
+{% extends "BackBundle:common:_base.html.twig" %}
+
+{% block stylesheets %}
+    <!-- NProgress -->
+    <link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="{{ asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}"
+          rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}"
+          rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}"
+          rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block title %}News | Badge List{% endblock %}
+
+{% block page_title %}Badge List{% endblock %}
+
+{% block page_content %}
+    <div class="x_panel">
+        <div class="x_title">
+            <div class=" col-sm-2 col-xs-12">
+                <a class="btn btn-success" href="{{ path('admin_badge_new') }}">New Badge</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
+                <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for badge in badges %}
+
+                    <tr>
+                        <td>{{ badge.class }}</td>
+                        <td>
+                            <a href="{{ path('admin_badge_edit',{'id':badge.id}) }}"
+                               class="btn btn-info btn-xs">
+                                <i class="fa fa-pencil"></i> Edit
+                            </a>
+                            <a href="{{ path('admin_badge_delete', {'id' : badge.id}) }}"
+                               id="editBtn"
+                               class="js-delete btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>
+                                Delete </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+    <!-- iCheck -->
+    <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
+    <!-- Datatables -->
+    <script src="{{ asset('assets/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
+    {{ parent() }}
+
+{% endblock javascripts %}
+

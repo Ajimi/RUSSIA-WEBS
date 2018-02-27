@@ -94,7 +94,7 @@ class Article
 
     /**
      * @var Badge
-     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Badge" , inversedBy="article")
+     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Badge" , inversedBy="article", cascade={"persist"})
      */
     private $badge;
 
@@ -289,7 +289,7 @@ class Article
     /**
      * @param File $file
      */
-    public function setFile(File $file)
+    public function setFile($file)
     {
         $this->file = $file;
     }
@@ -305,7 +305,7 @@ class Article
     /**
      * @param Badge $badge
      */
-    public function setBadge(Badge $badge)
+    public function setBadge($badge)
     {
         $this->badge = $badge;
     }
@@ -313,7 +313,7 @@ class Article
     /**
      * @return string
      */
-    public function getBadgeName(): string
+    public function getBadgeName(): ?string
     {
         return $this->badgeName;
     }
@@ -321,7 +321,7 @@ class Article
     /**
      * @param string $badgeName
      */
-    public function setBadgeName(string $badgeName)
+    public function setBadgeName($badgeName)
     {
         $this->badgeName = $badgeName;
     }

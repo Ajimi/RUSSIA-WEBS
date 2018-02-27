@@ -1,0 +1,43 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock stylesheets %}
+{% block title %}    Badge | Edit badge  {% endblock title %}
+
+{% block top_content_header %}
+{% endblock top_content_header %}
+{% block page_content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel ">
+            <div class="x_title">
+                <h3>Edit Badge
+                    <small>Badge {{ badge.title }} !</small>
+                </h3>
+
+                <div class="clearfix"></div>
+            </div>
+            <br/>
+            {{ form_start(form, {'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
+
+
+            {{ form_label(form.class, 'Class*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.class, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@team1 @Required'} }) }}
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <br>
+            <button style="width: 80px;" class="btn btn-success" type="submit">Confirm</button>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
+    </div>
+
+{% endblock %}
