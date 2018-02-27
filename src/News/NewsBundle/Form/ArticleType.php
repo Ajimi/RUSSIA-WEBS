@@ -27,7 +27,12 @@ class ArticleType extends AbstractType
             'attr' => array(
                 'required' => true,
             )
-        ))->add('file', FileType::class)
+        ))->add('file', FileType::class, array(
+            'required' => false,
+            'attr' => array(
+                'required' => false
+            )
+        ))
             ->add('badge', null, array(
                 'required' => false,
                 'placeholder' => 'Choose a badge',

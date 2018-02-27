@@ -40,7 +40,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;
 
@@ -82,7 +82,7 @@ class Article
 
     /**
      * @var string $image
-     * @ORM\Column(name="image", type="string")
+     * @ORM\Column(name="image", type="string", nullable=true)
      */
     private $image;
 
@@ -94,12 +94,13 @@ class Article
 
     /**
      * @var Badge
-     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Badge" , inversedBy="article", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Badge")
      */
     private $badge;
 
     /**
      * @var string $badgeName
+     * @ORM\Column(name="badge_name", type="string", nullable=true)
      */
     private $badgeName;
 

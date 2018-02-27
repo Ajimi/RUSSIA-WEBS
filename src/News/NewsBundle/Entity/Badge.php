@@ -28,11 +28,6 @@ class Badge
      */
     private $class;
 
-    /**
-     * @var Article $article
-     * @ORM\OneToOne(targetEntity="News\NewsBundle\Entity\Article" ,mappedBy="badge")
-     */
-    private $article;
 
     /**
      * Get id.
@@ -44,21 +39,7 @@ class Badge
         return $this->id;
     }
 
-    /**
-     * @return Article
-     */
-    public function getArticle(): Article
-    {
-        return $this->article;
-    }
 
-    /**
-     * @param Article $article
-     */
-    public function setArticle(Article $article)
-    {
-        $this->article = $article;
-    }
 
     public function __toString()
     {
