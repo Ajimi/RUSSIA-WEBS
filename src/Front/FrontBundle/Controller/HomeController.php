@@ -27,10 +27,8 @@ class HomeController extends Controller
         $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name'=>'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($g);
 
-
         // replace this example code with whatever you need
-        return $this->render('FrontBundle:main:main.html.twig', ['standings' => $standings
-        ]);
+        return $this->render('FrontBundle:main:main.html.twig', ['standings' => $standings]);
     }
 
 }
