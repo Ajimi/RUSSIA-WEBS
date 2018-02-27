@@ -30,8 +30,12 @@ class ApiParserHandler
     }
 
     /**
+     * Create a region from city name
+     *
      * @param string $name
      * @return Region|null
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function createRegion(string $name): ?Region
     {
@@ -46,7 +50,7 @@ class ApiParserHandler
 
         $region = new Region();
 
-        // TODO ; ADD LOCATION & ADD Address
+        // Completed ; ADD LOCATION & ADD Address
         $region->setName($name);
         $this->manager->persist($region);
         $this->manager->flush();
@@ -67,6 +71,8 @@ class ApiParserHandler
      * @param array $placeItem
      * @param Region $region
      * @return Place
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function createPlace($placeItem, Region $region): Place
     {
@@ -87,6 +93,7 @@ class ApiParserHandler
         }
 
 
+        // Add a category for place
         $place->setCategory($category);
 
         $this->manager->persist($place);

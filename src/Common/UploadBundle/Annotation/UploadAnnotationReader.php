@@ -38,6 +38,7 @@ class UploadAnnotationReader
      *
      * @param $entity
      * @return array
+     * @throws \ReflectionException
      */
     public function getUploadableFields($entity): array
     {

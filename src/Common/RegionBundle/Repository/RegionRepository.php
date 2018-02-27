@@ -10,4 +10,17 @@ namespace Common\RegionBundle\Repository;
  */
 class RegionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBuilder()
+    {
+        return $this->createQueryBuilder("r");
+    }
+
+    public function findByName($name)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

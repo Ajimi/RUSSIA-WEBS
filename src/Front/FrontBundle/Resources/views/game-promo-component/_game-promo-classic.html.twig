@@ -2,10 +2,11 @@
     <div class="promo-meta promo-classic-meta">
         <p class="promo-title heading-3">{% block heading %}Russia World Cup{% endblock %}</p>
         <div class="divider-middle divider-secondary"></div>
-        <time class="promo-time" datetime="2017-04-14">{% block time %}Saturday, April 14, 2017{% endblock %}</time>
+        <time class="promo-time" datetime="{{ date|date("Y-m-d") }}">{{ date|date("l, F j, Y") }}</time>
     </div>
     <div class="promo-classic-countdown">
-        <div class="countdown countdown-classic countdown-classic-sm" data-type="until" data-time="31 Dec 2018 16:00"
+        <div class="countdown countdown-classic countdown-classic-sm" data-type="until"
+             data-time="{{ match.date|date("j M Y h:i") }}"
              data-format="dhms" data-style="short"></div>
     </div>
     <div class="promo-main promo-classic-main">

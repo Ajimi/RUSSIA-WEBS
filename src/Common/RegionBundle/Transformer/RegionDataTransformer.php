@@ -15,11 +15,17 @@ use Common\LocationBundle\Entity\Location;
 use Common\RegionBundle\Entity\Region;
 use Common\RegionBundle\Modal\RegionData;
 
+/**
+ * Transforms A RegionData Model to a Region Entity or vice versa
+ *
+ * Class RegionDataTransformer
+ * @package Common\RegionBundle\Transformer
+ */
 class RegionDataTransformer
 {
     /**
      * @param RegionData $regionData
-     * @param null $region
+     * @param Region $region
      * @return Region|null
      */
     public static function transform(RegionData $regionData, Region $region = null)

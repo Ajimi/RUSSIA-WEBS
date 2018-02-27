@@ -97,7 +97,7 @@ class CheckoutController extends Controller
             $stripeClient->createInvoiceItem(
                 $product->getTicket()->getPrice() * 100,
                 $user,
-                $product->getTeam1()->getName() . ' vs ' . $product->getTeam2()->getName()
+                $product->getTeam1()->getTeamName() . ' vs ' . $product->getTeam2()->getTeamName()
             );
         }
         $stripeClient->createInvoice($user, true);

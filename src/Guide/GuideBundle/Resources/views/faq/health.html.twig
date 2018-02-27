@@ -1,0 +1,339 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+
+{% block title %}Guide | Health Care{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Health Care' } %}
+        {% block image %}{{ asset('assets/images/guide/health.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Health Care</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#emergency">
+                    Emergency services and medical care</a></li>
+            <li><a href="#medicine">Buying medicine</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="emergency" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Currency exchange</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Calling an ambulance{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/6ec/1.jpg?1480880178114846"
+                                 alt="Calling an ambulance"
+                                 title="Calling an ambulance">
+                        </figure>
+
+                        <p>
+                            To call a public ambulance, dial 103 from any mobile phone, 03 from any landline, or 112 for
+                            emergency
+                            services. Emergency phone calls from mobile phones are available even if you are out of
+                            service, ran out of
+                            minutes or have the SIM card blocked.
+                        </p>
+                        <p>
+                            You can also call a commercial ambulance or emergency services, the numbers for which can be
+                            found online.
+                            However, if you call a commercial ambulance yourself before getting in touch with your
+                            insurance, you will
+                            have to pay for its services out-of-pocket, in cash.
+                        </p>
+                        <p>
+                            Cellphone using MTS and Megafon carriers can call an ambulance by dialing 030.<br>
+                        </p>
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Ambulances and emergency services{% endblock %}
+                    {% block faq_content %}
+
+
+                        The difference between an ambulance and emergency services is that the former is called when the patient requires immediate hospitalization, while the latter takes care of non-life-threatening illnesses and trauma in cases where emergency aid can be administered by a doctor on the spot. There are specialized “ambulances” available: cardiological, pediatric, etc. The ambulance doctor will determine the need for hospitalization. A public ambulance will usually take the patient to a hospital that specializes in his/her particular condition. A commercial ambulance will suggest a number of hospitals to choose from – private clinics or public ones that provide services on a fee-paying basis.
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Hospitalization{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/0e1/1.jpg?1480880287129884"
+                                 alt="Hospitalization"
+                                 title="Hospitalization">
+                        </figure>
+
+                        Hospitalization and out-patient care are always included in medical insurance. If you (or someone helping you) have called a public ambulance, you must still contact your insurance company. Only they can tell you which hospital you should go to for further treatment. Many insurance policies allow you to be transported back home for medical care.
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="medicine" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Buying medicine</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Where to buy medicine{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/ab7/1.jpg?148088033643932"
+                                 alt="Where to buy medicine"
+                                 title="Where to buy medicine">
+                        </figure>
+
+                        <p>
+                            In contrast to vitamins and food supplements, which can be bought in regular convenience
+                            stores,
+                            pharmaceuticals can only be bought in apothecary establishments (pharmacies). There are
+                            several
+                            large drug
+                            store companies that operate in Russia, and their stores can be found in practically every
+                            town.
+                            These
+                            pharmacies are not separated by price range, and carry a broad spectrum of pharmaceutical
+                            products
+                            that are
+                            designed to be affordable to buyers of any income level.
+                        </p>
+                        <p>
+                            There are also chains of municipal and societal pharmacies, which are owned by the local
+                            authorities
+                            and
+                            where prices for every pharmaceutical are kept at the lowest possible amount. Such
+                            pharmacies are
+                            often
+                            unbranded, and operate simply under an “Apteka” (Аптека) sign.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to find a pharmacy{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/9f1/1.jpg?148088112268815"
+                                 alt="How to find a pharmacy"
+                                 title="How to find a pharmacy">
+                        </figure>
+
+                        <p>
+                            Every pharmacy usually has a green cross sign, situated above the entrance or next to the
+                            store's
+                            sign.
+                            Usual working hours for a pharmacy vary, but the standard range is from 8 a.m. to 10 p.m.
+                        </p>
+                        <p>
+                            The workday of some municipal pharmaceutical institutions includes a lunch break, which
+                            usually
+                            lasts up to
+                            an hour and is between 1pm to 2 p.m., or from 2 p.m. to 3 p.m.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Pharmacies open 24/7{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In every town there are several pharmacies on duty, where you can purchase pharmaceuticals
+                            at any
+                            time of
+                            day. Not all of these on-duty pharmacies operate as regular stores with a counter. In most
+                            cases,
+                            you might
+                            have to use a calling button, located near the door or a special window, through which the
+                            pharmaceuticals
+                            will be passed to you by the clerk. To find the 24/7 pharmacies in your area, please consult
+                            the
+                            internet,
+                            the registry of the hotel where you are staying, or locals living in your area. Directions
+                            to the
+                            nearest
+                            24/7 pharmacy can be found on the doors of regular pharmacies. A bright sign saying “24
+                            часа” is
+                            often seen
+                            on 24/7 pharmacies.
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Prescription drugs{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/e25/1.jpg?1480881079169232"
+                                 alt="Prescription drugs"
+                                 title="Prescription drugs">
+                        </figure>
+
+                        <p>
+                            In order to purchase a fitting pharmaceutical, you must know the main active substance of
+                            the drug,
+                            mainly
+                            because medicines can be sold under different names in Russia than in your home country. As
+                            a rule,
+                            pharmacies are equipped with the Vidal (Видаль) catalogue. With the help of this catalogue,
+                            and the
+                            name of
+                            the active substance in the medicine that you require, the pharmacist will help you select
+                            the right
+                            pharmaceutical product.
+                        </p>
+                        <p>
+                            Before coming to Russia make sure to find out if you need any particular documents to
+                            purchase
+                            required
+                            medicine
+                        </p>
+                        <p>
+                            The list of medicines that can be bought prescription-free in Russia is more extensive
+                            relative to
+                            most
+                            other countries. It is best, though, before your trip to Russia to find out if you will
+                            require
+                            special
+                            documents for the purchase of the required pharmaceutical.This can be done on the official
+                            <a
+                                    href="http://www.rosminzdrav.ru/" target="_blank">website</a> of the Ministry of
+                            Health of
+                            the
+                            Russian Federation, the category Useful Information (“Полезная информация”) and the
+                            subcategory <a
+                                    href="http://www.grls.rosminzdrav.ru/grls.aspx" target="_blank"> "State Registry of
+                                Pharmaceuticals"</a> (“Государственный реестр лекарственных средств”).<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Medicine without prescription{% endblock %}
+                    {% block faq_content %}
+
+
+                        Unlike many other countries of the world, anti-inflammatory, non-steroidal pharmaceuticals, and a number
+                        of anti-fungal medicines can be sold over the counter without prescription in Russia. Persons suffering
+                        from arterial hypertension (high blood pressure), as the medicine required to treat this will not be
+                        sold in Russia without prescription. A number of pharmaceuticals produced in Russia can be bought over
+                        the counter, prescription-free and can be taken to ease the symptoms until the main treatment is
+                        provided by your regular drugs.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Receiving a prescription{% endblock %}
+                    {% block faq_content %}
+
+
+                        In certain cases foreign citizens will require pharmaceuticals that are sold only with a prescription in Russia. In this case the foreign citizen must contact a medical organization, a private or a commercial clinic, where the prescription, or another document, from a foreign clinic will confirm the need of the specific pharmaceutical.
+                        <br>
+                        <br>
+                        Persons suffering from diabetes can provide the special bracelet given to diabetics. In any case, the prescription will only be provided by the medical centre or clinic after a mandatory medical examination. During this examination you can ask the medical staff performing the tests for the pharmaceutical you prefer.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Bringing medicine to Russia{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Foreign citizens can bring medicine (even the kind not registered in Russia) for personal
+                            use with
+                            no limits
+                            as long as they do not contain narcotic or psychoactive substances. If your medicine
+                            contains highly
+                            potent,
+                            narcotic or poisonous substances, but you wish to bring it, you will need to provide a
+                            notarized
+                            recipe or
+                            medical records proving the requirement, along with a notarized translation to Russian.
+                            These items
+                            need to
+                            be declared at customs.
+                        </p>
+                        <p>
+                            You can leave the country with all kinds of medicine (except narcotics), dietary supplement
+                            and
+                            herbs –
+                            these items have no restrictions.
+                        </p>
+                        <p>
+                            <!-- <a href="http://base.garant.ru/12112176/" target="_blank">A list of narcotic and psychoactive substances</a>-->
+                        </p>
+                        <a href="http://base.garant.ru/12174909/9/#friends" target="_blank">Legislation on bringing
+                            medicine to
+                            or
+                            leaving with it from the country</a> <br>
+                        <br>
+
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Insulin{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Persons suffering from diabetes must be especially prepared as insulin is not sold in all
+                            pharmacies. It is
+                            best to find out in advance if it can be purchased at the desired pharmacy. Also the dosage
+                            of
+                            insulin in a
+                            package in Russia can differ from the doses that you are used to buying in other countries.
+                            Insulin
+                            is
+                            manufactured in different concentrations; one milliliter of the product can contain
+                            different
+                            amounts of the
+                            active substance: 40, 80, 100 and 500 units/ml. The most popular concentration sold in
+                            Russia is 40
+                            u/ml,
+                            unlike in Europe or the USA where 100 u/ml is more popular. High-concentrations of insulin
+                            are
+                            rarely sold
+                            in Russian pharmacies; these concentrations are exceptions to the rule. Pennfill insulin
+                            cartridges,
+                            which
+                            are used in insulin pens, are sold in Europe and Russia at the concentration of 100 u/ml
+                            that is
+                            more than
+                            double the concentration of the insulin sold in vials.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

@@ -7,6 +7,14 @@ use Common\RegionBundle\Handler\ApiParserHandler;
 use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
 
+/**
+ * Singleton Pattern
+ *
+ * Provide an @ApiParserHandler to change data from json to a DB Schema (Doctrine)
+ *
+ * Class PlaceParser
+ * @package Common\RegionBundle\Parser
+ */
 class PlaceParser
 {
     const API_URL = 'http://welcome2018.com/api/v1/';
@@ -37,6 +45,8 @@ class PlaceParser
 
 
     /**
+     * Create a singleton PlaceParser
+     *
      * @param EntityManager $manager
      * @return PlaceParser
      */
@@ -52,20 +62,27 @@ class PlaceParser
 
 
     /**
+     *
+     *
      * @param $id
      * @param String $city
      */
     public function createPlaces($id, String $city)
     {
         $response = $this->client->request('GET', '/api/v1/place_city', ['query' => ['lang' => "en", 'city' => $id]]);
-        /** @var Region $region */
 
+        /** @var Region $region */
         $region = $this->handler->createRegion($city);
 
+        // decode response of request
         $jsonArray = json_decode($response->getBody()->getContents(), true);
 
-        foreach ($jsonArray['data'] as $item) {
-            $this->handler->createPlace($item, $region);
+
+        // Sanity check
+        if (array_key_exists('data', $jsonArray)) {
+            foreach ($jsonArray['data'] as $item) {
+                $this->handler->createPlace($item, $region);
+            }
         }
 
     }
@@ -81,7 +98,7 @@ class PlaceParser
     /**
      * @param ApiParserHandler $handler
      */
-    public function setHandler($handler)
+    public function setHandler(ApiParserHandler $handler)
     {
         $this->handler = $handler;
     }

@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class TicketHomeController extends Controller
 {
+    /**
+     * @return Response
+     */
     public function HomeTicketShowAction()
     {
         $em = $this->getDoctrine()->getManager();

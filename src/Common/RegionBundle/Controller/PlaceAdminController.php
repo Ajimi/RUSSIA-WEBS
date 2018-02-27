@@ -3,7 +3,10 @@
 namespace Common\RegionBundle\Controller;
 
 use Common\RegionBundle\Entity\Place;
+use Common\RegionBundle\Form\PlaceDataType;
 use Common\RegionBundle\Form\PlaceType;
+use Common\RegionBundle\Modal\PlaceData;
+use Common\RegionBundle\Transformer\PlaceDataTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -63,7 +66,6 @@ class PlaceAdminController extends Controller
             'places' => $placesPagination,
             'regions' => $regions,
             'region' => $region
-        ,
         ));
     }
 
@@ -76,17 +78,24 @@ class PlaceAdminController extends Controller
      */
     public function newAction(Request $request)
     {
-        $place = new Place();
-        $form = $this->createForm(PlaceType::class, $place);
+        $placeData = new PlaceData();
+        $form = $this->createForm(PlaceDataType::class, $placeData);
         $form->handleRequest($request);
 
+        /** @var Place $place */
+        $place = new Place();
+        $place->setName($placeData->getName());
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $place = PlaceDataTransformer::transform($placeData);
             $em->persist($place);
             $em->flush();
 
-            return $this->redirectToRoute('admin_place_show', array('id' => $place->getId()));
+            $this->addFlash('success', 'Place `' . $place->getName() . '` was added successfully');
+            return $this->redirectToRoute('admin_place_index');
         }
+
 
         return $this->render('RegionBundle:place:new.html.twig', array(
             'place' => $place,
@@ -95,18 +104,17 @@ class PlaceAdminController extends Controller
     }
 
     /**
-     * Finds and displays a place entity.
+     * Deletes a place entity.
      *
-     * @Route("/{id}", name="admin_place_show")
-     * @Method("GET")
+     * @Route("/delete/{id}", name="admin_place_delete")
      */
-    public function showAction(Place $place)
+    public function deleteAction(Place $place)
     {
-
-
-        return $this->render('RegionBundle:place:show.html.twig', array(
-            'place' => $place,
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($place);
+        $em->flush();
+        $this->addFlash('success', 'Place `' . $place->getName() . '` was deleted successfully');
+        return $this->redirectToRoute('admin_place_index');
     }
 
 
@@ -118,31 +126,27 @@ class PlaceAdminController extends Controller
      */
     public function editAction(Request $request, Place $place)
     {
-        $editForm = $this->createForm('Common\RegionBundle\Form\PlaceType', $place);
+        $placeData = PlaceDataTransformer::reverseTransform($place);
+        $editForm = $this->createForm(PlaceDataType::class, $placeData);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
 
-            return $this->redirectToRoute('admin_place_edit', array('id' => $place->getId()));
+            $place = PlaceDataTransformer::transform($placeData, $place);
+            $em->persist($place);
+            $em->flush();
+
+            $this->addFlash('success', 'Place `' . $place->getName() . '` was edited successfully');
+            return $this->redirectToRoute('admin_place_index');
         }
 
         return $this->render('RegionBundle:place:edit.html.twig', array(
-            'place' => $place,
-            'edit_form' => $editForm->createView(),
+            'id' => $place->getId(),
+            'place' => $placeData,
+            'form' => $editForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a place entity.
-     *
-     * @Route("/{id}/delete", name="admin_place_delete")
-     */
-    public function deleteAction(Request $request, Place $place)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($place);
 
-        return $this->redirectToRoute('admin_place_index');
-    }
 }

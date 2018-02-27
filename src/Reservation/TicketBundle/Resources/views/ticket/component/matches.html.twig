@@ -38,25 +38,23 @@
 
                 <div class="col-lg-4">
                     {% if match.id in matchesId|keys %}
-                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART'} %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'button': 'GO TO CART' , 'date' : match.date } %}
                             {% block team1 %}{{ match.team1.teamName|slice(15) }}{% endblock %}
                             {% block team2 %}{{ match.team2.teamName|slice(15) }}{% endblock %}
                             {% block team_shortcut1 %}{{ match.team1.teamShortcut }}{% endblock %}
                             {% block team_shortcut2 %}{{ match.team2.teamShortcut }}{% endblock %}
                             {% block team_image1 %}{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}{% endblock %}
                             {% block team_image2 %}{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}{% endblock %}
-                            {% block time %}{{ match.date }}{% endblock %}
                         {% endembed %}
 
                     {% else %}
-                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match   } %}
+                        {% embed '@Front/game-promo-component/_game-promo-classic.html.twig' with {"match": match, 'date' : match.date } %}
                             {% block team1 %}{{ match.team1.teamName|truncate(15) }}{% endblock %}
                             {% block team2 %}{{ match.team2.teamName|slice(15) }}{% endblock %}
                             {% block team_shortcut1 %}{{ match.team1.teamShortcut }}{% endblock %}
                             {% block team_shortcut2 %}{{ match.team2.teamShortcut }}{% endblock %}
                             {% block team_image1 %}{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}{% endblock %}
                             {% block team_image2 %}{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}{% endblock %}
-                            {% block time %}{{ match.date }}{% endblock %}
                         {% endembed %}
                     {% endif %}
 

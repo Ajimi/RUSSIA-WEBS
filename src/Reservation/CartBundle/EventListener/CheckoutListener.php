@@ -44,6 +44,7 @@ class CheckoutListener
     {
         $currentRoute = $event->getRequest()->attributes->get('_route');
 
+        /** Check if user is logged */
         if ($this->isUserLogged() && $event->isMasterRequest()) {
             if ($this->isAuthenticatedUserOnAnonymousPage($currentRoute)) {
                 $this->redirectTo($event);
@@ -51,6 +52,10 @@ class CheckoutListener
         }
 
 
+        /** if the route is checkout than it will
+         *  check if it contains ticket/product in the cart if not it will redirect
+         *  if the user is not logged in it zill redirect
+         */
         if ($currentRoute === 'checkout_index') {
             if ($this->session->has('cart')) {
                 $cart = $this->session->get('cart');

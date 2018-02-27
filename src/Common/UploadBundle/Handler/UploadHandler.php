@@ -78,6 +78,7 @@ class UploadHandler
      * @param $entity
      * @param $property
      * @param $annotation
+     * @throws \TypeError
      */
     public function setFileFromFilename($entity, $property, $annotation)
     {

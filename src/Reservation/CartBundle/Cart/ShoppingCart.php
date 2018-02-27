@@ -6,6 +6,10 @@ use Match\MatchBundle\Entity\Match as Product;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * Class ShoppingCart
+ * @package Reservation\CartBundle\Cart
+ */
 class ShoppingCart
 {
     const CART_PRODUCTS_KEY = 'cart';
@@ -15,12 +19,20 @@ class ShoppingCart
 
     private $products;
 
+    /**
+     * ShoppingCart constructor.
+     * @param Session $session
+     * @param EntityManager $em
+     */
     public function __construct(Session $session, EntityManager $em)
     {
         $this->session = $session;
         $this->em = $em;
     }
 
+    /**
+     * @param Product $product
+     */
     public function addProduct(Product $product)
     {
         $products = $this->getProducts();
@@ -64,6 +76,9 @@ class ShoppingCart
         $this->session->set(self::CART_PRODUCTS_KEY, $ids);
     }
 
+    /**
+     * @return int|string
+     */
     public function getTotal()
     {
         $total = 0;

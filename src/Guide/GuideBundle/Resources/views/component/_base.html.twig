@@ -1,0 +1,26 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+    {% block breadcrumb %}
+    {% endblock %}
+    <section class="section section-md bg-gray-100">
+
+
+        <div class="content">
+            {% block page_content %}
+            {% endblock %}
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/jquery.mobile.custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/mains.js') }}"></script>
+{% endblock %}

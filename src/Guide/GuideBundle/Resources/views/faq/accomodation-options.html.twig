@@ -1,0 +1,130 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+
+{% block title %}Guide | Accommodations Options{% endblock %}
+
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Accommodations Options' } %}
+        {% block image %}{{ asset('assets/images/guide/options.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Accommodations Options</a></li>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#types">Types of accommodation</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="types" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Types of accommodation</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Hotels{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Most or all of the major international hotel chains operate in Russia: Radisson, Hilton,
+                            Accor Group,
+                            Marriott,
+                            Sheraton, Kempinski, and others. No matter where the hotel is, it is guaranteed to meet the
+                            chain’s high
+                            standards.
+                        </p>
+                        <p>
+                            Russian hotels are rigorously categorized by law (Russian Ministry of Culture Order No. 1215
+                            of 11 July
+                            2014).
+                            Every hotel has to fit one of the categories, from “no stars” to five stars. &nbsp;
+                        </p>
+                        <p>
+                            In a three-star hotel, the guests can count on a full ensuite bathroom, TV, phone and
+                            standard furnishings
+                            in
+                            their room, plus a café and bar in the hotel. &nbsp;
+                        </p>
+                        <p>
+                            In addition to the above, a four-star hotel will typically offer climate control, a
+                            safe-box, a
+                            refrigerator,
+                            room service, an in-house gym, daily change of bed sheets, and a 24-hour restaurant and bar.
+                            A room in a
+                            five-star hotel is expected to have a roomy bathroom with complimentary toiletries, an
+                            upscale restaurant in
+                            the
+                            hotel, and an in-house health centre.
+                        </p>
+                        There is hardly a hotel in Russia without Wi-Fi, and it’s free in most hotels. <br>
+                        <br>
+                        We suggest to look at hotels recommended by&nbsp;FIFA.com, following the link:<br>
+                        <a href="http://hotels.fifa.com/">http://hotels.fifa.com/</a><br>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Mini Hotels{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Every major Russian city has plenty of mini hotels. It is usually either a remodelled
+                            apartment, or a
+                            standalone small building with a few hotel rooms, fitted with all the basic conveniences.
+                            Mini hotels
+                            typically gravitate to the historical city centre and the neighbourhoods with the major
+                            landmarks. &nbsp;
+                        </p>
+                        <p>
+                            It is important to remember that mini hotels located in residential buildings or
+                            neighbourhoods do not
+                            usually offer any parking, and it may be difficult to find parking in the downtown. The
+                            rooms in a mini
+                            hotel converted from one or several residential apartments may not have very good
+                            sound-proofing. &nbsp;
+                        </p>
+                        There are mini hotels in every price category: from economy-class to boutique hotels, where the rates are close to those charged by five-star hotels.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Hostels{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Hostels are the most budget-conscious accommodation option. The number of hostels and the
+                            quality of hostel
+                            services greatly differ from town to town. It is advisable to read visitors’ feedback online
+                            before making
+                            your reservation. &nbsp;&nbsp;
+                        </p>
+                        <p>
+                            Hostels typically have separate rooms for males and females, and mixed rooms. Multi-berth
+                            rooms are the most
+                            affordably priced option. The bed in such a room is usually equipped with curtains, a small
+                            cabinet and
+                            personal power outlet. Some hostels also offer single and double rooms with shared restroom
+                            and showers on
+                            the floor. &nbsp;
+                        </p>
+                        Most Russian hostels offer a fully equipped kitchen with complimentary water, tea and coffee, a shared restroom and shower, a communal living room with TV, party games and video games, a personal lockable safe-box or cabinet, and a washing machine. However, it is advisable to read the list of services case by case before making your reservation.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Apartments{% endblock %}
+                    {% block faq_content %}
+
+                        When travelling as a family or a large group, it is probably a good idea to rent an apartment large enough for everyone. You get your own kitchen and you get to see the town as the locals see it. Short-term apartment rental is a thriving business in the major cities. When this is your accommodation option of choice, it is safer to deal not with private individuals, but with agencies, which usually manage a lot of apartments. Make your reservation on a reputable aggregator site, and carefully read the feedback offered by the people who used the agency before.
+
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

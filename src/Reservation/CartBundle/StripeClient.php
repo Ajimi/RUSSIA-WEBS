@@ -49,6 +49,7 @@ class StripeClient
      * @param $amount
      * @param User $user
      * @param $description
+     * @return \Stripe\ApiOperations\ApiResource
      */
     public function createInvoiceItem($amount, User $user, $description)
     {

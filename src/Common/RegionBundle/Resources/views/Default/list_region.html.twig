@@ -1,18 +1,51 @@
 {% extends 'BackBundle:common:_base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    <!-- bootstrap-daterangepicker -->
-    <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
-    <!-- TimePicker -->
+
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/typeahead.css') }}" rel="stylesheet">
+    <style>
+        #custom-templates .empty-message {
+            padding: 5px 10px;
+            text-align: center;
+        }
+    </style>
 
 
 {% endblock stylesheets %}
 
 {% block title %}Region List{% endblock %}
 
-{% block page_title %}Region List{% endblock page_title %}
+{% block top_content_header %}
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{% block page_title %}Region list{% endblock page_title %}</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="form-group">
+
+                    <input {% block id %}id="custom-templates" {% endblock id %}name="search" type="text"
+                           class="form-control js-data typeahead" placeholder="Search for...">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock top_content_header %}
+
+
 {% block page_content %}
 
+    {% if app.session.flashBag.has('success') %}
+        {% for msg in app.session.flashBag.get('success') %}
+            <input class="js-input-session" type="text" value="{{ msg }}" data-action="true" hidden>
+        {% endfor %}
+    {% else %}
+        <input class="js-input-session" type="text" hidden>
+    {% endif %}
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -27,7 +60,7 @@
 
             <div class="x_content" id="tableDiv">
 
-                <table class="table table-striped jambo_table bulk_action" id="table">
+                <table class="table table-striped jambo_table bulk_action js-table" id="table">
                     <thead>
                     <tr class="headings">
                         <th class="column-title">Country</th>
@@ -105,8 +138,26 @@
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('assets/js/axios.min.js') }}"></script>
 
+    <!-- PNotify -->
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('assets/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead.js') }}"></script>
+
+
     <script>
         $(document).ready(function () {
+            $input = $('.js-input-session');
+            $data = $input.attr('data-action');
+            console.log($data);
+            if ($data) {
+                console.log("hello");
+                new PNotify({
+                    title: $input.val(),
+                    type: 'info',
+                    styling: 'bootstrap3'
+                });
+            }
             $('.js-delete').on('click', function (ev) {
                 ev.preventDefault();
                 ev.stopPropagation();
@@ -115,10 +166,74 @@
                 axios.get(Routing.generate('admin_region_delete', {'id': $id})).then(function (response) {
                     console.log('Deleted');
                     $item.closest('tr').remove();
+                    new PNotify({
+                        title: 'Region deleted successfully.',
+                        text: 'The delete works fine!',
+                        type: 'success',
+                        styling: 'bootstrap3'
+                    });
                 }).catch(function () {
 
                 });
             });
+
+
+            var substringMatcher = function (strs) {
+                return function findMatches(q, cb) {
+                    var matches, substringRegex;
+
+                    // an array that will be populated with substring matches
+                    matches = [];
+
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function (i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            var regions;
+            axios.get('{{ path('search_region_ajax') }}')
+                .then(function (response) {
+                    console.log(response);
+                    regions = response["data"];
+                    $('.typeahead').typeahead({
+                            hint: true,
+                            highlight: true,
+                            minLength: 1
+                        },
+                        {
+                            name: 'regions',
+                            source: substringMatcher(regions)
+                            // templates: {
+                            //     empty: [
+                            //         '<div class="empty-message">',
+                            //         'unable to find any Best Picture winners that match the current query',
+                            //         '</div>'
+                            //     ].join('\n')
+                            // }
+                        });
+                });
+
+            $('.js-data').on('keyup', function (event) {
+                $value = $(this).val();
+                console.log($value);
+                axios.get(Routing.generate('search_region_ajax_name', {'name': $value}))
+                    .then(function (response) {
+                        $('.js-table').html(response['data']);
+                    }).catch(function (reason) {
+
+                });
+            });
+
         })
     </script>
 {% endblock javascripts %}

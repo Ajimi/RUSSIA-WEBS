@@ -39,12 +39,20 @@
 {% endblock %}
 {% block body %}
 
-    {#TODO : Complete This page#}
+    {#Completed : Complete This page#}
+
+
+    {% if region.file is null %}
+        {% set picture = "" %}
+    {% else %}
+        {% set picture = "/uploads/region/" ~ asset(region.file.filename) %}
+    {% endif %}
 
 
     <!-- Section Breadcrumbs-->
     {% set city =  (region.name ~ ' CITY') %}
-    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : city } %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : city } %}
+        {% block image %}{{ asset(picture) }}{% endblock %}
         {% block breadcrumbs_path %}
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>

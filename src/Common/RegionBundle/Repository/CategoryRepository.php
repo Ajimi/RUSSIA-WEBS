@@ -10,4 +10,10 @@ namespace Common\RegionBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getBuilder()
+    {
+        return $this->createQueryBuilder("c");
+    }
+
 }

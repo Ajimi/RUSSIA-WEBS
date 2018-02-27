@@ -69,13 +69,13 @@ class Place
 
     /**
      * @var string
-     * @ORM\Column(name="phone", type="string")
+     * @ORM\Column(name="phone", type="string", nullable=true)
      */
     private $phone;
 
     /**
      * @var string
-     * @ORM\Column(name="site_url", type="string")
+     * @ORM\Column(name="site_url", type="string", nullable=true)
      */
     private $siteUrl;
 
@@ -210,7 +210,7 @@ class Place
     /**
      * @param string $previewText
      */
-    public function setPreviewText(string $previewText)
+    public function setPreviewText($previewText)
     {
         $this->previewText = $previewText;
     }
@@ -226,7 +226,7 @@ class Place
     /**
      * @param string $previewPicture
      */
-    public function setPreviewPicture(string $previewPicture)
+    public function setPreviewPicture($previewPicture)
     {
         $this->previewPicture = $previewPicture;
     }
@@ -242,7 +242,7 @@ class Place
     /**
      * @param string $workingTime
      */
-    public function setWorkingTime(string $workingTime)
+    public function setWorkingTime($workingTime)
     {
         $this->workingTime = $workingTime;
     }
@@ -258,7 +258,7 @@ class Place
     /**
      * @param string $phone
      */
-    public function setPhone(string $phone)
+    public function setPhone($phone)
     {
         $this->phone = $phone;
     }
@@ -274,7 +274,7 @@ class Place
     /**
      * @param string $siteUrl
      */
-    public function setSiteUrl(string $siteUrl)
+    public function setSiteUrl($siteUrl)
     {
         $this->siteUrl = $siteUrl;
     }
@@ -380,6 +380,10 @@ class Place
 
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 }
 
