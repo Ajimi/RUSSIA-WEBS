@@ -27,12 +27,13 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-
 
 
             /*
@@ -55,7 +56,6 @@ class AppKernel extends Kernel
             new Common\UploadBundle\UploadBundle(),
             new Common\BookingBundle\BookingBundle(),
             new Reservation\CartBundle\CartBundle(),
-            new News\NewsBundle\NewsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
