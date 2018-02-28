@@ -1,9 +1,14 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
 
+{% block title %}Results{% endblock %}
 {% block body %}
-
-
-    {% include '@Match/Breadcrumbs/breadcrumbs_results.html.twig' %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Game Results'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Competition</a></li>
+            <li class="active">Game Results</li>
+        {% endblock %}
+    {% endembed %}
 
 
     {% if scores.getTotalItemCount == 0 %}
