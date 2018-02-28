@@ -90,8 +90,8 @@
                                     <a href="{{ path('admin_place_index' , {'region' : region.id}) }}"
                                        id="editBtn"
                                        data-url="{{ region.id }}"
-                                       class="btn btn-danger btn-xs">
-                                        <i class="fa fa-trash-o"></i>
+                                       class="btn btn-primary btn-xs">
+                                        <i class="fa fa-hand-o-left"></i>
                                         Places </a>
                                     <a href="{{ path('admin_region_edit',{'id':region.id}) }}"
                                        class="btn btn-info btn-xs">
@@ -162,6 +162,7 @@
                 ev.preventDefault();
                 ev.stopPropagation();
                 $item = $(this);
+                console.log('d');
                 $id = $item.attr('data-url');
                 axios.get(Routing.generate('admin_region_delete', {'id': $id})).then(function (response) {
                     console.log('Deleted');
