@@ -126,7 +126,3 @@ knp_snappy:
 
 
     #process_timeout: 20 # In seconds
-
-
-
-            timestampable:    true
