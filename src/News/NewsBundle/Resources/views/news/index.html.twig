@@ -19,6 +19,7 @@
                                     {% for article in articles %}
                                         {% set title = article.title %}
                                         {% set content = article.content|striptags %}
+                                        {{ socialButtons() }}
                                         {% set badge = "THE LEAGUE" %}
                                         {% if loop.index % 2 == 0 %}
                                             {% embed '@Front/post-component/_post-corporate.html.twig' with {'article' : article} %}
@@ -36,8 +37,10 @@
                                             {% endembed %}
                                         {% endif %}
                                     {% endfor %}
+                                    {{ socialButtons() }}
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     {{ knp_pagination_render(articles) }}
