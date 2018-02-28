@@ -1,0 +1,40 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+
+{% block body %}
+    <h1>Comment</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ comment.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ comment.content }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if comment.created %}{{ comment.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if comment.updated %}{{ comment.updated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('comment_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

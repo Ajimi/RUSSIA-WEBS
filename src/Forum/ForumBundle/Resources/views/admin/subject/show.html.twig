@@ -1,0 +1,42 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block page_title %}Forum Subject{% endblock page_title %}
+{% block page_content %}
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>{{ subject.title }}
+            <small>
+                {{ subject.auther.username }}
+            </small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a href="{{ path('admin_subject_edit', { 'id': subject.id }) }}"><i class="fa fa-wrench"></i></a>
+                </li>
+                <li>
+                    <a class="close-link" href="{{ path('admin_subject_index') }}"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <div class="col-md-8 col-lg-8 col-sm-7">
+
+                <!-- blockquote -->
+                <blockquote>
+                <tr>
+                    <td><img src="{{ asset(''~ subject.file) }}" alt="" width="250" height="234"/></td>
+                    <td>{{ subject.videoUrl }}</td>
+                </tr>
+                </blockquote>
+                <blockquote><p>{{ subject.content }}</p></blockquote>
+                {% if subject.etat == 'Waiting' or subject.etat == 'Refuse' %}
+                <div class="form-group">
+                    <br>
+                    <a href="{{ path('accept_subject', {'id': subject.id }) }}"><button style="width: 80px;" class="btn btn-success" type="submit">Accept</button></a>
+                      <a href="{{ path('refuse_subject', {'id': subject.id }) }}"><button style="width: 80px;" class="btn btn-success" type="submit">Refuse</button></a>
+                 </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

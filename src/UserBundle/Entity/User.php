@@ -151,31 +151,7 @@ class User extends BaseUser
      */
     public function getFirstname()
     {
-        return $this->firstname;
-    }
-
-    /**
-     * @param mixed $firstname
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * @param mixed $lastname
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
+        return $this->username;
     }
 
     /**
@@ -321,4 +297,8 @@ class User extends BaseUser
         $this->hasImage = $hasImage;
     }
 
+    public function __toString()
+    {
+        return $this->username;
+    }
 }

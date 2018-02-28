@@ -195,7 +195,6 @@
     <li class="rd-nav-item {% block header_news %}{% endblock %}"><a class="rd-nav-link" href="#">News</a>
         <!-- RD Navbar Dropdown-->
         <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('forum_list') }}">Forum</a></li>
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-1.html">News 1</a></li>
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-2.html">News 2</a></li>
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-3.html">News 3</a></li>
@@ -224,4 +223,5 @@
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="checkout.html">Checkout</a></li>
         </ul>
     </li>
+    <li class="rd-nav-item {% block header_forum %}{% endblock %}"><a class="rd-nav-link" href="{{ path('subject_index') }}">Forum</a>
 </ul>

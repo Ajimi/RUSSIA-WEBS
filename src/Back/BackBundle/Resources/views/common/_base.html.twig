@@ -29,16 +29,16 @@
             {% endblock %}
 
 
-            {% block body %}
+        {% block body %}
 
-                <!-- page content -->
-                <div class="right_col" role="main">
-                    <div class="">
-                        {% block top_content_header %}
-                            <div class="page-title">
-                                <div class="title_left">
-                                    <h3>{% block page_title %}Page Title{% endblock page_title %}</h3>
-                                </div>
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    {% block top_content_header %}
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h3>{% block page_title %}Page Title{% endblock page_title %}</h3>
+                            </div>
 
                                 <div class="title_right">
                                     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -53,11 +53,23 @@
                                 </div>
                             </div>
                         {% endblock top_content_header %}
+                            <div class="title_right">
+                                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">Go!</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock top_content_header %}
 
-                        <div class="clearfix"></div>
+                    <div class="clearfix"></div>
 
 
-                        {% block page_content %}{% endblock %}
+                    {% block page_content %}{% endblock %}
 
 
                     </div>
@@ -73,7 +85,6 @@
 {% endblock %}
 {% include '@Back/common/_js.html.twig' %}
 {% block javascripts %}
-
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}

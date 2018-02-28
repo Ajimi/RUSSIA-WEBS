@@ -12,6 +12,18 @@ match:
     type:     annotation
     prefix:   /
 
+mail_mail:
+    resource: "@MailMailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+forum_comment:
+    resource: "@ForumBundle/Controller/CommentController.php"
+    type:     annotation
+
+forum_subject:
+    resource: "@ForumBundle/Controller/SubjectController.php"
+    type:     annotation
+
 upload:
     resource: "@UploadBundle/Resources/config/routing.yml"
     prefix:   /

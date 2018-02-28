@@ -1,0 +1,72 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+{% block title %}Create new{% endblock %}
+    {% block header_forum %}active{% endblock %}
+{% block body %}
+
+        {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Forum'} %}
+            {% block breadcrumbs_path %}
+                <li><a href="{{ path('homepage') }}">Home</a></li>
+                <li><a href="#">Forum</a></li>
+                <li class="active">Create new</li>
+            {% endblock %}
+        {% endembed %}
+<section class="section section-md bg-gray-100">
+    <div class="container text-center">
+        <div class="row row-50 text-left">
+            <div class="col-md-12">
+                <div class="row row-50">
+                    <div class="col-lg-6">
+                        <article class="heading-component">
+                            <div class="heading-component-inner">
+                                <h5 class="heading-component-title">Subject creation
+                                </h5>
+                            </div>
+                        </article>
+
+                        {{ form_start(form , {'attr': {'class': 'form-horizontal form-label-left'}}) }}
+                        <div class="item form-group">
+                            {{ form_label(form.title, 'Title', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(form.title, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            {{ form_label(form.content, 'Content', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(form.content, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            {{ form_label(form.videoUrl, 'Video Url', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(form.videoUrl, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            {{ form_label(form.file, 'Image', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_widget(form.file, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="reset" class="btn btn-primary">cancel</button>
+                            <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+
+            </div>
+            <a href="{{ path('subject_index') }}">
+                <button class="btn btn-primary">Back</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
 
             /*
@@ -54,6 +55,7 @@ class AppKernel extends Kernel
             new Common\BookingBundle\BookingBundle(),
             new Reservation\CartBundle\CartBundle(),
             new News\NewsBundle\NewsBundle(),
+            new Mail\MailBundle\MailMailBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
