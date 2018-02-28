@@ -14,6 +14,12 @@
     <link href="{{ asset('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
+    <style>
+        .chart-stat {
+            height: 400px;
+            width: 400px;
+        }
+    </style>
 {% endblock stylesheets %}
 {% block title %}GroupBundle:GroupController:AfficherGroup{% endblock %}
 
@@ -42,7 +48,7 @@
                                             <h4 class="modal-title" id="myModalLabel">Statistic Rating</h4>
                                         </div>
                                         <div class="modal-body">
-                                            {{ render(controller('GroupBundle:Default:index')) }}
+                                            <div id="div_chart" class="chart-stat"></div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel
@@ -119,6 +125,7 @@
 
 {% block javascripts %}
 
+
     <!-- iCheck -->
     <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
     <!-- Datatables -->
@@ -141,4 +148,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(piechart, 'div_chart') }}
+    </script>
 {% endblock javascripts %}

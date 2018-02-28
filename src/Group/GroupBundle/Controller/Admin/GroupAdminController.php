@@ -8,6 +8,7 @@
 
 namespace Group\GroupBundle\Controller\Admin;
 
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Doctrine\ORM\EntityManager;
 use Group\GroupBundle\Entity\Groupe;
 use Group\GroupBundle\Form\GroupeType;
@@ -51,10 +52,42 @@ class GroupAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $group = $em->getRepository("GroupBundle:Groupe")->findAll();
+        $pieChart = new PieChart();
+        $em = $this->getDoctrine();
+        $groups = $em->getRepository(Groupe::class)->findAll();
+        $sumRating = 0;
+        foreach ($groups as $groupe) {
+            $sumRating = $sumRating + $groupe->getRating();
+        }
+        $data = array();
+        $stat = ['groupe', 'sumRating'];
+        $nb = 0;
+        array_push($data, $stat);
+        foreach ($groups as $groupe) {
+            $stat = array();
+            array_push($stat, $groupe->getName(), (($groupe->getRating()) * 100) / $sumRating);
+            $nb = ($groupe->getRating() * 100) / $sumRating;
+            $stat = [$groupe->getName(), $nb];
+            array_push($data, $stat);
+        }
+        $pieChart->getData()->setArrayToDataTable(
+            $data
+        );
+        $pieChart->getOptions()->setTitle('Percentages of groups ');
+        $pieChart->getOptions()->setHeight(480);
+        $pieChart->getOptions()->setWidth(480);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('Red');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(30);
         return $this->render('GroupBundle:GroupController:afficher_group.html.twig', array(
-            'G' => $group
+            'G' => $group, 'piechart' =>
+                $pieChart
             // ...
         ));
+
+
     }
 
     /**
@@ -100,17 +133,7 @@ class GroupAdminController extends Controller
         ));
     }
 
-    public function pdfAction()
-    {
-        $html = $this->renderView('MyBundle:Foo:bar.html.twig', array(
-            'some' => $vars
-        ));
 
-        return new PdfResponse(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
-            'file.pdf'
-        );
-    }
 
 
 }
