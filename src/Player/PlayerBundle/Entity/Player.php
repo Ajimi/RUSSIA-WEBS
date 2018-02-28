@@ -195,6 +195,7 @@ class Player
 
     /**
      * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Club", mappedBy="player")
+     * @ORM\OrderBy({"seasonStart" = "ASC"})
      */
     private $clubs;
 
