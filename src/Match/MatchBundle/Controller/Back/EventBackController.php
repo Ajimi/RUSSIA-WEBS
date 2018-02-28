@@ -1,6 +1,6 @@
 <?php
 
-namespace Match\MatchBundle\Controller;
+namespace Match\MatchBundle\Controller\Back;
 
 use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
@@ -8,6 +8,8 @@ use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Model\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -20,17 +22,36 @@ class EventBackController extends Controller
      */
     public function addAction(Request $request, $idm)
     {
+        $em = $this->getDoctrine()->getManager();
+        $formEnd = $this->createFormBuilder()->add('time', IntegerType::class)
+            ->add('end', SubmitType::class)->getForm();
+
+        $formEnd->handleRequest($request);
+        if ($formEnd->isValid())
+        {
+            $ev = new Event();
+            $ev->setMinutes($formEnd->get('time')->getData());
+            $this->endGame($em,$idm,$ev);
+        }
+
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
+
         $match = $em->getRepository("MatchBundle:Match")->find($idm);
+        $playersT1 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam' => $match->getTeam1()));
+        $playersT2 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam' => $match->getTeam2()));
+
+        /*array_push($players,$playersT1);
+        array_push($players,$playersT2);
+        */
 
         if ($form->isValid()) {
 
-            $em->getRepository('PlayerBundle:Player')->updatePlayerStat($event->getPlayer()->getId(),$event->getTypeEvent());
             $team = $em->getRepository('TeamBundle:Team')->find($request->get('iCheck'));
+            $event->setPlayer($em->getRepository('PlayerBundle:Player')->find($request->get('player')));
+            $em->getRepository('PlayerBundle:Player')->updatePlayerStat($event->getPlayer()->getId(),$event->getTypeEvent());
             $event->setMatch($match);
             $event->setTeam($team);
             $event->setTimes(new \DateTime());
@@ -41,8 +62,11 @@ class EventBackController extends Controller
         $events = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $idm), array('times' => 'asc'));
         return $this->render('MatchBundle:EventBack:add_event_form.html.twig', array(
             'eventForm' => $form->createView(),
+            'formEnd'=>$formEnd->createView(),
             'team1' => $match->getTeam1(),
             'team2' => $match->getTeam2(),
+            'playerT1'=>$playersT1,
+            'playerT2'=>$playersT2,
             'idm' => $idm,
             'events' => $events
         ));
@@ -71,42 +95,31 @@ class EventBackController extends Controller
      * @Route("/end/{idm}", name="end_game")
      */
 
-    public function endGameAction($idm)
+    public function endGame($em,$idm,$ev)
     {
-        $event = new Event();
+     //   $event = new Event();
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($idm);
-        $event->setMatch($match);
-        $match->setPlayed(true);
-        $event->setTimes(new \DateTime());
-        $start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
-        $diff = date_diff(new \DateTime(), $start->getTimes());
-        $event->setMinutes($diff->format('%s Seconds'));
-        $event->setTypeEvent("END OF THE GAME");
-        $em->persist($match);
-        $em->persist($event);
-        $em->flush();
+
+            $ev->setMatch($match);
+            $match->setPlayed(true);
+            $ev->setTimes(new \DateTime());
+            //$start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
+            //$diff = date_diff(new \DateTime(), $start->getTimes());
+            // $event->setMinutes($diff->format('%s Minutes'));
+            // $event->setMinutes($request->get('end_game_time'));
+            $ev->setTypeEvent("END OF THE GAME");
+            $em->persist($match);
+            $em->persist($ev);
+            $em->flush();
+
         $this->addScore($match);
-        return $this->redirectToRoute('add_event', array(
-            'idm' => $idm));
-
-
-    }
-
-    /**
-     * @Route("/event/{idm}", name="ajax_display_event", options={"expose" = true})
-     */
-    public function ajaxDisplayAction($idm)
-    {
-        $em= $this->getDoctrine()->getManager();
-        $events = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $idm), array('times' => 'asc'));
-        return $this->render('@Match/EventBack/list_event.html.twig',array(
-            'events'=>$events
-        ));
-
+       /* return $this->redirectToRoute('add_event', array(
+            'idm' => $idm,
+            ));
+*/
 
     }
-
 
     private function addScore($match)
     {

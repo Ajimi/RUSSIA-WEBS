@@ -44,6 +44,14 @@
                 </div>
             </div>
 
+
+            <div class="form-group">
+                {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(matchForm.stadium, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                </div>
+            </div>
+
             <div class="form-group">
                 {{ form_label(matchForm.date, 'Date*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                 <div class="col-md-3">
@@ -78,11 +86,23 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Amount of Tickets<span class="required">*</span></label>
+                <div class="col-md-2">
+                    <div class="control-group ">
+                        <input class="form-control col-md-7 col-xs-12" name="tickets" type="number" min="0" required>
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
-                {{ form_label(matchForm.stadium, 'Stadium*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    {{ form_widget(matchForm.stadium, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@stadium @Required'} }) }}
+                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Price<span class="required">*</span></label>
+                <div class="col-md-2">
+                    <div class="control-group">
+                        <input  class="form-control col-md-7 col-xs-12" name="price" type="number" min="0" required>
+                    </div>
                 </div>
             </div>
 
@@ -114,7 +134,7 @@
     <script src="{{ asset('assets/timepicker.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#timepicker').mdtimepicker();//Initializes the time picker
+            $('#timepicker').mdtimepicker();
             $('#timepicker').attr('required', true);
         });
     </script>

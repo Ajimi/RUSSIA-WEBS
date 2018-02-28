@@ -1,21 +1,14 @@
 <?php
 
-namespace Match\MatchBundle\Controller;
+namespace Match\MatchBundle\Controller\Back;
 
-use Faker\Provider\DateTime;
-use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
-use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Form\MatchType;
 use Reservation\TicketBundle\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 
 /**
@@ -35,8 +28,15 @@ class MatchBackController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         $matchs = $em->getRepository("MatchBundle:Match")->findAll();
-        return $this->render('MatchBundle:Default:list_match.html.twig', array(
-            'matchs' => $matchs,
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $matchs,
+            $request->query->getInt('page', 1),
+            $request->query->get('limit',8));
+
+        return $this->render('@Match/MatchBack/list_match.html.twig', array(
+            'matchs' => $pagination,
             'matchForm' => $form->createView(),
 
         ));
@@ -57,12 +57,13 @@ class MatchBackController extends Controller
             $match->setDate(new \DateTime($request->get('calendar')));
             $match->setTime($request->get('timepicker'));
             $match->setPlayed(false);
-            $t = new  Ticket();
-            $t->setMatch($match);
-            $match->setTicket($t);
-            $t->setPrice("");
-            $t->setQuantity(1000);
-            $em->persist($t);
+            $ticket = new  Ticket();
+            $ticket->setMatch($match);
+            $ticket->setQuantity($request->get('tickets'));
+            $ticket->setPrice($request->get('price'));
+            $match->setTicket($ticket);
+
+            $em->persist($ticket);
             $em->persist($match);
             $em->flush();
 
@@ -70,7 +71,7 @@ class MatchBackController extends Controller
 
         }
 
-        return $this->render('MatchBundle:Default:add_match_form.html.twig', [
+        return $this->render('@Match/MatchBack/add_match_form.html.twig', [
             'matchForm' => $form->createView()
         ]);
     }
@@ -91,7 +92,7 @@ class MatchBackController extends Controller
             return $this->redirectToRoute('match_list');
         }
 
-        return $this->render('MatchBundle:Default:edit_match.html.twig',
+        return $this->render('MatchBundle:MatchBack:edit_match.html.twig',
             array('matchForm' => $Form->createView()));
 
 
@@ -100,7 +101,7 @@ class MatchBackController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
@@ -109,30 +110,4 @@ class MatchBackController extends Controller
         return $this->redirectToRoute('match_list');
 
     }
-
-
-    /*
-
-        public function searchAction(Request $request)
-        {
-
-
-            if ($request->isXmlHttpRequest()) {
-                $em = $this->getDoctrine()->getManager();
-                //$val = $request ->get('search')->getData();
-                $val = "se";
-                alert($val);
-                $em = $this->getDoctrine()->getManager();
-                $repo = $em->getRepository('MatchBundle:Match');
-                $match = $repo->searchDQL($val);
-
-                $s = new Serializer(array(new ObjectNormalizer()));
-                $data = $s->normalize($match);
-                return new JsonResponse($data);
-
-            }
-
-        }
-    */
-
 }
