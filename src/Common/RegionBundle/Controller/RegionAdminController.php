@@ -125,7 +125,7 @@ class RegionAdminController extends Controller
 
     /**
      * @param Request $request
-     * @Route("/search_region/{name}" , name="search_region_ajax_name" , options={"expose"=true})
+     * @Route("/search_region/{name}" , name="search_region_ajax_name" , options={"expose"=true},  defaults={"name"=""})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function searchRegionNameAction(Request $request, $name)
