@@ -7,10 +7,12 @@
 {% endblock stylesheets %}
 
 {% block title %}Match | Game Schedule{% endblock %}
+{% block page_title %}{% endblock page_title %}
+{% block search %}{% endblock search %}
 
-{% block page_title %}Game Schedule{% endblock page_title %}
+
 {% block page_content %}
-
+<br>
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -18,6 +20,15 @@
                     Match
                 </button>
 
+             {#   {% if app.session.flashBag.has('success') %}
+                    <div class="col-xs-3 alert alert-success">
+                        {% for msg in app.session.flashBag.get('success') %}
+                            {{ msg  }}
+                        {% endfor %}
+
+                    </div>
+                {% endif %}
+                 #}
                 <div class="clearfix"></div>
             </div>
 

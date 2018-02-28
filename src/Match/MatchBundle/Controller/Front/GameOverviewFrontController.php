@@ -27,7 +27,7 @@ class GameOverviewFrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match' => $idm));
-        $scores = $em->getRepository('MatchBundle:Score')->findThree();
+        $scores = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         $match = $em->getRepository('MatchBundle:Match')->find($idm);
 
         $events = $em->getRepository('MatchBundle:Event')->findBy(array('match' => $idm));
