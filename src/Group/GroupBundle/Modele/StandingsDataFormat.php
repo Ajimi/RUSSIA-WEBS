@@ -46,7 +46,7 @@ class StandingsDataFormat
         return $standings;
     }
 
-    public static function fullStandings(Groupe $groups)
+    public static function fullStandings($groups)
     {
         $fullStandings = [];
         foreach ( $groups as $g)

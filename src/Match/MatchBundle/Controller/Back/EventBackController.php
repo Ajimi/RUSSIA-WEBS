@@ -178,13 +178,4 @@ class EventBackController extends Controller
 
     }
 
-    private function updatePlayer()
-    {
-
-
-    }
-
-
-
-
 }
