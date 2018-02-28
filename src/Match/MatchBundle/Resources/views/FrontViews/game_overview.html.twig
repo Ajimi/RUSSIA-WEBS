@@ -1,9 +1,15 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
-
+{% block title %}Overview{% endblock %}
 
 {% block body %}
-
-    {% include '@Match/Breadcrumbs/breadcrumbs_overview.html.twig' %}
+   {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Game Overview'} %}
+       {% block breadcrumbs_path %}
+           <li><a href="{{ path('homepage') }}">Home</a></li>
+           <li><a href="#">Competition</a></li>
+           <li> <a href="{{ path('result_list') }}">Result</a></li>
+           <li class="active">Overview</li>
+       {% endblock %}
+   {% endembed %}
 
 
     <section class="section section-sm bg-gray-100">
