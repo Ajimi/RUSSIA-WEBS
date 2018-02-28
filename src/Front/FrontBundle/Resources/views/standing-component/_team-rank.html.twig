@@ -1,0 +1,16 @@
+<tr>
+    <td><span>{{ rank }}</span></td>
+    <td class="team-inline">
+        <div class="team-figure"><img src="{{ asset(teamLogo) }}" alt=""
+                                      width="37" height="37"/>
+        </div>
+        <div class="team-title">
+            <div class="team-name">{% block teamName %}{% endblock %}</div>
+            <div class="team-country">{% block  teamShortCut %}{% endblock %}</div>
+        </div>
+    </td>
+    <td>{% block teamWins %}{% endblock %}</td>
+    <td>{% block teamLoss %}{% endblock %}</td>
+    <td>{% block teamDraw %}{% endblock %}</td>
+    <td>{% block  points %}{% endblock %}</td>
+</tr>
