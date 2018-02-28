@@ -7,6 +7,7 @@ use Common\UploadBundle\Annotation\Uploadable;
 use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Team\TeamBundle\Entity\Team;
 
 /**
  * Player
@@ -105,7 +106,7 @@ class Player
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="Team\TeamBundle\Entity\Team", inversedBy="players")
-     * @ORM\JoinColumn(name="id_team1",referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="id_team1", referencedColumnName="id")
      */
     private $nationalTeam;
 
@@ -161,7 +162,7 @@ class Player
     /**
      * @var int
      *
-     * @ORM\Column(name="penalityKicks", type="integer")
+     * @ORM\Column(name="penaltyKicks", type="integer")
      */
     private $penaltyKicks;
 
@@ -222,21 +223,7 @@ class Player
         $this->file = $file;
     }
 
-    /**
-     * @return int
-     */
-    public function getPenaltyKicks()
-    {
-        return $this->penaltyKicks;
-    }
 
-    /**
-     * @param int $penaltyKicks
-     */
-    public function setPenaltyKicks($penaltyKicks)
-    {
-        $this->penaltyKicks = $penaltyKicks;
-    }
 
     /**
      * @return int
@@ -549,7 +536,7 @@ class Player
     /**
      * Get nationalTeam.
      *
-     * @return string
+     * @return Team
      */
     public function getNationalTeam()
     {
@@ -771,5 +758,80 @@ class Player
     public function getRedCard()
     {
         return $this->redCard;
+    }
+
+    /**
+     * Add skill
+     *
+     * @param \Player\PlayerBundle\Entity\Skill $skill
+     *
+     * @return Player
+     */
+    public function addSkill(\Player\PlayerBundle\Entity\Skill $skill)
+    {
+        $this->skills[] = $skill;
+
+        return $this;
+    }
+
+    /**
+     * Remove skill
+     *
+     * @param \Player\PlayerBundle\Entity\Skill $skill
+     */
+    public function removeSkill(\Player\PlayerBundle\Entity\Skill $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+
+
+    /**
+     * Add club
+     *
+     * @param \Player\PlayerBundle\Entity\Club $club
+     *
+     * @return Player
+     */
+    public function addClub(\Player\PlayerBundle\Entity\Club $club)
+    {
+        $this->clubs[] = $club;
+
+        return $this;
+    }
+
+    /**
+     * Remove club
+     *
+     * @param \Player\PlayerBundle\Entity\Club $club
+     */
+    public function removeClub(\Player\PlayerBundle\Entity\Club $club)
+    {
+        $this->clubs->removeElement($club);
+    }
+
+
+
+    /**
+     * Set penaltyKicks.
+     *
+     * @param int $penaltyKicks
+     *
+     * @return Player
+     */
+    public function setPenaltyKicks($penaltyKicks)
+    {
+        $this->penaltyKicks = $penaltyKicks;
+
+        return $this;
+    }
+
+    /**
+     * Get penaltyKicks.
+     *
+     * @return int
+     */
+    public function getPenaltyKicks()
+    {
+        return $this->penaltyKicks;
     }
 }

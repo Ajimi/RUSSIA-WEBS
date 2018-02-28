@@ -1,0 +1,30 @@
+<div class="promo promo-modern">
+    <div class="promo-meta promo-modern-meta">
+        <p class="promo-title promo-modern-title heading-4 white">Russia World CUP</p>
+        <time class="promo-time" datetime="{{ match.date|date("Y-m-d") }}">{{ match.date|date("l, F j, Y") }}</time>
+    </div>
+    <div class="promo-main promo-modern-main">
+        <div class="promo-team promo-modern-team">
+            <figure class="promo-team-figure"><img
+                        src="{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}" alt=""
+                        width="77" height="77"/>
+            </figure>
+            <div class="promo-team-name">{{ match.team1.teamName }}</div>
+            <div class="promo-team-country">{{ match.team1.teamShortcut }}</div>
+        </div>
+        <div class="promo-middle promo-modern-middle">VS</div>
+        <div class="promo-team promo-modern-team">
+            <figure class="promo-team-figure"><img
+                        src="{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}" alt=""
+                        width="57" height="81"/>
+            </figure>
+            <div class="promo-team-name">{{ match.team2.teamName }}</div>
+            <div class="promo-team-country">{{ match.team2.teamShortcut }}</div>
+        </div>
+    </div>
+    <div class="promo-modern-countdown">
+        <div class="countdown countdown-classic" data-type="until" data-time="31 Dec 2018 16:00" data-format="dhms"
+             data-style="short"></div>
+    </div>
+    <a class="button button-default button-block" href="{{ path('cart_add_item', {'match': match.id} ) }}"><span>Buy tickets now</span></a>
+</div>

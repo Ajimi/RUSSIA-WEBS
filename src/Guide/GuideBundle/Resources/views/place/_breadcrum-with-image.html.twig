@@ -1,0 +1,12 @@
+<section class="section parallax-container breadcrumbs-wrap"
+         data-parallax-img="{{ image }}">
+    <div class="parallax-content breadcrumbs-custom context-dark">
+        <div class="container">
+            <h3 class="breadcrumbs-custom-title">{{ breadcrumbs_title|default('Breadcrumbs Title') }}</h3>
+            <ul class="breadcrumbs-custom-path">
+                {# Completed Create the breadcrumb#}
+                {% block breadcrumbs_path %}{% endblock %}
+            </ul>
+        </div>
+    </div>
+</section>

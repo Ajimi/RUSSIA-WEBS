@@ -29,7 +29,8 @@
     var DateRangePicker = function (element, options, cb) {
 
         //default settings for options
-        this.parentEl = 'body';
+        this.editable = false,
+            this.parentEl = 'body';
         this.element = $(element);
         this.startDate = moment().startOf('day');
         this.endDate = moment().endOf('day');

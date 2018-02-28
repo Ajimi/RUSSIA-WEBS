@@ -1,0 +1,53 @@
+<div class="box-offer box-offer-sm box-offer-left">
+    <div class="">
+        <a href="{% block url %}#{% endblock %}">
+            <img id="logo" src="{% block image %}{% endblock %}" width="270" height="500" alt=""></a></div>
+    <div class="box-offer-caption text-left">
+        <div class="box-offer-caption-inner-wrap">
+            <div class="box-offer-caption-inner-left">
+                <div class="box-offer-title text-ubold">
+                    <a class="text-black" href="{{ url|default("#") }}">{% block name %}Place name{% endblock %}</a>
+                </div>
+                <!-- List Inline-->
+                <ul class="list-inline list-inline-3">
+                    {% for i in 1..rating %}
+                        <li>
+                            <a class="icon fa fa-star text-primary" href="#"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="box-offer-caption-inner-right text-right">
+                <p class="text-extra-small text-spacing-500 text-silver-chalice">
+                    PHONE</p>
+                <!-- List Inline-->
+                <ul class="list-inline inset-right-5">
+                    <li class="text-extra-small text-black text-strike text-middle">
+                    </li>
+                    <li class="box-offer-price text-black text-ubold text-primary text-middle">
+                        {{ place.phone }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="box-offer-caption-inner-wrap box-offer-caption-inner-wrap-bottom">
+            <div class="box-offer-caption-inner-left box-offer-description">
+                <p class="text-small text-silver-chalice">
+                    {% block description %}
+                        Turkey revels in its
+                        role as
+                        continental uniter, defying traditional fault lines as it
+                        blends the
+                        very best of Europe and Asia. While iconic East and
+                        West...
+                    {% endblock %}
+                </p>
+            </div>
+            <div class="box-offer-caption-inner-right text-xl-right">
+                <a data-modal="modal-10" class="md-trigger button button-width-110 button-primary" href="#">VIEW
+                    MORE</a></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

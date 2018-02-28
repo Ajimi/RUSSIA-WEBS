@@ -1,0 +1,46 @@
+{
+  "base_url": "",
+  "routes": {
+    "cart_add_item": {
+      "tokens": [
+        [
+          "variable",
+          "\/",
+          "[^\/]++",
+          "match"
+        ],
+        [
+          "text",
+          "\/cart\/add"
+        ]
+      ],
+      "defaults": [],
+      "requirements": [],
+      "hosttokens": [],
+      "methods": [],
+      "schemes": []
+    },
+    "cart_remove_item": {
+      "tokens": [
+        [
+          "variable",
+          "\/",
+          "[^\/]++",
+          "id"
+        ],
+        [
+          "text",
+          "\/cartremove"
+        ]
+      ],
+      "defaults": [],
+      "requirements": [],
+      "hosttokens": [],
+      "methods": [],
+      "schemes": []
+    }
+  },
+  "prefix": "",
+  "host": "localhost",
+  "scheme": "http"
+}

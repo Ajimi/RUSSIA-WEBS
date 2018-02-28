@@ -1,0 +1,87 @@
+{% extends 'FrontBundle:common:_base.html.twig' %}
+
+
+{% block body %}
+
+    {% include '@Match/Breadcrumbs/breadcrumbs_overview.html.twig' %}
+
+
+    <section class="section section-sm bg-gray-100">
+        <div class="container">
+            <div class="row row-50">
+                <div class="col-lg-8">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Game Overview
+                            </h5>
+                            <div class="heading-component-aside">
+
+                                <a class="button button-xs button-primary" href="{{ path('get_as_pdf',{'idm':m.id}) }}">
+                                    <i class="material-icons-picture_as_pdf"></i> Save as PDF</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    {% include '@Match/Model/game_overview_model.html.twig' %}
+
+
+                    <br>
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+
+                            <h5 class="heading-component-title">Team Players
+                            </h5>
+                        </div>
+                    </article>
+                    <div class="row row-30">
+                        {% include '@Match/FrontViews/main_roster.html.twig' %}
+                    </div>
+                    <br>
+
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">Best players
+                            </h5>
+                        </div>
+                    </article>
+
+                    {% include '@Match/Model/best_scorer_model.html.twig' %}
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="row row-30">
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">GAME HIGHLIGHTS
+                                    </h5>
+                                </div>
+                            </article>
+                            {% include '@Match/FrontViews/game_highlights.html.twig' %}
+                        </div>
+
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Heading Component-->
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">LATEST GAME RESULTS
+                                    </h5>
+                                </div>
+                            </article>
+                            {% include '@Match/Model/single_latest_game_result_model.html.twig' %}
+                        </div>
+                        <div class="col-md-6 col-lg-12">
+                            {% include '@Front/news-main-component/_standing.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock body %}

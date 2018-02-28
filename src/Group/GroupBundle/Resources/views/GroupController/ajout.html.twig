@@ -7,15 +7,13 @@
     <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block title %}Add Team{% endblock %}
-
-
+{% block title %}Add Group{% endblock %}
 {% block body %}
     {% block top_content_header %}
 
     {% endblock %}
     {% block page_content %}
-
+        <a href="/" style="margin-top: 10px;" class="btn btn-success">Back to the application</a>
         <div class="row centered">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
@@ -26,7 +24,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <br/>
-                    <a href="/" style="margin-top: 10px;" class="btn btn-success">Back to the application</a>
+
                     {{ form_start(form, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
 
                     <div class="form-group">
@@ -63,6 +61,14 @@
                             {{ form_widget(form.team4, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {{ form_label(form.rating, 'Rating', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                       {{ form_widget(form.rating, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName2 @Required'} }) }}
+
+
+                        </div>
+                    </div>
 
 
                     <div class="ln_solid"></div>
@@ -70,7 +76,7 @@
                         <br>
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <button class="btn btn-primary" type="reset">Reset</button>
-                            {{ form_widget(form.create, { 'attr': {'class': 'btn btn-success'} }) }}
+                            {{ form_widget(form.create,{ 'attr': {'class': 'btn btn-success'} }) }}
                         </div>
                     </div>
 

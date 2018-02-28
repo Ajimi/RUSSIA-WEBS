@@ -15,5 +15,13 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
-    # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    stripe_secret_key: sk_test_cmHlewUEjcBi8FuyxxRLFEQN
+    stripe_public_key: pk_test_M1WP0SI1WxULGUevujzA4ytX
+
+
+    # set to https on production
+    secure_channel: http
+
+

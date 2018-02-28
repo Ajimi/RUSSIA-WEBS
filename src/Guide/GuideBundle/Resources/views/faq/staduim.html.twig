@@ -1,0 +1,905 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+
+{% block title %}Guide | The stadiums{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'The stadiums' } %}
+        {% block image %}{{ asset('assets/images/guide/staduim.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">The stadiums</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#moscow">Moscow</a></li>
+            <li><a href="#saint">Saint Petersburg</a></li>
+            <li><a href="#kazan">Kazan</a></li>
+            <li><a href="#sochi">Sochi</a></li>
+            <li><a href="#volograd">Volgograd</a></li>
+            <li><a href="#ekterinburg">Ekaterinburg</a></li>
+            <li><a href="#kaliningrad">Kaliningrad</a></li>
+            <li><a href="#nizhny">Nizhny Novgorod</a></li>
+            <li><a href="#rostov">Rostov-on-Don</a></li>
+            <li><a href="#samara">Samara</a></li>
+            <li><a href="#saransk">Saransk</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="moscow" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Moscow</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}How to drive to Luzhniki Stadium{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Luzhniki Stadium area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match
+                            days,
+                            with the exception of public transport and holders of special entry and parking passes for
+                            the stadium area.
+                            Unless you are a holder of such a pass, you should probably give up the idea of driving your
+                            own or rental
+                            car
+                            to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            The address of Luzhniki Stadium is Luzhnetskaya Embankment 24, Building 1. If you are
+                            driving from a
+                            neighbourhood in the southwest of Moscow, take Prospekt Vernadskogo. From Sadovoye Ring,
+                            take Komsomolskiy
+                            Prospekt. Access to Luzhniki Stadium from other parts of the city is via Third Traffic Ring.
+                            From some
+                            neighbourhoods inside Sadovoye Ring, it may make sense to take Frunzenskaya Embankment to
+                            get to Luzhniki
+                            Stadium, if traffic is not too bad.
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Luzhniki Stadium by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            The Metro station nearest to Luzhniki Stadium is Vorobyovy Gory on Sokolnicheskaya Line. The
+                            stadium is a
+                            ten-minute walk from there. Luzhniki Station, which is part of Moscow’s Central Ring, is
+                            approximately the
+                            same
+                            distance away. &nbsp;
+                        </p>
+                        <p>
+                            One of the closest bus and trolleybus stops is Luzhniki Station on Third Traffic Ring, which
+                            is also a
+                            ten-minute walk from the stadium. It can be reached by bus М3, С12, 64, 255 or 806, or
+                            trolleybus 28. There
+                            is
+                            another stop nearby, Luzhniki Stadium on Komsomolskiy Prospekt, which is, more or less,
+                            within the same
+                            walking
+                            distance. The same buses and trolleybuses stop here, plus two more buses: Т79 and А.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Spartak Stadium{% endblock %}
+                    {% block faq_content %}
+
+
+                        Access to the stadium on game days will be restricted for all types of transportation except the public one, or for
+                        those with special permits for entrance and parking near the stadium. If you don’t have such a permit, it’s best to
+                        leave your (rented) car behind and use the public transportation. <br>
+                        <br>
+                        The stadium is located at Volokolamskoye shosse, land plot 69. Driving from central Moscow, keep going in the
+                        direction of suburbs. At the intersection of Volokolamskoye shosse and Volokolamsky proezd you’ll have to make a
+                        U-turn, turn right to Proektiruemy proezd № 5219, and then turn left to Proektiruemy proezd № 5484.
+                        <br>
+                        <br>
+                        Coming from the suburbs, keep driving on Volokolamskoye shosse until intersection with Proektiruemy proezd №
+                        5503,Following that, get off the main road and follow the relief road until Proektiruemy proezd № 5219.
+                    {% endblock %}
+                {% endembed %}
+
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Spartak Stadium by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        The most convenient way to get to the Spartak Stadium is by metro. There are actually two stations of the
+                        Tagansko-Kranospresnenskaya metro line (line #7) in the close vicinity of the stadium. One of them is Spartak metro
+                        station, 3-5 minute walk away from the stadium, and the other one is Tushinskaya metro station (7-10 minutes by
+                        foot).<br>
+                        <br>
+                        Tushinskaya metro station is a part of the eponymous transportation hub, which also includes a suburban bus station
+                        and Tushino railroad station.<br>
+                        <br>
+                        To get to the Tushinskaya hub, you can take one of the many buses:<br>
+                        <br>
+                        <ul>
+                            <li>Municipal buses: № 2, 88, 210, 248, 266, 372, 400Т, 409, 436, 450, 455, 460М, 464, 467,
+                                540, 541, 542,
+                                549,
+                                568, 575, 614, 631, 640, 741, 741К, 777, 904, 904К, 930, 961, 964.
+                            </li>
+                            <li>
+                                Suburban buses : № 230, 301, 307, 372, 409, 450, 455, 464, 964.
+                            </li>
+                        </ul>
+                        You can travel to the Tushino railroad station by commuter trains that leave the Kursky and Rizhsky Railway
+                        Stations.<br>
+                        <br>
+                        <a target="_blank" href="http://rasp.yandex.ru/station/9600741">Tushino station timetable</a>
+                        <br>
+                        <br>
+                        Wheelchair access to the stadium is available at the left pavilion of the northern entrance, located to the left of
+                        the gladiator sculpture. From there, stadium staff will take guests to their seats.<br>
+                        <br>
+                        On the days of the games, there will be additional shuttle buses traveling between the stadium and Aeroport metro
+                        station and Sheremetyevo International Airport.
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+            <ul id="saint" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Saint Petersburg</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Stadium Saint Petersburg{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Stadium St. Petersburg area will be restricted for all traffic on FIFA World Cup
+                            2018 Russia™
+                            match
+                            days, with the exception of public transport and holders of special entry and parking passes
+                            for the stadium
+                            area. So unless you are a holder of such a pass, you should probably give up the idea of
+                            driving your own or
+                            rental car to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            The arena is situated at Futbolnaya Alleya 1 in the western part of Krestovskiy Island. Take
+                            Bolshoi
+                            Krestovskiy, Lazarevskiy or Bolshoi Petrovskiy Bridge to get there.
+                        </p>
+                        <p>
+                            Driving to Stadium St. Petersburg from the northern part of the city, you will traverse
+                            Kamennyi and
+                            Aptekarskiy
+                            Islands. Get to Kamennoostrovskiy Prospekt via Ushakovskiy Bridge, then cross
+                            Kamennoostrovskiy Bridge and
+                            take
+                            a right to Pesochnaya Embankment, which will lead you to Bolshoi Krestovskiy Bridge. If you
+                            skip past
+                            Bolshoi
+                            Krestovskiy Bridge, driving on Pesochnaya Embankment, it will eventually take you to
+                            Admirala Lazareva
+                            Embankment, which ends at Lazarevskiy Bridge. &nbsp;&nbsp;
+                        </p>
+                        <p>
+                            When driving to Aptekarskiy Island on your way to Stadium St. Petersburg from the centre or
+                            from the eastern
+                            part of town, take Kantemirovskaya Ulitsa and then Kantemirovskiy Bridge, then take Prospekt
+                            Medikov. From
+                            Prospekt Medikov, take a right at Ulitsa Professora Popova, and keep driving until you get
+                            to Pesochnaya
+                            Embankment and on to Bolshoi Krestovskiy Bridge. &nbsp;&nbsp;&nbsp;&nbsp;
+                        </p>
+                        <p>
+                            One other route to take from the centre or from the east is to cross Grenaderskiy Bridge to
+                            Aptekarskiy
+                            Island
+                            and drive along the Karpovka River until you reach Geslerovskiy Bridge. Once you cross this
+                            bridge to
+                            Petrogradskiy Island, follow Chkalovskiy Prospekt to Levashovskiy Prospekt, which leads to
+                            Bolshoi
+                            Krestovskiy
+                            Bridge.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            From the south of the city, one option is to cross the Neva via Dvortsovyi Bridge, then
+                            cross the Malaya
+                            Neva
+                            via Birzhevoi Bridge, then follow Prospekt Dobroliubova and Zhdanovskaya Embankment to
+                            Krasnogo Kursanta
+                            Bridge.
+                            Cross this bridge to Petrovskiy Island and take Petrovskiy Prospekt, then take a right to
+                            Bolshoi Petrovskiy
+                            Bridge.
+                        </p>
+                        <p>
+                            A new toll highway, the Western High-Speed Diameter (ZSD), crosses Krestovskiy Island. The
+                            ZSD, which
+                            intersects
+                            with the Beltway, or KAD, in the north and south of the city, is the fast track way to reach
+                            Stadium St.
+                            Petersburg from any part of St. Petersburg or the suburbia. There is no exit to Krestovskiy
+                            Island from the
+                            ZSD.
+                            Take the Primorskoye Shosse exit, then follow Primorskiy Prospekt to Ushakovskiy Bridge.
+                            Cross this bridge
+                            to
+                            Kamennyi Island, then cross Kamennoostrovskiy Bridge to Aptekarskiy Island and follow
+                            Pesochnaya Embankment
+                            to
+                            Bolshoi Krestovskiy Bridge.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Saint Petersburg Stadium by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        The most convenient way to get to Saint&nbsp;Petersburg Stadium is by metro. The closest metro station is Krestovsky
+                        Ostrov (metro line #5), and it’s a 20 minute walk from the arena.<br>
+                        <br>
+                        On game days traffic around the stadium will be restricted and public transportation will be somewhat limited.
+                        Regular municipal routes will be abbreviated, but there will be some additional shuttle buses. These shuttle buses
+                        will stop at two locations. One is the Krestovsky Ostrov bus station (Airport - Stadium, Ploshchad
+                        Vosstaniya/Moskovsky Railway Station — Stadium, Petrogradskaya metro - Stadium routes). The other one will be the
+                        intersection of Sportivnaya Street and Morskoy Prospect (Vyborgskaya metro - Stadium route).<br>
+                        <br>
+                        The closest bus and tram stop on the game days will be located at Yakhtennaya Street in Primorsky District. To walk
+                        from the bus stop to the stadium will take about 25 minutes. To get to the stop, take buses № 101, 101А, 110, 134А,
+                        134Ш, 170, 211, 216, 32, 93 and trams № 19, 48.
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="kazan" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Kazan</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Kazan Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        Kazan Arena stadium is located at Yamasheva Prospect, 115a. Access to the stadium on game days will be restricted
+                        for all types of transportation except for the public one, or for those with special permits for entrance and
+                        parking near the stadium. If you don’t have such a permit, it’s best to leave your (rented) car behind and use the
+                        public transportation.<br>
+                        <br>
+                        There are two roads you can take to the stadium. One is to drive along the Yamasheva Prospect (drive under the
+                        bridge at the Yamasheva-Chistopolskaya junction, and then turn right). The other route is through the Chistopolskaya
+                        Street (if you’re driving from central Kazan across the Millenium Bridge, turn right to Chistopolskaya from
+                        Amirkhana Prospect, and if you are driving down the Lenin Dam, turn from the Dekabristov Street right on
+                        Chistopolskaya Street).
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Kazan Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        On game days, traffic around Kazan Arena will be restricted, and public transportation routes will be abbreviated.
+                        Passengers will be let off at two stops, both about 12-15 minutes by foot from the stadium:<br>
+                        <ul>
+                            <li>at the intersection of Adoratsky Street and Yamasheva Prospect;;(buses №№ 33, 46, 49,
+                                60, 10А, 15, 18,
+                                35,
+                                35А, 36, 44, 45, 62, 76; tram № 5;&nbsp;additional shuttle buses “Airport - Stadium,”
+                                “Kazan-1 Railway
+                                Station - Fan Zone - Stadium,” “Kazan-2 Railway Station - Stadium”;
+                            </li>
+                            <li>at the Veterinary Academy (Veterinarnaya Akademiya) stop (buses №№ 10, 18, 33, 35, 35А,
+                                36, 44, 45, 46,
+                                49,
+                                55, 60, 62; tram № 5).
+                            </li>
+                        </ul>
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="sochi" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Sochi</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Fisht Stadium{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to the stadium on game days will be restricted for all types of transportation except
+                            the public one,
+                            or
+                            for those with special permits for entrance and parking near the stadium. If you don’t have
+                            such a permit,
+                            it’s
+                            best to leave your (rented) car behind and use the public transportation.
+                        </p>
+                        <p>
+                            Driving to the Fisht Stadium from Sochi, move along the E97 highway, which partially
+                            coincides with federal
+                            highway A147, towards the Olympic Village, which you’ll see 3 or 4 km after you pass the
+                            exit to Sochi
+                            International Airport.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Fisht Stadium by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        Fisht Stadium is located in the Olympic Park, and the most convenient transport from Sochi and Adler is the commuter
+                        train. A ride from Sochi will be 50 minutes, while a trip from Adler will be only 13 minutes. You can walk from the
+                        station to the stadium through the Olympic Park in a matter of 20 minutes.<br>
+                        <br>
+                        On the game days of the&nbsp;2018 FIFA World Cup, the number of commuter trains in this direction will be increased,
+                        especially two-three hours before the game and one-two hours after the game. <br>
+                        <br>
+                        On the game days, traffic around the stadium will be restricted. Public transportation routes will be abbreviated
+                        and will end at the bus station near the Olympic Park Railway Station. You can get there by:<br>
+                        <ul>
+                            <li>buses № 57, 57К, 100, 125С, 124С;</li>
+                            <li>additional shuttle buses moving between the Sochi Railway Station and the Olympic Park,
+                                and between the
+                                Sochi International Airport and the Olympic Park.
+                            </li>
+                        </ul>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="volograd" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Volgograd</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Volgograd Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Volgograd Arena area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match days,
+                            with the exception of public transport and holders of special entry and parking passes for
+                            the stadium area.
+                            So
+                            unless you are a holder of such a pass, you should probably give up the idea of driving your
+                            own or rental
+                            car
+                            to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Volgograd Arena was built on the Volga bank, by 62nd Army Embankment, close to Mamaev Kurgan
+                            and the Central
+                            Park of Culture and Recreation. Completed in 2017, the stadium is scheduled to open in 2018.
+                            &nbsp;
+                        </p>
+                        If you decide to drive after all, take Prospekt Lenina to get to the stadium. One of the city’s main thoroughfares,
+                        Prospekt Lenina is part of 1st Prodolnaya Magistral (Longitudinal Thoroughfare), which runs parallel to the Volga
+                        bank, crossing the north and the centre of Volgograd. The address of the building nearest to Volgograd Arena, which
+                        is yet to be assigned an address of its own, is Prospekt Lenina 74. It’s the Central Swimming Pool. It is on the
+                        same side of the road as the stadium, 100 metres up the street.
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Volgograd Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Volgograd Arena, built on the Volga bank between Prospekt Lenina and 62nd Army Embankment
+                            close to Mamaev
+                            Kurgan
+                            and the Central Park of Culture and Recreation, is scheduled to open later in 2018. The
+                            construction was
+                            completed in 2017. Volgograd Arena will be accessible by bus, trolleybus, high-speed tram
+                            and electric
+                            train.
+                            &nbsp;
+                        </p>
+                        <p>
+                            The nearest public transit stop is 200 metres from the arena. This high-speed tram stop,
+                            Tsentralnyi
+                            Stadion,
+                            was closed for the duration of stadium construction, but will reopen by the beginning of the
+                            World Cup.
+                            There is
+                            a bus stop of the same name next to it, which can be reached by bus 95 or trolleybus 9 or
+                            12.
+                        </p>
+                        <p>
+                            It takes 10 to 15 minutes to walk to Volgograd Arena from the Mamaev Kurgan train stop. This
+                            train stop can
+                            be
+                            reached by electric train from any part of Volgograd as all city districts are covered by
+                            train service.
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="ekterinburg" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Ekaterinburg</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Ekaterinburg Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Ekaterinburg Arena area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match
+                            days,
+                            with the exception of public transport and holders of special entry and parking passes for
+                            the stadium area.
+                            Unless you are a holder of such a pass, you should probably give up the idea of driving your
+                            own or rental
+                            car
+                            to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Ekaterinburg Arena is located at Ulitsa Repina 5 in the central Verkh-Isetskiy District of
+                            Ekaterinburg.
+                            From
+                            the centre and the city’s eastern part, Ulitsa Repina can be reached via Prospekt Lenina,
+                            Ulitsa Malysheva
+                            and
+                            Ulitsa Kuibysheva. Access from the north is via Ulitsa Khalturina and Cheliuskintsev. To
+                            reach Ulitsa Repina
+                            from the city’s southern neighbourhoods, take Ulitsa Serafimy Deryabinoi and Moskovskaya.
+                            From the west,
+                            take
+                            Ulitsa Tatishcheva and Metallurgov. Ulitsa Repina is also accessible from the Ring Road,
+                            which circumvents
+                            the
+                            downtown from the south.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Ekaterinburg Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Ekaterinburg Arena is located in the central Verkh-Isetskiy District of Ekaterinburg,
+                            between Ulitsas
+                            Repina,
+                            Tatishcheva and Pirogova. &nbsp;
+                        </p>
+                        <p>
+                            There are two stops for buses, trolleybuses and marshrutkas near the stadium. The closest
+                            stop, named
+                            Tsentralnyi Stadion, is on Ulitsa Repina, 100 metres down the street from the arena. Buses 2
+                            and 25 and
+                            trolleybuses 3, 7 and 17 stop there. The other stop, Institut Svyazi, is at the crossing of
+                            Ulitsa Repina
+                            and
+                            Ulitsa Kraulya, 400 metres from the stadium. &nbsp;This is the stop for buses 2, 21, 24, 25,
+                            27 &amp; 28,
+                            trolleybuses 3, 7 &amp; 17 and marshrutkas 4, 12, 16, 19, 43, 45, 52 &amp; 70.
+                        </p>
+                        <p>
+                            The Metro station closest to Ekaterinburg Arena, Ploshchad 1905 Goda, is four bus stops
+                            away. To get to the
+                            stadium from the Metro station, take bus 2, trolleybus 3, 7 or 17 (from the stop Ploshchad
+                            Malysheva), or
+                            marshrutka 19 (in front of the Metro exit).
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="kaliningrad" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Kaliningrad</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Stadium Kaliningrad{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Stadium Kaliningrad area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match
+                            days, with the exception of public transport and holders of special entry and parking passes
+                            for the stadium
+                            area. Unless you are a holder of such a pass, you should probably give up the idea of
+                            driving your own or
+                            rental car to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            The newly built Stadium Kaliningrad is located on the waterfront of Oktyabrsky Island, in
+                            close proximity to
+                            the embankment of the Staraya Pregolya River. The stadium was completed at the end of 2017.
+                            Local
+                            authorities have pledged good roads for Oktyabrsky Island by the time the 2018 FIFA World
+                            Cup kicks off, as
+                            well as a new highway – Eastern Overpass, to link the island with the rest of the city. The
+                            stadium will be
+                            accessible from Ulitsa Yuriya Gagarina (north of the island) and Ulitsa Podpolkovnika
+                            Yemelyanova (south)
+                            once Eastern Overpass goes into operation.
+                        </p>
+                        <p>
+                            For the time being, access to Oktyabrsky Island is via Second Overpass Bridge, which crosses
+                            the island’s
+                            westerly tip. The overpass exit that leads to the stadium is by the Novaya Pregolya
+                            riverbank. It exits to
+                            Generala Karbysheva Embankment.
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Stadium Kaliningrad by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            The newly built Stadium Kaliningrad is located on Oktyabrsky Island, in close proximity to
+                            the bank of the
+                            Staraya Pregolya River. The stadium was completed at the end of 2017.
+                        </p>
+                        <p>
+                            There are no public transport stops near the new stadium at this time. The closest stops are
+                            in the
+                            residential west end of the island, a 20-minute walk away. Local authorities have pledged
+                            good roads for
+                            Oktyabrsky Island and easy public transportation access to Stadium Kaliningrad by the time
+                            FIFA World Cup
+                            2018 Russia™ kicks off.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="nizhny" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Nizhny Novgorod</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Stadium Nizhny Novgorod {% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Stadium Nizhny Novgorod area will be restricted for all traffic on FIFA World Cup
+                            2018 Russia™
+                            match
+                            days, with the exception of public transport and holders of special entry and parking passes
+                            for the stadium
+                            area. Unless you are a holder of such a pass, you should probably give up the idea of
+                            driving your own or
+                            rental
+                            car to the arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Stadium Nizhny Novgorod is located in the Zarechnyi part of town, on the Spit (Strelka),
+                            jutting out where
+                            the
+                            Oka and the Volga Rivers meet. The arena was completed at the end of 2017. It is 200 metres
+                            away from the
+                            intersection of Ulitsas Karla Marxa, Betankura and Samarkandskaya. Ulitsa Betankura is
+                            accessible via
+                            Moskovskoye Shosse and Sormovskoye Shosse in the west and northwest. The Kanavino Bridge
+                            leads to
+                            Samarkandskaya
+                            Ulitsa from the upper part of town. From Zarechnyi southern neighbourhoods, access to the
+                            Strelka is via
+                            Prospekt Lenina, which continues as Ulitsa Iyulskikh Dnei and then Ulitsa Litvinova.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Stadium Nizhny Novgorod by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Stadium Nizhny Novgorod, built in the city’s Zarechnyi District, stands on the Strelka
+                            waterfront where
+                            Ulitsas
+                            Karla Marxa, Betankura and Samarkandskaya intersect, overlooking the confluence of the Oka
+                            and the Volga
+                            Rivers.
+                            The arena was completed at the end of 2017.
+                        </p>
+                        <p>
+                            A new Metro station, Strelka, is being built next to the stadium. The station, which is on
+                            the
+                            Sormovsko-Meshcherskaya Line, is planned to be launched in May 2018, only weeks before the
+                            World Cup. The
+                            current Metro station nearest to the stadium is Moskovskaya on the Avtozavodskaya Line,
+                            about two kilometres
+                            from the arena. The stadium is several stops away from the station by bus 7, 57, 66 or 69,
+                            or marshrutka 49,
+                            86,
+                            Т9, Т20, Т67 or Т138.
+                        </p>
+                        <p>
+                            The public transport stop nearest to Stadium Nizhny Novgorod – Mikrorayon Sedmoye Nebo – is
+                            on Ulitsa Karla
+                            Marxa 500 metres away. This is the stop for buses 7, 41, 57, 66 and 69, and marshrutkas 49,
+                            86, Т7 and Т24.
+                            The
+                            other nearby stop – Ulitsa Betankura – is 650 metres away from the arena. Bus 52 and
+                            marshrutka Т7 stop
+                            there.
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="rostov" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Rostov-on-Don</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Rostov Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Rostov Arena area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match days,
+                            with
+                            the exception of public transport and holders of special entry and parking passes for the
+                            stadium area.
+                            Unless
+                            you are a holder of such a pass, you should probably give up the idea of driving your own or
+                            rental car to
+                            the
+                            arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Rostov Arena, completed in the city’s Kirovskiy District, on the left bank of the Don, at
+                            the end of 2017,
+                            stands on Levoberezhnaya Ulitsa, which stretches along the River Don from the Voroshilovskiy
+                            Bridge to the
+                            M4
+                            roundabout by the Aksaiskiy Bridge at the eastern edge of town. &nbsp;
+                        </p>
+                        <p>
+                            Another road, provisionally named “Southern Access,” is to be launched next to Rostov Arena
+                            before the World
+                            Cup. Southern Access, which is practically finished, begins at the Vostochnoye
+                            Shosse/Poimennaya Ulitsa
+                            junction, then runs parallel to Levoberezhnaya Ulitsa south of the arena before exiting to
+                            Levoberezhnaya.
+                            &nbsp;
+                        </p>
+                        <p>
+                            The river crossing nearest to Rostov Arena is the Voroshilovskiy Bridge, which is only about
+                            one kilometre
+                            away
+                            from the stadium. Another bridge, leading to the left bank of the Don from the centre, is
+                            the Temernitskiy
+                            Bridge about 2.5 kilometres away. When you take the Temernitskiy Bridge, you will have to
+                            continue on to
+                            Levoberezhnaya Ulitsa via Ulitsas Poimennaya and Shosseinaya, or take Poimennaya and
+                            Vostochnoye Shosse
+                            instead.
+                        </p>
+                        At the city’s western edge, there is also a way to cross over to the left bank: take the Zapadnyi (Western) Bridge,
+                        then turn into 1st Lugovaya Ulitsa and simply follow it to the stadium neighbourhood. &nbsp;
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Rostov Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Rostov Arena, completed in the city’s Kirovskiy District at the end of 2017, stands on the
+                            left bank of the
+                            River Don, between Levoberezhnaya Ulitsa and Grebnoi Canal.
+                        </p>
+                        <p>
+                            There are two public transport stops near the stadium: Gorodskoi Plyazh and Dinamo
+                            Recreational Centre.
+                            Buses 39
+                            and 516 stop at both. Buses 109, 112, 122, 133, 135, 201, 202, 203, 204, 205, 211 &amp; 516
+                            and marshrutkas
+                            49,
+                            73, 77, 92 &amp; 278 stop near MEGAMAG shopping centre and the junction of Vostochnoye
+                            Shosse and Poimennaya
+                            Ulitsa, a 20-minute walk from the stadium.
+                        </p>
+                        <p>
+                            The train stop nearest to Rostov Arena is Zarechnaya, accessible by train from most Rostov
+                            neighbourhoods.
+                            Almost the entire city is covered by train service. From the train stop, it’s a five-minute
+                            walk to the
+                            Elevator
+                            bus stop, where bus 516 will take you the rest of the way to the stadium in about five
+                            minutes: the arena is
+                            two
+                            stops away.
+                        </p>
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="samara" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Samara</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Samara Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Samara Arena area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match days,
+                            with
+                            the exception of public transport and holders of special entry and parking passes for the
+                            stadium area.
+                            Unless
+                            you are a holder of such a pass, you should probably give up the idea of driving your own or
+                            rental car to
+                            the
+                            arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Samara Arena, being built in the city’s Kirovskiy District, is located inside the perimeter
+                            formed by Ulitsa
+                            Demokraticheskaya, Moskovskoye Shosse and Volzhskoye Shosse. The construction was completed
+                            at the end of
+                            2017.
+                            The stadium exits from the thoroughfares around it were completed at about the same time.
+                        </p>
+                        <p>
+                            Volzhskoye Shosse and Moskovskoye Shosse lead to the Samara Arena neighbourhood from the
+                            city’s northern
+                            outskirts. To reach the stadium from the eastern part of town, take Rakitovskoye Shosse.
+                            From the cultural
+                            and
+                            business heart of Samara, which is the southwest, take either Moskovskoye Shosse or
+                            Novo-Sadovaya Ulitsa
+                            (which
+                            becomes Demokraticheskaya Ulitsa) to get to Samara Arena. Access to these two lanes from
+                            Moskovskoye Shosse
+                            is
+                            via Prospekt Kirova.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Samara Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Samara Arena, being built in the city’s Kirovskiy District, is located inside the perimeter
+                            formed by Ulitsa
+                            Demokraticheskaya, Ulitsa Tashkentskaya, Moskovskoye Shosse and Volzhskoye Shosse. Slated
+                            for launch in the
+                            first quarter of 2018, the arena is scheduled to host its trial football match in April. The
+                            access roads –
+                            Dalnyaya and Arena-2018, serving as exits to the stadium from the thoroughfares around it -
+                            are expected to
+                            be
+                            ready by the same time.
+                        </p>
+                        Construction is currently in progress on the transportation infrastructure around Samara Arena, which includes a new
+                        tram spur. The tram will have its reversal ring at the beginning of the stadium’s “last mile.” It takes about 20
+                        minutes to walk down Ulitsa Dalnyaya to Samara Arena from the 16th Kilometre bus stop, where buses 1, 45, 51, 67,
+                        110 &amp; 410а stop, as well as marshrutkas 1, 1к, 96, 205, 210, 221 &amp; 295 (you have to request a stop on some
+                        marshrutka buses). <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="saransk" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Saransk</h2></li>
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to drive to Mordovia Arena{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Access to Mordovia Arena area will be restricted for all traffic on FIFA World Cup 2018
+                            Russia™ match days,
+                            with
+                            the exception of public transport and holders of special entry and parking passes for the
+                            stadium area.
+                            Unless
+                            you are a holder of such a pass, you should probably give up the idea of driving your own or
+                            rental car to
+                            the
+                            arena, and use public transportation instead.
+                        </p>
+                        <p>
+                            Completed at the end of 2017, Mordovia Arena and the lanes leading to it from the
+                            neighbouring thoroughfares
+                            are
+                            located in the flood-lands of the River Insar, between Volgogradskaya and Sevastopolskaya
+                            Ulitsas. &nbsp;
+                        </p>
+                        <p>
+                            When driving to the stadium from the centre of town, take Kommunisticheskaya Ulitsa, exiting
+                            to
+                            Volgogradskaya,
+                            or alternatively take Ulitsa Alexandra Nevskogo, which becomes Sevastopolskaya Ulitsa. There
+                            are two ways to
+                            get
+                            to the stadium from the Northern Bypass Highway of Saransk: follow Alexandrovskoye Shosse to
+                            Prospekt Lenina
+                            to
+                            Kommunisticheskaya Ulitsa, or Lyambirskoye Shosse to Ulitsa Polezhaeva to
+                            Kommunisticheskaya. From the
+                            Eastern
+                            Bypass Highway, Prospekt 70-Letiya Oktyabrya leads to Volgogradskaya Ulitsa, while Ulitsa
+                            Krasnaya will
+                            bring
+                            you to Sevastopolskaya.&nbsp;&nbsp;
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to get to Mordovia Arena by public transport{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Mordovia Arena is situated on the flood plain of the River Insar, between Volgogradskaya and
+                            Sevastopolskaya
+                            Ulitsas, within walking distance of the centre of Saransk.
+                        </p>
+                        <p>
+                            Saransk City Hall plans to launch shuttle services from the stadium to the airport, the
+                            railway station, and
+                            the
+                            major hotels around the city during FIFA World Cup 2018 Russia™. &nbsp;
+                        </p>
+                        <p>
+                            In the meantime, the public transport stop nearest to Mordovia Arena is at Volgogradskaya
+                            Ulitsa, a
+                            10-minute
+                            walk away. This stop, “Ulitsa Mokhovaya,” is for buses 1E, 2, 4, 5, 7, 13E, 17, 20, 30E,
+                            31E, 36, 38, 41
+                            &amp;
+                            44, trolleybuses 5, 5А &amp; 15, and marshrutkas 15, 16, 21, 32, 37, 40 &amp; 150.
+                        </p>
+                        <p>
+                            The train station Posop, where high-speed electric trains stop, is about as close to the
+                            stadium as the bus
+                            stop, except that it’s across the River Insar.
+                        </p>
+                        <br>
+                        <br>
+
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

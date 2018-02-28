@@ -49,9 +49,11 @@
 	var MDTimePicker = function (input, config) {
 		var that = this;
 
-		this.visible = false;
+
+
+        this.visible = false;
 		this.activeView = 'hours';
-		this.hTimeout = null;
+        this.hTimeout = null;
 		this.mTimeout = null;
 		this.input = $(input);
 		this.config = config;
@@ -435,10 +437,12 @@
 	}
 
 	$.fn.mdtimepicker.defaults = {
+
+        editable: false,
 		timeFormat: 'hh:mm:ss.000',	// format of the time value (data-time attribute)
 		format: 'h:mm tt',			// format of the input value
 		theme: 'blue',				// theme of the timepicker
-		readOnly: true,				// determines if input is readonly
+		readOnly: false,				// determines if input is readonly
 		hourPadding: false			// determines if display value has zero padding for hour value less than 10 (i.e. 05:30 PM); 24-hour format has padding by default
 	};
 }(jQuery);

@@ -1,0 +1,84 @@
+<section class="section section-sm bg-gray-100">
+    <div class="container">
+        <!-- Heading Component-->
+
+        {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Next Match' } %}
+        {% endembed %}
+
+        <div class="promo-creative unit-spacing-lg">
+            <div class="unit unit-md-horizontal align-items-center align-items-md-stretch">
+                <div class="unit-body">
+                    <div class="promo-creative-meta">
+                        <time class="promo-creative-time" datetime="{{ match.date|date("Y-m-d") }}"><span
+                                    class="heading-1">{{ match.date|date("j") }}</span><span
+                                    class="heading-5">{{ match.date|date("M") }}</span></time>
+                        <div class="promo-creative-meta-description"><span
+                                    class="text-primary">{{ match.date|date("h:i a") }}</span><span>{{ match.date|date("l") }}</span>
+                        </div>
+                    </div>
+                    <div class="promo-creative-figure"><img
+                                src="{{ asset('assets/images/sport-elements-1-357x321.jpg') }}"
+                                alt="" width="357" height="321"/>
+                    </div>
+                </div>
+                <div class="unit-right">
+                    <div class="promo-creative-details">
+                        <h3 class="promo-creative-title">Russia World Cup</h3>
+                        <p class="promo-creative-location">
+                            <span class="icon icon-gray-800 mdi mdi-map-marker"></span>
+                            {{ match.stadium }}
+                            {#Todo : Get the staduim name#}
+                        </p>
+                        <div class="promo-creative-countdown">
+                            <div class="countdown countdown-bordered" data-type="until"
+                                 data-time="{{ match.date|date("j M Y h:i") }}"
+                                 data-format="dhms" data-style="short"></div>
+                        </div>
+                        <div class="promo-main promo-creative-main">
+                            <div class="promo-team promo-creative-team">
+                                <figure class="promo-team-figure">
+                                    <img src="{{ "/assets/images/teamUploads" ~ asset(match.team1.teamLogo) }}"
+                                         alt="" width="45" height="35"/>
+                                </figure>
+                                <div class="promo-team-title">
+                                    <div class="promo-team-name">{{ match.team1.teamName|truncate(15) }}</div>
+                                    <div class="promo-team-country">{{ match.team1.teamShortcut }}</div>
+                                </div>
+                            </div>
+                            <div class="promo-creative-middle">VS</div>
+                            <div class="promo-team promo-creative-team">
+                                <figure class="promo-team-figure">
+                                    <img src="{{ "/assets/images/teamUploads" ~ asset(match.team2.teamLogo) }}"
+                                         alt="" width="45" height="35"/>
+                                </figure>
+                                <div class="promo-team-title">
+                                    <div class="promo-team-name">{{ match.team2.teamName|truncate(15) }}</div>
+                                    <div class="promo-team-country">{{ match.team2.teamShortcut }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="promo-creative-tickets">
+                            <div class="promo-buttons text-nowrap">
+                                <div class="promo-button promo-button-share fl-bigmug-line-share27">
+                                    <ul class="promo-share-list">
+                                        <li class="promo-share-item"><span>Share</span></li>
+                                        <li class="promo-share-item"><a class="icon fa fa-facebook" href="#"></a></li>
+                                        <li class="promo-share-item"><a class="icon fa fa-twitter" href="#"></a></li>
+                                        <li class="promo-share-item"><a class="icon fa fa-google-plus" href="#"></a>
+                                        </li>
+                                        <li class="promo-share-item"><a class="icon fa fa-instagram" href="#"></a></li>
+                                    </ul>
+                                </div>
+                                <a class="button button-primary"
+                                   href="{{ path('cart_add_item', {'match': match.id} ) }}">Buy tickets</a>
+                            </div>
+                            <p class="promo-creative-tickets-description">Only<span
+                                        class="promo-creative-tickets-number blue">{{ match.ticket.quantity }}</span>Tickets
+                                Left, Hurry Up</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

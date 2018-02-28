@@ -2,9 +2,13 @@
 
 namespace Front\FrontBundle\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Group\GroupBundle\Entity\Groupe;
+use Group\GroupBundle\Modele\StandingsDataFormat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Group\GroupBundle\Modele\StandingsFormat;
 
 class HomeController extends Controller
 {
@@ -21,9 +25,25 @@ class HomeController extends Controller
      */
     public function homeAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $group = $this->randomGroup($em);
+
+        $standing = StandingsDataFormat::oneGroupStandingFormat($group);
+
         // replace this example code with whatever you need
-        return $this->render('FrontBundle:main:main.html.twig', [
-        ]);
+        return $this->render('FrontBundle:main:main.html.twig', ['standings' => $standing]);
     }
 
+    /**
+     * @param ObjectManager $manager
+     * @return Groupe
+     */
+    private function randomGroup(ObjectManager $manager)
+    {
+
+        $groups = $manager->getRepository('GroupBundle:Groupe')->findAll();
+        shuffle($groups);
+
+        return $groups[random_int(0, count($groups) - 1)];
+    }
 }

@@ -5,11 +5,10 @@
 
             <!-- Center Block-->
             <div class="col-lg-8">
-                {% include "FrontBundle:news-main-component:_game-result.html.twig" %}
+                {{ render(controller('TicketBundle:TicketHome:HomeTicketShow')) }}
                 {% include "FrontBundle:news-main-component:_popular-news.html.twig" %}
                 {% include "FrontBundle:news-main-component:_top-players.html.twig" %}
             </div>
-
             <!-- Aside block -->
             <div class="col-lg-4">
                 <aside class="aside-components">
@@ -23,7 +22,6 @@
                     {% include "FrontBundle:news-main-component:_shop-small.html.twig" %}
                 </aside>
             </div>
-
         </div>
     </div>
 </section>

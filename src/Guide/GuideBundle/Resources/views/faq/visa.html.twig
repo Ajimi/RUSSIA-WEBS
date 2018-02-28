@@ -1,0 +1,310 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block title %}Guide | Visa{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Visa' } %}
+        {% block image %}{{ asset('assets/images/guide/visit.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Visa</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#types">Visa types and general rules</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="types" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Visa types and general rules</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Tourist visa{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In order to receive a tourist visa, the following documents are required:
+                        </p>
+                        <ol>
+                            <li>
+                                Original passport/foreign passport with a minimum of two empty pages, it should be valid
+                                for a minimum
+                                of 6 months following the end of the time period of the visa.
+                            </li>
+                            <li>
+                                Two copies of the filled-in and signed visa form with a photograph (it is filled in
+                                online <a
+                                        href="http://visa.kdmid.ru/PetitionChoice.aspx?AspxAutoDetectCookieSupport=1"
+                                        target="_blank">on
+                                    the website</a> of the Consular Department of the Ministry of Foreign Affairs of the
+                                Russian
+                                Federation).
+                            </li>
+                            <li>
+                                A photograph (3.5 × 4.5 cm (in a series of countries two photographs are required).
+                            </li>
+                            <li>
+                                The original and a copy of an insurance policy that is valid on Russian territory.
+                            </li>
+                            <li>
+                                A voucher or a contract for tourist services and confirmation of reception of a foreign
+                                tourist from a
+                                tour operator in a form of the established type. The right to provide visa support to
+                                foreign tourists
+                                is only possessed by Russian tour firms that have been registered with the Consular
+                                Department of the
+                                Russian Ministry of Foreign Affairs (it should be noted that confirmation of a hotel
+                                booking is not
+                                grounds for the issuing of a visa).
+                            </li>
+                        </ol>
+                        <p>
+                        </p>
+                        <p>
+                            The type of visa form varies according to country. The form is filled in in Russian or in
+                            the language of
+                            the country in which the applicant permanently resides. If the required language is not on
+                            the site, you
+                            must choose either Russian or English. When the form has been filled in, it must printed on
+                            one side of
+                            paper (two sides for citizens of Great Britain, Canada, the USA and Georgia).
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Private visa{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            If you have friends, relatives or friends in Russia then you can apply for a private visa.
+                            To do so, you
+                            need the same documents as for a tourist visa, but instead of a letter of confirmation from
+                            the tour
+                            operator you must submit the original of an official invitation from a citizen of the
+                            Russian Federation.
+                            That original must be drawn up in the territorial department of the Federal Migration
+                            Service of the Russian
+                            Federation where the person issuing the invitation resides or is registered as living.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Where to submit the documents{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Traditionally, you can apply for the visa by personally submitting the required documents at
+                            a Russian
+                            consulate. In several countries you must make an appointment to do this in advance. In some
+                            countries,
+                            documents are submitted at the visa centers of various companies. For example, in Great
+                            Britain, Finland and
+                            South Korea, Russian visa centers are run by the company VFS, whereas in a number of
+                            European countries the
+                            firm VHS runs the center. In the USA this task is performed by ILS USA. A detailed <a
+                                    href="http://www.kdmid.ru/cd.aspx?lst=cd_wiki&amp;it=/Spisok_deystvuyushchih_rossiyskih_vizovyh_zentrov.aspx"
+                                    target="_blank">list</a> can be found on the site of the Consular service of the
+                            Ministry for
+                            Foreign Affairs of the Russian Federation.
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Additional documents{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/d02/128b4b270c16681f7c511434f12d893a.jpg?147971773381258"
+                                 alt="Additional documents" title="Additional documents">
+                        </figure>
+
+                        Depending on the country where the visa is being applied for, the Russian consulate may require additional documents for the processing of a visa appliction. They could include, for example, financial documents confirming the possession of sufficient resources for the trip to Russia and return to the applicant's homeland. Citizens of a number of countries, when applying for a Russian visa, must present the original return tickets for their trip. Such rules are in effect for the citizens of India, Iraq, Iran, North Korea, China, Syria, Turkey and several other countries. In certain cases, US citizens must also present their air tickets when submitting their visa applications.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Visa fees{% endblock %}
+                    {% block faq_content %}
+
+
+                        Fees for the drawing up of visas vary depending on the country where the application is submitted, the type of visa being applied for and the urgency of its processing. As a rule, the consular fee matches the fee charged by the country in question for the processing of a visa for a Russian citizen. For example, the fee for the processing of a non-urgent single-entry or double-entry visa for US citizens is $160, while for European Union citizens it is €35.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Visa processing time{% endblock %}
+                    {% block faq_content %}
+
+
+                        The standard time period for the issuing of a visa is from 4 to 20 working days. As a rule, the time periods depend on the type of visa being applied for and the country in which the application is made. Fast-track processing is also possible, with processing taking between one and three days. In such cases the visa fees are doubled.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Traveling with children{% endblock %}
+                    {% block faq_content %}
+
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/f16/deti.jpg?147971773469731"
+                                 alt="Traveling with children" title="Traveling with children">
+                        </figure>
+
+                        When planning trips with children it should be remembered that if the child is included in the parent's passport then he will also be included in the visa. A separate form for the child in such cases is not required, and a photograph of the child is all that needs to be added to the parent's application. If the child has his own passport, then an application must be submitted with the full complement of documents. When applying for a multi-entry visa for the child, a separate visa is issued irrespective of whether or not the child is included in the parent's passport or not.
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Responsibility{% endblock %}
+                    {% block faq_content %}
+
+
+                        Don’t forget that foreigners who do not leave Russia by the end of the term of validity of their visas or who violate the regulations for staying in the country can be held administratively responsible, fined between 2,000 and 5,000 roubles, and deported from the country.
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Insurance{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            Insurance against accidents is obligatory for entry into Russia, and without such insurance
+                            you may not be
+                            issued with a visa. If you are coming from a country that does not require a visa, you still
+                            require
+                            insurance.
+                        </p>
+                        <p>
+                            Usually, such insurance for travelers should cover treatment costs of at least 30,000 euros.
+                            Standard
+                            insurance includes medical costs for outpatient and inpatient treatment, costs for emergency
+                            dental aid and
+                            medical transport, as well as transport costs for the return of children to their homeland
+                            if their
+                            relatives have been hospitalized or have passed away.
+                        </p>
+                        <p>
+                            Carry your insurance policy with you – this will allow you or the medics, in force majeure
+                            circumstances, to
+                            quickly contact the insurance company and resolve financial issues.
+                        </p>
+                        <p>
+                            In Russia, a mandatory general emergency care service operates. In the event of a problem
+                            arising, phone 112
+                            (the unified number for emergency services) or 103 – this is the specific number for medical
+                            assistance. You
+                            will be given qualified medical assistance, and hospitalized if necessary.
+                        </p>
+
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Customs rules and declaration when leaving Russia {% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            If you are intending to take gifts and souvenirs from Russia, you should establish in
+                            advance if you can
+                            take the items you have bought across the border. In Russia there are many artists and
+                            craftsmen producing
+                            wonderful handmade souvenirs (carved and painted wooden items, items made with precious and
+                            semi-precious
+                            stones, linen fabrics and the like are particularly valued) and there are many factories
+                            engaged in their
+                            mass production. Mementos can also be bought in antique stores and at flea markets.
+                        </p>
+                        <p>
+                            Works of art, antiques, icons and old books are regarded as cultural treasures. Exporting
+                            some of them is
+                            banned: anything that is over a hundred years old, archaeological artifacts, any objects of
+                            scientific or
+                            artistic value, original military uniforms and accessories if they over fifty years of age,
+                            medals and other
+                            awards. Other valuables, including original paintings, statues, icons or miniatures can be
+                            taken out of the
+                            country if, Rosokhrankultura, the federal service for the oversight of legislation in the
+                            sphere of cultural
+                            heritage, which is subordinated to the Culture Ministry, <a
+                                    href="http://mkrf.ru/gosuslugi/vydacha-v-poryadke-i-na-osnovaniyakh-kotorye-ustanovleny-zakonodatelstvom-rossiy/poluchenie-svidetelstva-na-pravo-vyvoza-kulturnykh-tsennostey-s-territorii-rossi#tabsinto-67583"
+                                    target="_blank">gave permission</a> in advance.
+                        </p>
+                        <p>
+                            <b>List of documents for the export of cultural treasures (objects of cultural significance)
+                                from the
+                                Russian Federation:</b>
+                        </p>
+                        <ol>
+                            <li> Declaration on the provision of the right to export cultural treasures from Russia</li>
+                            <li><i> </i>Copies of the documents proving the right of ownership over the treasures being
+                                exported
+                            </li>
+                            <li><i> </i>Expert evaluation from an expert on cultural treasures</li>
+                            <li><i> </i>Receipt for the payment of state duties for the export of cultural
+                                treasures<i> </i></li>
+                            <li><i> </i>List with a description of the cultural treasures</li>
+                            <li><i> </i>Copy of the document establishing the identity of the applicant</li>
+                            <li><i> </i>Photographs of the cultural treasures</li>
+                        </ol>
+                        <p>
+                            Cultural treasures which are exported from the country without the appropriate documents can
+                            be confiscated
+                            at the customs office and their owners can be fined in an amount up to half the value of the
+                            object.
+                            According to the legislation, modern souvenir works and objects of cultural significance
+                            that are mass
+                            produced are not regarded as being cultural treasures.
+                        </p>
+                        In addition, without any formalities, visitors can take out caviar (up to 5 kilograms of red caviar and up to 250 grams of black caviar) and vodka (subject to limitations of the airline), or up to a liter of spirits per passenger. If it is not bought at the duty free store at the airport it must be packed in your luggage. It is recommended that you buy caviar from one of the large supermarkets, as this reduces the chances of it being faked or, in the case of black caviar, it having been poached or farmed unethically. For goods of the latter kind you should keep your receipt.
+                        <br>
+                        <br>
+                        <b>Moscow<br>
+                        </b><span><a target="_blank"
+                                     href="https://www.mkrf.ru/about/territorial_authorities/upravlenie_ministerstva_kultury_rossiyskoy_federatsii_po_tsentralnomu_federalnomu_okrugu_/">Department of the Ministry of Culture of the Russian Federation for the Central Federal District</a> – tel. +7 (499) 346 44 15<br>
+</span><br>
+                        <b>Sochi<br>
+                        </b><a href="http://mkrf.ru/ministerstvo/subdivisions/list.php?SECTION_ID=19844">Directorate of
+                        the Culture
+                        Ministry of the Russian Federation for the Southern and North-Caucausus Federal
+                        Districts</a>,Department for State Control and Oversight of the Protection of Cultural Treasures – tel. &nbsp;+7 (863) 240-48-19
+                        <br>
+                        <b><br>
+                        </b><b>Kazan<br>
+                    </b><a href="http://mkrf.ru/ministerstvo/subdivisions/list.php?SECTION_ID=19834">Directorate of the
+                        Culture Ministry
+                        of the Russian Federation for the Privolzhsky Federal
+                        District</a>, Cultural Treasures Department – tel. +7 (8435) 67-80-26<br>
+                        <br>
+                        <b>Saint&nbsp;Petersburgг<br>
+                        </b><a href="http://mkrf.ru/ministerstvo/subdivisions/list.php?SECTION_ID=19814">Directorate of
+                        the Culture
+                        Ministry of the Russian Federation for the North-West Federal
+                        District</a>, Department for the Control of Export and Import of Cultural Treasures – tel. +7 (812) 646-33-03&nbsp;
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

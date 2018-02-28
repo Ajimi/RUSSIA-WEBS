@@ -57,6 +57,7 @@ class UploadSubscriber implements EventSubscriber
 
     /**
      * @param EventArgs $event
+     * @throws \ReflectionException
      */
     public function prePersist(EventArgs $event)
     {
@@ -65,6 +66,16 @@ class UploadSubscriber implements EventSubscriber
 
     /**
      * @param EventArgs $event
+     * @throws \ReflectionException
+     */
+    public function preUpdate(EventArgs $event)
+    {
+        $this->preEvent($event);
+    }
+
+    /**
+     * @param EventArgs $event
+     * @throws \ReflectionException
      */
     private function preEvent(EventArgs $event)
     {
@@ -72,14 +83,6 @@ class UploadSubscriber implements EventSubscriber
         foreach ($this->reader->getUploadableFields($entity) as $property => $annotation) {
             $this->handler->uploadFile($entity, $property, $annotation);
         }
-    }
-
-    /**
-     * @param EventArgs $event
-     */
-    public function preUpdate(EventArgs $event)
-    {
-        $this->preEvent($event);
     }
 
     /**

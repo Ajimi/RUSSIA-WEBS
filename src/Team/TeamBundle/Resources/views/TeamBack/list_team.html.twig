@@ -1,4 +1,3 @@
-
 {% extends "BackBundle:common:_base.html.twig" %}
 
 {% block stylesheets %}
@@ -30,63 +29,60 @@
             </div>
 
         </div>
-    {% endblock %}
+    {% endblock top_content_header %}
     {% block page_content %}
-            <div class="col-md-12 col-sm-12 col-xs-12">
-
-                <div class="x_panel">
-                    <div class="x_title">
-                        <div class=" col-sm-2 col-xs-12">
-                            <a class="btn btn-success" href="{{ path('team_add') }}">New Team</a>
-                        </div>
-                        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class=" col-sm-2 col-xs-12">
+                        <a class="btn btn-success" href="{{ path('team_add') }}">New Team</a>
                     </div>
-                    <div class="x_content">
-                        <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
-                            <thead>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Logo</th>
+                            <th>Shortcut</th>
+                            <th>Participation</th>
+                            <th>Winner</th>
+                            <th>Second</th>
+                            <th>Third</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="custom-table">
+                        {% for team in teams %}
                             <tr>
-                                <th>Name</th>
-                                <th>Logo</th>
-                                <th>Shortcut</th>
-                                <th>Participation</th>
-                                <th>Winner</th>
-                                <th>Second</th>
-                                <th>Third</th>
-                                <th>Actions</th>
+                                <td>{{ team.teamName }}</td>
+                                <td><img src="{{ asset(''~team.file) }}"
+                                         alt="" width="22" height="22"/></td>
+                                <td>{{ team.teamShortcut }}</td>
+                                <td>{{ team.participation }}</td>
+                                <td>{{ team.winner }}</td>
+                                <td>{{ team.second }}</td>
+                                <td>{{ team.third }}</td>
+                                <td>
+                                    <a href="{{ path('teamEdit',{'id':team.id}) }}"
+                                       class="btn btn-info btn-xs">
+                                        <i class="fa fa-pencil"></i>Edit
+                                    </a>
+                                    <a href="{{ path('teamDelete',{'id':team.id}) }}"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash-o"></i> Delete
+                                    </a>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody id="costum-table">
-                            {% for team in teams %}
-                                <tr>
-                                    <td>{{ team.teamName }}</td>
-                                    <td><img src="{{ asset(''~team.file) }}"
-                                             alt="" width="22" height="22"/></td>
-                                    <td>{{ team.teamShortcut }}</td>
-                                    <td>{{ team.participation }}</td>
-                                    <td>{{ team.winner }}</td>
-                                    <td>{{ team.second }}</td>
-                                    <td>{{ team.third }}</td>
-                                    <td>
-                                        <a href="{{ path('teamEdit',{'id':team.id}) }}"
-                                           class="btn btn-info btn-xs">
-                                            <i class="fa fa-pencil"></i>Edit
-                                        </a>
-                                        <a href="{{ path('teamDelete',{'id':team.id}) }}"
-                                           class="btn btn-danger btn-xs">
-                                            <i class="fa fa-trash-o"></i> Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-    {% endblock %}
-
-
-{% endblock %}
+        </div>
+    {% endblock page_content %}
+{% endblock body %}
 
 {% block javascripts %}
 
@@ -108,6 +104,12 @@
     <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 
+    {#
+    <script>
+        $(document).ready(function() {
+            $('#datatable-fixed-header').DataTable();
+        } );
+    </script>
+#}
 {% endblock javascripts %}

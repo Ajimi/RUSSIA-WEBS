@@ -1,0 +1,4 @@
+\News\NewsBundle\Entity\Article:
+    article{1..50}:
+        title: <pargraph()>
+        content: <paragraph()>

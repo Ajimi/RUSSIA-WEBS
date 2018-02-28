@@ -1,0 +1,588 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block title %}Guide | Transport{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Transport' } %}
+        {% block image %}{{ asset('assets/images/guide/transport-train.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Transport</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#drive">Driving into Russia</a></li>
+            <li><a href="#roads">Russian roads</a></li>
+            <li><a href="#pay">Pay-parking</a></li>
+            <li><a href="#rent">Renting a car</a></li>
+            <li><a href="#ride">Ride sharing</a></li>
+            <li><a href="#car">Car Sharing</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="drive" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Driving into Russia</h2></li>
+                <li>
+                    <a class="cd-faq-trigger" href="#0">Before departure</a>
+                    <div class="cd-faq-content">
+
+
+                        <p>
+                            Make sure all your car papers are in order. To drive in Russia, you will need to bring:
+                        </p>
+
+                        <ul>
+                            <li>
+                                Your driver’s license or temporary permit
+                            </li>
+                            <li>
+                                Your car registration documents
+                            </li>
+                            <li>
+                                Basic auto insurance policy or a Green Card (the international auto insurance policy).
+                            </li>
+                        </ul>
+
+                        <p>Your driver’s license must conform to the provisions of the 8 November 1968 Vienna Convention
+                            on
+                            Road Traffic, namely: all information on the license has to be in Latin letters or
+                            transliterated in Latin script. A non-conforming license has to be translated into Russian
+                            and
+                            notarized. The driver’s name has to be on the auto insurance policy, or it has to be an “any
+                            driver” policy. If you will be driving through other states, find out what their traffic
+                            regulations are as they may be different from the Russian regulations.</p><br>
+                    </div> <!-- cd-faq-content -->
+                </li>
+
+                <li>
+                    <a class="cd-faq-trigger" href="#0">Crossing the frontier</a>
+                    <div class="cd-faq-content">
+                        <p>
+                            Make sure your license plate only has letters of the Latin alphabet when crossing the
+                            border into Russia. At entry into Russia, you are required to complete a customs
+                            declaration of the temporary importation of your vehicle for the entire duration of your
+                            stay in Russia. Keep this declaration: you will need it again when you cross the
+                            frontier out of Russia.
+                        </p>
+                    </div> <!-- cd-faq-content -->
+                </li>
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}
+                        Russian traffic regulations
+                    {% endblock %}
+                    {% block faq_content %}
+                        <p>
+                            Russia’s traffic regulations are for the most part the same as the regulations effective
+                            elsewhere in Europe, with a few exceptions. You have to wait for your green light to
+                            drive at a signal-controlled intersection. You cannot take a right on a red light: you
+                            have to wait for the general green, or the green arrow on the additional traffic light
+                            module (where applicable). The idea to let drivers turn right on a red light has been
+                            under consideration for a few years. For now, however, this idea is on trial at a few
+                            intersections in Moscow, which are sign-posted accordingly. &nbsp;&nbsp;<br>
+                        </p>
+
+                        <br>
+                        <a href="http://www.consultant.ru/document/cons_doc_LAW_2709/824c911000b3626674abf3ad6e38a6f04b8a7428/">Russian
+                            traffic regulations </a><br>
+                        <a href="http://www.garant.ru/doc/busref/spr_dtp/">Fines for traffic violations</a><br>
+                    {% endblock faq_content %}
+                {% endembed %}
+
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="roads" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Russian Roads</h2></li>
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}
+                        Types of roads
+                    {% endblock %}
+                    {% block faq_content %}
+                        <p>
+                            There are three types of roads in Russia in terms of traffic conditions: regular roads,
+                            speedways and highways. The differences between these three types of roads include speed
+                            limits and the number of adjoining secondary roads. Russian roads are subsumed under five
+                            types by significance, each marked with its own alphabetic-numeric code. The roads that are
+                            part of the European road system are coded with the prefix E and a number. Federal roads
+                            have the prefix M plus a number. The prefix A with a number stands for a regional road. The
+                            prefix P with a number marks an inter-borough road. Other local roads are marked H with a
+                            number.
+                        </p>
+
+                    {% endblock faq_content %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}
+                        Toll roads
+                    {% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Russia has a good system of toll highways, which offer the benefits of improved paving and
+                            greater speed limits. For a long-distance trip, it may be advisable to purchase a
+                            transponder linked to your personal account, so you won’t have to stop to pay at the toll
+                            booths – the crossbar will rise automatically for you.
+                        </p>
+                        <p>
+                            There is a toll section between the 15th and 58th kilometres on the Moscow-Saint&nbsp;Petersburg
+                            route M11. The toll will depend on the time of the day and the day of the week.<br>
+                            There is another toll section for the detour around the town of Vyshni Volochek. They take
+                            cash or bank card. &nbsp;
+                        </p>
+                        There are seven toll sections on route M4 between Moscow Rostov-on-Don. The tolls are not the same, and they vary during the day. &nbsp;
+                        <br>
+                        <br>
+                    {% endblock faq_content %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="pay" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Pay-parking</h2></li>
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Moscow{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In Moscow, there is pay-parking inside Third Traffic Ring and on some streets outside the
+                            Ring, usually
+                            around shopping centres and Metro stations. Pay-parking areas are signposted. Street parking
+                            is free on
+                            Sundays and public holidays.
+                        </p>
+                        <p>
+                            Parking rates range from 40 to 200 rubles per hour, depending on the neighbourhood and time
+                            of the day. Here
+                            is how you pay for your parking in Moscow:
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    use the Moscow Parking mobile app for iOS and Android;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    send a text message to 7757;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    use a park’o’mat (bank card only);
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    use voice service by dialling 3210 or the regular city number: +7 (495) 539-5454;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    pay via your account on <a href="http://parking.mos.ru/">parking.mos.ru</a>;
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    use Yandex.Parking mobile app.
+                                </p>
+                            </li>
+                        </ul>
+                        <p>
+                            When you have parked your car, you have 15 minutes to pay for your parking. The fine for
+                            unpaid parking is
+                            2500 rubles. If your car was towed, contact the call centre at +7 (495)&nbsp;539-5454, or
+                            2310 from your
+                            mobile phone.
+                        </p>
+                        <a href="http://parking.mos.ru/">Pay-parking in Moscow</a> <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Saint Petersburg{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            There is pay-parking in the Central District of St. Petersburg, but only inside the
+                            perimeter formed by
+                            Fontanka River Embankment, Nevsky Prospekt, Ligovsky Prospekt, and Ulitsas Radishcheva,
+                            Kirochnaya and
+                            Pestelya. However, parking is free in this neighbourhood from 8:01 pm to 7:59 am daily.
+                        </p>
+                        <p>
+                            Parking costs between 30 and 120 roubles per hour, depending on the neighbourhood and
+                            vehicle class. Here is
+                            how you pay for your parking in Saint&nbsp;Petersburg:
+                        </p>
+                        <ul>
+
+                            <li>via a park’o’mat (use an ATM card or a parking ticket: parking tickets are available at
+                                the Metro
+                                stations Chernyshevskaya, Mayakovskaya and Ploshchad Vosstaniya in the pay-park
+                                neighbourhood);&nbsp;
+                            </li>
+
+                            <li>use your account on the local parking website;&nbsp;</li>
+
+                            <li>use the Saint Petersburg Parking mobile app for iOS and Android;&nbsp;</li>
+
+                            <li>send a text message to 2722.</li>
+
+                        </ul>
+                        <p>
+                            When you have parked your car, you have 15 minutes to pay for your parking. The fine for
+                            unpaid parking is
+                            3000 roubles. If your car was towed in a pay-park area, contact the call centre at +7 (812)&nbsp;417-5000.
+                        </p>
+                        <a href="https://parking.spb.ru/ru/">Pay-parking in Saint Petersburg</a> <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Kazan{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In Kazan, there is pay-parking in some streets of the central Vakhitovsky District.
+                            Pay-parking areas are
+                            signposted. Street parking is free from 9:01 pm to 6:59 am on weekdays and weekends, as well
+                            as on public
+                            holidays.
+                        </p>
+                        <p>
+                            Parking rates, depending on the location, will vary between 30 and 70 rubles per hour. This
+                            is how you pay
+                            for your parking in Kazan:
+                        </p>
+                        <ul>
+                            <li>via park’o’mat (use your ATM card or local travel card with e-Wallet feature enabled);
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>use your account on the local parking website: <a
+                                        href="https://parkingkzn.ru/auth/login">https://parkingkzn.ru/auth/login</a>;
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>use the Kazan Parking mobile app for iOS and Android;</li>
+                        </ul>
+                        <ul>
+                            <li>send a text message to 3116.</li>
+                        </ul>
+                        <p>
+                            When you have parked your car, you have 15 minutes to pay for your parking. The fine for
+                            unpaid parking is
+                            2500 rubles. If your car was towed in a pay-park area, contact the call centre at +7 (843)
+                            560-5605.
+                        </p>
+                        <p>
+                            <a href="https://parkingkzn.ru/ru/">Pay-parking in Kazan</a>
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Sochi{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            There is pay-parking in Sochi on a few streets close to the railway station and the seaport
+                            in the downtown,
+                            and on Ulitsas Kirova, Demokraticheskaya and Lenina in Adler. Pay-parking areas are
+                            signposted. Parking is
+                            free from 8:01 pm to 7:59 am.
+                        </p>
+                        <p>
+                            Parking costs 50 rubles an hour. You can pay for your parking:
+                        </p>
+                        <ul>
+                            <li>via a park’o’mat (bank cards only);</li>
+                        </ul>
+                        <ul>
+                            <li>via the Sochi Parking mobile app for iOS and Android;</li>
+                        </ul>
+                        <ul>
+                            <li>by text message to 3116.</li>
+                        </ul>
+                        <p>
+                            When you have parked your car, you have 15 minutes to pay for your parking. The fine for
+                            unpaid parking is
+                            1000 rubles. If your car was towed in a pay-park area, contact the call centre at +7 (862)
+                            296-5987.
+                        </p>
+                        <p>
+                            <a href="https://sochiparking.ru/ru/">Pay-parking in Sochi</a>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Ekaterinburg{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In Ekaterinburg, there is pay-parking in the very centre of town, within the perimeter
+                            formed by Prospekt
+                            Lenina and Ulitsas Moskovskaya, Vostochnaya, Dekabristov and Kuibysheva. &nbsp;&nbsp;
+                        </p>
+                        <p>
+                            The parking rate is 30 rubles per hour. You can pay for your parking:
+                        </p>
+                        <p>
+                            ● &nbsp;&nbsp;via a park'o'mat (use your ATM card or local EKARTA travel card with e-Wallet
+                            feature enabled;
+                            cash is not accepted); &nbsp;
+                        </p>
+                        <p>
+                            ● &nbsp;&nbsp;via a QIWI terminal or Frisbi pay-point (cash is accepted with both options);
+                        </p>
+                        <p>
+                            ● &nbsp;&nbsp;via your account on the local pay-parking website: <a
+                                    href="https://ek-parking.ru/auth/login">https://ek-parking.ru/auth/login</a>
+                            ;
+                        </p>
+                        <p>
+                            ● &nbsp;&nbsp;via the Ekaterinburg Parking mobile app for iOS and Android;
+                        </p>
+                        <p>
+                            ● &nbsp;&nbsp;by text message to 3116.
+                        </p>
+                        <p>
+                            When you have parked your car, you have 10 minutes to pay for your parking. The fine for
+                            unpaid parking
+                            ranges from 1000 to 3000 rubles. If your car was towed in a pay-park area, contact the call
+                            centre at +7
+                            (343) 287-2700.
+                        </p>
+                        <br>
+                        <a href="https://ek-parking.ru/ru/">Pay-parking in Ekaterinburg</a> <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Nizhny Novgorod{% endblock %}
+                    {% block faq_content %}
+
+
+                        <p>
+                            In the upper part of Nizhny Novgorod, there is pay-parking in some sections of Upper Volga
+                            Embankment and on
+                            Rozhdestvenskaya Ulitsa, from Blagoveshchenskaya Ploshchad to Ploshchad Narodnogo Yedinstva.
+                            On the other
+                            side of the Volga, there is pay-parking between Moskovsky Railway Station and Ploshchad
+                            Revolutsii.
+                        </p>
+                        <p>
+                            The parking rate is 50 roubles per hour. You can pay for your parking:
+                        </p>
+                        <p>
+                            ● via a park’o’mat (use your ATM card or purchase a pay-parking card at a Russian Mail
+                            office or Pechat
+                            newsstand);
+                        </p>
+                        <p>
+                            ● via your account on the local pay-parking website: <a href="https://parkovkinn.ru/login">https://parkovkinn.ru/login</a>;
+                        </p>
+                        <p>
+                            ● using the N. Novgorod Parking mobile app for iOS and Android;
+                        </p>
+                        <p>
+                            ● by text message to 7878.
+                        </p>
+                        <p>
+                            The fine for unpaid parking ranges from 1000 to 2000 roubles. If your car was towed in a
+                            pay-park area,
+                            contact the call centre at +7 (800) 222-2201.
+                        </p>
+                        <p>
+                            <a href="http://parkovkinn.ru/map">Pay-parking in Nizhny Novgorod</a>
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed 'GuideBundle:component:faq-item.html.twig' %}
+                    {% block faq_title %}Rostov-on-Don{% endblock %}
+                    {% block faq_content %}
+                        <p>
+                            In Rostov-on-Don, there is pay-parking in the centre of the right-bank part of town, inside
+                            the perimeter
+                            formed by Ulitsa Tekucheva, Teatralny Prospekt, Ulitsa Beregovaya and Prospekt Siversa.
+                        </p>
+                        <p>
+                            The parking rate is 35 roubles per hour. You can pay for your parking:
+                        </p>
+                        <p>
+                            ● via a park’o’mat (use your ATM card; Apple Pay, Android Pay and Samsung Pay are also
+                            supported);
+                        </p>
+                        <p>
+                            ● at an Elexnet pay terminal (cash only);
+                        </p>
+                        <p>
+                            ● via your account on the local pay parking website:
+                            <a href="https://my.rndparking.ru/">https://my.rndparking.ru/</a>;
+                        </p>
+                        <p>
+                            ● using the Rostov-on-Don Parking mobile app for iOS and Android;
+                        </p>
+                        <p>
+                            ● with a text message to 2888.
+                        </p>
+                        <p>
+                            When you have parked your car, you have 15 minutes to pay for your parking. The fine for
+                            unpaid parking
+                            ranges up to 3000 roubles. If your car was towed in a pay-park area, contact the call centre
+                            at +7 (863)
+                            285-1001.
+                        </p>
+                        <a href="https://rndparking.ru/">Pay-parking in Rostov-on-Don</a>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="rent" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Renting a car</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Rental terms{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        Most of the known international car rental services operate in Russia. They usually have their offices at the airports.
+                        <br>
+                        <br>
+                        <a href="http://www.hertz.ru/rentacar/reservation/">Hertz</a><br>
+                        <a href="http://www.avisrussia.ru/">Avis</a><br>
+                        <a href="http://www.rentalcars.com/ru/brand/alamo/">Alamo</a><br>
+                        <a href="http://www.dollarrent.ru ">Dollar</a><br>
+                        <br>
+                        <p>
+                            Ordinarily, you have to be 21 or older to rent an A or B class car, and 23 or older to rent
+                            a C class car or
+                            higher. You have to show your ID and your driver’s license to rent a car, and your license
+                            has to be at
+                            least 12 months old. The major rentals will ask for one or two valid bank cards to secure a
+                            deposit.&nbsp;
+                        </p>
+                        <p>
+                            The deposit amount will vary between the different rental companies.
+                        </p>
+                        <p>
+                            The majority of car rental companies require a deposit to cover the possible mutilation of
+                            the parts that
+                            are not covered by insurance, such as tires, mirrors, window glass, and also to cover the
+                            fuel and franchise
+                            costs. The deposit will be refunded when the client returns the car intact with a full
+                            gasoline tank. It may
+                            take anything between two days and a month for the deposit to be refunded to your card.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Insurance{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        <p>
+                            There are two types of auto insurance in Russia: statutory (OSAGO) and optional (CASCO).
+                        </p>
+                        <p>
+                            The statutory auto insurance law (OSAGO) stipulates the top limit of 400,000 roubles for the
+                            sum insured. In
+                            the event of an accident resulting in a fatality, the insurer will compensate the survivors
+                            up to a maximum
+                            of 500,000 roubles. &nbsp;
+                        </p>
+                        <p>
+                            The terms of optional insurance (CASCO), including the sum insured, are subject to the
+                            contract between the
+                            insurer and the party insured. A CASCO policy often comes with a franchise, which is the
+                            stipulation that
+                            the insurer will not be liable to indemnify below a certain amount of damage, in which case
+                            the sum below
+                            the bottom limit will be left for the account of the party insured.
+                        </p>
+                        <p>
+                            <a href="http://welcome2018.com/guide/77989/">Accident in a rental car</a>
+                        </p>
+
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="ride" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Ride sharing</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Available services{% endblock %}
+
+                    {% block faq_content %}
+
+                        Ride sharing is a budget way to move between cities. Ride sharing is when someone who is driving to
+                        another town takes passengers for a modest fee. The online ride sharing services will require
+                        registration to put you in touch with a driver going in your direction. The caveat here is that your
+                        safety is your own responsibility: the service provider will accept no responsibility for anything
+                        that happens on the trip. <br>
+                        <br>
+                        <a href="http://www.blablacar.ru ">BlaBlaCar</a><br>
+                        <a href="http://beepcar.ru/">Beepcar</a><br>
+                        <a href="http://www.dovezu.ru/">Dovezu</a><br>
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+
+            <ul id="car" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Car Sharing</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}App list{% endblock %}
+
+                    {% block faq_content %}
+
+                        <p>
+                            Car sharing services are available in the 2018 World Cup host cities. Car sharing is
+                            short-term
+                            car rental where you pay by the minute.
+                        </p>
+                        <p>
+                            The rate is basically the same with all car sharing providers: about 8 roubles per minute.
+                        </p>
+                        <p>
+                            To be able to use this service, you have to download a mobile app, register in the system,
+                            sign
+                            a service contract (at their offices or via courier), and link your bank card to your
+                            account in
+                            the system. Now you are ready to use a car sharing service.
+                        </p>
+                        <p>
+                            There are several car sharing providers in Moscow. Here are some of them: <a
+                                    href="http://anytimecar.ru/">Anytime</a>, <a
+                                    href="http://delimobil.ru/">Delimobil</a>,
+                            <a href="http://car5.ru">Сar5</a>, <a href="http://belkacar.ru">BelkaCar</a> and <a
+                                    href="http://youdrive.today">YouDrive</a>.
+                        </p>
+                        <p>
+                            There are three car sharing providers in Saint&nbsp;Petersburg - YouDrive, Delimobil and <a
+                                    href="http://colesa.com">Colesa</a> – and two in Sochi: <a
+                                    href="http://carsharing.urentcar.ru/rates.html">Urentcar</a>&nbsp;and <a
+                                    href="http://sharemobil.ru/">Sherimobil</a>.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}

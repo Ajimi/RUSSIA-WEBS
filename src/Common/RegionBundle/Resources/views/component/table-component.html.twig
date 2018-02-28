@@ -1,0 +1,52 @@
+<thead>
+<tr class="headings">
+    <th class="column-title">Country</th>
+    <th class="column-title">State</th>
+    <th class="column-title">Longitutde</th>
+    <th class="column-title">Longitutde</th>
+    <th class="column-title">Actions</th>
+    </th>
+    <th class="bulk-actions" colspan="7">
+        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions (
+            <span class="action-cnt"> </span> ) <i
+                    class="fa fa-chevron-down"></i>
+        </a>
+    </th>
+</tr>
+</thead>
+
+
+<tbody>
+{% if regions|length != 0 %}
+
+    {% for region in regions %}
+        <tr>
+            <td>Russia</td>
+            <td>{{ region.name }}</td>
+            <td>
+                {% if region.location is null %}55.235564{% else %}{{ region.location.geoCode.longitude }}{% endif %}
+            </td>
+            <td>
+                {% if region.location is null %}55.235564{% else %}{{ region.location.geoCode.latitude }}{% endif %}
+            </td>
+            <td>
+                <a href="{{ path('admin_region_edit',{'id':region.id}) }}"
+                   class="btn btn-info btn-xs">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+                <a href="#"
+                   id="editBtn"
+                   data-url="{{ region.id }}"
+                   class="js-delete btn btn-danger btn-xs">
+                    <i class="fa fa-trash-o"></i>
+                    Delete </a>
+            </td>
+
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <td colspan="7">There's no region yet</td>
+{% endif %}
+
+</tbody>

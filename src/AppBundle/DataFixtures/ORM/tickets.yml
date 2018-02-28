@@ -1,0 +1,69 @@
+Team\TeamBundle\Entity\Team:
+    teame{1..16}:
+      teamName: <country()>
+      file: "argentina-hd-logo.png"
+      teamLogo: "argentina-hd-logo.png"
+      teamShortcut: <word()>
+      matchWon: <randomDigitNotNull()>
+      matchLost: <randomDigitNotNull()>
+      goalScored: <randomDigitNotNull()>
+      goalIn: <randomDigitNotNull()>
+      matchDraw: <randomDigitNotNull()>
+      participation: <randomDigitNotNull()>
+      winner: <randomDigitNotNull()>
+      second: <randomDigitNotNull()>
+      third: <randomDigitNotNull()>
+
+
+Player\PlayerBundle\Entity\Player:
+    player{1..1000}:
+        playerName: <word()>
+        playerLastName: <word()>
+        file: "player-3-368x286.png"
+        playerImage: "player-3-368x286.png"
+        playerPosition: <word()>
+        playerNumber: <numberBetween(1,10)>
+        bio: <word()>
+        birthday: <dateTimeBetween()>
+        weight: <numberBetween(0,11)>
+        height: <numberBetween(0,11)>
+        totalGames: <numberBetween(0,11)>
+        team: <word()>
+        goalScored: <numberBetween(0,11)>
+        shots: <numberBetween(0,11)>
+        shotsOnTarget: <numberBetween(0,11)>
+        assists: <numberBetween(0,11)>
+        fouls: <numberBetween(0,11)>
+        passes: <numberBetween(0,11)>
+        yellowCard: <numberBetween(0,11)>
+        penaltyKicks: <numberBetween(0,11)>
+        cornerKicks: <numberBetween(0,11)>
+        redCard: <numberBetween(0,11)>
+        nationalTeam: '@teame*'
+        birthday: <dateTimeThisDecade()>
+
+Match\MatchBundle\Entity\Match:
+    match{1..30}:
+        team1: '@teame*'
+        team2: '@teame*'
+        level: "first"
+        date: <dateTime()>
+        time: <time()>
+        stadium: <city()>
+        played: false
+
+
+Reservation\TicketBundle\Entity\Ticket:
+    ticket{1..30}:
+        match(unique): '@match*'
+        price: <numberBetween(100,300)>
+        quantity: <numberBetween(5000,8000)>
+
+Group\GroupBundle\Entity\Groupe:
+      group{1..4}:
+          name:   "A"
+          rating: 2
+          team1(unique): '@team*'
+          team2(unique): '@team*'
+          team3(unique): '@team*'
+          team4(unique): '@team*'

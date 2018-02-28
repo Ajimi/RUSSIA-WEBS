@@ -1,0 +1,13 @@
+<div class="col-12 col-sm-6 col-lg-4 col-xl-3 isotope-item" data-filter="{{ filter_isotope|default('gallery') }}">
+    <div class="thumbnail">
+        <a class="thumbnail-media" href="{% block url_isotope %}{% endblock %}">
+            <img src="{% block image_isotope %}{% endblock %}" alt="">
+        </a>
+        <p class="thumbnail-title">
+            <a href="#">
+                {% block title_isotope %}Random{% endblock %}
+            </a>
+            {% block badge_isotope %} {% endblock %}{#<span class="badge">Coming Soon</span>#}
+        </p>
+    </div>
+</div>

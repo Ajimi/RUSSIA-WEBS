@@ -1,0 +1,240 @@
+{% extends '@Front/common/_base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+{% endblock %}
+
+{% block title %}Guide | Fan Guide{% endblock %}
+{% block body %}
+
+    {% block page %}
+
+        <!-- Section Breadcrumbs-->
+        {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'FAN GUIDE'} %}
+        {% block image %}{{ asset('assets/images/guide/people.jpg') }}{% endblock %}
+            {% block breadcrumbs_path %}
+                <li><a href="{{ path('homepage') }}">Home</a></li>
+                <li><a class="active">Fan Guide</a></li>
+            {% endblock %}
+        {% endembed %}
+        <!-- -->
+        <section class="section section-md oh">
+            <div class="container">
+                <h2 class="text-center">Welcome To Russia</h2>
+                <div class="navigation-custom">
+                    <button class="button navigation-custom-toggle" data-custom-toggle="#isotope-filters"
+                            data-custom-toggle-hide-on-blur="true">Filter
+                    </button>
+                    <div class="navigation-custom-content" id="isotope-filters">
+                        <ul class="isotope-filters isotope-filters-modern">
+                            <li><a class="active" data-isotope-filter="*" data-isotope-group="gallery"
+                                   href="#">All</a></li>
+                            <li>
+                                <a data-isotope-filter="city" data-isotope-group="gallery"
+                                   href="#">Host Cities</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="accomodation" data-isotope-group="gallery"
+                                   href="#">Accomodation</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="general" data-isotope-group="gallery"
+                                   href="#">General Information</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="matches" data-isotope-group="gallery"
+                                   href="#">Attending Matches</a>
+                            </li>
+                            <li>
+                                <a data-isotope-filter="visit" data-isotope-group="gallery"
+                                   href="#">Visit Russia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Isotope Content-->
+                <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                    <div class="row row-30">
+
+
+                        <!-- City Guide -->
+
+                        {% for region in regions %}
+
+                            {% if region.file is null %}
+                                {% set picture = "" %}
+                            {% else %}
+                                {% set picture = "/uploads/region/" ~ asset(region.file.filename) %}
+                            {% endif %}
+                            {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'city'} %}
+                                {% block title_isotope %}{{ region.name }}{% endblock %}
+                                {% block image_isotope %}{{ picture }}{% endblock %}
+                                {% block url_isotope %}
+                                    {{ path('city_index',
+                                    {'slug': region.slug,
+                                        'code': constant('Common\\RegionBundle\\Entity\\Category::CATEGORY_TYPE_ATTRACTION')}) }}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endfor %}
+
+                        <!-- General Information Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Transport{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/transport-train.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'transport'}) }}{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Money and Payment{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/money.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'money'}) }}{% endblock %}
+
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Health Care{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/health.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'health'}) }}{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}How to stay connected{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/connected.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'connected'}) }}{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig' with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}Shopping and eating out{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/shop.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'shop'}) }}{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component-modal.html.twig'with {'filter_isotope' : 'general' , 'modal' : 'words'} %}
+                            {% block title_isotope %}Useful Russian words and phrases{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/words.jpg') }}{% endblock %}
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'general'} %}
+                            {% block title_isotope %}In case of emergency{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/emergency.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'emergency'}) }}{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+
+                        <!-- Accomodation Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'accomodation'} %}
+                            {% block title_isotope %}Accomodaction Options{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/options.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'accomodation-options'}) }}{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component-modal.html.twig'with {'filter_isotope' : 'accomodation', 'modal' : 'reservations'} %}
+                            {% block title_isotope %}Reservation And Payment{% endblock %}
+
+                            {% block image_isotope %}{{ asset('assets/images/guide/reservations.jpg') }}{% endblock %}
+
+                        {% endembed %}
+                        {% embed '@Guide/guide/_isotope-component-modal.html.twig'with {'filter_isotope' : 'accomodation', 'modal' : 'hotel-accomodation'} %}
+                            {% block title_isotope %}Hotel Accommodation Rules{% endblock %}
+
+                            {% block image_isotope %}{{ asset('assets/images/guide/hotel-accomodation.jpg') }}{% endblock %}
+                        {% endembed %}
+                        <!-- -->
+
+                        <!-- Attending matches -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}The stadiums{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/staduim.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'staduim'}) }}{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component-modal.html.twig'with {'filter_isotope' : 'matches', 'modal' : 'volunteers'} %}
+                            {% block title_isotope %}Stadium Volunteers{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/volunteers.jpg') }}{% endblock %}
+                        {% endembed %}
+
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'matches'} %}
+                            {% block title_isotope %}Tickets{% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/tickets.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'tickets'}) }}{% endblock %}
+                        {% endembed %}
+
+                        <!-- -->
+                        <!-- Accomodation Guide -->
+                        {% embed '@Guide/guide/_isotope-component.html.twig'with {'filter_isotope' : 'visit'} %}
+                            {% block title_isotope %}Visa's {% endblock %}
+                            {% block image_isotope %}{{ asset('assets/images/guide/visit.jpg') }}{% endblock %}
+                            {% block url_isotope %}{{ path('guide_faq', {'page' : 'visa'}) }}{% endblock %}
+                        {% endembed %}
+
+                        <!-- -->
+                    </div>
+                </div>
+            </div>
+        <!-- Modal -->
+        <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="dataModal">Hello</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% embed '@Guide/component/modal-long.html.twig' with {'modal' : 'words'} %}
+            {% block modal_content %}
+                   {% include 'GuideBundle:component:useful-words.html.twig' %}
+            {% endblock %}
+            {% block modal_title %}Use full russian words{% endblock %}
+        {% endembed %}
+        {% embed '@Guide/component/modal-long.html.twig' with {'modal' : 'reservations'} %}
+            {% block modal_content %}
+                   {% include 'GuideBundle:component:reservation.html.twig' %}
+            {% endblock %}
+            {% block modal_title %}REQUIRED DOCUMENTS{% endblock %}
+        {% endembed %}
+        {% embed '@Guide/component/modal-long.html.twig' with {'modal' : 'hotel-accomodation'} %}
+            {% block modal_content %}
+                   {% include 'GuideBundle:component:reservation.html.twig' %}
+            {% endblock %}
+            {% block modal_title %}Hotel accommodation{% endblock %}
+        {% endembed %}
+
+        {% embed '@Guide/component/modal-long.html.twig' with {'modal' : 'volunteers'} %}
+            {% block modal_content %}
+                   {% include 'GuideBundle:component:volunteers.html.twig' %}
+            {% endblock %}
+            {% block modal_title %}Volunteers duties{% endblock %}
+        {% endembed %}
+{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+    <script>
+        $(document).ready(function() {
+            // executes when HTML-Document is loaded and DOM is ready
+            console.log("document is ready");
+
+
+            $('.js-modal[href^=#]').click(function(e){
+                e.preventDefault();
+                var href = $(this).attr('href');
+                console.log("hell");
+                $(href).modal('toggle');
+            });
+
+
+
+        });
+
+    </script>
+{% endblock %}

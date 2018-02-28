@@ -1,29 +1,33 @@
 <div class="promo promo-classic">
     <div class="promo-meta promo-classic-meta">
-        <p class="promo-title heading-3">Europa League final 2017</p>
+        <p class="promo-title heading-3">{% block heading %}Russia World Cup{% endblock %}</p>
         <div class="divider-middle divider-secondary"></div>
-        <time class="promo-time" datetime="2017-04-14">Saturday, April 14, 2017</time>
+        <time class="promo-time" datetime="{{ date|date("Y-m-d") }}">{{ date|date("l, F j, Y") }}</time>
     </div>
     <div class="promo-classic-countdown">
-        <div class="countdown countdown-classic countdown-classic-sm" data-type="until" data-time="31 Dec 2018 16:00"
+        <div class="countdown countdown-classic countdown-classic-sm" data-type="until"
+             data-time="{{ match.date|date("j M Y h:i") }}"
              data-format="dhms" data-style="short"></div>
     </div>
     <div class="promo-main promo-classic-main">
         <div class="promo-team">
             <figure class="promo-team-figure promo-classic-team-figure"><img
-                        src="{{ asset('/asstes/images/team-atletico-72x72.png') }}" alt="" width="72" height="72"/>
+                        src="{% block team_image1 %}{% endblock %}" alt="" width="72" height="72"/>
             </figure>
-            <div class="promo-team-name">Atletico</div>
-            <div class="promo-team-country">USA</div>
+            <div class="promo-team-name">{% block team1 %}USA{% endblock %}</div>
+            <div class="promo-team-country">{% block team_shortcut1 %}The Yanks{% endblock %}</div>
         </div>
         <div class="promo-middle promo-classic-middle">VS</div>
         <div class="promo-team">
             <figure class="promo-team-figure promo-classic-team-figure"><img
-                        src="{{ asset('/asstes/images/team-sevilla-83x67.png') }}" alt="" width="83" height="67"/>
+                        src="{% block team_image2 %}{{ asset('/assets/images/team-sevilla-83x67.png') }}{% endblock %}"
+                        alt="" width="83" height="67"/>
             </figure>
-            <div class="promo-team-name">Sevilla</div>
-            <div class="promo-team-country">Spain</div>
+            <div class="promo-team-name">{% block team2 %}Spain{% endblock %}</div>
+            <div class="promo-team-country">{% block team_shortcut2 %}The Yanks{% endblock %}</div>
         </div>
     </div>
-    <a class="button button-primary button-block" href="#">Buy tickets now</a>
+    <a class="js-buy button button-primary button-block disabled" data-url="{{ match.id }}"
+       href="{{ button is defined ? path('cart_index'): '#' }}">{{ button|default('Buy Ticket now') }}
+    </a>
 </div>

@@ -18,66 +18,65 @@
 
 
 <body class="nav-md">
- {% block container %}
-<div class="container body">
-    <div class="main_container">
-        {% block sidebar %}
-            {% include '@Back/common/_sidebar.html.twig' %}
-        {% endblock %}
-        {% block tonpav %}
-            {% include '@Back/common/_topnav.html.twig' %}
-        {% endblock %}
-
-        <div class="right_col" role="main">
-            <div class="">
-                {% block body %}
-
-                    <!-- page content -->
+{% block container %}
+    <div class="container body">
+        <div class="main_container">
+            {% block sidebar %}
+                {% include '@Back/common/_sidebar.html.twig' %}
+            {% endblock %}
+            {% block topnav %}
+                {% include '@Back/common/_topnav.html.twig' %}
+            {% endblock %}
 
 
-                    {% block top_content_header %}
-                        <div class="page-title">
-                            <div class="title_left">
-                                <h3>{% block page_title %}Page Title{% endblock page_title %}</h3>
-                            </div>
+            {% block body %}
 
-                            <div class="title_right">
-                                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search for...">
-                                        <span class="input-group-btn">
+                <!-- page content -->
+                <div class="right_col" role="main">
+                    <div class="">
+                        {% block top_content_header %}
+                            <div class="page-title">
+                                <div class="title_left">
+                                    <h3>{% block page_title %}Page Title{% endblock page_title %}</h3>
+                                </div>
+
+                                <div class="title_right">
+                                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                        <div class="input-group">
+                                            <input {% block id %}id="search" {% endblock id %}name="search" type="text"
+                                                   class="form-control" placeholder="Search for...">
+                                            <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endblock top_content_header %}
+                        {% endblock top_content_header %}
 
-                    <div class="clearfix"></div>
-
-
-                    {% block page_content %}{% endblock %}
+                        <div class="clearfix"></div>
 
 
-                    <!-- /page content -->
+                        {% block page_content %}{% endblock %}
 
+
+                    </div>
+                </div>
+
+                <!-- /page content -->
+                {% block footer %}
+                    {% include '@Back/common/_footer.html.twig' %}
                 {% endblock %}
-            </div>
+            {% endblock %}
         </div>
-        {% block footer %}
-            {% include '@Back/common/_footer.html.twig' %}
-        {% endblock %}
     </div>
-</div>
- {% endblock %}
+{% endblock %}
 {% include '@Back/common/_js.html.twig' %}
 {% block javascripts %}
 
 {% endblock javascripts %}
 
 {% block modals %}{% endblock modals %}
-
 
 
 </body>

@@ -2,8 +2,8 @@
     <div class="post-corporate-content">
         <div class="post-corporate-header">
             <!-- Badge-->
-            <div class="badge {% block badge-class %}badge-primary{% endblock %}">
-                {% block badge-title %}
+            <div class="badge {% block badge_class %}badge-primary{% endblock %}">
+                {% block badge_title %}
                 The League
                 {% endblock %}
             </div>
@@ -11,8 +11,9 @@
                 {% block time %}April 15, 2017{% endblock %}
             </time>
             <div class="post-corporate-view">
-                <span class="icon fl-justicons-visible6">
-                </span>{% block view_number %}234{% endblock %}
+                <div class="comment-like"><span class="icon mdi mdi-thumb-up-outline"></span><a
+                            href="#">{% block view_number %}234{% endblock %}</a></div>
+
             </div>
         </div>
         <h4 class="post-corporate-title">

@@ -1,0 +1,40 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block title %}Match | Game Result{% endblock %}
+{% block page_title %}Game Result {% endblock page_title %}
+
+
+
+{% block page_content %}
+    <div class="col-md-10 col-sm-12 col-xs-12 centered">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Last Result</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-hover">
+                    {% for score in scores %}
+                        {% set logoT1 = 'assets/images/teamUploads/' ~  score.match.team1.teamLogo %}
+                        {% set logoT2 = 'assets/images/teamUploads/' ~ score.match.team2.teamLogo %}
+                        <tr>
+                            <td style='text-align:center;vertical-align:baseline'>
+                                <img src="{{ asset(logoT1) }}" alt="" width="100" height="100">
+                                {{ score.match.team1.teamName |upper |slice(0,8) }}
+                            </td>
+
+                            <td style='text-align:center;vertical-align:middle'>
+                                <h2> {{ score.match.level }}</h2>
+                                <h1> {{ score.scoreTeam1 }} - {{ score.scoreTeam2 }} </h1>
+                            </td>
+                            <td style='text-align:center;vertical-align:baseline'>{{ score.match.team2.teamName | upper|slice(0,8) }}
+                                <img src="{{ asset(logoT2) }}"alt="" width="100" height="100">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock page_content %}

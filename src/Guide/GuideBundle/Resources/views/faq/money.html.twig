@@ -1,0 +1,383 @@
+{% extends 'GuideBundle:component:_base.html.twig' %}
+
+{% block title %}Guide | Money and Payment{% endblock %}
+{% block breadcrumb %}
+    {% embed 'FrontBundle:common:_breadcrumbs-image.html.twig' with {'breadcrumbs_title' : 'Money and Payment' } %}
+        {% block image %}{{ asset('assets/images/guide/money.jpg') }}{% endblock %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="{{ path('guide_index') }}">Fan Guide</a></li>
+            <li><a class="active">Money and Payment</a></li>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block page_content %}
+    <section class="cd-faq">
+        <ul class="cd-faq-categories">
+            <li><a class="selected" href="#money">Transfer Money to Russia</a></li>
+            <li><a href="#currency">Currency Exchange</a></li>
+            <li><a href="#cards">Cards and cash</a></li>
+        </ul>
+
+        <div class="cd-faq-items">
+            <ul id="money" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Currency exchange</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Bringing foreign currency into Russia{% endblock %}
+                    {% block faq_content %}
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/df4/1.jpg?148087941840422"
+                                 alt="Bringing foreign currency into Russia"
+                                 title="Bringing foreign currency into Russia">
+                        </figure>
+
+                        Russian law allows you to bring in under $10,000 (or its equivalent in any currency) in cash. These restrictions pertain to cash only, there is no limit to the amount you can bring in on credit/debit cards.
+                        <br>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Exchanging currency{% endblock %}
+                    {% block faq_content %}
+                        <figure>
+                            <img src="http://cdn.welcome2018.com/upload/iblock/0f9/1.jpg?148087974877062"
+                                 alt="Exchanging currency"
+                                 title="Exchanging currency">
+                        </figure>
+                        <p>
+                            In Russia, currency can be exchanged in banks or specialized exchange points. It's easy to
+                            find the exchange points –
+                            they are marked by LED signs advertising current exchange rates for the US dollar and euro.
+                            Exchange points have flexible hours; many of them are open 24/7. You can also exchange your
+                            currency into roubles at the airport as soon as you arrive, but the exchange rate there is
+                            typically worse than in the city. You cannot use foreign currency to pay for goods and
+                            services in Russia – all transactions are conducted in roubles only.
+                        </p>
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Exchange rate{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Each bank sets its own currency exchange rate, based on the Central Bank rates and Moscow
+                            international
+                            exchange rates. The Central Bank rates are published online daily on <a
+                                    href="http://cbr.ru/currency_base/daily.aspx" target="_blank"> its website</a>. The
+                            currency
+                            exchange in any bank will differ from the official CB rate – up to 10% difference is
+                            allowed. It is possible
+                            that the difference in currency cost may become more beneficial when exchanging larger sums.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            Small sums (up to 40,000 roubles) can be exchanged without a passport, but it's best to
+                            always have your
+                            documents on you. When exchanging currency, the client will be given a receipt indicating
+                            the amount of
+                            foreign currency, the sum in roubles and the commission rate (if there is one).
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}ATM cash withdrawals{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Another way of obtaining roubles is through ATM cash withdrawals. Not all ATMs will dispense
+                            foreign currency. Typically this service is available at ATMs of Russian branches of foreign
+                            banks.
+                        </p>
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Types of currencies{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            US dollars and euro can be exchanged at any exchange point. You should find out in advance
+                            if a certain
+                            location will be able to exchange other currency. You can find out this information online.
+                        </p>
+                        <p>
+                            The bank that will exchange any type of foreign currency is the Russian state bank Sberbank.
+                            The largest
+                            private commercial bank in Russia is Alfa Bank - the first FIFA World Cup Regional
+                            Supporter. These banks'
+                            branches are located in all host cities of&nbsp;the World Championship.
+                        </p>
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Credit card payment{% endblock %}
+                    {% block faq_content %}
+
+                        <p>
+                            Credit card payment is widely available in Russia, especially in large cities. Any product
+                            can be purchased
+                            with a credit card. The bank will automatically convert the payment into roubles and deduct
+                            the sum from the
+                            card. This is the most economic payment method, since the currency conversion will be done
+                            according to the
+                            bank's internal rate, which may be better than the currency exchange rate.
+                        </p>
+                        <br>
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+            <ul id="currency" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Transfer Money to Russia</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Finding a service centre{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        Before you make a transfer to Russia it should be clarified whether the Russian city where you reside is connected
+                        to your chosen money transfer system. If you're in a larger city you should check the listings of the transfer
+                        service, so that you know the most convenient location for you to receive the money. You can find the listings of
+                        the service centres either online or in the office from where you send the money. In Russia, as a rule, service
+                        centres with the capacity to manage money transfers operate in banks&nbsp;or at the Russian Post Office.
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to transfer money{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        <p>
+                            Before you can transfer money to Russia the person who is sending the money has to provide
+                            identification (a
+                            passport is required). Many services offer money transfers online - be sure to look this up
+                            with the service
+                            provider on their website.
+                        </p>
+                        <p>
+                            To make the transfer you have to be able to provide the exact personal information and
+                            identity of the
+                            person
+                            receiving the money in Russia (e.g. surname, first name, etc.) and the sum of money you want
+                            to transfer. As
+                            a
+                            rule, the providers of these services take a commission from the transferred sum; keep this
+                            in mind when
+                            calculating the final sum to be transferred. Sometimes the address of the person receiving
+                            must be given,
+                            but
+                            this is not a common practice; the city where the receiving party currently resides should
+                            be enough.
+                        </p>
+                        <p>
+                            The service provider will give the person sending the money a receipt with the control
+                            number of the
+                            transfer.
+                            This number has to be communicated to the person receiving the money in Russia, since it
+                            most probably will
+                            be
+                            required in order to give out the transferred cash. The receipt should be kept so that the
+                            money can be
+                            transferred back in case something goes wrong.
+                        </p>
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}How to receive money{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        Be sure to get the information necessary from the person sending the money to you (e.g. the control number of the
+                        transfer; the personal information of the person sending the money; the exact sum transferred; and the country it
+                        has been transferred from) before going to the service centre and the department handling this. You will need to
+                        take your passport with you so that your personal information can be verified. As a rule, the cash will be handed
+                        out in the same currency it was sent.
+
+
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Transfer costs{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        The cost depends on the total sum as well as the country from which it was sent. In most cases it's cheaper to
+                        transfer money in Russia if you use Russian transfer services than if you use any of the international providers of
+                        this service; in average the cost is about 1-2% of the sum transferred versus 2-5% if you choose an international
+                        service.<br>
+                        <br>
+                        The transfer speed may vary depending on the transfer service, but usually the transfer doesn't take more than 24
+                        hours. There are express transfer options which take about 10-15 minutes to transfer money. Many transfer services
+                        charge for speed, hence the speed as well as the added commission should be checked with the transfer service in
+                        question beforehand.<br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+                    {% block faq_title %}Restrictions{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        As a rule, all providers have restrictions for the maximum sum that can be transferred in a 24-hour period.
+                        Transferring larger sums requires filling out a LPMT form (Large Principal Money Transfer form), which will take 24
+                        hours for the company to screen. Be sure to check the restrictions with the transfer service provider in order to be
+                        correctly informed regarding rules and regulations.
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+            <ul id="money" class="cd-faq-group">
+                <li class="cd-faq-title"><h2>Cards and cash</h2></li>
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Payment systems{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        In Russia, you can only pay for purchases in roubles. All major types of international cards are accepted in Russia. Information on which cards are accepted at a shopping point can usually be found on stickers by the entrance and by the registers. It's best to find out if a restaurant or cafe accepts cards prior to placing your order.
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Paying for purchases{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        <p>
+                            Unlike stores in most European countries, stores in Russia do not have a minimal purchase
+                            amount for the use
+                            of credit cards.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            If your purchase costs over 1,000 roubles, you could be asked for your passport, so it's
+                            best to always have
+                            it on you.
+                        </p>
+                        <p>
+                            As a rule, kiosks, markets, or public transportation do not accept credit cards. Outside of
+                            big cities,
+                            cards are often not accepted in stores, restaurants and even hotels, so it is advisable to
+                            always have
+                            roubles on you.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}ATMs{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        <p>
+                            Finding an ATM will be easy. There are plenty of ATMs on streets, in any shopping mall, in
+                            bank branches, at
+                            the entrance of stores, pharmacies, and other establishments. Most ATMs and store credit
+                            card machines will
+                            ask the card owner for the PIN code. It's also recommended that you let your bank know in
+                            advance that you
+                            will be traveling to Russia.
+                        </p>
+                        <p>
+                        </p>
+                        <p>
+                            You should find out your maximum daily limit for cash withdrawals abroad from your bank
+                            before you travel.
+                            Traveler's checks are not accepted in all banks in Russia.<br>
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Financial etiquette{% endblock %}
+
+                    {% block faq_content %}
+
+
+                        <p>
+                            Basic safety measures should be adhered to when taking cash out of ATMs. Do not tell anyone
+                            your PIN code. When entering your PIN in a store or an ATM, try to hide it from other
+                            people. Before taking cash out of an ATM, make sure it does not have any extra devices
+                            attached (on the keyboard or the card entry slot) – card/info stealing devices are a common
+                            ATM scam.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Service charge{% endblock %}
+
+                    {% block faq_content %}
+
+                        <p>
+                            Most ATMs will charge you commission (service fee). The amount is set by each bank, but most
+                            often it is 1-2% of the withdrawal sum. The commission will usually be shown on the screen
+                            when you confirm your transaction.
+                        </p>
+                        <br>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed '@Guide/component/faq-item.html.twig' %}
+
+                    {% block faq_title %}Visitor services{% endblock %}
+
+                    {% block faq_content %}
+
+                        <p>
+                            Almost all ATMs in Russia have an English menu. If your bank has a branch in Russia, taking
+                            cash out through their ATM may cost less in fees (or may be fee-free). It's best to find out
+                            this information at your bank prior to traveling. In any case, the currency conversion for
+                            ATM withdrawals will be calculated according to the bank's internal exchange rate, which is
+                            typically better than the rate at the bank's cash exchange.
+                        </p>
+                    {% endblock %}
+                {% endembed %}
+            </ul> <!-- cd-faq-group -->
+        </div> <!-- cd-faq-items -->
+        <a href="#0" class="cd-close-panel">Close</a>
+    </section> <!-- cd-faq -->
+{% endblock %}
