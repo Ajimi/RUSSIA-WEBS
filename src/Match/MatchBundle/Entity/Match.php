@@ -76,7 +76,7 @@ class Match
     /**
      * @var Ticket
      *
-     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match", cascade={"remove"})
+     * @ORM\OneToOne(targetEntity="Reservation\TicketBundle\Entity\Ticket" , mappedBy="match", cascade={"remove", "persist" })
      */
     private $ticket;
 
