@@ -32,7 +32,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
-
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
             /*
              * Created Bundles

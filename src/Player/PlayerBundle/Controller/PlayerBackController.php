@@ -2,6 +2,7 @@
 
 namespace Player\PlayerBundle\Controller;
 
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use DateTime;
 use Player\PlayerBundle\Entity\Club;
 use Player\PlayerBundle\Entity\Player;
@@ -35,6 +36,7 @@ class PlayerBackController extends Controller
         $player->setYellowCard(0);
         $player->setShots(0);
         $player->setShotsOnTarget(0);
+        $player->setVisits(0);
         $formplayer = $this->createForm(PlayerType::class, $player);
         $formplayer->handleRequest($request);
         if ($formplayer->isValid()) {
@@ -228,6 +230,47 @@ class PlayerBackController extends Controller
         return $this->render('PlayerBundle:PlayerBack:list_skills.html.twig', array(
             'skills' => $skills, 'id' => $id
             // ...
+        ));
+    }
+
+    /**
+     * @Route("/playerStat", name="playerStat")
+     */
+    public function playerStatAction()
+    {
+        $pieChart = new PieChart();
+        $em = $this->getDoctrine()->getManager();
+        $visits = $em->getRepository("PlayerBundle:Player")->totalVisits();
+        $data = array();
+        $stat = ['player', 'nbVisits'];
+        array_push($data, $stat);
+        $players = $em->getRepository("PlayerBundle:Player")->findAll();
+        foreach ($players as $player) {
+            $stat = array();
+            if ($visits != 0) {
+                array_push($stat, $player->getPlayerName(), (($player->getVisits()) * 100) / $visits);
+                $nb = (($player->getVisits()) * 100) / $visits;
+            } else {
+                array_push($stat, $player->getPlayerName(), 0);
+                $nb = 0;
+            }
+            $stat = [$player->getPlayerName(), $nb];
+            array_push($data, $stat);
+        }
+
+        $pieChart->getData()->setArrayToDataTable(
+            $data
+        );
+        $pieChart->getOptions()->setTitle('Pourcentages des visit par joueurs');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+        return $this->render('PlayerBundle:PlayerBack:player_stat.html.twig', array(
+            'piechart' => $pieChart
         ));
     }
 
