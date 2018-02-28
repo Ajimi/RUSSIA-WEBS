@@ -3,9 +3,16 @@
         {% for e in events %}
             <li>
                 <div class="block">
+                    {% if (e.typeEvent != "END OF THE GAME") %}
+                        {% if (e.typeEvent != "START OF THE MATCH") %}
+                    <div class="tags">
+                          <a href="{{ path('delete_event',{'id':e.id,'idm':idm})}}"><i class="fa fa-close"></i></a>
+                    </div>
+                            {% endif %}
+                    {% endif %}
                     <div class="block_content">
                         <h2 class="title">
-                            <a>{{ e.typeEvent | upper }}</a> <a class="close-link"><i class="fa fa-close"></i></a>
+                            <a>{{ e.typeEvent | upper }}</a>
                         </h2>
 
                         <div class="byline">
