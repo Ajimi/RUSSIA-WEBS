@@ -16,15 +16,15 @@
           rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block title %}News | Article List{% endblock %}
+{% block title %}News | Badge List{% endblock %}
 
-{% block page_title %}Article List{% endblock %}
+{% block page_title %}Badge List{% endblock %}
 
 {% block page_content %}
     <div class="x_panel">
         <div class="x_title">
             <div class=" col-sm-2 col-xs-12">
-                <a class="btn btn-success" href="{{ path('admin_article_new') }}">New Article</a>
+                <a class="btn btn-success" href="{{ path('admin_badge_new') }}">New Badge</a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -32,31 +32,21 @@
             <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Updated At</th>
-                    <th>Category</th>
+                    <th>Class</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for article in articles %}
+                {% for badge in badges %}
 
                     <tr>
+                        <td>{{ badge.class }}</td>
                         <td>
-                            <a href="{{ path('admin_article_show', {'id' : article.id}) }}">{{ article.title }}</a>
-                            <br>
-                            <small>Created {{ article.created|date("m/d/Y") }}</small>
-                        </td>
-                        <td>{{ article.content|striptags('<b>,<a>,<pre>')|raw|slice(0,150) }}...</td>
-                        <td>{{ article.updated|date("m/d/Y") }}</td>
-                        <td>{{ article.category }}</td>
-                        <td>
-                            <a href="{{ path('admin_article_edit',{'id':article.id}) }}"
+                            <a href="{{ path('admin_badge_edit',{'id':badge.id}) }}"
                                class="btn btn-info btn-xs">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
-                            <a href="{{ path('admin_article_delete', {'id' : article.id}) }}"
+                            <a href="{{ path('admin_badge_delete', {'id' : badge.id}) }}"
                                id="editBtn"
                                class="js-delete btn btn-danger btn-xs">
                                 <i class="fa fa-trash-o"></i>

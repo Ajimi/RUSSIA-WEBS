@@ -1,0 +1,21 @@
+<div class="block-aside-item">
+    <!-- Heading Component-->
+    <article class="heading-component">
+        <div class="heading-component-inner">
+            <h5 class="heading-component-title">Categories
+            </h5>
+        </div>
+    </article>
+
+    <!--Block Categories-->
+    <div class="block-categories">
+        <ul class="list-marked list-marked-categories">
+            {% for category in categories %}
+                <li>
+                    <a href="{{ path('article_index' , {'category': category.id}) }}">{{ category.name }}</a>
+                    <span class="list-marked-counter">68</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

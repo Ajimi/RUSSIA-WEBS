@@ -1,0 +1,21 @@
+{% set headingTitle = "IN THE SPOTLIGHT" %}
+{% set heading = "ALL NEWS" %}
+{% set link = path('article_index') %}
+
+<div class="aside-component">
+    <!-- Heading Component-->
+    {% include 'FrontBundle:news-main-component:_heading-component.html.twig'  with {'headingTitle': headingTitle , 'heading' : heading, 'headingLink' : link } %}
+    <!-- List Post Classic-->
+    <div class="list-post-classic">
+        {% for article in articles %}
+            <!-- Post Classic-->
+            {% set date = article.created %}
+            {% set url = path('article_show', {'id': article.id}) %}
+            {% embed 'FrontBundle:news-main-component:_post-classic-image.html.twig' with {'url' : url , 'date' : date} %}
+                {% block title %}
+                    {{ article.title }}
+                {% endblock %}
+            {% endembed %}
+        {% endfor %}
+    </div>
+</div>

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+
             /*
              * External Bundles
              */
@@ -32,6 +33,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
 
 
             /*
