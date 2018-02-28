@@ -43,11 +43,14 @@
                            class="btn btn-danger btn-xs col-md-offset-2" disabled>
                             End
                         </a>
+
                     {% else %}
-                        <a href="{{ path('end_game',{'idm':idm}) }}"
-                           class="btn btn-danger btn-xs col-md-offset-2" id="end">
-                            End
-                        </a>
+                        {{ form_start(formEnd) }}
+                        <div class="col-md-2">
+                            {{ form_widget(formEnd.time, { 'attr': {'class': 'form-control col-md-2','type':'number','min':'0','data-constraints':'@minutes @Required'} }) }}
+                        </div>
+                        {{ form_widget(formEnd.end, { 'attr': {'class': 'btn btn-danger btn-xs'} }) }}
+                        {{ form_end(formEnd) }}
                     {% endif %}
                 {% endif %}
             </div>
@@ -94,67 +97,71 @@
 
                         <div class="radio">
                             <div class="col-md-9 col-sm-9 col-xs-12">
-
                                 <label>
-                                    <input type="radio" class="flat" checked name="iCheck" value="{{ team1.id }}">
+                                    <input type="radio" class="js-team flat" checked name="iCheck"
+                                           value="{{ team1.id }}">
                                     {{ team1.teamName | upper }}
-
                                 </label>
-
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" class="flat" checked name="iCheck" value=" {{ team2.id }}">
-                                        {{ team2.teamName | upper }}
-
-                                    </label>
-                                </div>
+                                <label>
+                                    <input type="radio" class="js-team flat" name="iCheck" value="{{ team2.id }}">
+                                    {{ team2.teamName | upper }}
+                                </label>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Who did it <span
-                                    class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            {{ form_widget(eventForm.player, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12'} }) }}
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Who did it <span
+                                class="required">*</span>
+                    </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select class="js-player form-control" name="player">
+                            {#
+                            {% for p in playerT1 %}
+                                <option value="{{ p.id }}">{{ p.playerName ~' '~ p.playerName }}</option>
+                            {% endfor %}
+                            {% for p in playerT2 %}
+                                <option value="{{ p.id }}">{{ p.playerName ~' '~ p.playerName }}</option>
+                            {% endfor %}
+                            #}
+                        </select>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description <span
-                                    class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Description <span
+                                class="required">*</span>
+                    </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
 
-                            {{ form_widget(eventForm.description, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12', 'data-constraints':'@description @Required'} }) }}
-                        </div>
+                        {{ form_widget(eventForm.description, { 'attr': {'class': 'form-control col-md-9 col-sm-9 col-xs-12', 'data-constraints':'@description @Required'} }) }}
                     </div>
+                </div>
 
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-8">
-                            <button class="btn btn-primary" type="reset">Reset</button>
-                            {% if events is empty %}
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-8">
+                        <button class="btn btn-primary" type="reset">Reset</button>
+                        {% if events is empty %}
+                            {{ form_widget(eventForm.save, { 'attr': {'class': 'js-add btn btn-success disabled', 'id':'save'} }) }}
+                        {% else %}
+                            {% if events|last.typeEvent =="END OF THE GAME" %}
                                 {{ form_widget(eventForm.save, { 'attr': {'class': 'js-add btn btn-success disabled', 'id':'save'} }) }}
                             {% else %}
-                                {% if events|last.typeEvent =="END OF THE GAME" %}
-                                    {{ form_widget(eventForm.save, { 'attr': {'class': 'js-add btn btn-success disabled', 'id':'save'} }) }}
-                                {% else %}
-                                    {{ form_widget(eventForm.save, { 'attr': {'class': 'js-add btn btn-success', 'id':'save'} }) }}
-                                {% endif %}
+                                {{ form_widget(eventForm.save, { 'attr': {'class': 'js-add btn btn-success', 'id':'save'} }) }}
                             {% endif %}
+                        {% endif %}
 
-                        </div>
                     </div>
-
-
                 </div>
+
+
             </div>
-            {{ form_end(eventForm) }}
-
-
         </div>
+        {{ form_end(eventForm) }}
+
+
+    </div>
 
 
     </div>
@@ -163,35 +170,43 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
     <!-- iCheck -->
     <script src="{{ asset('assets/vendors/iCheck/icheck.min.js') }}"></script>
     <!-- Switchery -->
     <script src="{{ asset('assets/vendors/switchery/dist/switchery.min.js') }}"></script>
 
-    {#
-        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script>
 
+        $(document).ready(function () {
 
-        <script>
-            $(document).ready(function () {
-                var id = {{ idm }}
-               $('.js-add').on('click',function (ev) {
-                   $.ajax({
-                       url:Routing.generate('ajax_display_event',{'id':id})
-                   }).done(function (response) {
-                       $('.js-event').html(response);
-                   }).fail(function (error) {
-
-                   })
-
-               });
-
+            $('input').on('ifChanged', function (event) {
+                $(event.target).trigger('change');
             });
 
-        </script>
+            $teamOne = '';
 
-    #}
+            {% for p in playerT1 %}
+            $teamOne += "<option value='{{ p.id }}'>{{ p.playerName ~' '~ p.playerLastName }}</option>";
+            {% endfor %}
 
+            $teamTwo = '';
+            {% for p in playerT2 %}
+            $teamTwo += "<option value = '{{ p.id }}'>{{ p.playerName ~' '~ p.playerLastName }}</option>";
+            {% endfor %}
+
+
+            $('.js-team').on('change', function (ev) {
+                $checked = $(this).val();
+                if('{{team1.id}}'== $checked) {
+                    $('.js-player').html($teamOne);
+                } else {
+                    $('.js-player').html($teamTwo);
+                }
+            });
+
+        });
+
+    </script>
 {% endblock  javascripts %}
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Match\MatchBundle\Controller;
+namespace Match\MatchBundle\Controller\Back;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class ResultBackController extends Controller
 {
-
     /**
      * @Route("/results", name="game_results")
      */
