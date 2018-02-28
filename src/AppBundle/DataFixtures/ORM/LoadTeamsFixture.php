@@ -75,7 +75,7 @@ class LoadTeamsFixture implements FixtureInterface
 
     public function getTeam($number = 0)
     {
-        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France ", "Australia "
+        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France", "Australia "
             , "Peru", "Denmark", "Argentina", "Iceland", "Croatia", "Nigeria", "Brazil", "Switzerland", "Costa Rica", "Serbia", "Germany",
             "Mexico", "Sweden", "South Korea", "Belgium", "Panama", "Tunisia", "England", "Poland", "Senegal", "Colombia", "Japan"];
         return $teams[$number];
@@ -83,9 +83,9 @@ class LoadTeamsFixture implements FixtureInterface
 
     public function getTeamShortcut($number = 0)
     {
-        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France ", "Australia "
-            , "Peru", "Denmark", "Argentina", "Iceland", "Croatia", "Nigeria", "Brazil", "Switzerland", "Costa Rica", "Serbia", "Germany",
-            "Mexico", "Sweden", "South Korea", "Belgium", "Panama", "Tunisia", "England", "Poland", "Senegal", "Colombia", "Japan"];
+        $teams = ["RUS", "SAU", "EGY", "URU", "POR", "SPA", "MRC", "IRN", "FRA", "AUS "
+            , "PER", "DEN", "ARG", "ICE", "CRO", "NGR", "BRA", "SWZ", "CSR", "SER", "GER",
+            "MEX", "SWE", "SKR", "BEL", "PAN", "TUN", "END", "POL", "SEN", "COL", "JAP"];
         return $teams[$number];
     }
 
