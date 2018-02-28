@@ -18,21 +18,23 @@
 
             <table class="table">
                 <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ article.id }}</td>
-                </tr>
+                {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ article.id }}</td>#}
+                {#</tr>#}
                 <tr>
                     <th>Content</th>
                     <td>{{ article.content|raw }}</td>
+                    <td class="js-votes">
+                        <a data-url="{{ article.id }}" class="js-voteup" href="#">
+                            <button class="button button-block button-primary button-icon button-icon-left"
+                                    type="button">
+                                <span id="js-icon" class="icon material-icons-thumb_up"></span><span
+                                        id="js-total-votes">{{ votes }}</span></button>
+                        </a>
+                    </td>
                 </tr>
-                <tr>
-                    <a data-url="{{ article.id }}" class="js-voteup" href="#">
-                        <button class="button button-block button-primary button-icon button-icon-left" type="button">
-                            <span id="js-icon" class="icon material-icons-thumb_up"></span><span
-                                    id="js-total-votes">{{ votes }}</span></button>
-                    </a>
-                </tr>
+
                 </tbody>
             </table>
         </div>

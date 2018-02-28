@@ -2,8 +2,10 @@
 
 namespace News\NewsBundle\Entity;
 
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints\Date;
 use Gedmo\Mapping\Annotation as Gedmo;
 use UserBundle\Entity\User;
@@ -38,7 +40,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;
 
@@ -74,10 +76,43 @@ class Article
 
     /**
      * @var VoteUp[] $voteUp
-     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\VoteUp" , mappedBy="article")
+     * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\VoteUp" , mappedBy="article", fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     * )
+     *
      */
     private $votes;
 
+    /**
+     * @var string $image
+     * @ORM\Column(name="image", type="string", nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var File $file
+     * @UploadableField(filename="image", path="assets/images/news")
+     */
+    private $file;
+
+    /**
+     * @var Badge
+     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Badge", cascade={"persist"})
+     */
+    private $badge;
+
+    /**
+     * @var Category | null
+     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Category", cascade={"persist"})
+     */
+    private $category;
+
+    /**
+     * @var string $badgeName
+     * @ORM\Column(name="badge_name", type="string", nullable=true)
+     */
+    private $badgeName;
 
     public function __construct()
     {
@@ -237,4 +272,86 @@ class Article
     {
         return $this->votes;
     }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return Badge
+     */
+    public function getBadge(): ?Badge
+    {
+        return $this->badge;
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function setBadge($badge)
+    {
+        $this->badge = $badge;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBadgeName(): ?string
+    {
+        return $this->badgeName;
+    }
+
+    /**
+     * @param string $badgeName
+     */
+    public function setBadgeName($badgeName)
+    {
+        $this->badgeName = $badgeName;
+    }
+
+    /**
+     * @return Category|null
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category|null $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+
 }

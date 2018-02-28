@@ -34,16 +34,14 @@
             </p>
         </div>
     </div>
-    <a class="post-corporate-figure" href="blog-post.html">
+    <a class="post-corporate-figure" href="{{ path('article_show' , {'id' : article.id}) }}">
         <img src="{% block image %}{{ asset('assets/images/post-corporate-1-768x414.jpg') }}{% endblock %}"
              alt="" width="768" height="414"/>
     </a>
     <div class="post-corporate-footer">
         <div class="post-corporate-comment">
-            <span class="icon mdi mdi-comment-outline"></span>
-            <a href="#">
-                {% block comment_number %}345{% endblock %} Comments
-            </a>
+            <span class="icon mdi mdi-thumb-up-outline"></span>
+            <a href="#">{{ article.votes|length }} Likes</a>
         </div>
         <div class="post-corporate-share">
             <ul class="group">

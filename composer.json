@@ -45,6 +45,7 @@
     "twig/twig": "^1.0||^2.0",
     "twig/extensions": "^1.5",
     "nomaya/social-bundle": "dev-master"
+
   },
   "require-dev": {
     "doctrine/doctrine-fixtures-bundle": "^3.0",

@@ -5,6 +5,7 @@ namespace News\NewsBundle\Form;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use News\NewsBundle\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,7 +27,19 @@ class ArticleType extends AbstractType
             'attr' => array(
                 'required' => true,
             )
-        ));
+        ))->add('file', FileType::class, array(
+            'required' => false,
+            'attr' => array(
+                'required' => false
+            )
+        ))
+            ->add('badge', null, array(
+                'required' => false,
+                'placeholder' => 'Choose a badge',))
+            ->add('category', null, array(
+                'required' => false,
+                'placeholder' => 'Choose a category',
+            ));
     }
 
     /**

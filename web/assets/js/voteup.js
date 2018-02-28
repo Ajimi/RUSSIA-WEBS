@@ -1,5 +1,4 @@
 $(document).ready(function (event) {
-
     check();
     $('.js-voteup').on('click', function (ev) {
         ev.preventDefault();
@@ -19,7 +18,7 @@ $(document).ready(function (event) {
                         console.log("Vote remove");
                     } else {
                         $('#js-icon').removeClass().addClass('icon material-icons-thumb_down');
-                        ;
+
                         console.log("Vote up");
                     }
                     // change color
@@ -43,8 +42,6 @@ $(document).ready(function (event) {
                     $('#js-icon').removeClass().addClass('icon material-icons-thumb_up');
                 } else {
                     $('#js-icon').removeClass().addClass('icon material-icons-thumb_down');
-
-
                 }
             })
             .catch(function (response) {

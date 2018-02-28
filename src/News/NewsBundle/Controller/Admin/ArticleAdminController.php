@@ -28,7 +28,6 @@ class ArticleAdminController extends Controller
 
         $articles = $em->getRepository('NewsBundle:Article')->findAll();
 
-        dump($articles);
         return $this->render('NewsBundle:admin:index.html.twig', array(
             'articles' => $articles,
         ));

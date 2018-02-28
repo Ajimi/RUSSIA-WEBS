@@ -10,23 +10,27 @@ namespace News\NewsBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findSpotLight()
+
+    public function getQueryBuilder()
+    {
+        return $this->createQueryBuilder('a');
+    }
+    public function findSpotLight($max = 2)
     {
 
         return $this->createQueryBuilder('a')
-            ->setMaxResults(2)
+            ->setMaxResults($max)
             ->getQuery()
             ->getResult();
     }
 
 
-    public function findLatest()
+    public function findLatest($max = 1)
     {
         return $this->createQueryBuilder('a')
-            ->setMaxResults(1)
-//            ->orderBy('a.created', )
+            ->setMaxResults($max)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult();
     }
 
     public function findRated($max)
@@ -34,6 +38,14 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         return $this->createQueryBuilder('a')
             ->setMaxResults($max)
 //            ->orderBy('a.created', )
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getPopularArticles($max = 3)
+    {
+        return $this->createQueryBuilder('a')
+            ->setMaxResults($max)
             ->getQuery()
             ->getResult();
     }
