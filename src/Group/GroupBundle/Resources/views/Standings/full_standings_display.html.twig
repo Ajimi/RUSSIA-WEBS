@@ -1,6 +1,13 @@
 {% extends '@Front/common/_base.html.twig' %}
+{% block title %}Groups Standings{% endblock %}
 {% block body %}
-    {% include '@Front/common/_breadcrumbs.html.twig' %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Groups Standings'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Competition</a></li>
+            <li class="active">Groups Standings</li>
+        {% endblock %}
+    {% endembed %}
 
     <section class="section section-sm bg-gray-100">
         <div class="container">
