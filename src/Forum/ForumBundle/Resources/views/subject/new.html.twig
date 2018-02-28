@@ -1,5 +1,5 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
-{% block title %}Create new{% endblock %}
+    {% block title %}Create new{% endblock %}
     {% block header_forum %}active{% endblock %}
 {% block body %}
 
@@ -14,8 +14,8 @@
     <div class="container text-center">
         <div class="row row-50 text-left">
             <div class="col-md-12">
-                <div class="row row-50">
-                    <div class="col-lg-6">
+                {#<div class="row row-50">#}
+                    {#<div class="col-lg-6">#}
                         <article class="heading-component">
                             <div class="heading-component-inner">
                                 <h5 class="heading-component-title">Subject creation
@@ -57,8 +57,8 @@
                         {{ form_rest(form) }}
                         {{ form_end(form) }}
 
-                    </div>
-                </div>
+                    {#</div>#}
+                {#</div>#}
 
             </div>
             <a href="{{ path('subject_index') }}">
