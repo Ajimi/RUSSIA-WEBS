@@ -28,6 +28,19 @@
                     {% endembed %}
                     <div class="block-player-info">
                         {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
+                            {% block bio %}
+                                <p>Jack Windsor's footballing career started in 1995 at Newell's Old Boys, where he
+                                    played until the year 2000. At the age of 13, Jack crossed the Atlantic to try his
+                                    luck in Barcelona, and joined the Under 14s. He made spectacular progress at each of
+                                    the different age levels, climbing through the ranks to Atletico C, followed by
+                                    Atletico B and the first team in record time.</p>
+                                <p>As of 2017 Jack Windsor is worth an estimated $80 million, taking into account his
+                                    salary plus bonuses and endorsements, according to Forbes.com. That makes him the
+                                    second highest-paid soccer player and the third highest-paid athlete in the
+                                    world.</p>
+                                <p>At the Under 20 World Cup in Holland, Windsor not only won the title with USA, but
+                                    was also the leading goalscorer and was voted best player in the tournament. </p>
+                            {% endblock %}
                         {% endembed %}
                     </div>
                 </div>
@@ -49,7 +62,36 @@
                                 {% block rc %}{{ rc }}{% endblock %}
                             {% endembed %}
                         </div>
+                        <div class="col-md-6 col-lg-12">
+                            <div class="aside-component">
+                                <!-- Heading Component-->
+                                {% embed  'FrontBundle:other-component:_heading-component.html.twig' with { 'headingTitle' : 'Standing','link' : 'full_standings','heading' : 'Full Standings' } %}
+                                {% endembed %}
+                                <!-- Table team-->
+                                {% embed  'FrontBundle:standing-component:_table-standing-classic.html.twig' %}
+                                    {% block teams %}
+                                        {% set i=1 %}
+                                        {% for s in standing %}
+                                            {% embed  'FrontBundle:standing-component:_team-rank.html.twig' with { 'teamLogo' : team.file~'','rank': i} %}
+                                                {% block teamName %}{{ s.teamName }}{% endblock %}
+                                                {% block  teamShortCut %}{{ s.teamShortcut }}{% endblock %}
+                                                {% block teamWins %}{{ s.win }}{% endblock %}
+                                                {% block teamLoss %}{{ s.lost }}{% endblock %}
+                                                {% block teamDraw %}{{ s.draw }}{% endblock %}
+                                                {% block  points %}{{ s.points }}{% endblock %}
+                                            {% endembed %}
+                                            {% set i=i+1 %}
+                                        {% endfor %}
+                                    {% endblock %}
+                                {% endembed %}
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="col-lg-12">
+                    <!-- Heading Component-->
+                    {% embed  'FrontBundle:other-component:_heading-component-title.html.twig' with { 'heading_title' : 'Players' } %}
+                    {% endembed %}
                 </div>
                 {% for player in team.players %}
                     <div class="col-sm-6 col-lg-4">

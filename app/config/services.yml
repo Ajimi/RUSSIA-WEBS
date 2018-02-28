@@ -121,6 +121,10 @@ services:
         class: AppBundle\DataFixtures\ORM\LoadFixtures
         tags: [doctrine.fixture.orm]
 
+    data_fixture.home:
+            class: AppBundle\DataFixtures\ORM\LoadMatchFixture
+            tags: [doctrine.fixture.orm]
+
     Reservation\HotelBundle\HotelManager\HotelManager: ~
 
     Reservation\HotelBundle\HotelManager\RoomManager: ~

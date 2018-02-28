@@ -3,6 +3,7 @@
 namespace Team\TeamBundle\Controller;
 
 
+use Group\GroupBundle\Modele\StandingsDataFormat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -27,7 +28,8 @@ class TeamFrontController extends Controller
         $penalties = $em->getRepository("PlayerBundle:Player")->penaltyByTeam($team);
         $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($team);
         $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($team);
-
+        $group = $em->getRepository("GroupBundle:Groupe")->getGroupByTeam($team);
+        $standing = StandingsDataFormat::oneGroupStandingFormat($group);
         return $this->render('TeamBundle:TeamFront:display.html.twig', array(
             'team'=>$team,
             'gs'=>$goalScored,
@@ -39,6 +41,7 @@ class TeamFrontController extends Controller
             'penalties'=>$penalties,
             'yc'=>$yellowCards,
             'rc'=>$redCards,
+            'standing' => $standing,
         ));
     }
 
