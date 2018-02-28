@@ -106,6 +106,7 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
     public function updatePlayerStat($player, $event)
     {
         $em = $this->getEntityManager();
+
         if ($event == "Goal") {
             $query = $em->createQuery("Update PlayerBundle:Player p Set p.goalScored= p.goalScored + 1, p.shotsOnTarget= p.shotsOnTarget + 1, p.shots= p.shots + 1 where p.id= :id");
         }
@@ -125,7 +126,7 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
             $query = $em->createQuery("Update PlayerBundle:Player p Set p.fouls= p.fouls + 1 where p.id= :id");
         }
         if ($event == "Corner Kick") {
-            $query = $em->createQuery("Update PlayerBundle:Player p Set p.penalityKicks= p.penalityKicks + 1,p.fouls= p.fouls + 1 where p.id= :id");
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.penaltyKicks= p.penaltyKicks + 1,p.fouls= p.fouls + 1 where p.id= :id");
         }
         if ($event == "Penalty Kick") {
             $query = $em->createQuery("Update PlayerBundle:Player p Set p.cornerKicks= p.cornerKicks + 1,p.fouls= p.fouls + 1 where p.id= :id");
@@ -138,6 +139,72 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
         }
         $query->setParameter('id', $player);
         $query->execute();
+    }
+
+
+    public function removePlayerStat($player, $event)
+    {
+        $em = $this->getEntityManager();
+        if ($event == "Goal") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.goalScored= p.goalScored - 1, p.shotsOnTarget= p.shotsOnTarget - 1, p.shots= p.shots - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+
+        }
+        if ($event == "Shot") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.shots= p.shots - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Shot(On Target)") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.shotsOnTarget= p.shotsOnTarget - 1, p.shots= p.shots - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Assist") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.assists= p.assists - 1,p.passes= p.passes - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Pass") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.passes= p.passes - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Foul") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.fouls= p.fouls - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Corner Kick") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.penaltyKicks= p.penaltyKicks - 1,p.fouls= p.fouls - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Penalty Kick") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.cornerKicks= p.cornerKicks - 1,p.fouls= p.fouls - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Yellow Card") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.yellowCard= p.yellowCard - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+        if ($event == "Red Card") {
+            $query = $em->createQuery("Update PlayerBundle:Player p Set p.redCard= p.redCard - 1 where p.id= :id");
+            $query->setParameter('id', $player);
+            $query->execute();
+
+        }
+
     }
 
     public function bestScorer()

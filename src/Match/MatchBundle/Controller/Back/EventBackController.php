@@ -43,9 +43,6 @@ class EventBackController extends Controller
         $playersT1 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam' => $match->getTeam1()));
         $playersT2 = $em->getRepository('PlayerBundle:Player')->findBy(array('nationalTeam' => $match->getTeam2()));
 
-        /*array_push($players,$playersT1);
-        array_push($players,$playersT2);
-        */
 
         if ($form->isValid()) {
 
@@ -74,6 +71,24 @@ class EventBackController extends Controller
 
 
     /**
+     * @Route("/delete/{id}{idm}", name="delete_event")
+     */
+    public function deleteEventAction($id,$idm)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('MatchBundle:Event')->find($id);
+        $player=$em->getRepository('PlayerBundle:Player')->find($event->getPlayer()->getId());
+        $em->getRepository('PlayerBundle:Player')->removePlayerStat($player->getId(),$event);
+
+        $em->persist($player);
+        $em->remove($event);
+        $em->flush();
+
+        return $this->redirectToRoute('add_event', array(
+            'idm' => $idm)); }
+
+
+    /**
      * @Route("/start/{idm}", name="start_game")
      */
     public function startGameAction($idm)
@@ -95,30 +110,22 @@ class EventBackController extends Controller
      * @Route("/end/{idm}", name="end_game")
      */
 
-    public function endGame($em,$idm,$ev)
+    public function endGame($idm,$ev)
     {
-     //   $event = new Event();
+
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($idm);
 
             $ev->setMatch($match);
             $match->setPlayed(true);
             $ev->setTimes(new \DateTime());
-            //$start = $em->getRepository('MatchBundle:Event')->findOneBy(array('match' => $idm, 'minutes' => 0));
-            //$diff = date_diff(new \DateTime(), $start->getTimes());
-            // $event->setMinutes($diff->format('%s Minutes'));
-            // $event->setMinutes($request->get('end_game_time'));
+
             $ev->setTypeEvent("END OF THE GAME");
             $em->persist($match);
             $em->persist($ev);
             $em->flush();
 
         $this->addScore($match);
-       /* return $this->redirectToRoute('add_event', array(
-            'idm' => $idm,
-            ));
-*/
-
     }
 
     private function addScore($match)
@@ -140,8 +147,9 @@ class EventBackController extends Controller
 
     }
 
-    private  function  updateTeam($em,$match,$goalsTeam1,$goalsTeam2)
+    private  function  updateTeam($match,$goalsTeam1,$goalsTeam2)
     {
+        $em = $this->getDoctrine()->getManager();
         $em->getRepository('TeamBundle:Team')->updateTeamGoalIn($match->getTeam1()->getId(),$goalsTeam2);
         $em->getRepository('TeamBundle:Team')->updateTeamGoalIn($match->getTeam2()->getId(),$goalsTeam1);
 
