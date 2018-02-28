@@ -10,22 +10,35 @@ namespace Match\MatchBundle\Repository;
  */
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findThree()
+    public function findThreeOrderByDate()
     {
         $query = $this->getEntityManager()
-            ->createQuery("SELECT s FROM MatchBundle:Score s ")
-            ->setMaxResults(3);
+            ->createQuery("SELECT s FROM MatchBundle:Score s JOIN MatchBundle:Match m WHERE s.match=m.id ORDER BY m.date DESC")
+        ->setMaxResults(3);
         return $query->getResult();
     }
 
-    public function findByTeam($team)
+    public function searchByName($name)
     {
         $query = $this->getEntityManager()
-            ->createQuery("SELECT s,m FROM MatchBundle:Score s JOIN s.match 
- WHERE s.team = :team")
-            ->setParameter('team', $team)
-        ->setMaxResults(3);
-        return $query->getResult(3);
-
+            ->createQuery("SELECT s FROM MatchBundle:Score s JOIN MatchBundle:Match m WHERE s.match=m.id 
+                                AND m.level LIKE :name OR m.stadium LIKE :name")
+            ->setParameter('name','%'.$name.'%');
+        return $query->getResult();
     }
-}
+
+
+    /*
+       public function findByTeam($team)
+       {
+           $query = $this->getEntityManager()
+               ->createQuery("SELECT s,m FROM MatchBundle:Score s JOIN s.match
+    WHERE s.team = :team")
+               ->setParameter('team', $team)
+           ->setMaxResults(3);
+           return $query->getResult(3);
+
+       }
+   */
+
+ }

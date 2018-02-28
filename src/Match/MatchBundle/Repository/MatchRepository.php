@@ -12,10 +12,12 @@ class MatchRepository extends \Doctrine\ORM\EntityRepository
 {
     public function searchByName($name)
     {
-        return $this->createQueryBuilder('t')
-           // ->setParameter('name', '%' . $name . '%')
-            ->getQuery()->getResult();
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT m FROM MatchBundle:Match m WHERE m.level LIKE :name OR m.stadium LIKE :name")
+            ->setParameter('name','%'.$name.'%');
+        return $query->getResult();
     }
+
 
     public function findAllBy($criteria)
     {

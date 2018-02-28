@@ -49,4 +49,21 @@ class ResultFrontController extends Controller
 
         ));
     }
+
+    /**
+     * @Route("/search",name="search_results", options={"expose" = true})
+     */
+    public function searchScheduleAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $val = $request->get('s');
+            $em = $this->getDoctrine()->getManager();
+            $matchs = $em->getRepository('MatchBundle:Match')->searchByName($val);
+
+            return $this->render('@Match/FrontViews/search_result.html.twig',array(
+                'matchs'=>$matchs
+            ));
+        }
+
+    }
 }

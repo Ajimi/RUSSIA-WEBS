@@ -23,7 +23,7 @@ class MatchFrontController extends Controller
     public function displayAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $scores = $em->getRepository("MatchBundle:Score")->findThree();
+        $scores = $em->getRepository("MatchBundle:Score")->findThreeOrderByDate();
         usort($scores, function ($a, $b) {
             return $a->getMatch()->getDate() < $b->getMatch()->getDate();
         });
@@ -57,11 +57,9 @@ class MatchFrontController extends Controller
     public function searchScheduleAction(Request $request)
     {
         if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
             $val = $request->get('s');
             $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('MatchBundle:Match');
-            $matchs = $repo->findBy(array('stadium'=>'JS test stadium'));
+            $matchs = $em->getRepository('MatchBundle:Match')->searchByName($val);
 
             return $this->render('@Match/FrontViews/search_result.html.twig',array(
                 'matchs'=>$matchs
@@ -69,20 +67,6 @@ class MatchFrontController extends Controller
         }
 
 
-        /*
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            $val = $request->get('s');
-            $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('MatchBundle:Match');
-            $matchs = $repo->findBy(array('stadium'=>'JS test stadium'));
-
-            return $this->render('@Match/FrontViews/search_result.html.twig',array(
-                'matchs'=>$matchs
-            ));
-
-        }
-*/
     }
 
 

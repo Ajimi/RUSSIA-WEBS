@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function homeLatestResultAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $scores = $em->getRepository('MatchBundle:Score')->findThree();
+        $scores = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         return $this->render('@Match/Model/single_latest_game_result_model.html.twig', array(
             'scores'=>$scores
         ));
