@@ -2,9 +2,9 @@
 
 namespace Match\MatchBundle\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Faker\Provider\DateTime;
 use Reservation\TicketBundle\Entity\Ticket;
 
 /**
@@ -114,7 +114,6 @@ class Match
     {
         return $this->level;
     }
-
 
 
     /**
