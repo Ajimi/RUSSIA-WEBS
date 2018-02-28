@@ -82,7 +82,6 @@ class StandingsDataFormat
         }
 
         return $fullStandings;
-
     }
 
 
