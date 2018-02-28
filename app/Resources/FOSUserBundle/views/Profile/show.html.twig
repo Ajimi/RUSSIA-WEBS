@@ -1,0 +1,15 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block body %}
+    <!-- Section Breadcrumbs-->
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'USER PROFILE' } %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a class="active">Profile</a></li>
+        {% endblock %}
+    {% endembed %}
+
+    {% block fos_user_content %}
+        {% include "@FOSUser/Profile/show_content.html.twig" %}
+    {% endblock fos_user_content %}
+{% endblock %}

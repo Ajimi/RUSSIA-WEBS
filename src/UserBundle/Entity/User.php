@@ -3,6 +3,8 @@
 namespace UserBundle\Entity;
 
 use Common\BookingBundle\Entity\Booking;
+use Common\UploadBundle\Annotation\Uploadable;
+use Common\UploadBundle\Annotation\UploadableField;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,6 +13,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * @ORM\Entity
  * @ORM\Table(name="`user`")
+ * @Uploadable()
  */
 class User extends BaseUser
 {
@@ -25,7 +28,6 @@ class User extends BaseUser
      * @ORM\Column(type="string", unique=true, nullable=true)
      */
     private $stripeCustomerId;
-
 
 
     /**
@@ -43,11 +45,24 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="News\NewsBundle\Entity\Article", mappedBy="author")
      */
     private $articles;
+
+
     /**
      * @ORM\Column(type="date", nullable=true)
      */
     protected $birthday;
 
+    /**
+     * @var
+     * @ORM\Column(type="string" , length=255 , nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255 , nullable=true)
+     */
+    private $address;
 
     /**
      * @ORM\OneToMany(
@@ -57,6 +72,18 @@ class User extends BaseUser
      * @ORM\JoinColumn(nullable=true)
      */
     private $bookings;
+
+    /**
+     * @ORM\Column(name="image" , type="string", nullable=true)
+     */
+    private $image;
+    /**
+     * @UploadableField(filename="image", path="assets/images/user")
+     */
+    private $file;
+    private $hasPhone = false;
+    private $hasAddress = false;
+    private $hasImage = false;
 
     public function __construct()
     {
@@ -119,7 +146,6 @@ class User extends BaseUser
     }
 
 
-
     /**
      * @return mixed
      */
@@ -168,5 +194,131 @@ class User extends BaseUser
         $this->stripeCustomerId = $stripeCustomerId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        if (is_null($this->phone)) {
+            return "You don't have a phone number";
+            $this->hasPhone = false;
+        }
+        $this->hasPhone = true;
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasPhone()
+    {
+        return $this->hasPhone;
+    }
+
+    /**
+     * @param mixed $hasPhone
+     */
+    public function setHasPhone($hasPhone): void
+    {
+        $this->hasPhone = $hasPhone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasAddress()
+    {
+        return $this->hasAddress;
+    }
+
+    /**
+     * @param mixed $hasAddress
+     */
+    public function setHasAddress($hasAddress): void
+    {
+        $this->hasAddress = $hasAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+
+        if (is_null($this->address))
+            $this->hasAddress = false;
+
+        $this->hasAddress = true;
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        if (is_null($this->image)) {
+            $this->hasImage = false;
+            return "avatar.jpg";
+        }
+        $this->hasImage = true;
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file): void
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasImage()
+    {
+        return $this->hasImage;
+    }
+
+    /**
+     * @param mixed $hasImage
+     */
+    public function setHasImage($hasImage): void
+    {
+        $this->hasImage = $hasImage;
+    }
 
 }
