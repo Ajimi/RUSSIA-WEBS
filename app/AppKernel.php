@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-
             /*
              * External Bundles
              */
@@ -34,7 +33,7 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
             /*
              * Created Bundles
