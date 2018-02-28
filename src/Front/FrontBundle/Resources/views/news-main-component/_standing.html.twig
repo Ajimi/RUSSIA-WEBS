@@ -25,11 +25,12 @@
                 <tbody>
                 {% set i=1 %}
                 {% for s in standings %}
+                    {% set logo = 'assets/images/teamUploads/' ~ s.logo %}
                     <tr>
                         <td><span>{{ i }}</span></td>
                         <td class="team-inline">
-                            <div class="team-figure"><img src="{{ asset('assets/images/team-bavaria-fc-39x37.png') }}"
-                                                          alt="" width="39" height="37"/>
+                            <div class="team-figure"><img src="{{ asset(logo) }}"
+                                                          alt="" width="50" height="37"/>
                             </div>
                             <div class="team-title">
                                 <div class="team-name">{{ s.teamName }}</div>
