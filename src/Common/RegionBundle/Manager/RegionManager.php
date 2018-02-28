@@ -30,17 +30,29 @@ class RegionManager extends Manager
      * @var HotelManager
      */
     private $hotelManager;
+    /**
+     * @var LocationManager
+     */
+    private $location;
+    /**
+     * @var PlaceManager
+     */
+    private $placeManager;
 
     /**
      * RegionManager constructor.
      * @param EntityManager $entityManager
      * @param HotelManager $hotelManager
+     * @param LocationManager $location
+     * @param PlaceManager $placeManager
      */
-    public function __construct(EntityManager $entityManager, HotelManager $hotelManager, LocationManager $location)
+    public function __construct(EntityManager $entityManager, HotelManager $hotelManager, LocationManager $location, PlaceManager $placeManager)
     {
         $this->entityManager = $entityManager;
         $this->repository = $this->getRepository("RegionBundle:Region");
         $this->hotelManager = $hotelManager;
+        $this->location = $location;
+        $this->placeManager = $placeManager;
     }
 
     /**
@@ -101,7 +113,9 @@ class RegionManager extends Manager
         foreach ($regions as $region) {
             $regionData = $this->serialize($region);
             $hotels = $region->getHotels();
+            $places = $region->getPlaces();
             $regionData['hotels'] = $this->hotelManager->serializer($hotels)['hotels'];
+            $regionData['places'] = $this->placeManager->serializer($places)['places'];
             $data['regions'][] = $regionData;
         }
         return $data;
