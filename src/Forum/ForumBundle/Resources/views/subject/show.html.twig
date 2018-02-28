@@ -17,18 +17,74 @@
                         <!-- Badge-->
                         <h3 class="blog-post-title">{{ subject.title }}</h3>
                         <div class="blog-post-header">
-                            <div class="blog-post-author"><img class="img-circle" src="{{ asset('assets/images/user-3-63x63.jpg') }}" alt="" width="63" height="63"/>
-                                <p class="post-author">{{ subject.author }}</p>
+                            <div class="blog-post-author"><img class="img-circle"
+                                                               src="{{ asset('assets/images/user-3-63x63.jpg') }}"
+                                                               alt="" width="63" height="63"/>
+                                <p class="post-author">{{ subject.auther.username }}</p>
                             </div>
                             <div class="blog-post-meta">
-                                <time class="blog-post-time" datetime="2018"><span class="icon mdi mdi-clock"></span>April 15, 2018</time>
-                                <div class="blog-post-comment"><span class="icon mdi mdi-comment-outline"></span>345</div>
+                                <time class="blog-post-time"><span
+                                            class="icon mdi mdi-clock"></span>{{ subject.created | date('d-M-Y') }}
+                                </time>
+                                <div class="blog-post-comment"><span
+                                            class="icon mdi mdi-comment-outline"></span>{{ totalComments }}
+                                </div>
                                 <div class="blog-post-view"><span class="icon fl-justicons-visible6"></span>234</div>
                             </div>
                         </div>
                         <div class="blog-post-content">
+                            <img src="{{ asset(''~ subject.file) }}" alt="" width="250" height="234"/>
                             <p>{{ subject.content }}</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-30">
+                <div class="col-lg-8">
+                    <!-- Heading Component-->
+                    <article class="heading-component">
+                        <div class="heading-component-inner">
+                            <h5 class="heading-component-title">
+                                {% if totalComments ==  0 %}
+                                    No Comments YET!
+                                {% elseif totalComments == 1 %}
+                                    One Comment
+                                {% else %}
+                                    {{ totalComments }} comments
+                                {% endif %}
+                            </h5>
+                        </div>
+                    </article>
+
+                    <div class="blog-post-comments">
+
+                        {{ render(controller('ForumBundle:Comments:allComments' , {'subject' : subject})) }}
+                        {% if app.user %}
+                        <div class="comment-box">
+                            <div class="comment-box-aside">
+                                <img class="img-circle" src="{{ asset('assets/images/user-7-69x69.jpg') }}"
+                                     alt=""
+                                     width="69"
+                                     height="69"/>
+                            </div>
+                            <div class="comment-box-main">
+                                <h5 class="comment-box-name">{{ app.user.username }}</h5>
+                                <!-- RD Mailform-->
+                                <form class="comment-box-form" data-form-output="form-output-global"
+                                      method="get"
+                                      action="{{ path('comment_add' , {'id': subject.id }) }}">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="comment-message">Your comment</label>
+                                        <textarea class="form-input" id="comment-message" name="message"
+                                                  data-constraints="@Required"></textarea>
+                                    </div>
+                                    <div class="form-button">
+                                        <button class="button button-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

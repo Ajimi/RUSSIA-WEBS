@@ -1,8 +1,8 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
-
-{% block body %}
-    {% block title %}Create new{% endblock %}
+{% block title %}Create new{% endblock %}
     {% block header_forum %}active{% endblock %}
+{% block body %}
+
         {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Forum'} %}
             {% block breadcrumbs_path %}
                 <li><a href="{{ path('homepage') }}">Home</a></li>
@@ -43,9 +43,9 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            {{ form_label(form.image, 'Image', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
+                            {{ form_label(form.file, 'Image', {'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}}) }}
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                {{ form_widget(form.image, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
+                                {{ form_widget(form.file, { 'attr': {'class': 'form-input form-control-has-validation form-control-last-child'} }) }}
                             </div>
                         </div>
 

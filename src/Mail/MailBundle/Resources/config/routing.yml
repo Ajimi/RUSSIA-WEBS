@@ -1,0 +1,3 @@
+mail_mail_homepage:
+    path:     /
+    defaults: { _controller: MailMailBundle:Default:index }

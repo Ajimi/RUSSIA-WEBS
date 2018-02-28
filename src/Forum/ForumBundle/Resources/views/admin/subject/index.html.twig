@@ -1,0 +1,124 @@
+{% extends 'BackBundle:common:_base.html.twig' %}
+{% block page_title %}Forum management{% endblock page_title %}
+{% block page_content %}
+    <!----------------------------------------------------------------->
+    <h1>Subject</h1>
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Subject Table</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <a href="{{ path('admin_subject_new') }}"><button class="btn btn-primary">Create a new subject</button></a>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                    <tr class="headings">
+                        <th>Id</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    {% for subject in subjects %}
+                        {% if subject.etat=='Accept' %}
+                            <tr>
+                                <td><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}">{{ subject.id }}</a></td>
+                                <td>{{ subject.auther.username }}</td>
+                                <td>{{ subject.title }}</td>
+                                <td><img src="{{ asset(''~ subject.file) }}" alt="" width="50" height="34"/></td>
+                                <td>
+                                    <table><tr><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}"><button type="button" class="btn btn-round btn-default"><i class="fa fa-eye"></i> Show</button></a></tr>
+                                    <tr><a href="{{ path('admin_subject_edit', { 'id': subject.id }) }}"><button type="button" class="btn btn-round btn-default"><i class="fa fa-wrench"></i> Edit</button></a></tr></table>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------>
+    <h1>Subject Request</h1>
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Subject Request Table</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    {% for subject in subjects %}
+                        {% if subject.etat == 'Waiting' %}
+                            <tr>
+                                <td><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}">{{ subject.id }}</a></td>
+                                <td>{{ subject.auther.username }}</td>
+                                <td>{{ subject.title }}</td>
+                                <td><img src="{{ asset(''~ subject.file) }}" alt="" width="50" height="34"/></td>
+                                <td>
+                                    <table><th><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}"><button type="button" class="btn btn-round btn-default"><i class="fa fa-eye"></i> Show</button></a></th></table>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------>
+    <h1>Subject Refused</h1>
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Subject Refused Table</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    {% for subject in subjects %}
+                        {% if subject.etat == 'Refuse' %}
+                            <tr>
+                                <td><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}">{{ subject.id }}</a></td>
+                                <td>{{ subject.auther.username }}</td>
+                                <td>{{ subject.title }}</td>
+                                <td><img src="{{ asset(''~ subject.file) }}" alt="" width="50" height="34"/></td>
+                                <td>
+                                    <table><th><a href="{{ path('admin_subject_show', { 'id': subject.id }) }}"><button type="button" class="btn btn-round btn-default"><i class="fa fa-eye"></i> Show</button></a></th></table>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+{% endblock %}

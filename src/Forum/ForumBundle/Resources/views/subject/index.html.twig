@@ -19,14 +19,21 @@
                 <!-- un sujet-->
                 {% for subject in subjects %}
                     {% if  subject.etat == 'Accept'%}
-                <article class="post-classic">
-                    <div class="post-classic-aside"><img src="{{ asset('/'~ subject.image) }}" alt="" width="94" height="94"/></div>
-                    <div class="post-classic-main">
-                        <p class="post-classic-title"><a href="{{ path('subject_show', { 'id': subject.id }) }}">{{ subject.title }}</a></p>
-                        <div class="post-classic-time"><span class="icon mdi mdi-clock"></span><time datetime="2017">April 15, 2017</time></div>
-                        <div class="post-corporate-comment"><span class="icon mdi mdi-comment-outline"></span>345 Comments</div>
-                    </div>
-                </article>
+                        {% set totalComments = subject.comments|length  %}
+                        {% if totalComments < 2 %}
+                            {% set comment = totalComments ~ ' comment'%}
+
+                        {% else %}
+                            {% set comment = totalComments ~ ' comments'%}
+                        {% endif %}
+                        <article class="post-classic">
+                            <div class="post-classic-aside"><img src="{{ asset(''~ subject.file) }}" alt="" width="94" height="94"/></div>
+                            <div class="post-classic-main">
+                                <p class="post-classic-title"><a href="{{ path('subject_show', { 'id': subject.id }) }}">{{ subject.title }}</a></p>
+                                <div class="post-classic-time"><span class="icon mdi mdi-clock"></span>{{ subject.created | date('d-M-Y') }}</div>
+                                <div class="post-corporate-comment"><span class="icon mdi mdi-comment-outline"></span>{{ comment }}</div>
+                            </div>
+                        </article>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -44,7 +51,7 @@
                         </div>
                     </article>
                     <div class="list-post-classic">
-                        <a class="button button-primary button-icon button-icon-left" href="{{ path('subject_new') }}"><span>Create a new subject</span></a>
+                        <a class="button button-primary button-icon button-icon-left" href="{{ path('subject_add') }}"><span>Create a new subject</span></a>
                     </div>
                 </div>
             </div>

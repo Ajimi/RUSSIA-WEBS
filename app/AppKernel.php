@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
 
             /*
@@ -41,6 +42,7 @@ class AppKernel extends Kernel
             new Common\LocationBundle\LocationBundle(),
             new Common\RegionBundle\RegionBundle(),
             new Common\UploadBundle\UploadBundle(),
+            new Mail\MailBundle\MailMailBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
