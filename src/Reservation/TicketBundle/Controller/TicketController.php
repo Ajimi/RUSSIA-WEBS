@@ -30,7 +30,7 @@ class TicketController extends Controller
         /** @var EntityManager $em */
         $repo = $this->getDoctrine()->getManager()->getRepository('MatchBundle:Match');
 
-        $matchesDoctrine = $repo->findAllMatches();
+        $matchesDoctrine = $repo->getQueryBuilder();
 
 
         /**
