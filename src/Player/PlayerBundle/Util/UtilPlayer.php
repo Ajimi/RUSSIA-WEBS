@@ -13,12 +13,12 @@ class UtilPlayer
 {
     function playerSkills($player, &$shotAcc, &$finishing)
     {
-        if ($player . shotsOnTarget != 0)
-            $finishing = $player . goalScored * 100 / $player . shotsOnTarget;
+        if ($player->shotsOnTarget != 0)
+            $finishing = $player->goalScored * 100 / $player->shotsOnTarget;
         else
             $finishing = 0;
-        if ($player . shots != 0)
-            $shotAcc = $player . shotsOnTarget * 100 / $player . shots;
+        if ($player->shots != 0)
+            $shotAcc = $player->shotsOnTarget * 100 / $player->shots;
         else
             $shotAcc = 0;
     }
