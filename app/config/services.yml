@@ -36,3 +36,16 @@ services:
     data_fixture.alice:
         class: AppBundle\DataFixtures\ORM\LoadFixtures
         tags: [doctrine.fixture.orm]
+
+    Mail\MailBundle\:
+        resource: '../../src/Mail/MailBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/Mail/MailBundle/{Entity,Repository,Tests}'
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Mail\MailBundle\Controller\:
+        resource: '../../src/Mail/MailBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']

@@ -3,11 +3,7 @@ mail_mail:
     prefix:   /
 
 forum_comment:
-    resource: "@ForumBundle/Controller/CommentController.php"
-    type:     annotation
-
-forum_comment:
-    resource: "@ForumBundle/Controller/CommentController.php"
+    resource: "@ForumBundle/Controller/CommentsController.php"
     type:     annotation
 
 forum_subject:
@@ -99,6 +95,11 @@ back:
 
 user:
     resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+mail:
+    resource: "@MailMailBundle/Controller/"
     type:     annotation
     prefix:   /
 
