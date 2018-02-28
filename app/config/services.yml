@@ -126,7 +126,7 @@ services:
                 class: AppBundle\DataFixtures\ORM\LoadMatchsFixture
                 tags: [doctrine.fixture.orm]
 
-    data_fixture.alice:
+    data_fixture.fixtures:
             class: AppBundle\DataFixtures\ORM\LoadFixtures
             tags: [doctrine.fixture.orm]
 
