@@ -16,7 +16,7 @@ class StandingsDataFormat
 
     public static function oneGroupStandingFormat(Groupe $g)
     {
-        /** @var StandingsFormat $standings */
+
         $standings = [];
 
         $s1 = new StandingsFormat();
@@ -46,12 +46,12 @@ class StandingsDataFormat
         return $standings;
     }
 
-    public static function fullStandings($groups)
+    public static function fullStandings(Groupe $groups)
     {
         $fullStandings = [];
-        foreach ($groups as $g)
+        foreach ( $groups as $g)
         {
-            /** @var StandingsFormat $standings */
+
             $standings = [];
 
             $s1 = new StandingsFormat();

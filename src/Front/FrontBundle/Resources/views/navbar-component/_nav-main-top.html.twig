@@ -2,6 +2,8 @@
     <div class="rd-navbar-main-container container">
         {% include 'FrontBundle:navbar-component:_nav-brand-logo.html.twig' %}
         {% include 'FrontBundle:navbar-component:_nav-partners.html.twig' %}
+        {% block search %}
         {% include 'FrontBundle:navbar-component:_nav-search.html.twig' %}
+        {% endblock search %}
     </div>
 </div>

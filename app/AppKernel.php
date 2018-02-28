@@ -33,8 +33,6 @@ class AppKernel extends Kernel
             new Sg\DatatablesBundle\SgDatatablesBundle(),
 
 
-
-
             /*
              * Created Bundles
              */

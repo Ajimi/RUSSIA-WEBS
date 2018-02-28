@@ -1,3 +1,4 @@
+
 <div class="rd-navbar-collapse rd-navbar-panel-item rd-navbar-panel-item-left">
     <!-- Owl Carousel-->
     <div class="owl-carousel-navbar owl-carousel-inline-outer">
@@ -10,21 +11,13 @@
                  data-nav="true" data-stage-padding="0" data-loop="true" data-margin="10"
                  data-mouse-drag="false" data-touch-drag="false"
                  data-nav-custom=".owl-carousel-navbar">
+                {% for m in matches %}
                 <!-- Post Inline-->
                 <article class="post-inline">
-                    <time class="post-inline-time" datetime="2017">April 15, 2017</time>
-                    <p class="post-inline-title">Atletico vs Celta Vigo</p>
+                    <time class="post-inline-time" datetime="2017">{{ m.date |date('M d, Y') }}</time>
+                    <p class="post-inline-title">{{ m.team1.teamName }} vs {{ m.team2.teamName }}</p>
                 </article>
-                <!-- Post Inline-->
-                <article class="post-inline">
-                    <time class="post-inline-time" datetime="2017">April 15, 2017</time>
-                    <p class="post-inline-title">Atletico vs Dream Team</p>
-                </article>
-                <!-- Post Inline-->
-                <article class="post-inline">
-                    <time class="post-inline-time" datetime="2017">April 15, 2017</time>
-                    <p class="post-inline-title">Atletico vs Real Madrid</p>
-                </article>
+            {% endfor %}
             </div>
         </div>
     </div>

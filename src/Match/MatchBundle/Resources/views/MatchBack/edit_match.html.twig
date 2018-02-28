@@ -116,7 +116,9 @@
     <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#timepicker').mdtimepicker(); //Initializes the time picker
+            $('#timepicker').mdtimepicker();
+            $('#timepicker').attr('required', true);
+
         });
     </script>
 {% endblock javascripts %}
