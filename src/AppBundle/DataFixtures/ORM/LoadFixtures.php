@@ -29,6 +29,7 @@ class LoadFixtures implements FixtureInterface
 //                __DIR__ . '/user.yml',
 //                __DIR__ . '/tickets.yml',
 //                //__DIR__ . '/team.yml',
+                __DIR__ . '/fixtures.yml'
             ],
             $manager,
             [

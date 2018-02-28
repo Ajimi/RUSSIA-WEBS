@@ -49,6 +49,7 @@ class StandingsDataFormat
     public static function fullStandings($groups)
     {
         $fullStandings = [];
+        /** @var Groupe $g */
         foreach ( $groups as $g)
         {
 

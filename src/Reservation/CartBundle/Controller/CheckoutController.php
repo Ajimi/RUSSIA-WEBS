@@ -45,7 +45,7 @@ class CheckoutController extends Controller
                 $shoppingCart->emptyCart();
                 $this->addFlash('success', 'Order Complete!');
 
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('cart_index');
             }
         }
 
@@ -82,6 +82,7 @@ class CheckoutController extends Controller
      */
     private function chargeCustomer($token, StripeClient $stripeClient, ShoppingCart $shoppingCart)
     {
+        $em = $this->getDoctrine()->getManager();
         /** @var User $user */
         $user = $this->getUser();
 
@@ -92,13 +93,37 @@ class CheckoutController extends Controller
             $stripeClient->updateCustomerCard($user, $token);
         }
 
+        $isTicketEmpty = false;
+        $products = [];
         foreach ($shoppingCart->getProducts() as $product) {
-            dump($product);
+            if ($product->getTicket()->getQuantity() < 1) {
+                $isTicketEmpty = true;
+                $products[] = $product;
+            }
+        }
+
+        if ($isTicketEmpty == true) {
+            $message = "";
+            foreach ($products as $product) {
+                $message .= "$product->getTeam1()->getTeamName()  vs  $product->getTeam2()->getTeamName()";
+                $message .= '<br>';
+            }
+            $this->addFlash('error', "There's no ticket left for <br>" . $message . "<br> please remove them before checking out");
+            return $this->redirectToRoute('cart_index');
+        }
+
+        foreach ($shoppingCart->getProducts() as $product) {
             $stripeClient->createInvoiceItem(
                 $product->getTicket()->getPrice() * 100,
                 $user,
                 $product->getTeam1()->getTeamName() . ' vs ' . $product->getTeam2()->getTeamName()
             );
+            $ticket = $product->getTicket();
+            $ticket->setQuantity($ticket->getQuantity() - 1);
+            $em->persist($product);
+            $em->persist($ticket);
+            $em->flush();
+
         }
         $stripeClient->createInvoice($user, true);
     }

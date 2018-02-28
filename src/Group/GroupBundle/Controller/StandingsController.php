@@ -57,10 +57,9 @@ class StandingsController extends Controller
         $score = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         return $this->render('@Group/Standings/full_standings_display.html.twig', array(
             'fullStandings' => $fullStandings,
-            'scores'=>$score
+            'scores' => $score,
+            'group' => array("A", "B", "C", "D", "E", "F", "G", "H")
         ));
-
-
     }
 
 }

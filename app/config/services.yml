@@ -117,12 +117,17 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-    data_fixture.alice:
-        class: AppBundle\DataFixtures\ORM\LoadFixtures
-        tags: [doctrine.fixture.orm]
+
+    data_fixture.teams:
+            class: AppBundle\DataFixtures\ORM\LoadTeamsFixture
+            tags: [doctrine.fixture.orm]
 
     data_fixture.home:
-            class: AppBundle\DataFixtures\ORM\LoadMatchFixture
+                class: AppBundle\DataFixtures\ORM\LoadMatchsFixture
+                tags: [doctrine.fixture.orm]
+
+    data_fixture.fixtures:
+            class: AppBundle\DataFixtures\ORM\LoadFixtures
             tags: [doctrine.fixture.orm]
 
     Reservation\HotelBundle\HotelManager\HotelManager: ~

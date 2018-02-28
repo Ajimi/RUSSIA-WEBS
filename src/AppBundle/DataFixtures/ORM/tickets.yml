@@ -30,8 +30,8 @@ Player\PlayerBundle\Entity\Player:
         totalGames: <numberBetween(0,11)>
         team: <word()>
         goalScored: <numberBetween(0,11)>
-        shots: <numberBetween(0,11)>
-        shotsOnTarget: <numberBetween(0,11)>
+        shots: <numberBetween(33,99)>
+        shotsOnTarget: <numberBetween(11,33)>
         assists: <numberBetween(0,11)>
         fouls: <numberBetween(0,11)>
         passes: <numberBetween(0,11)>

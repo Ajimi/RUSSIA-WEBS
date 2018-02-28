@@ -52,7 +52,8 @@ class Region
 
     /**
      * One Region has Many Hotels.
-     * @ORM\OneToMany(targetEntity="Common\RegionBundle\Entity\Place", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="Common\RegionBundle\Entity\Place", mappedBy="region", cascade={"remove"})
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $places;
 

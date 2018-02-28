@@ -23,9 +23,11 @@
                 <!-- List Inline-->
                 <ul class="list-inline inset-right-5">
                     <li class="text-extra-small text-black text-strike text-middle">
+                        Price
                     </li>
                     <li class="box-offer-price text-black text-ubold text-primary text-middle">
-                        {{ place.phone }}
+                        <span class="mdi mdi-phone"></span>
+                        {% block phone %}{% endblock %}
                     </li>
                 </ul>
             </div>
@@ -45,8 +47,8 @@
                 </p>
             </div>
             <div class="box-offer-caption-inner-right text-xl-right">
-                <a data-modal="modal-10" class="md-trigger button button-width-110 button-primary" href="#">VIEW
-                    MORE</a></div>
+                <a data-modal="modal-10" class="md-trigger button button-width-110 button-primary" href="#">SEE MAP</a>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>

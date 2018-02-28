@@ -93,11 +93,11 @@ class Ticket
     }
 
     /**
-     * @param mixed $matche
+     * @param mixed $match
      */
-    public function setMatch($matche)
+    public function setMatch($match)
     {
-        $this->match = $matche;
+        $this->match = $match;
     }
 
     /**

@@ -15,7 +15,7 @@ use Faker\Generator;
 use Group\GroupBundle\Entity\Groupe;
 use Team\TeamBundle\Entity\Team;
 
-class LoadMatchFixture implements FixtureInterface
+class LoadTeamsFixture implements FixtureInterface
 {
 
     /**
@@ -75,7 +75,7 @@ class LoadMatchFixture implements FixtureInterface
 
     public function getTeam($number = 0)
     {
-        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France ", "Australia "
+        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France", "Australia "
             , "Peru", "Denmark", "Argentina", "Iceland", "Croatia", "Nigeria", "Brazil", "Switzerland", "Costa Rica", "Serbia", "Germany",
             "Mexico", "Sweden", "South Korea", "Belgium", "Panama", "Tunisia", "England", "Poland", "Senegal", "Colombia", "Japan"];
         return $teams[$number];
@@ -83,20 +83,36 @@ class LoadMatchFixture implements FixtureInterface
 
     public function getTeamShortcut($number = 0)
     {
-        $teams = ["Russia", "Saudi Arabia", "Egypt", "Uruguay", "Portugal", "Spain", "Morocco", "Iran", "France ", "Australia "
-            , "Peru", "Denmark", "Argentina", "Iceland", "Croatia", "Nigeria", "Brazil", "Switzerland", "Costa Rica", "Serbia", "Germany",
-            "Mexico", "Sweden", "South Korea", "Belgium", "Panama", "Tunisia", "England", "Poland", "Senegal", "Colombia", "Japan"];
+        $teams = ["RUS", "SAU", "EGY", "URU", "POR", "SPA", "MRC", "IRN", "FRA", "AUS "
+            , "PER", "DEN", "ARG", "ICE", "CRO", "NGR", "BRA", "SWZ", "CSR", "SER", "GER",
+            "MEX", "SWE", "SKR", "BEL", "PAN", "TUN", "END", "POL", "SEN", "COL", "JAP"];
         return $teams[$number];
     }
 
     public function getGroup($number = 0)
     {
         $groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
+        $a = array(
+            ['time' => 'Thu Jun/14 18:00', 'team' => 'Russia ', 'teamvs' => 'Saudi Arabia', 'stadium' => 'Luzhniki Stadium'],
+            ['time' => 'Fri Jun/15 17:00', 'team' => 'Egypt', 'teamvs' => 'Uruguay', 'stadium' => 'Central Stadium'],
+            ['time' => 'Tue Jun/19 21:00', 'team' => 'Russia ', 'teamvs' => 'Egypt', 'stadium' => 'Krestovsky Stadium'],
+            ['time' => 'Wed Jun/20 18:00', 'team' => 'Uruguay', 'teamvs' => 'Saudi Arabia', 'stadium' => 'Rostov Arena'],
+            ['time' => 'Mon Jun/25 18:00', 'team' => 'Uruguay', 'teamvs' => 'Russia', 'stadium' => 'Cosmos Arena'],
+            ['time' => 'Mon Jun/25 17:00', 'team' => 'Saudi Arabia', 'teamvs' => 'Egypt', 'stadium' => 'Volgograd Arena'],
+        );
+        $a = array(
+            ['time' => 'Fri Jun/15 18:00', 'team' => 'Morocco ', 'teamvs' => 'Iran    ', 'stadium' => 'Luzhniki Stadium'],
+            ['time' => 'Fri Jun/15 21:00', 'team' => 'Portugal', 'teamvs' => 'Spain   ', 'stadium' => 'Central Stadium'],
+            ['time' => 'Wed Jun/20 15:00', 'team' => 'Portugal ', 'teamvs' => 'Morocco ', 'stadium' => 'Krestovsky Stadium'],
+            ['time' => 'Wed Jun/20 21:00', 'team' => 'Iran    ', 'teamvs' => 'Spain   ', 'stadium' => 'Rostov Arena'],
+            ['time' => 'Mon Jun/25 21:00', 'team' => 'Iran    ', 'teamvs' => 'Portugal', 'stadium' => 'Cosmos Arena'],
+            ['time' => 'Mon Jun/25 20:00', 'team' => 'Spain   ', 'teamvs' => 'Morocco ', 'stadium' => 'Volgograd Arena'],
+        );
         return $groups[$number];
     }
 
     /**
-     * @param $teamName
+     * @param string $teamName
      * @param $teamShortcut
      * @param Generator $faker
      * @return Team
@@ -106,7 +122,8 @@ class LoadMatchFixture implements FixtureInterface
         /** @var Team $team */
         $team = new Team();
         $team->setTeamName($teamName);
-        $team->setTeamLogo(strtolower($teamName . '.jpg'));
+        $array = explode(' ', $teamName);
+        $team->setTeamLogo(strtolower($array[0] . '.png'));
         $team->setTeamShortcut($teamShortcut);
         $team->setMatchWon($faker->randomDigitNotNull);
         $team->setMatchLost($faker->randomDigitNotNull);
@@ -118,9 +135,10 @@ class LoadMatchFixture implements FixtureInterface
         $team->setSecond($faker->randomDigitNotNull);
         $team->setThird($faker->randomDigitNotNull);
 
-        return $team;
 
+        return $team;
     }
 
 
 }
+

@@ -89,8 +89,12 @@ class CartController extends Controller
 
         $cart = $session->get('cart');
 
-
-        $cart[$match->getId()] = 1;
+        if ($match->getTicket()->getQuantity() < 1) {
+            $this->addFlash('error',
+                "There's no ticket left for the match " . $match->getTeam1()->getTeamName() . " VS " . $match->getTeam2()->getTeamName());
+            return $this->redirectToRoute('cart_index');
+        }
+        $cart[$match->getId()] = 1; // Quantity here
         $session->set('cart', $cart);
 
         $this->addFlash('success', 'The ticket added perfectly');

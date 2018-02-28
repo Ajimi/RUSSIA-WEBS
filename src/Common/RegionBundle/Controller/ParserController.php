@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @package Common\RegionBundle\Controller
  * @Route("parser")
  */
-class Parser extends Controller
+class ParserController extends Controller
 {
 
 
@@ -74,10 +74,10 @@ class Parser extends Controller
 
 
     /**
-     * @Route("/{id}/{city}")
+     * @Route("/{id}/{city}", name="parsing")
      * @throws \InvalidArgumentException
      */
-    public function parse(Request $request, $id, $city)
+    public function parseAction(Request $request, $id, $city)
     {
 
         $placeParser = PlaceParser::createPlaceParser($this->getDoctrine()->getManager());
