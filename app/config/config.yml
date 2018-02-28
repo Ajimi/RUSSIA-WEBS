@@ -88,18 +88,6 @@ stof_doctrine_extensions:
             sluggable:   true
             timestampable: true
 
-ivory_ck_editor:
-    configs:
-        my_config:
-            skin: "kama,/bundles/ivoryckeditor/skins/kama/"
-    plugins:
-        youtube:
-            path:     "/bundles/ivoryckeditor/plugins/youtube/"
-            filename: "plugin.js"
-
-
-
-
 knp_paginator:
     page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
     default_options:
@@ -121,8 +109,51 @@ knp_paginator:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        binary:     /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
 
 
     #process_timeout: 20 # In seconds
+
+
+
+ivory_ck_editor:
+    configs:
+        my_config:
+            skin: "kama,/bundles/ivoryckeditor/skins/kama/"
+    plugins:
+        youtube:
+            path:     "/bundles/ivoryckeditor/plugins/youtube/"
+            filename: "plugin.js"
+
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
+            tag:            "ttot"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+    theme:                  'default' # optional
+
+
+
+

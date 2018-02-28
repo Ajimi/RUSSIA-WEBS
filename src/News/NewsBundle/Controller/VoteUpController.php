@@ -91,20 +91,20 @@ class VoteUpController extends Controller
 //        $article = $em->getRepository("NewsBundle:Article")->findOneBy([''])
 
         if (is_null($user)) {
-            return $this->getResponse(array('result' => false));
+            return $this->getResponse(true);
         }
 
         if (is_null($article)) {
-            return $this->getResponse(array('result' => false));
+            return $this->getResponse(true);
         }
 
         $voteRepo = $em->getRepository('NewsBundle:VoteUp');
         $hasVoted = $voteRepo
             ->findOneBy(['user' => $user, 'article' => $article]);
         if (is_null($hasVoted)) {
-            return $this->getResponse(array('result' => false));
+            return $this->getResponse('Has already voted', 'result', false, 203);
         } else {
-            return $this->getResponse(array('result' => true));
+            return $this->getResponse('Has voted', 'result', true, 200);
         }
     }
 

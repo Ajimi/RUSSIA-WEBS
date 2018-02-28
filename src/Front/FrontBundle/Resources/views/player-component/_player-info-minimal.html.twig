@@ -11,26 +11,26 @@
             <h3>{{ bestScorer[0].playerName }}<span>{{ bestScorer[0].playerLastName }}</span></h3>
         </div>
 
-        {#<div class="player-info-minimal-progress">
+        <div class="player-info-minimal-progress">
             <!-- Linear progress bar-->
             <article class="progress-linear progress-bar-modern animated-first">
                 <div class="progress-header">
-                    <p>Pass Acc</p><span class="progress-value">87</span>
+                    <p>Shot Acc</p><span class="progress-value">{{ shotAcc |slice(0,2) }}</span>
                 </div>
                 <div class="progress-bar-linear-wrap">
-                    <div class="progress-bar-linear" style="width: 87%;"></div>
+                    <div class="progress-bar-linear" style="width: {{ shotAcc |slice(0,2)}}%;"></div>
                 </div>
             </article>
             <!-- Linear progress bar-->
             <article class="progress-linear progress-bar-modern animated-first">
                 <div class="progress-header">
-                    <p>Shots Acc</p><span class="progress-value">93</span>
+                    <p>Finishing</p><span class="progress-value">{{ finishing|slice(0,2) }}</span>
                 </div>
                 <div class="progress-bar-linear-wrap">
-                    <div class="progress-bar-linear" style="width: 93%;"></div>
+                    <div class="progress-bar-linear" style="width: {{ finishing|slice(0,2) }}%;"></div>
                 </div>
             </article>
         </div>
-        #}
+
     </div>
 </div>

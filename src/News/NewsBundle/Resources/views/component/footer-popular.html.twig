@@ -1,0 +1,30 @@
+<div class="col-lg-7">
+    <h5>Popular News</h5>
+    <div class="divider-small divider-secondary"></div>
+    <div class="row row-20">
+        {% for article in articles %}
+            {% set url = path('article_show', {'id' : article.id}) %}
+            <div class="col-sm-6">
+
+                <article class="post-classic">
+                    <div class="post-classic-aside">
+                        <a class="post-classic-figure" href="{{ url }}">
+                            <img src="{{ asset('assets/images/blog-element-1-94x94.jpg') }}" alt=""/>
+                            {#TODO : ADD PHOTO#}
+                        </a>
+                    </div>
+                    <div class="post-classic-main">
+                        <p class="post-classic-title">
+                            <a href="{{ url }}">{{ article.title }}</a>
+                        </p>
+                        <div class="post-classic-time">
+                            <span class="icon mdi mdi-clock"></span>
+                            <time datetime="{{ article.created|date('Y') }}">{{ article.created|date('F j, Y') }}</time>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>

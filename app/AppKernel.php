@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -32,6 +32,8 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
             /*

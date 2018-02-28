@@ -1,13 +1,14 @@
 {% extends 'FrontBundle:common:_base.html.twig' %}
 
-{% block metadata %}
-    <meta property="og:url" content="http://127.0.0.1:8000/match/schedule"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Russia 2018 2018 2018 2018 "/>
-    <meta property="og:description" content="My description"/>
-{% endblock metadata %}
- {% block body %}
-     {% include '@Match/Breadcrumbs/breadcrumbs_schedule.html.twig' %}
+{% block title %}Schedule{% endblock %}
+{% block body %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Game Schedule'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Competition</a></li>
+            <li class="active">Schedule</li>
+        {% endblock %}
+    {% endembed %}
 
      <section class="section section-sm bg-gray-100">
          <div class="container">

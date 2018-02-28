@@ -11,6 +11,7 @@ use Group\GroupBundle\Modele\StandingsDataFormat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Player\PlayerBundle\Util\UtilPlayer;
 
 
 /**
@@ -30,6 +31,13 @@ class ResultFrontController extends Controller
         $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name' => 'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($g);
         $bestScorer = $em->getRepository('PlayerBundle:Player')->bestScorer();
+
+        $shotAcc=0;
+        $finishing=0;
+        UtilPlayer::playerSkills($bestScorer[0],$shotAcc,$finishing);
+        dump($finishing);
+        dump($shotAcc);
+
         $scores = $em->getRepository("MatchBundle:Score")->findAll();
         usort($scores, function ($a, $b) {
             return $a->getMatch()->getDate() < $b->getMatch()->getDate();
@@ -38,14 +46,16 @@ class ResultFrontController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $scores,
-            $request->query->getInt('page', 1),/*page number*/
+            $request->query->getInt('page', 1),
             $request->query->get('limit', 2)
 
         );
         return $this->render('@Match/FrontViews/game_results.html.twig', array(
             'scores' => $pagination,
             'standings' => $standings,
-            'bestScorer' => $bestScorer
+            'bestScorer' => $bestScorer,
+            'shotAcc'=>$shotAcc,
+            'finishing'=>$finishing
 
         ));
     }

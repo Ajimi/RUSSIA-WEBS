@@ -3,15 +3,15 @@
         <div class="post-miranda-main">
             <div class="post-miranda-header">
                 <!-- Badge-->
-                <div class="badge badge-secondary">The Team
+                <div class="badge {{ article.badge.class }}">{{ article.category.name }}
                 </div>
-                <time class="post-miranda-time" datetime="2017">April 15, 2017
-                </time>
+                <time class="post-miranda-time"
+                      datetime="{{ article.created|date('Y') }}">{{ article.created|date('F j, Y') }}</time>
                 <div class="post-miranda-view"><span class="icon fl-justicons-visible6"></span>234
                 </div>
             </div>
             <h4 class="post-miranda-title">
-                <a href="blog-post.html">
+                <a href="{{ path('article_show', {'id' : article.id}) }}">
                     {% block title %}Unheralded Phil Jones has made
                         an impressive start to the season
                     {% endblock %}
@@ -23,13 +23,16 @@
                     effectively, there would have been...</p>{% endblock %}
             </div>
         </div>
-        <div class="post-miranda-aside"><a class="post-miranda-figure" href="blog-post.html"><img
+        <div class="post-miranda-aside"><a class="post-miranda-figure"
+                                           href="{{ path('article_show', {'id' : article.id}) }}"><img
                         src="{{ asset('assets/images/news-1-1-207x152.jpg') }}" alt="" width="207" height="152"/></a>
         </div>
     </div>
     <div class="post-miranda-footer">
-        <div class="post-miranda-comment"><span class="icon mdi mdi-comment-outline"></span><a
-                    href="#">345 Comments</a></div>
+        <div class="post-miranda-comment">
+            <span class="icon mdi mdi-thumb-up-outline"></span>
+            <a href="#">{{ article.votes|length }} Likes</a>
+        </div>
         <div class="post-miranda-share">
             <ul class="group">
                 <li>Share</li>

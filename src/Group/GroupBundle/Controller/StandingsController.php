@@ -7,7 +7,8 @@ use Group\GroupBundle\Modele\StandingsFormat;
 use Match\MatchBundle\Model\StatisticFormat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class StandingsController
@@ -21,7 +22,7 @@ class StandingsController extends Controller
      * @Route("/standings" ,name="standings")
      */
 
- /*
+
 
      public function displayAction()
     {
@@ -43,7 +44,6 @@ class StandingsController extends Controller
             // ...
         ));
     }
- */
 
     /**
      *@Route("/fullstandings" ,name="full_standings")
@@ -57,10 +57,9 @@ class StandingsController extends Controller
         $score = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         return $this->render('@Group/Standings/full_standings_display.html.twig', array(
             'fullStandings' => $fullStandings,
-            'scores'=>$score
+            'scores' => $score,
+            'group' => array("A", "B", "C", "D", "E", "F", "G", "H")
         ));
-
-
     }
 
 }

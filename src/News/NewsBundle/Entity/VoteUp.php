@@ -28,7 +28,7 @@ class VoteUp
 
     /**
      * @var Article
-     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="News\NewsBundle\Entity\Article", inversedBy="votes")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id", nullable=true) TODO : Change it to false
      */
     private $article;

@@ -11,7 +11,7 @@ namespace Player\PlayerBundle\Util;
 
 class UtilPlayer
 {
-    function playerSkills($player, &$shotAcc, &$finishing)
+    public  static function playerSkills($player, &$shotAcc, &$finishing)
     {
         if ($player->getShotsOnTarget() != 0)
             $finishing = $player->getGoalScored() * 100 / $player->getShotsOnTarget();

@@ -31,7 +31,7 @@ class EventBackController extends Controller
         {
             $ev = new Event();
             $ev->setMinutes($formEnd->get('time')->getData());
-            $this->endGame($em,$idm,$ev);
+            $this->endGame($idm,$ev);
         }
 
         $event = new Event();
@@ -71,13 +71,16 @@ class EventBackController extends Controller
 
 
     /**
-     * @Route("/delete/{id}{idm}", name="delete_event")
+     * @Route("/delete/{id}/{idm}", name="delete_event")
      */
     public function deleteEventAction($id,$idm)
     {
+
         $em = $this->getDoctrine()->getManager();
+        /** @var Event $event */
         $event = $em->getRepository('MatchBundle:Event')->find($id);
-        $player=$em->getRepository('PlayerBundle:Player')->find($event->getPlayer()->getId());
+
+        $player = $em->getRepository('PlayerBundle:Player')->find($event->getPlayer()->getId());
         $em->getRepository('PlayerBundle:Player')->removePlayerStat($player->getId(),$event);
 
         $em->persist($player);
@@ -110,7 +113,7 @@ class EventBackController extends Controller
      * @Route("/end/{idm}", name="end_game")
      */
 
-    public function endGame($idm,$ev)
+    public function endGame($idm,?Event $ev)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -128,7 +131,7 @@ class EventBackController extends Controller
         $this->addScore($match);
     }
 
-    private function addScore($match)
+    private function addScore(?Match $match)
     {
         $em = $this->getDoctrine()->getManager();
         $eventsTeam1 = $em->getRepository("MatchBundle:Event")->findBy(array('match' => $match, 'team' => $match->getTeam1(), 'typeEvent' => "Goal"));
@@ -141,13 +144,13 @@ class EventBackController extends Controller
         $score->setScoreTeam1($goalsTeam1);
         $score->setScoreTeam2($goalsTeam2);
 
-        $this->updateTeam($em,$match,$goalsTeam1,$goalsTeam2);
+        $this->updateTeam($match,$goalsTeam1,$goalsTeam2);
         $em->persist($score);
         $em->flush();
 
     }
 
-    private  function  updateTeam($match,$goalsTeam1,$goalsTeam2)
+    private  function  updateTeam(?Match $match,$goalsTeam1,$goalsTeam2)
     {
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('TeamBundle:Team')->updateTeamGoalIn($match->getTeam1()->getId(),$goalsTeam2);

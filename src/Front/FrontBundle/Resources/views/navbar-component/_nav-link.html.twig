@@ -48,102 +48,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="rd-megamenu-item rd-megamenu-item-content">
-                    <!-- Heading Component-->
-                    <article class="heading-component heading-component-simple">
-                        <div class="heading-component-inner">
-                            <h5 class="heading-component-title">Latest News
-                            </h5><a class="button button-xs button-gray-outline" href="news-1.html">See all News</a>
-                        </div>
-                    </article>
-
-                    <div class="row row-20">
-                        <div class="col-lg-6">
-                            <!-- Post Classic-->
-                            <article class="post-classic">
-                                <div class="post-classic-aside"><a
-                                            class="post-classic-figure"
-                                            href="blog-post.html"><img
-                                                src="{{ asset('assets/images/megamenu-post-1-93x94.jpg') }}"
-                                                alt="" width="93" height="94"/></a>
-                                </div>
-                                <div class="post-classic-main">
-                                    <!-- Badge-->
-                                    <div class="badge badge-secondary">The Team
-                                    </div>
-                                    <p class="post-classic-title"><a href="blog-post.html">Raheem Sterling turns the
-                                            tide for Manchester</a></p>
-                                    <div class="post-classic-time"><span class="icon mdi mdi-clock"></span>
-                                        <time datetime="2017">April 15, 2017</time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Post Classic-->
-                            <article class="post-classic">
-                                <div class="post-classic-aside"><a
-                                            class="post-classic-figure"
-                                            href="blog-post.html"><img
-                                                src="{{ asset('assets/images/megamenu-post-2-93x94.jpg') }}"
-                                                alt="" width="93" height="94"/></a>
-                                </div>
-                                <div class="post-classic-main">
-                                    <!-- Badge-->
-                                    <div class="badge badge-primary">The League
-                                    </div>
-                                    <p class="post-classic-title"><a href="blog-post.html">Prem in 90 seconds: Chelsea's
-                                            crisis is over!</a></p>
-                                    <div class="post-classic-time"><span class="icon mdi mdi-clock"></span>
-                                        <time datetime="2017">April 15, 2017</time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Post Classic-->
-                            <article class="post-classic">
-                                <div class="post-classic-aside"><a
-                                            class="post-classic-figure"
-                                            href="blog-post.html"><img
-                                                src="{{ asset('assets/images/megamenu-post-3-93x94.jpg') }}"
-                                                alt="" width="93" height="94"/></a>
-                                </div>
-                                <div class="post-classic-main">
-                                    <!-- Badge-->
-                                    <div class="badge badge-primary">The League
-                                    </div>
-                                    <p class="post-classic-title"><a href="blog-post.html">Good vibes back at struggling
-                                            Schalke</a></p>
-                                    <div class="post-classic-time"><span class="icon mdi mdi-clock"></span>
-                                        <time datetime="2017">April 15, 2017</time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Post Classic-->
-                            <article class="post-classic">
-                                <div class="post-classic-aside"><a
-                                            class="post-classic-figure"
-                                            href="blog-post.html"><img
-                                                src="{{ asset('assets/images/megamenu-post-4-93x94.jpg') }}"
-                                                alt="" width="93" height="94"/></a>
-                                </div>
-                                <div class="post-classic-main">
-                                    <!-- Badge-->
-                                    <div class="badge badge-primary">The League
-                                    </div>
-                                    <p class="post-classic-title"><a href="blog-post.html">Liverpool in desperate need
-                                            of backup players</a></p>
-                                    <div class="post-classic-time"><span class="icon mdi mdi-clock"></span>
-                                        <time datetime="2017">April 15, 2017</time>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
+                {{ render(controller('NewsBundle:ArticleComponent:headerNews')) }}
             </div>
             <!-- Event Teaser-->
             <article class="event-teaser rd-megamenu-footer">
@@ -206,7 +111,7 @@
         <!-- RD Navbar Dropdown-->
         <ul class="rd-menu rd-navbar-dropdown">
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('schedule_list') }}">Schedule</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('result_list') }}">Latest Results </a>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('result_list') }}">Results </a>
             </li>
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('full_standings') }}">Groups</a></li>
         </ul>
