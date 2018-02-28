@@ -14,13 +14,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 /**
- * @Route("/match")
+ * @Route("/match/results")
  */
 class ResultFrontController extends Controller
 {
 
     /**
-     * @Route("/results", name="result_list")
+     * @Route("/", name="result_list")
      */
 
     public function displayResultsAction(Request $request)
@@ -37,7 +37,7 @@ class ResultFrontController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $scores, /* query NOT result */
+            $scores,
             $request->query->getInt('page', 1),/*page number*/
             $request->query->get('limit', 2)
 
@@ -51,17 +51,17 @@ class ResultFrontController extends Controller
     }
 
     /**
-     * @Route("/search",name="search_results", options={"expose" = true})
+     * @Route("/search", name="search_results", options={"expose" = true})
      */
-    public function searchScheduleAction(Request $request)
+    public function searchResultAction(Request $request)
     {
         if ($request->isXmlHttpRequest()) {
             $val = $request->get('s');
             $em = $this->getDoctrine()->getManager();
-            $matchs = $em->getRepository('MatchBundle:Match')->searchByName($val);
+            $scores = $em->getRepository('MatchBundle:Score')->searchByName($val);
 
-            return $this->render('@Match/FrontViews/search_result.html.twig',array(
-                'matchs'=>$matchs
+            return $this->render('@Match/FrontViews/search_score_result.html.twig',array(
+                'scores'=>$scores
             ));
         }
 

@@ -13,6 +13,7 @@
         <section class="section section-sm bg-gray-100">
             <div class="container">
                 <div class="row row-50">
+
                     <div class="col-lg-8">
                         <!-- Heading Component-->
                         <article class="heading-component">
@@ -22,7 +23,9 @@
 
                             </div>
                         </article>
+                        <div class="js-score">
                         {% include '@Match/Model/single_game_result_model.html.twig' %}
+                        </div>
 
                     </div>
 
@@ -30,9 +33,23 @@
                     <div class="col-lg-4">
                         <div class="row row-30">
                             <div class="col-md-6 col-lg-12">
-                                {% include "FrontBundle:news-main-component:_standing.html.twig" %}
+                                <div class="rd-search-modern">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="rd-search-form-input">Enter your search
+                                            request</label>
+                                        <input class="js-search form-input" id="rd-search-form-input" type="text"
+                                               name="s"
+                                               id="s"
+                                               autocomplete="off">
+                                    </div>
+                                    <button class="rd-search-form-submit fl-budicons-launch-search81"
+                                            type="submit"></button>
+                                </div>
                             </div>
 
+                            <div class="col-md-6 col-lg-12">
+                                {% include "FrontBundle:news-main-component:_standing.html.twig" %}
+                            </div>
 
 
                             <div class="col-md-6 col-lg-12">
@@ -55,3 +72,22 @@
     {% endif %}
 
 {% endblock body %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('.js-search').on("keyup", function () {
+                $value = $(this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ path('search_results') }}",
+                    data: "s=" + $value
+                }).done(function (response) {
+                    $('.js-score').html(response);
+                    console.log(response);
+                }).fail(function (error) {
+                });
+            });
+        });
+    </script>
+{% endblock javascripts %}
