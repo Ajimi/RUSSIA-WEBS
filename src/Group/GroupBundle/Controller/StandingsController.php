@@ -54,7 +54,7 @@ class StandingsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('GroupBundle:Groupe')->findAll();
         $fullStandings = StandingsDataFormat::fullStandings($groups);
-        $score = $em->getRepository('MatchBundle:Score')->findThree();
+        $score = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         return $this->render('@Group/Standings/full_standings_display.html.twig', array(
             'fullStandings' => $fullStandings,
             'scores'=>$score
