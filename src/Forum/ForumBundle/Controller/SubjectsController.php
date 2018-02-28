@@ -52,9 +52,6 @@ class SubjectsController extends Controller
         $form->handleRequest($request);
         $user = $this->getUser();
         dump($user);
-//        $response = $this->checkExceptions($user);
-//        if ($response != true)
-//            return $response;
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $subject->setEtat('Waiting');
@@ -71,18 +68,6 @@ class SubjectsController extends Controller
         ));
     }
 
-
-
-    private function checkExceptions($user )
-    {
-
-        if (is_null($user)) {
-            return $this->getResponse('You must login');
-        }
-
-        return true;
-
-    }
 
     private function getResponse($message, $messageName = 'error', $result = false, $code = 403)
     {
