@@ -2,7 +2,7 @@
          data-parallax-img="{{ asset('assets/images/bg-breadcrumbs-1.jpg') }}">
     <div class="parallax-content breadcrumbs-custom context-dark">
         <div class="container">
-            <h3 class="breadcrumbs-custom-title">{{ breadcrumbs_title|default('STANDINGS GROUPS') }}</h3>
+            <h3 class="breadcrumbs-custom-title">{{ breadcrumbs_title }}</h3>
             <ul class="breadcrumbs-custom-path">
                 {# TODO Create the breadcrumb#}
                 {% block breadcrumbs_path %}{% endblock %}

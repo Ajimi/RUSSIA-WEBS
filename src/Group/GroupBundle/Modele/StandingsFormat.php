@@ -19,7 +19,46 @@ class StandingsFormat
     public $teamShortcut;
     public $win;
     public $lost;
-    public $drow;
+    public $draw;
+    public $goalFor;
+    public $goalAgainst;
+    public $points;
+    public $goalDiff;
+    public $matchPlayed;
+
+    /**
+     * @return mixed
+     */
+    public function getGoalFor()
+    {
+        return $this->goalFor;
+    }
+
+    /**
+     * @param mixed $goalFor
+     */
+    public function setGoalFor($goalFor)
+    {
+        $this->goalFor = $goalFor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoalAgainst()
+    {
+        return $this->goalAgainst;
+    }
+
+    /**
+     * @param mixed $goalAgainst
+     */
+    public function setGoalAgainst($goalAgainst)
+    {
+        $this->goalAgainst = $goalAgainst;
+    }
+
+
 
     /**
      * @return mixed
@@ -39,19 +78,18 @@ class StandingsFormat
     /**
      * @return mixed
      */
-    public function getDrow()
+    public function getDraw()
     {
-        return $this->drow;
+        return $this->draw;
     }
 
     /**
-     * @param mixed $drow
+     * @param mixed $draw
      */
-    public function setDrow($drow)
+    public function setDraw($draw)
     {
-        $this->drow = $drow;
+        $this->draw = $draw;
     }
-    public $points;
 
     /**
      * StandingsFormat constructor.
@@ -172,17 +210,58 @@ class StandingsFormat
         $this->idTeam = $idTeam;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getGoalDiff()
+    {
+        return $this->goalDiff;
+    }
+
+    /**
+     * @param mixed $goalDiff
+     */
+    public function setGoalDiff($goalDiff)
+    {
+        $this->goalDiff = $goalDiff;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatchPlayed()
+    {
+        return $this->matchPlayed;
+    }
+
+    /**
+     * @param mixed $matchPlayed
+     */
+    public function setMatchPlayed($matchPlayed)
+    {
+        $this->matchPlayed = $matchPlayed;
+    }
+
+
     public function dataFormat(\Team\TeamBundle\Entity\Team $team)
     {
         $this->setIdTeam($team->getId());
-        $this->setDrow($team->getMatchDraw());
+        $this->setDraw($team->getMatchDraw());
         $this->setLogo($team->getTeamLogo());
         $this->setTeamName($team->getTeamName());
         $this->setTeamShortcut($team->getTeamShortcut());
         $this->setWin($team->getMatchWon());
         $this->setLost($team->getMatchLost());
+        $this->setGoalFor($team->getGoalScored());
+        $this->setGoalAgainst($team->getGoalIn());
         $pts = ($team->getMatchWon() * 3) + $team->getMatchDraw();
         $this->setPoints($pts);
+        $diff = $team->getGoalScored() - $team->getGoalIn();
+        if ($diff >= 0) {
+            $diff = '+' . $diff;
+        }
+        $this->setGoalDiff($diff);
+        $this->setMatchPlayed($team->getMatchDraw() + $team->getMatchLost() + $team->getMatchWon());
         return $this;
     }
 

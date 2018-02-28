@@ -1,6 +1,13 @@
 {% extends '@Front/common/_base.html.twig' %}
+{% block title %}Groups Standings{% endblock %}
 {% block body %}
-    {% include '@Front/common/_breadcrumbs.html.twig' %}
+    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Groups Standings'} %}
+        {% block breadcrumbs_path %}
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+            <li><a href="#">Competition</a></li>
+            <li class="active">Groups Standings</li>
+        {% endblock %}
+    {% endembed %}
 
     <section class="section section-sm bg-gray-100">
         <div class="container">
@@ -34,9 +41,13 @@
                                             <div class="card-standing-position">Pos</div>
                                             <div class="card-standing-caption-aside">
                                                 <div class="card-standing-team">Team</div>
+                                                <div class="card-standing-number">GP</div>
                                                 <div class="card-standing-number">W</div>
                                                 <div class="card-standing-number">L</div>
                                                 <div class="card-standing-number">D</div>
+                                                <div class="card-standing-number">GF</div>
+                                                <div class="card-standing-number">GA</div>
+                                                <div class="card-standing-number">DIFF</div>
                                                 <div class="card-standing-points">PTS</div>
                                             </div>
                                         </div>
@@ -64,24 +75,48 @@
                             <div class="game-glossary-column">
                                 <table class="game-glossary-terms">
                                     <tr>
-                                        <td>W:</td>
-                                        <td>Wins</td>
+                                        <td>GP:</td>
+                                        <td>Game Player</td>
                                     </tr>
                                     <tr>
-                                        <td>L:</td>
-                                        <td>Losses</td>
+                                        <td>W:</td>
+                                        <td>Wins</td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="game-glossary-column">
                                 <table class="game-glossary-terms">
                                     <tr>
+                                        <td>L:</td>
+                                        <td>Losses</td>
+                                    </tr>
+                                    <tr>
                                         <td>D:</td>
                                         <td>Draws</td>
                                     </tr>
+                                </table>
+                            </div>
+                            <div class="game-glossary-column">
+                                <table class="game-glossary-terms">
+                                    <tr>
+                                        <td>GF:</td>
+                                        <td>Goals For</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GA:</td>
+                                        <td>Goals Against</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="game-glossary-column">
+                                <table class="game-glossary-terms">
+                                    <tr>
+                                        <td>Diff:</td>
+                                        <td>Goals Difference</td>
+                                    </tr>
                                     <tr>
                                         <td>PTS:</td>
-                                        <td>Winning Points</td>
+                                        <td>Total Points</td>
                                     </tr>
                                 </table>
                             </div>
