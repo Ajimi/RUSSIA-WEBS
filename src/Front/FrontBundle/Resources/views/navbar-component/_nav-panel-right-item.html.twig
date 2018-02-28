@@ -15,7 +15,7 @@
             {# TODO CHANGE PATH & OTHER STUFF#}
             {% if is_granted('ROLE_USER') %}
                 <a class="link link-icon link-icon-left link-classic"
-                   href="login-and-register.html">
+                   href="{{ path('fos_user_profile_show') }}">
                     <span class="icon fl-bigmug-line-login12"></span><span
                             class="link-icon-text">Your Account</span></a>
             {% else %}
