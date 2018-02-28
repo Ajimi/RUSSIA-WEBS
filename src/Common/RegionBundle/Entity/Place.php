@@ -57,7 +57,7 @@ class Place
 
     /**
      * @var string
-     * @ORM\Column(name="preview_picture", type="text")
+     * @ORM\Column(name="preview_picture", type="text", nullable=true)
      */
     private $previewPicture;
 
