@@ -53,6 +53,7 @@ Reservation\HotelBundle\Entity\Room:
         price:        <randomDigitNotNull()>
         description:  <sentence(9)>
         hotel:       '@hotel*'
+        available : true
 
 Reservation\HotelBundle\Entity\Hotel:
     hotel{1..30}:
