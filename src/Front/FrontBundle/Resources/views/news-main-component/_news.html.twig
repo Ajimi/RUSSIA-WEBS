@@ -5,7 +5,8 @@
 
             <!-- Center Block-->
             <div class="col-lg-8">
-                {{ render(controller('TicketBundle:TicketHome:HomeTicketShow')) }}
+               {# {{ render(controller('TicketBundle:TicketHome:HomeTicketShow')) }}#}
+                {{ render(controller('MatchBundle:Front\\Home:homeNextMatch')) }}
                 {% include "FrontBundle:news-main-component:_popular-news.html.twig" %}
                 {% include "FrontBundle:news-main-component:_top-players.html.twig" %}
 
@@ -14,7 +15,11 @@
             <div class="col-lg-4">
                 <aside class="aside-components">
                     {% include "FrontBundle:news-main-component:_spotlight-aside.html.twig" %}
-                    {% include "FrontBundle:news-main-component:_latest-game.html.twig" %}
+                    <div class="aside-component">
+                        <!-- Heading Component-->
+                        {% include 'FrontBundle:news-main-component:_heading-component-title.html.twig' with {'title' : 'LATEST GAMES RESULTS '} %}
+                        {{ render(controller('MatchBundle:Front\\Home:homeLatestResult')) }}
+                    </div>
                     {% include "FrontBundle:news-main-component:_award-carousel.html.twig" %}
                     {% include "FrontBundle:news-main-component:_follow-us.html.twig" %}
                     {% include "FrontBundle:news-main-component:_standing.html.twig" %}

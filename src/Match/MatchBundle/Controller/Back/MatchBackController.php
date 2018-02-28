@@ -1,21 +1,14 @@
 <?php
 
-namespace Match\MatchBundle\Controller;
+namespace Match\MatchBundle\Controller\Back;
 
-use Faker\Provider\DateTime;
-use Match\MatchBundle\Entity\Event;
 use Match\MatchBundle\Entity\Match;
 use Match\MatchBundle\Entity\Statistics;
-use Match\MatchBundle\Form\EventType;
 use Match\MatchBundle\Form\MatchType;
 use Reservation\TicketBundle\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 
 /**
@@ -38,11 +31,11 @@ class MatchBackController extends Controller
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $matchs, /* query NOT result */
-            $request->query->getInt('page', 1),/*page number*/
+            $matchs,
+            $request->query->getInt('page', 1),
             $request->query->get('limit',8));
 
-        return $this->render('MatchBundle:Default:list_match.html.twig', array(
+        return $this->render('@Match/MatchBack/list_match.html.twig', array(
             'matchs' => $pagination,
             'matchForm' => $form->createView(),
 
@@ -78,7 +71,7 @@ class MatchBackController extends Controller
 
         }
 
-        return $this->render('MatchBundle:Default:add_match_form.html.twig', [
+        return $this->render('@Match/MatchBack/add_match_form.html.twig', [
             'matchForm' => $form->createView()
         ]);
     }
@@ -99,7 +92,7 @@ class MatchBackController extends Controller
             return $this->redirectToRoute('match_list');
         }
 
-        return $this->render('MatchBundle:Default:edit_match.html.twig',
+        return $this->render('MatchBundle:MatchBack:edit_match.html.twig',
             array('matchForm' => $Form->createView()));
 
 
@@ -108,7 +101,7 @@ class MatchBackController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_match")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository("MatchBundle:Match")->find($id);
@@ -117,30 +110,4 @@ class MatchBackController extends Controller
         return $this->redirectToRoute('match_list');
 
     }
-
-
-    /*
-
-        public function searchAction(Request $request)
-        {
-
-
-            if ($request->isXmlHttpRequest()) {
-                $em = $this->getDoctrine()->getManager();
-                //$val = $request ->get('search')->getData();
-                $val = "se";
-                alert($val);
-                $em = $this->getDoctrine()->getManager();
-                $repo = $em->getRepository('MatchBundle:Match');
-                $match = $repo->searchDQL($val);
-
-                $s = new Serializer(array(new ObjectNormalizer()));
-                $data = $s->normalize($match);
-                return new JsonResponse($data);
-
-            }
-
-        }
-    */
-
 }

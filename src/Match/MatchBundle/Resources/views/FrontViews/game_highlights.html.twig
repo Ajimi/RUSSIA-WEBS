@@ -32,15 +32,31 @@
 
             {% endif %}
             {% if e.typeEvent == "Shot(On Target)" %}
-                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-flag"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-title"><span class="icon icon-xxs icon-primary fa fa-life-ring"></span>{{ e.typeEvent }}</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}
             {% if e.typeEvent == "Shot" %}
-                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-flag"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-life-ring"></span>{{ e.typeEvent }}</p>
                 <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
 
             {% endif %}
+            {% if e.typeEvent == "Assist" %}
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-life-saver"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Pass" %}
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-exchange"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+            {% if e.typeEvent == "Save" %}
+                <p class="game-highlights-title "><span class="icon icon-xxs icon-primary fa fa-life-ring"></span>{{ e.typeEvent }}</p>
+                <p class="game-highlights-description">{{ e.description }}</p><span class="game-highlights-minute">{{ e.minutes }}’</span>
+
+            {% endif %}
+
             {% if e.typeEvent == "Goal" %}
                 {% if e.team == m.team1 %}
                     <p class="game-highlights-title team-primary"><span class="icon-xxs icon-primary fa fa-futbol-o"></span>
