@@ -42,6 +42,21 @@ Player\PlayerBundle\Entity\Player:
         nationalTeam: '@teame*'
         birthday: <dateTimeThisDecade()>
 
+
+Player\PlayerBundle\Entity\Skill:
+    skill{1..10000}:
+        label: <word()>
+        value: <numberBetween(0,99)>
+        player: '@player*'
+
+Player\PlayerBundle\Entity\Club:
+    club{1..5000}:
+        clubName: <word()>
+        seasonStart: <numberBetween(2008,2013)>
+        matchPlayed: <numberBetween(0,99)>
+        goalScored: <numberBetween(0,200)>
+        player: '@player*'
+
 Match\MatchBundle\Entity\Match:
     match{1..30}:
         team1: '@teame*'
