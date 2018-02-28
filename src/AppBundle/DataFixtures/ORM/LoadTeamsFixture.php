@@ -122,8 +122,8 @@ class LoadTeamsFixture implements FixtureInterface
         /** @var Team $team */
         $team = new Team();
         $team->setTeamName($teamName);
-        $array = explode(',', $teamName);
-        $team->setTeamLogo(strtolower($array[0] . '.jpg'));
+        $array = explode(' ', $teamName);
+        $team->setTeamLogo(strtolower($array[0] . '.png'));
         $team->setTeamShortcut($teamShortcut);
         $team->setMatchWon($faker->randomDigitNotNull);
         $team->setMatchLost($faker->randomDigitNotNull);
