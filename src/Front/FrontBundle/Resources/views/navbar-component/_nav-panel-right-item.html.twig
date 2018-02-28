@@ -1,17 +1,6 @@
 <div class="rd-navbar-panel-item rd-navbar-panel-item-right">
     <ul class="list-inline list-inline-bordered">
         <li>
-            <!-- Select 2-->
-            <select class="select select-inline" data-placeholder="Select an option"
-                    data-dropdown-class="select-inline-dropdown">
-                <option value="en" selected="">en</option>
-                <option value="fr">fr</option>
-                <option value="es">es</option>
-            </select>
-        </li>
-        {{ render(controller('CartBundle:Cart:cartModal')) }}
-        <li>
-
             {# TODO CHANGE PATH & OTHER STUFF#}
             {% if is_granted('ROLE_USER') %}
                 <a class="link link-icon link-icon-left link-classic"
