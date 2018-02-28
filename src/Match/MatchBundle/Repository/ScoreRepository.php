@@ -22,7 +22,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery("SELECT s FROM MatchBundle:Score s JOIN MatchBundle:Match m WHERE s.match=m.id 
-                                AND m.level LIKE :name OR m.stadium LIKE :name")
+                                AND m.stadium LIKE :name")
             ->setParameter('name','%'.$name.'%');
         return $query->getResult();
     }
