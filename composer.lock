@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6f5ed1cd76fb797ba1960e58ae3aa6e",
+    "content-hash": "f8f5f1c8b257f2725f55c60942555610",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -100,6 +100,54 @@
                 "symfony"
             ],
             "time": "2016-04-12T01:57:35+00:00"
+        },
+        {
+            "name": "cmen/google-charts-bundle",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmen/CMENGoogleChartsBundle.git",
+                "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmen/CMENGoogleChartsBundle/zipball/df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+                "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.9",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CMEN\\GoogleChartsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Meneses"
+                }
+            ],
+            "description": "This Bundle provides a Twig extension and PHP objects to display Google charts in your Symfony application.",
+            "keywords": [
+                "chart",
+                "charts",
+                "google",
+                "graph",
+                "graphs",
+                "map"
+            ],
+            "time": "2018-01-16T12:51:23+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -2719,16 +2767,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.3.0",
+            "version": "v6.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "8322135c4cfbbf46b4cd66dfc8d9ad63241730b3"
+                "reference": "fc88b077c041597d228ed85bde042c673b9beeca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/8322135c4cfbbf46b4cd66dfc8d9ad63241730b3",
-                "reference": "8322135c4cfbbf46b4cd66dfc8d9ad63241730b3",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/fc88b077c041597d228ed85bde042c673b9beeca",
+                "reference": "fc88b077c041597d228ed85bde042c673b9beeca",
                 "shasum": ""
             },
             "require": {
@@ -2770,7 +2818,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2018-02-23T17:34:01+00:00"
+            "time": "2018-02-26T12:36:12+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

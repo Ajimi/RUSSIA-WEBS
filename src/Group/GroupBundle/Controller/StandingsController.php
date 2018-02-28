@@ -48,8 +48,6 @@ class StandingsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('GroupBundle:Groupe')->findBy(array(), array('name' => 'asc'));
-        /** @var PaginationInterface $pagination */
-        $pagination = $request->get('pagination');
 
         $fullStandings = [];
         foreach ($groups as $g)

@@ -100,4 +100,17 @@ class GroupAdminController extends Controller
         ));
     }
 
+    public function pdfAction()
+    {
+        $html = $this->renderView('MyBundle:Foo:bar.html.twig', array(
+            'some' => $vars
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
+    }
+
+
 }

@@ -181,7 +181,7 @@ class StandingsFormat
         $this->setTeamShortcut($team->getTeamShortcut());
         $this->setWin($team->getMatchWon());
         $this->setLost($team->getMatchLost());
-        $pts = ($team->getMatchWon() * 3) + ($team->getMatchDraw() + 1);
+        $pts = ($team->getMatchWon() + 3) + ($team->getMatchDraw() + 1);
         $this->setPoints($pts);
         return $this;
 
