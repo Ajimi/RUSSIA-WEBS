@@ -29,7 +29,7 @@ class MatchRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findAllMatches()
+    public function getQueryBuilder()
     {
         return $this->createQueryBuilder("m");
     }
