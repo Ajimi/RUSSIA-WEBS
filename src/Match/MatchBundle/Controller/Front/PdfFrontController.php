@@ -27,7 +27,7 @@ class PdfFrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match' => $idm));
-        $scores = $em->getRepository('MatchBundle:Score')->findThree();
+        //$scores = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         $match = $em->getRepository('MatchBundle:Match')->find($idm);
 
         $events = $em->getRepository('MatchBundle:Event')->findBy(array('match' => $idm));
@@ -43,14 +43,14 @@ class PdfFrontController extends Controller
 
         $statistic2 = new StatisticFormat();
         $eventsTeam2 = $em->getRepository('MatchBundle:Event')->findBy(array('match' => $idm, 'team' => $match->getTeam2()));
-//        dump($eventsTeam2);
         foreach ($eventsTeam2 as $e2) {
             $statistic2->dataFormat($e2);
         }
 
         $html = $this->renderView('@Match/FrontViews/snappy.html.twig', array(
             'score' => $score, 'stat1' => $statistic1, 'stat2' => $statistic2, 'events' => $events, 'm' => $match,
-            'scores' => $scores));
+         //   'scores' => $scores
+        ));
         return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             'file.pdf'
