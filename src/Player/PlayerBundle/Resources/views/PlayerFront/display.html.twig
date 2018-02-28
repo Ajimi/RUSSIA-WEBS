@@ -38,7 +38,7 @@
                     {% endembed %}
                     <div class="block-player-info">
                         {% embed  'FrontBundle:team-component:_team-info-bio.html.twig' %}
-                            {{ player.bio }}
+                            {% block bio %} {{ player.bio }}{% endblock %}
                         {% endembed %}
                         <div class="block-player-info-timeline">
                             {% for club in player.clubs %}
