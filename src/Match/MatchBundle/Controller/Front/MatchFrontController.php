@@ -13,12 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 /**
- * @Route("/match")
+ * @Route("/match/schedule")
  */
 class MatchFrontController extends Controller
 {
     /**
-     * @Route("/schedule", name="schedule_list")
+     * @Route("/", name="schedule_list")
      */
     public function displayAction(Request $request)
     {
@@ -34,7 +34,7 @@ class MatchFrontController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $em->getRepository("MatchBundle:Match")->findBy(array('played' => false), array('date' => 'desc')), /* query NOT result */
+            $em->getRepository("MatchBundle:Match")->findBy(array('played' => false), array('date' => 'desc')),
             $request->query->getInt('page', 1),/*page number*/
             $request->query->get('limit', 2)
 
@@ -61,7 +61,7 @@ class MatchFrontController extends Controller
             $em = $this->getDoctrine()->getManager();
             $matchs = $em->getRepository('MatchBundle:Match')->searchByName($val);
 
-            return $this->render('@Match/FrontViews/search_result.html.twig',array(
+            return $this->render('@Match/FrontViews/search_schedule_result.html.twig',array(
                 'matchs'=>$matchs
             ));
         }

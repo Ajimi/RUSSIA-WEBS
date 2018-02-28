@@ -27,7 +27,7 @@ class MatchBackController extends Controller
         $form = $this->createForm(MatchType::class, $match);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-        $matchs = $em->getRepository("MatchBundle:Match")->findAll();
+        $matchs = $em->getRepository("MatchBundle:Match")->findBy(array(),array('date'=>'asc'));
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

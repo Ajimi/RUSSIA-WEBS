@@ -1,6 +1,6 @@
 {% for s in scores %}
-        {% set logoT1 = 'assets/images/teamUploads/' ~  s.match.team1.teamLogo %}
-        {% set logoT2 = 'assets/images/teamUploads/' ~ s.match.team2.teamLogo %}
+    {% set logoT1 = 'assets/images/teamUploads/' ~  s.match.team1.teamLogo %}
+    {% set logoT2 = 'assets/images/teamUploads/' ~ s.match.team2.teamLogo %}
     <article class="game-result">
         <div class="game-info game-info-classic">
             <p class="game-info-subtitle">{{ s.match.stadium }} Stadium -
@@ -40,19 +40,18 @@
                         <a class="button button-sm button-primary" href="{{ path('game_overview',{'idm':s.match.id}) }}">Game Overview</a>
                     </div>
                 </div>
-            <div class="game-info-team game-info-team-second">
-                <figure><img src="{{ asset(logoT2) }}" alt="" width="75"
-                             height="106"/>
-                </figure>
-                <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
-                <div class="game-result-team-country">Spain</div>
+                <div class="game-info-team game-info-team-second">
+                    <figure><img src="{{ asset(logoT2) }}" alt="" width="75"
+                                 height="106"/>
+                    </figure>
+                    <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
+                    <div class="game-result-team-country">Spain</div>
+                </div>
             </div>
-        </div>
         </div>
     </article>
 {% endfor %}
 
 <br>
 <div class="navigation text-center">
-    {{ knp_pagination_render(scores,'paginator/custom_without_next_and_previous.html.twig') }}
 </div>
