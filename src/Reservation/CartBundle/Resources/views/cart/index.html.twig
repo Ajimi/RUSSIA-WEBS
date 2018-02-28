@@ -1,5 +1,9 @@
 {% extends '@Front/common/_base.html.twig' %}
 
+{% block title %}
+    CART | STORE CART
+{% endblock %}
+
 {% block body %}
     {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Store Cart'} %}
         {% block breadcrumbs_path %}
