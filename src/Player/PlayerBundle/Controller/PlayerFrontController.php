@@ -22,7 +22,7 @@ class PlayerFrontController extends Controller
         $em->getRepository("PlayerBundle:Player")->addVisit($id);
         $age = date('Y') - $player->getBirthday()->format('Y');
         return $this->render('PlayerBundle:PlayerFront:display.html.twig', array(
-            'player'=>$player,'age'=>$age// ...
+            'player' => $player, 'age' => $age// ...
         ));
     }
 

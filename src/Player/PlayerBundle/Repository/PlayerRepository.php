@@ -240,7 +240,7 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
     public function getFamousPlayers()
     {
         $query = $this->getEntityManager()->createQuery("Select p From  PlayerBundle:Player p ORDER BY p.visits DESC")
-            ->setMaxResults(5);
+            ->setMaxResults(4);
         return $query->getResult();
     }
 }
