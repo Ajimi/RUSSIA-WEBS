@@ -18,6 +18,6 @@ UserBundle\Entity\User:
         title: <word()>
         content: <paragraph()>
         author: '@user_*'
-        image: 'photo1'
+        image: 'photo1.jpg'
         badge: '@badge*'
         category: '@category*'
