@@ -42,6 +42,12 @@ class CheckoutListener
     public
     function onKernelRequest(GetResponseEvent $event)
     {
+
+        $request = $event->getRequest();
+        $userAgent = $request->headers->get('User-Agent');
+        $request->attributes->set('isRegion', $array = $this->container->get('doctrine.orm.entity_manager')
+            ->getRepository('RegionBundle:Region')->findAll());
+
         $currentRoute = $event->getRequest()->attributes->get('_route');
 
         /** Check if user is logged */

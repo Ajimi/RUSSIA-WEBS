@@ -48,16 +48,6 @@
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('full_standings') }}">Groups</a></li>
         </ul>
     </li>
-    <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('guide_index') }}">Fan Guide</a>
-        {% if regions is not null %}
-            <ul class="rd-menu rd-navbar-dropdown">
-                {% for region in regions %}
-                    <li class="rd-dropdown-item"><a class="rd-dropdown-link"
-                                                    href="{{ path('city_index', {'slug': region.slug , 'code' : 'attractions' }) }}">{{ region.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-
-        {% endif %}
-    <li class="rd-nav-item "><a class="rd-nav-link" href="#">Ticket</a>
+    <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('guide_index') }}">Fan Guide</a></li>
+    <li class="rd-nav-item "><a class="rd-nav-link" href="#">Ticket</a></li>
 </ul>
