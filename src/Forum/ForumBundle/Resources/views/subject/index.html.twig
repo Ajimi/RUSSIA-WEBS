@@ -20,6 +20,7 @@
                 {% for subject in subjects %}
                     {% if  subject.etat == 'Accept'%}
                         {% set totalComments = subject.comments|length  %}
+
                         {% if totalComments < 2 %}
                             {% set comment = totalComments ~ ' comment'%}
 

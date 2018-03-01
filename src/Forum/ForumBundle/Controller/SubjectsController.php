@@ -13,21 +13,43 @@ use Forum\ForumBundle\Entity\Subject;
 use Forum\ForumBundle\Form\SubjectTypeUser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Subject controller.
  *
- * @Route("subjects")
+ * @Route("subject")
  */
 class SubjectsController extends Controller
 {
+
     /**
-     * Lists all subject entities.
-     *
-     * @Route("/", name="subjects_index")
+     * @Route("/new",name="subject_add")
+     */
+    public function addSubjectAction(Request $request)
+    {
+        $subject = new Subject();
+        $form = $this->createForm(SubjectTypeUser::class, $subject);
+        $form->handleRequest($request);
+        $user = $this->getUser();
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $subject->setEtat('Waiting');
+            $subject->setAuther($this->getUser());
+            $em->persist($subject);
+            $em->flush();
+            return $this->redirectToRoute('subject_index', array());
+        }
+
+        return $this->render('ForumBundle:subject:new.html.twig', array(
+            'subject' => $subject,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/", name="subject_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -41,36 +63,21 @@ class SubjectsController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return JsonResponse
-     * @Route("/new",name="subject_add")
+     * @Route("/{id}", name="subject_show")
+     * @Method("GET")
      */
-    public function addSubjectAction(Request $request)
+    public function showAction(Subject $subject)
     {
-        $subject = new Subject();
-        $form = $this->createForm(SubjectTypeUser::class, $subject);
-        $form->handleRequest($request);
-        $user = $this->getUser();
-        dump($user);
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $subject->setEtat('Waiting');
-            $subject->setAuther($this->getUser());
-            $em->persist($subject);
-            $em->flush();
-            dump($subject);
-            return $this->redirectToRoute('subject_index', array());
-        }
 
-        return $this->render('ForumBundle:subject:new.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+        $totalComments = $em->getRepository('ForumBundle:Comment')->getTotalNumberOfComment($subject);
+
+        return $this->render('ForumBundle:subject:show.html.twig', array(
             'subject' => $subject,
-            'form' => $form->createView(),
+            'totalComments' => $totalComments
         ));
     }
 
 
-    private function getResponse($message, $messageName = 'error', $result = false, $code = 403)
-    {
-        return new JsonResponse(array('result' => $result, $messageName => $message));
-    }
+
 }

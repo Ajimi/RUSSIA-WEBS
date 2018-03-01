@@ -18,10 +18,12 @@ class SubjectTypeUser extends AbstractType
     {
         $builder->add('title')
                 ->add('content', TextareaType::class)
-                ->add('videoUrl')
                 ->add('file',FileType::class)
         ;
-    }/**
+    }
+
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
