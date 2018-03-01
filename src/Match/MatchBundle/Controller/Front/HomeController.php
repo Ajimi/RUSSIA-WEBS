@@ -15,6 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
 
+    public function headerNextMatchAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $match = $em->getRepository('MatchBundle:Match')->findOneBy(array('played' => false), array('date' => 'desc'));
+        return $this->render('@Match/FrontViews/next_match_header.html.twig', array(
+            'match' => $match
+        ));
+
+    }
 
     public function headerHomeAction()
     {
