@@ -30,20 +30,12 @@
                                                                  href="privacy-policy.html">Privacy Policy</a></li>
                         </ul>
                         <ul class="rd-megamenu-list">
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="about-us.html">About
-                                    Us</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="gallery.html">Gallery</a>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('subject_index') }}">Forum</a>
                             </li>
                             <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="albums.html">Albums</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="search-results.html">Search Results</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="coming-soon.html">Coming
-                                    Soon</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="contact-us.html">Contact
-                                    Us</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="login-and-register.html">Login and Register</a>
+                                                                 href="{{ path('fos_user_security_login') }}">Login and
+                                    Register</a>
                             </li>
                         </ul>
                     </div>
@@ -51,82 +43,27 @@
                 {{ render(controller('NewsBundle:ArticleComponent:headerNews')) }}
             </div>
             <!-- Event Teaser-->
-            <article class="event-teaser rd-megamenu-footer">
-                <div class="event-teaser-header">
-                    <div class="event-teaser-caption">
-                        <h5 class="event-teaser-title">Final Europa League 2017</h5>
-                        <time class="event-teaser-time" datetime="2017">Saturday, April 14, 2017</time>
-                    </div>
-                    <div class="event-teaser-teams">
-                        <div class="event-teaser-team">
-                            <div class="unit unit-spacing-xs unit-horizontal align-items-center">
-                                <div class="unit-left"><img
-                                            class="event-teaser-team-image"
-                                            src="{{ asset('assets/images/team-bavaria-fc-59x54.png') }}"
-                                            alt="" width="59" height="54"/>
-                                </div>
-                                <div class="unit-body">
-                                    <p class="heading-7">Bavaria</p>
-                                    <p class="text-style-1">Germany</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="event-teaser-team-divider"><span class="event-teaser-team-divider-text">VS</span>
-                        </div>
-                        <div class="event-teaser-team">
-                            <div class="unit unit-spacing-xs unit-horizontal align-items-center">
-                                <div class="unit-left"><img
-                                            class="event-teaser-team-image"
-                                            src="{{ asset('assets/images/team-atletico-50x50.png') }}"
-                                            alt="" width="50" height="50"/>
-                                </div>
-                                <div class="unit-body">
-                                    <p class="heading-7">Atletico</p>
-                                    <p class="text-style-1">USA</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event-teaser-countdown event-teaser-highlighted">
-                    <!-- Countdown-->
-                    <div class="countdown countdown-classic" data-type="until" data-time="31 Dec 2018 16:00"
-                         data-format="dhms" data-style="short"></div>
-                </div>
-                <div class="event-teaser-aside"><a class="event-teaser-link" href="#">Buy Tickets</a></div>
-            </article>
+            {{ render(controller('MatchBundle:Front\\Home:headerNextMatch')) }}
+
         </article>
-    </li>
-    <li class="rd-nav-item {% block header_news %}{% endblock %}"><a class="rd-nav-link" href="#">News</a>
-        <!-- RD Navbar Dropdown-->
-        <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-1.html">News 1</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-2.html">News 2</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-3.html">News 3</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-4.html">News 4</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-5.html">News 5</a></li>
-        </ul>
+
     </li>
     <li class="rd-nav-item {% block header_team %}{% endblock %}"><a class="rd-nav-link" href="#">Competition</a>
         <!-- RD Navbar Dropdown-->
         <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('schedule_list') }}">Schedule</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('result_list') }}">Latest Results </a>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('schedule_list') }}">Schedule</a>
+            </li>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('result_list') }}">Results </a>
             </li>
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('full_standings') }}">Groups</a></li>
         </ul>
     </li>
-    <li class="rd-nav-item {% block header_shop %}{% endblock %}"><a class="rd-nav-link" href="#">Shop</a>
-        <!-- RD Navbar Dropdown-->
+    <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('guide_index') }}">Fan Guide</a>
         <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="shop-elements.html">Shop Elements</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-shop.html">Grid Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="list-shop.html">List Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="fullwidth-shop.html">Fullwidth Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="product-page.html">Product Page</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="shopping-cart.html">Shopping Cart</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="checkout.html">Checkout</a></li>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('guide_guide_city_testmap') }}">Schedule</a>
+            </li>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('guide_faq') }}">FAQ</a>
+            </li>
         </ul>
-    </li>
-    <li class="rd-nav-item {% block header_forum %}{% endblock %}"><a class="rd-nav-link" href="{{ path('subject_index') }}">Forum</a>
+    <li class="rd-nav-item "><a class="rd-nav-link" href="#">Ticket</a>
 </ul>

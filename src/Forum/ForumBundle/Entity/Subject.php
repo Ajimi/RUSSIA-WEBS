@@ -12,7 +12,6 @@ use UserBundle\Entity\User;
 
 /**
  * Subject
- *
  * @ORM\Table(name="subject")
  * @ORM\Entity(repositoryClass="Forum\ForumBundle\Repository\SubjectRepository")
  */
@@ -30,7 +29,7 @@ class Subject
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="id_user",referencedColumnName="id" , nullable=true)
+     * @ORM\JoinColumn(name="id_user",referencedColumnName="id")
      */
     private $auther;
 
@@ -48,12 +47,6 @@ class Subject
      */
     private $content;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="video_url", type="string", length=255)
-     */
-    private $videoUrl;
 
     /**
      * @var string
@@ -158,30 +151,6 @@ class Subject
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set videoUrl
-     *
-     * @param string $videoUrl
-     *
-     * @return Subject
-     */
-    public function setVideoUrl($videoUrl)
-    {
-        $this->videoUrl = $videoUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get videoUrl
-     *
-     * @return string
-     */
-    public function getVideoUrl()
-    {
-        return $this->videoUrl;
     }
 
     /**

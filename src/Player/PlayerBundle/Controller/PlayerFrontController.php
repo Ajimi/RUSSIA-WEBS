@@ -19,6 +19,7 @@ class PlayerFrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $player=$em->getRepository("PlayerBundle:Player")->find($id);
+        $em->getRepository("PlayerBundle:Player")->addVisit($id);
         $age = date('Y') - $player->getBirthday()->format('Y');
         return $this->render('PlayerBundle:PlayerFront:display.html.twig', array(
             'player'=>$player,'age'=>$age// ...

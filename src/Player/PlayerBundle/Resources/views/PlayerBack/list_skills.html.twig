@@ -19,7 +19,6 @@
 {% block title %}Skills List{% endblock %}
 
 
-{% block body %}
     {% block top_content_header %}
         <div class="page-title">
             <div class="title_left">
@@ -44,7 +43,7 @@
                     <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
                         <thead>
                         <tr>
-                            <th>Labes</th>
+                            <th>Label</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
@@ -74,7 +73,6 @@
     {% endblock %}
 
 
-{% endblock %}
 
 {% block javascripts %}
 
@@ -96,6 +94,5 @@
     <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 
 {% endblock javascripts %}

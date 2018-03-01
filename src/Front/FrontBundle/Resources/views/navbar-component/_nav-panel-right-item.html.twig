@@ -14,8 +14,13 @@
             {# TODO CHANGE PATH & OTHER STUFF#}
             {% if is_granted('ROLE_USER') %}
                 <a class="link link-icon link-icon-left link-classic"
+                   href="{{ path('app_homepage') }}">
+                    <span class="icon fl-bigmug-line-user143"></span><span
+                            class="link-icon-text">Dashboard</span></a>
+            {% elseif is_granted('ROLE_ADMIN') %}
+                <a class="link link-icon link-icon-left link-classic"
                    href="{{ path('fos_user_profile_show') }}">
-                    <span class="icon fl-bigmug-line-login12"></span><span
+                    <span class="icon fl-bigmug-line-user144"></span><span
                             class="link-icon-text">Your Account</span></a>
             {% else %}
                 <a class="link link-icon link-icon-left link-classic"
@@ -25,6 +30,7 @@
             {% endif %}
 
         </li>
+
         <li>
             {% if is_granted('ROLE_USER') %}
                 <a class="link link-icon link-icon-left link-classic"

@@ -3,7 +3,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ path('app_dashboard') }}" class="site_title"><i class="fa fa-shield"></i>
+            <a href="#" class="site_title"><i class="fa fa-shield"></i>
                 <span>Russia 2018</span></a>
         </div>
 
@@ -28,7 +28,7 @@
             <div class="menu_section">
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{ path('app_dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
                 </ul>
             </div>
 
@@ -60,6 +60,8 @@
                     <li>
                         <a><i class="fa fa-book"></i> Player <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
+                            <li><a href="{{ path('playerStat') }}">Player Statistic</a>
+                            </li>
                             <li><a href="{{ path('playerList') }}">Player List</a>
                             </li>
                             <li><a href="{{ path('addPlayer') }}">Add Player</a>
@@ -78,18 +80,6 @@
                 </ul>
             </div>
 
-            <div class="menu_section">
-                <h3>Menu</h3>
-                <ul class="nav side-menu">
-                    <li><a href="{{ path('app_dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li>
-                        <a href="{{ path('app_gentelella', {page: 'index'}) }}">
-                            <i class="fa fa-search"></i>Template
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
 
             <div class="menu_section">
                 <h3>News Feed</h3>
@@ -130,6 +120,22 @@
                 </ul>
             </div>
 
+            <div class="menu_section">
+                <h3>Forum</h3>
+                <ul class="nav side-menu">
+                    <li>
+                        <a><i class="fa fa-book"></i> Subject <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li>
+                                <a href="{{ path('admin_subject_index') }}">List</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_subject_new') }}">Add</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             {# SECTION RESERVATION  #}
             <div class="menu_section">
                 <h3>Guide Managment</h3>
@@ -167,17 +173,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a><i class="fa fa-book"></i> Subject <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li>
-                                <a href="{{ path('admin_subject_index') }}">List</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('admin_subject_new') }}">Add</a>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
         </div>

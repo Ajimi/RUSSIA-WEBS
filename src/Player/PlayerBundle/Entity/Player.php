@@ -189,6 +189,13 @@ class Player
     private $redCard;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="visits", type="integer")
+     */
+    private $visits;
+
+    /**
      * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\Skill", mappedBy="player")
      */
     private $skills;
@@ -207,6 +214,23 @@ class Player
         $this->skills = new ArrayCollection();
         $this->clubs = new ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getVisits()
+    {
+        return $this->visits;
+    }
+
+    /**
+     * @param int $visits
+     */
+    public function setVisits($visits)
+    {
+        $this->visits = $visits;
+    }
+
 
     /**
      * @return File

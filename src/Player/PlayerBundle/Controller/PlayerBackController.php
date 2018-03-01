@@ -2,6 +2,8 @@
 
 namespace Player\PlayerBundle\Controller;
 
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\ColumnChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use DateTime;
 use Player\PlayerBundle\Entity\Club;
 use Player\PlayerBundle\Entity\Player;
@@ -35,6 +37,7 @@ class PlayerBackController extends Controller
         $player->setYellowCard(0);
         $player->setShots(0);
         $player->setShotsOnTarget(0);
+        $player->setVisits(0);
         $formplayer = $this->createForm(PlayerType::class, $player);
         $formplayer->handleRequest($request);
         if ($formplayer->isValid()) {
@@ -228,6 +231,55 @@ class PlayerBackController extends Controller
         return $this->render('PlayerBundle:PlayerBack:list_skills.html.twig', array(
             'skills' => $skills, 'id' => $id
             // ...
+        ));
+    }
+
+    /**
+     * @Route("/playerStat", name="playerStat")
+     */
+    public function playerStatAction()
+    {
+        $pieChart = new PieChart();
+        $ColumnChart = new ColumnChart();
+        $em = $this->getDoctrine()->getManager();
+        $visits = $em->getRepository("PlayerBundle:Player")->totalVisits();
+        $data = array();
+        $data1 = array();
+        $stat = ['player', 'nbVisits'];
+        $stat1 = ['player', 'nbVisits'];
+        array_push($data, $stat);
+        array_push($data1, $stat1);
+        $players = $em->getRepository("PlayerBundle:Player")->getFamousPlayers();
+        foreach ($players as $player) {
+            $stat = array();
+            $stat1 = array();
+            if ($visits != 0) {
+                array_push($stat, $player->getPlayerName(), (($player->getVisits()) * 100) / $visits);
+                $nb = (($player->getVisits()) * 100) / $visits;
+            } else {
+                array_push($stat, $player->getPlayerName(), 0);
+                $nb = 0;
+            }
+            array_push($stat1, $player->getPlayerName(), $player->getVisits());
+            $stat1 = [$player->getPlayerName(), $player->getVisits()];
+            $stat = [$player->getPlayerName(), $nb];
+            array_push($data, $stat);
+            array_push($data1, $stat1);
+        }
+
+        $pieChart->getData()->setArrayToDataTable(
+            $data
+        );
+        $ColumnChart->getData()->setArrayToDataTable(
+            $data1
+        );
+
+
+        return $this->render('PlayerBundle:PlayerBack:player_stat.html.twig', array(
+            'piechart' => $pieChart,
+            'cc' => $ColumnChart,
+            'players' => $players,
+            'visits' => $visits
         ));
     }
 

@@ -1,21 +1,20 @@
 {% extends "BackBundle:common:_base.html.twig" %}
-
 {% block stylesheets %}
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
     <!-- TimePicker -->
     <link href="{{ asset('assets/timepicker.css') }}" rel="stylesheet">
 {% endblock stylesheets %}
-
 {% block title %}Add Group{% endblock %}
+ {% block top_content_header %} {% endblock %}
     {% block page_content %}
         <a href="/" style="margin-top: 10px;" class="btn btn-success">Back to the application</a>
         <div class="row centered">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
                     <div class="x_title">
-                        <h2>Add Group
-                        </h2>
+                        <center><h2>Add Group
+                            </h2></center>
 
                         <div class="clearfix"></div>
                     </div>
@@ -80,19 +79,8 @@
         </div>
     {% endblock %}
 
-
-
-
 {% block javascripts %}
 
-    <!-- jQuery -->
-    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('assets/vendors/fastclick/lib/fastclick.js') }}"></script>
-    <!-- NProgress -->
-    <script src="{{ asset('assets/vendors/nprogress/nprogress.js') }}"></script>
     <!-- Chart.js -->
     <script src="{{ asset('assets/vendors/Chart.js/dist/Chart.min.js') }}"></script>
     <!-- gauge.js -->
@@ -122,9 +110,6 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{ asset('assets/vendors/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
 
 
     <script src="{{ asset('assets/timepicker.js') }}"></script>

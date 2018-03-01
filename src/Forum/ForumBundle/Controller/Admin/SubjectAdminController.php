@@ -3,6 +3,7 @@
 namespace Forum\ForumBundle\Controller\Admin;
 
 use Forum\ForumBundle\Entity\Subject;
+use Forum\ForumBundle\Form\SubjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -42,15 +43,16 @@ class SubjectAdminController extends Controller
     public function newAction(Request $request)
     {
         $subject = new Subject();
-        $form = $this->createForm('Forum\ForumBundle\Form\SubjectType', $subject);
+        $form = $this->createForm(SubjectType::class, $subject);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $user = $this->getUser();
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $subject->setEtat('Accept');
+            $subject->setAuther($user);
             $em->persist($subject);
             $em->flush();
-
+            dump($subject);
             return $this->redirectToRoute('admin_subject_show', array('id' => $subject->getId()));
         }
 

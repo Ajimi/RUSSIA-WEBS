@@ -1,0 +1,47 @@
+{% set logoT1 = 'assets/images/teamUploads/' ~ match.team1.teamLogo %}
+{% set logoT2 = 'assets/images/teamUploads/' ~ match.team2.teamLogo %}
+<article class="event-teaser rd-megamenu-footer">
+    <div class="event-teaser-header">
+        <div class="event-teaser-caption">
+            <h5 class="event-teaser-title">Russia World Cup 2018</h5>
+            <time class="event-teaser-time" datetime="2017">{{ match.date |date ('D, M d, Y') }}{#Saturday, April 14, 2017#}</time>
+        </div>
+        <div class="event-teaser-teams">
+            <div class="event-teaser-team">
+                <div class="unit unit-spacing-xs unit-horizontal align-items-center">
+                    <div class="unit-left"><img
+                                class="event-teaser-team-image"
+                                src="{{ asset(logoT1) }}"
+                                alt="" width="59" height="54"/>
+                    </div>
+                    <div class="unit-body">
+                        <p class="heading-7">{{ match.team1.teamName }}</p>
+                        <p class="text-style-1">{{ match.team1.teamShortcut }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="event-teaser-team-divider"><span class="event-teaser-team-divider-text">VS</span>
+            </div>
+            <div class="event-teaser-team">
+                <div class="unit unit-spacing-xs unit-horizontal align-items-center">
+                    <div class="unit-left"><img
+                                class="event-teaser-team-image"
+                                src="{{ asset(logoT2) }}"
+                                alt="" width="50" height="50"/>
+                    </div>
+                    <div class="unit-body">
+                        <p class="heading-7">{{ match.team2.teamName }}</p>
+                        <p class="text-style-1">{{ match.team2.teamShortcut }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="event-teaser-countdown event-teaser-highlighted">
+        <!-- Countdown-->
+        {% set countdouwn =  match.date|date('d F Y')~' '~match.time  %}
+        <div class="countdown countdown-classic" data-type="until" data-time="{{ countdouwn }}"
+             data-format="dhms" data-style="short"></div>
+    </div>
+    <div class="event-teaser-aside"><a class="event-teaser-link" href="#">Buy Tickets</a></div>
+</article>

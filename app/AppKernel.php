@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-
             /*
              * External Bundles
              */
@@ -33,8 +32,8 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-
 
             /*
              * Created Bundles
@@ -57,7 +56,6 @@ class AppKernel extends Kernel
             new Common\BookingBundle\BookingBundle(),
             new Reservation\CartBundle\CartBundle(),
             new News\NewsBundle\NewsBundle(),
-            new Mail\MailBundle\MailMailBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
