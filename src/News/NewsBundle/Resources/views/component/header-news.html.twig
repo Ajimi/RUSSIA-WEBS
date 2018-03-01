@@ -14,8 +14,10 @@
             {% set date = article.created %}
             {% set url = path('article_show' , {'id' : article.id}) %}
             <div class="col-lg-6">
+
                 {% embed '@News/component/post-classic.html.twig' with {'url' : url , 'date' : date} %}
                     {% block title %}{{ article.title }}{% endblock %}
+                    {% block image %}{{ asset('/assets/images/news/' ~article.image) }}{% endblock %}
                 {% endembed %}
             </div>
         {% endfor %}
