@@ -29,7 +29,8 @@ class LoadFixtures implements FixtureInterface
 //                __DIR__ . '/user.yml',
 //                __DIR__ . '/tickets.yml',
 //                //__DIR__ . '/team.yml',
-                __DIR__ . '/fixtures.yml'
+                __DIR__ . '/fixtures.yml',
+                __DIR__ . '/article.yml',
             ],
             $manager,
             [
@@ -46,6 +47,21 @@ class LoadFixtures implements FixtureInterface
             'Orcinus',
             'Hippocampus',
             'Asterias',
+        ];
+
+        $key = array_rand($genera);
+
+        return $genera[$key];
+    }
+
+    public function badgeType()
+    {
+        $genera = [
+            'blue',
+            'primary',
+            'red',
+            'shop',
+            'secondary',
         ];
 
         $key = array_rand($genera);

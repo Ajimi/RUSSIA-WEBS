@@ -1,4 +1,23 @@
+UserBundle\Entity\User:
+    user_{1..5}:
+        username (unique): <username()>
+        email: othman+<current()>@gmail.com
+        plainPassword: rajel
+        roles: ['ROLE_ADMIN']
+
+\News\NewsBundle\Entity\Badge:
+    badge{1..50}:
+        class: <badgeType()>
+
+\News\NewsBundle\Entity\Category:
+    category{1..50}:
+        name: <word()>
+
 \News\NewsBundle\Entity\Article:
     article{1..50}:
-        title: <pargraph()>
+        title: <word()>
         content: <paragraph()>
+        author: '@user_*'
+        image: 'photo1.jpg'
+        badge: '@badge*'
+        category: '@category*'
