@@ -154,7 +154,7 @@ class LoadTeamsFixture implements FixtureInterface
         $player->setPlayerImage("player-3-368x286.png");
         $player->setPlayerPosition($faker->word);
         $player->setPlayerNumber($faker->numberBetween(1, 20));
-        $player->setBio($faker->word);
+        $player->setBio($faker->paragraph);
         $player->setWeight($faker->numberBetween(0, 11));
         $player->setHeight($faker->numberBetween(0, 11));
         $player->setTotalGames($faker->numberBetween(0, 11));
