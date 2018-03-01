@@ -63,11 +63,7 @@ class CommentsController extends Controller
 
 
     /**
-     * @param Request $request
-     * @param Subject|null $subject
-     * @param Comment|null $comment
-     *
-     * @Route("remove/{subject}/{comment}" , name="selim_ajimi")
+     * @Route("remove/{subject}/{comment}" , name="remove_comment")
      */
     public function removeCommentAction(Request $request, Subject $subject = null, Comment $comment = null)
     {

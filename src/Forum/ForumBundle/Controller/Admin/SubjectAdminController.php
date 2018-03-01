@@ -2,6 +2,7 @@
 
 namespace Forum\ForumBundle\Controller\Admin;
 
+use Forum\ForumBundle\Entity\Comment;
 use Forum\ForumBundle\Entity\Subject;
 use Forum\ForumBundle\Form\SubjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -71,10 +72,11 @@ class SubjectAdminController extends Controller
     public function showAction(Subject $subject)
     {
         $deleteForm = $this->createDeleteForm($subject);
-
+        $comments = new Comment();
         return $this->render('ForumBundle:admin/subject:show.html.twig', array(
             'subject' => $subject,
             'delete_form' => $deleteForm->createView(),
+            'comments' => $comments
         ));
     }
 

@@ -17,6 +17,10 @@ forum_comment:
     resource: "@ForumBundle/Controller/CommentsController.php"
     type:     annotation
 
+forum_comment_admin:
+    resource: "@ForumBundle/Controller/Admin/CommentsAdminController.php"
+    type:     annotation
+
 forum_subject:
     resource: "@ForumBundle/Controller/SubjectsController.php"
     type:     annotation

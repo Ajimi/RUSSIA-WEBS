@@ -37,5 +37,16 @@
                 {% endif %}
             </div>
         </div>
+        <div class="x_content">
+            <div class="x_title">
+                <h2>Comments</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <ul class="list-unstyled msg_list">
+                    {% include '@Forum/admin/componentAd/comment-item.html.twig' %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}

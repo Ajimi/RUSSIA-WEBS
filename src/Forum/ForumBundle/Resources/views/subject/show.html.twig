@@ -18,7 +18,7 @@
                         <h3 class="blog-post-title">{{ subject.title }}</h3>
                         <div class="blog-post-header">
                             <div class="blog-post-author"><img class="img-circle"
-                                                               src="{{ asset('assets/images/user-3-63x63.jpg') }}"
+                                                               src="{{ asset('assets/images/user/user.png') }}"
                                                                alt="" width="63" height="63"/>
                                 <p class="post-author">{{ subject.auther.username }}</p>
                             </div>
@@ -56,12 +56,11 @@
                     </article>
 
                     <div class="blog-post-comments">
-
                         {{ render(controller('ForumBundle:Comments:allComments' , {'subject' : subject})) }}
                         {% if app.user %}
                         <div class="comment-box">
                             <div class="comment-box-aside">
-                                <img class="img-circle" src="{{ asset('assets/images/user-7-69x69.jpg') }}"
+                                <img class="img-circle" src="{{ asset('assets/images/user/user.png') }}"
                                      alt=""
                                      width="69"
                                      height="69"/>
