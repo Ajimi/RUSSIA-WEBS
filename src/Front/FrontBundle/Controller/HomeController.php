@@ -2,6 +2,7 @@
 
 namespace Front\FrontBundle\Controller;
 
+use Common\RegionBundle\Entity\Region;
 use Doctrine\Common\Persistence\ObjectManager;
 use Group\GroupBundle\Entity\Groupe;
 use Group\GroupBundle\Modele\StandingsDataFormat;
@@ -30,8 +31,11 @@ class HomeController extends Controller
 
         $standing = StandingsDataFormat::oneGroupStandingFormat($group);
 
+        /** @var Region[] $regions */
+        $regions = $em->getRepository('RegionBundle:Region')->findAll();
+
         // replace this example code with whatever you need
-        return $this->render('FrontBundle:main:main.html.twig', ['standings' => $standing]);
+        return $this->render('FrontBundle:main:main.html.twig', ['standings' => $standing, 'regions' => $regions]);
     }
 
     /**
