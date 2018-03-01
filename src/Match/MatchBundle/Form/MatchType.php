@@ -27,13 +27,19 @@ class MatchType extends AbstractType
                     'class' => 'Team\TeamBundle\Entity\Team',
                     'choice_label' => 'teamName'))
             ->add('level', ChoiceType::class, array(
-                'choices' => array('Final' => 'Final', 'SemiFinal' => 'SemiFinal'),
+                'choices' => array('Round of 16' => 'Round of 16',
+                    'Quarter finals' => 'Quarter finals',
+                    'Semi Finals' => 'Semi Finals',
+                    'Final' => 'Final',
+                    'Play off for Third Place' => 'Play off for Third Place'),
                 'multiple' => false))
             ->add('date')
             ->add('time')
             ->add('stadium')
             ->add('create', SubmitType::class);
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
