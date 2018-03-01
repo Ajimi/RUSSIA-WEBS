@@ -15,26 +15,26 @@ class PlayerFrontController extends Controller
     /**
      * @Route("/display/{id}", name="player_Display")
      */
-    public function displayAction($id, $isRegion)
+    public function displayAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $player=$em->getRepository("PlayerBundle:Player")->find($id);
         $em->getRepository("PlayerBundle:Player")->addVisit($id);
         $age = date('Y') - $player->getBirthday()->format('Y');
         return $this->render('PlayerBundle:PlayerFront:display.html.twig', array(
-            'player' => $player, 'age' => $age, 'reg' => $isRegion// ...
+            'player' => $player, 'age' => $age// ...
         ));
     }
 
     /**
      * @Route("/bestPlayer", name="player_best")
      */
-    public function bestPlayerAction($isRegion)
+    public function bestPlayerAction()
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository("PlayerBundle:Player")->getFamousPlayers();
         return $this->render('PlayerBundle:PlayerFront:bestPlayer.html.twig', array(
-            'players' => $player, 'reg' => $isRegion// ...
+            'players' => $player// ...
         ));
     }
 

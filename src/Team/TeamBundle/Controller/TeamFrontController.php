@@ -15,7 +15,7 @@ class TeamFrontController extends Controller
     /**
      * @Route("/display/{id}", name="team_display")
      */
-    public function displayAction($id, $isRegion)
+    public function displayAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $team=$em->getRepository("TeamBundle:Team")->find($id);
@@ -42,7 +42,6 @@ class TeamFrontController extends Controller
             'yc'=>$yellowCards,
             'rc'=>$redCards,
             'standing' => $standing,
-            'reg' => $isRegion
         ));
     }
 
