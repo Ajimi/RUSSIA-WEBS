@@ -13,6 +13,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Generator;
 use Group\GroupBundle\Entity\Groupe;
+use Player\PlayerBundle\Entity\Club;
+use Player\PlayerBundle\Entity\Player;
+use Player\PlayerBundle\Entity\Skill;
 use Team\TeamBundle\Entity\Team;
 
 class LoadTeamsFixture implements FixtureInterface
@@ -38,7 +41,10 @@ class LoadTeamsFixture implements FixtureInterface
             }
             $k++;
 
-            $groupName = $this->getGroup($pas);
+            if ($pas < 8)
+                $groupName = $this->getGroup($pas);
+            else
+                break;
             /** @var Groupe $group */
             $group = $manager->getRepository('GroupBundle:Groupe')
                 ->findOneBy(['name' => $groupName]);
@@ -47,6 +53,7 @@ class LoadTeamsFixture implements FixtureInterface
                 $group->setName($groupName);
                 $group->setRating($faker->numberBetween(0, 5));
             }
+
 
             /** @var Team $team */
             $team = $this->generateTeam($teamName, $teamShortcut, $faker);
@@ -65,6 +72,20 @@ class LoadTeamsFixture implements FixtureInterface
                 case 4:
                     $group->setTeam4($team);
                     break;
+            }
+
+            for ($i = 0; $i < 3; $i++) {
+                $player = $this->generatePlayer($faker);
+                for ($j = 0; $j < 2; $j++) {
+                    $club = $this->generateClub($faker);
+                    $skill = $this->generateSkill($faker);
+                    $skill->setPlayer($player);
+                    $club->setPlayer($player);
+                    $manager->persist($club);
+                    $manager->persist($skill);
+                }
+                $player->setNationalTeam($team);
+                $manager->persist($player);
             }
 
             $manager->persist($team);
@@ -92,22 +113,8 @@ class LoadTeamsFixture implements FixtureInterface
     public function getGroup($number = 0)
     {
         $groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
-        $a = array(
-            ['time' => 'Thu Jun/14 18:00', 'team' => 'Russia ', 'teamvs' => 'Saudi Arabia', 'stadium' => 'Luzhniki Stadium'],
-            ['time' => 'Fri Jun/15 17:00', 'team' => 'Egypt', 'teamvs' => 'Uruguay', 'stadium' => 'Central Stadium'],
-            ['time' => 'Tue Jun/19 21:00', 'team' => 'Russia ', 'teamvs' => 'Egypt', 'stadium' => 'Krestovsky Stadium'],
-            ['time' => 'Wed Jun/20 18:00', 'team' => 'Uruguay', 'teamvs' => 'Saudi Arabia', 'stadium' => 'Rostov Arena'],
-            ['time' => 'Mon Jun/25 18:00', 'team' => 'Uruguay', 'teamvs' => 'Russia', 'stadium' => 'Cosmos Arena'],
-            ['time' => 'Mon Jun/25 17:00', 'team' => 'Saudi Arabia', 'teamvs' => 'Egypt', 'stadium' => 'Volgograd Arena'],
-        );
-        $a = array(
-            ['time' => 'Fri Jun/15 18:00', 'team' => 'Morocco ', 'teamvs' => 'Iran    ', 'stadium' => 'Luzhniki Stadium'],
-            ['time' => 'Fri Jun/15 21:00', 'team' => 'Portugal', 'teamvs' => 'Spain   ', 'stadium' => 'Central Stadium'],
-            ['time' => 'Wed Jun/20 15:00', 'team' => 'Portugal ', 'teamvs' => 'Morocco ', 'stadium' => 'Krestovsky Stadium'],
-            ['time' => 'Wed Jun/20 21:00', 'team' => 'Iran    ', 'teamvs' => 'Spain   ', 'stadium' => 'Rostov Arena'],
-            ['time' => 'Mon Jun/25 21:00', 'team' => 'Iran    ', 'teamvs' => 'Portugal', 'stadium' => 'Cosmos Arena'],
-            ['time' => 'Mon Jun/25 20:00', 'team' => 'Spain   ', 'teamvs' => 'Morocco ', 'stadium' => 'Volgograd Arena'],
-        );
+
+        echo $number;
         return $groups[$number];
     }
 
@@ -135,8 +142,59 @@ class LoadTeamsFixture implements FixtureInterface
         $team->setSecond($faker->randomDigitNotNull);
         $team->setThird($faker->randomDigitNotNull);
 
-
         return $team;
+    }
+
+    public function generatePlayer(Generator $faker)
+    {
+        $player = new Player();
+        $player->setPlayerName($faker->firstName);
+        $player->setPlayerLastName($faker->lastName);
+        $player->setFile("player-3-368x286.png");
+        $player->setPlayerImage("player-3-368x286.png");
+        $player->setPlayerPosition($faker->word);
+        $player->setPlayerNumber($faker->numberBetween(1, 20));
+        $player->setBio($faker->word);
+        $player->setWeight($faker->numberBetween(0, 11));
+        $player->setHeight($faker->numberBetween(0, 11));
+        $player->setTotalGames($faker->numberBetween(0, 11));
+        $player->setGoalScored($faker->numberBetween(0, 11));
+        $player->setShots($faker->numberBetween(33, 99));
+        $player->setShotsOnTarget($faker->numberBetween(11, 33));
+        $player->setAssists($faker->numberBetween(0, 11));
+        $player->setFouls($faker->numberBetween(0, 11));
+        $player->setPasses($faker->numberBetween(0, 11));
+        $player->setYellowCard($faker->numberBetween(0, 11));
+        $player->setPenaltyKicks($faker->numberBetween(0, 11));
+        $player->setCornerKicks($faker->numberBetween(0, 11));
+        $player->setRedCard($faker->numberBetween(0, 11));
+        $player->setBirthday($faker->dateTimeThisDecade());
+        $player->setTeam($faker->word);
+        $player->setVisits($faker->numberBetween(0, 15));
+        $player->setGoalScored($faker->numberBetween(0, 15));
+
+
+        return $player;
+    }
+
+    private function generateSkill(Generator $faker)
+    {
+        $skill = new Skill();
+        $skill->setLabel($faker->word);
+        $skill->setValue($faker->numberBetween(0, 99));
+
+        return $skill;
+    }
+
+    private function generateClub(Generator $faker)
+    {
+        $club = new Club();
+        $club->setClubName($faker->word);
+        $club->setSeasonStart($faker->numberBetween(2008, 2015));
+        $club->setMatchPlayed($faker->numberBetween(0, 99));
+        $club->setGoalScored($faker->numberBetween(0, 99));
+
+        return $club;
     }
 
 
