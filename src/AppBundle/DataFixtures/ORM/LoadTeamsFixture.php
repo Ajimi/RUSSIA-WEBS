@@ -104,9 +104,9 @@ class LoadTeamsFixture implements FixtureInterface
 
     public function getTeamShortcut($number = 0)
     {
-        $teams = ["RUS", "SAU", "EGY", "URU", "POR", "SPA", "MRC", "IRN", "FRA", "AUS "
+        $teams = ["RUS", "SAU", "EGY", "URU", "POR", "SPA", "MAR", "IRN", "FRA", "AUS"
             , "PER", "DEN", "ARG", "ICE", "CRO", "NGR", "BRA", "SWZ", "CSR", "SER", "GER",
-            "MEX", "SWE", "SKR", "BEL", "PAN", "TUN", "END", "POL", "SEN", "COL", "JAP"];
+            "MEX", "SWE", "SKR", "BEL", "PAN", "TUN", "ENG", "POL", "SEN", "COL", "JAP"];
         return $teams[$number];
     }
 

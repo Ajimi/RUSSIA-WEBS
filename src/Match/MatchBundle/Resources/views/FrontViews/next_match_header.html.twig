@@ -43,5 +43,6 @@
         <div class="countdown countdown-classic" data-type="until" data-time="{{ countdouwn }}"
              data-format="dhms" data-style="short"></div>
     </div>
-    <div class="event-teaser-aside"><a class="event-teaser-link" href="#">Buy Tickets</a></div>
+    <div class="event-teaser-aside"><a class="event-teaser-link"
+                                       href="{{ path('cart_add_item' , {'match' : match.id}) }}">Buy Tickets</a></div>
 </article>

@@ -14,7 +14,7 @@
                 {% for m in matches %}
                 <!-- Post Inline-->
                 <article class="post-inline">
-                    <time class="post-inline-time" datetime="2017">{{ m.date |date('M d, Y') }}</time>
+                    <time class="post-inline-time" datetime="{{ m.date|date('Y') }}">{{ m.date |date('M d, Y') }}</time>
                     <p class="post-inline-title">{{ m.team1.teamName }} vs {{ m.team2.teamName }}</p>
                 </article>
             {% endfor %}
