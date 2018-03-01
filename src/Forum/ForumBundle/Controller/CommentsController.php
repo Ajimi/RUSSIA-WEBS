@@ -5,10 +5,10 @@ namespace Forum\ForumBundle\Controller;
 use Doctrine\Common\Persistence\ObjectManager;
 use Forum\ForumBundle\Entity\Comment;
 use Forum\ForumBundle\Entity\Subject;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 use UserBundle\Entity\User;
 
 /**
@@ -19,9 +19,6 @@ use UserBundle\Entity\User;
  */
 class CommentsController extends Controller
 {
-
-    const MAX_COMMENTS = 15;
-
 
     /**
      * @param Request $request
@@ -43,10 +40,6 @@ class CommentsController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
-     * @param Subject|null $subject
-     * @return JsonResponse
      * @Route("/{id}",name="comment_add")
      */
     public function addCommentAction(Request $request, Subject $subject = null)
@@ -58,19 +51,13 @@ class CommentsController extends Controller
         if ($response != true)
             return $response;
         $commentsRepo = $em->getRepository('ForumBundle:Comment');
-        $comments = $commentsRepo->findBy(['user' => $user, 'subject' => $subject]);
+        $commentsRepo->findBy(['user' => $user, 'subject' => $subject]);
 
-        if (count($comments) < self::MAX_COMMENTS) {
+        $comment = new Comment();
+        $comment->setContent($request->get('message'));
+        $this->commentAdd($em, $subject, $user, $comment);
 
-            $comment = new Comment();
-            $comment->setContent($request->get('message'));
-            $this->commentAdd($em, $subject, $user, $comment);
-
-            return $this->redirectToRoute('subject_show', array('id' => $subject->getId()));
-        } else {
-            return $this->getResponse("You cant't add more than " . self::MAX_COMMENTS, 'response', true, 203);
-
-        }
+        return $this->redirectToRoute('subject_show', array('id' => $subject->getId()));
 
     }
 
@@ -80,31 +67,31 @@ class CommentsController extends Controller
      * @param Subject|null $subject
      * @param Comment|null $comment
      *
-     * @Route("remove/{subject}/{comment}") , name ="remove_comment")
-     * @return JsonResponse
+     * @Route("remove/{subject}/{comment}" , name="selim_ajimi")
      */
     public function removeCommentAction(Request $request, Subject $subject = null, Comment $comment = null)
     {
 
         $em = $this->getDoctrine()->getManager();
+        /** @var User $user */
         $user = $this->getUser();
 
-        $response = $this->checkExceptions($user, $comment, "Comment not found");;
-        if ($response)
+        $response = $this->checkExceptions($user, $comment, "Comment not found");
+        if ($response != true)
             return $response;
 
-
-        $commentsRepo = $em->getRepository('ForumBundle:Comment');
-        $comment = $commentsRepo->findOneBy(['id' => $comment]);
 
         if (is_null($comment)) {
             // Cannot remove an empty comment
             return $this->getResponse("Cannot remove empty comment");
         } else {
-            $em->remove($comment);
-            $em->flush();
-            return $this->getResponse('Removed Perfectly', 'remove', true, 204);
+
+            if ($comment->getUser() == $user) {
+                $em->remove($comment);
+                $em->flush();
+            }
         }
+        return $this->redirectToRoute('subject_show', array('id' => $subject->getId()));
 
     }
 
