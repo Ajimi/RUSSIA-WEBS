@@ -34,7 +34,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
             /*
              * Created Bundles
