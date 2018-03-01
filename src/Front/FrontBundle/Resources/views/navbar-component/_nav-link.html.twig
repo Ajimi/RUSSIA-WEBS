@@ -1,7 +1,7 @@
 <ul class="rd-navbar-nav">
     <li class="rd-nav-item {% block header_home %}{% endblock %}"><a class="rd-nav-link" href="{{ path('homepage') }}">Home</a>
     </li>
-    <li class="rd-nav-item {% block header_feature %}{% endblock %}"><a class="rd-nav-link" href="#">News & forum</a>
+    <li class="rd-nav-item {% block header_feature %}{% endblock %}"><a class="rd-nav-link" href="#">Features</a>
         <!-- RD Navbar Megamenu-->
         <article class="rd-menu rd-navbar-megamenu rd-megamenu-2-columns context-light">
             <div class="rd-megamenu-main">
@@ -19,12 +19,30 @@
                             <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
                                                                  href="{{ path('article_index') }}">News</a>
                             </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('full_standings') }}">Standings</a>
+                            </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('schedule_list') }}">Schedule</a>
+                            </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('result_list') }}">Latest Result</a>
+                            </li>
                         </ul>
                         <ul class="rd-megamenu-list">
                             <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
                                                                  href="{{ path('subject_index') }}">Forum</a>
                             </li>
                             <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('guide_index') }}">Guide</a>
+                            </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('ticket_index') }}">Buy Tickets</a>
+                            </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('cart_index') }}">Cart</a>
+                            </li>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" hidden
                                                                  href="{{ path('fos_user_security_login') }}">Login and
                                     Register</a>
                             </li>
@@ -50,5 +68,5 @@
         </ul>
     </li>
     <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('guide_index') }}">Fan Guide</a></li>
-    <li class="rd-nav-item "><a class="rd-nav-link" href="#">Ticket</a></li>
+    <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('ticket_index') }}">Ticket</a></li>
 </ul>
