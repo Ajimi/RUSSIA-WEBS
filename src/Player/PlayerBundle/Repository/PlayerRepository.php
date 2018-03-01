@@ -220,4 +220,20 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
             ->setMaxResults(1);
         return $query->getResult();
     }
+
+    public function totalVisits()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->select('SUM(p.visits)')
+            ->getQuery();
+        return $query->getSingleScalarResult();
+
+    }
+
+    public function addVisit($player)
+    {
+        $query = $this->getEntityManager()->createQuery("Update PlayerBundle:Player p Set p.visits= p.visits + 1 where p.id= :id")
+            ->setParameter('id', $player);
+        return $query->execute();
+    }
 }

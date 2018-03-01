@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfbd829e2f733daaead09fb3675bcf89",
+    "content-hash": "3c74b3ce1a2a6f3d0ebbe79e1f3dbd8d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -100,6 +100,54 @@
                 "symfony"
             ],
             "time": "2016-04-12T01:57:35+00:00"
+        },
+        {
+            "name": "cmen/google-charts-bundle",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmen/CMENGoogleChartsBundle.git",
+                "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmen/CMENGoogleChartsBundle/zipball/df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+                "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.9",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CMEN\\GoogleChartsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Meneses"
+                }
+            ],
+            "description": "This Bundle provides a Twig extension and PHP objects to display Google charts in your Symfony application.",
+            "keywords": [
+                "chart",
+                "charts",
+                "google",
+                "graph",
+                "graphs",
+                "map"
+            ],
+            "time": "2018-01-16T12:51:23+00:00"
         },
         {
             "name": "composer/ca-bundle",
