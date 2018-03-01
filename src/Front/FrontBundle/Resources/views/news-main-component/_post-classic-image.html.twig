@@ -1,16 +1,15 @@
 <article class="post-classic">
     <div class="post-classic-aside">
-        <a class="post-classic-figure" href="{{ url }}">
+        <a class="post-classic-figure" href="{{ path('homepage') }}">
             <img src="{{ asset('assets/images/blog-element-1-94x94.jpg') }}" alt=""/>
         </a>
     </div>
     <div class="post-classic-main">
         <p class="post-classic-title">
-            <a href="{{ url }}">{% block title %}{% endblock %}</a>
+            <a href="{{ path('homepage') }}">{% block title %}{% endblock %}</a>
         </p>
         <div class="post-classic-time">
             <span class="icon mdi mdi-clock"></span>
-            <time datetime="{{ date|date('Y') }}">{{ date|date('F j, Y') }}</time>
         </div>
     </div>
 </article>

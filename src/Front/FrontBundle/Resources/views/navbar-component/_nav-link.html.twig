@@ -30,20 +30,12 @@
                                                                  href="privacy-policy.html">Privacy Policy</a></li>
                         </ul>
                         <ul class="rd-megamenu-list">
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="about-us.html">About
-                                    Us</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="gallery.html">Gallery</a>
+                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
+                                                                 href="{{ path('subject_index') }}">Forum</a>
                             </li>
                             <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="albums.html">Albums</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="search-results.html">Search Results</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="coming-soon.html">Coming
-                                    Soon</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="contact-us.html">Contact
-                                    Us</a></li>
-                            <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link"
-                                                                 href="login-and-register.html">Login and Register</a>
+                                                                 href="{{ path('fos_user_security_login') }}">Login and
+                                    Register</a>
                             </li>
                         </ul>
                     </div>
@@ -56,16 +48,6 @@
         </article>
 
     </li>
-    <li class="rd-nav-item {% block header_news %}{% endblock %}"><a class="rd-nav-link" href="#">News</a>
-        <!-- RD Navbar Dropdown-->
-        <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-1.html">News 1</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-2.html">News 2</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-3.html">News 3</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-4.html">News 4</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="news-5.html">News 5</a></li>
-        </ul>
-    </li>
     <li class="rd-nav-item {% block header_team %}{% endblock %}"><a class="rd-nav-link" href="#">Competition</a>
         <!-- RD Navbar Dropdown-->
         <ul class="rd-menu rd-navbar-dropdown">
@@ -76,18 +58,12 @@
             <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('full_standings') }}">Groups</a></li>
         </ul>
     </li>
-    <li class="rd-nav-item {% block header_shop %}{% endblock %}"><a class="rd-nav-link" href="#">Shop</a>
-        <!-- RD Navbar Dropdown-->
+    <li class="rd-nav-item "><a class="rd-nav-link" href="{{ path('guide_index') }}">Fan Guide</a>
         <ul class="rd-menu rd-navbar-dropdown">
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="shop-elements.html">Shop Elements</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-shop.html">Grid Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="list-shop.html">List Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="fullwidth-shop.html">Fullwidth Shop</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="product-page.html">Product Page</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="shopping-cart.html">Shopping Cart</a></li>
-            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="checkout.html">Checkout</a></li>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('guide_guide_city_testmap') }}">Schedule</a>
+            </li>
+            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="{{ path('guide_faq') }}">FAQ</a>
+            </li>
         </ul>
-    </li>
-    <li class="rd-nav-item {% block header_forum %}{% endblock %}"><a class="rd-nav-link"
-                                                                      href="{{ path('subject_index') }}">Forum</a>
+    <li class="rd-nav-item "><a class="rd-nav-link" href="#">Ticket</a>
 </ul>
