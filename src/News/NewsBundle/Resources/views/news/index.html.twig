@@ -23,6 +23,8 @@
                                         {% set badge = "THE LEAGUE" %}
                                         {% if loop.index % 2 == 0 %}
                                             {% embed '@Front/post-component/_post-corporate.html.twig' with {'article' : article} %}
+                                                {% block image %}{{ asset(asset('/assets/images/news/' ~article.image)) }}{% endblock %}
+
                                                 {% block badge_class %}{{ article.badge.class }}{% endblock %}
                                                 {% block badge_title %}{{ article.category.name }}{% endblock %}
                                                 {% block title %}{{ title|raw }}{% endblock %}
@@ -33,6 +35,7 @@
                                         {% else %}
                                             {% embed '@Front/post-component/_post-miranda.html.twig' with {'article' : article} %}
                                                 {% block title %}{{ title }}{% endblock %}
+                                                {% block image %}{{ asset(asset('/assets/images/news/' ~article.image)) }}{% endblock %}
                                                 {% block text %}{{ content|slice(0,150) }}{% endblock %}
                                             {% endembed %}
                                         {% endif %}

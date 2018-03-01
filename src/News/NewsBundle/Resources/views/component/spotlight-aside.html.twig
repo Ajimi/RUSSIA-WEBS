@@ -15,6 +15,7 @@
                 {% block title %}
                     {{ article.title }}
                 {% endblock %}
+                {% block image %}{{ asset('/assets/images/news/' ~article.image) }}{% endblock %}
             {% endembed %}
         {% endfor %}
     </div>
