@@ -2,11 +2,9 @@
     <div class="container">
         <div class="row row-50">
             {{ render(controller('NewsBundle:ArticleComponent:latestNewsCarousel')) }}
-            {#{% include "FrontBundle:news-main-component:_latest-news-carousel.html.twig" %}#}
 
             <!-- Center Block-->
             <div class="col-lg-8">
-               {# {{ render(controller('TicketBundle:TicketHome:HomeTicketShow')) }}#}
                 {{ render(controller('MatchBundle:Front\\Home:homeNextMatch')) }}
                 {% include "FrontBundle:news-main-component:_popular-news.html.twig" %}
                 {{ render(controller('PlayerBundle:PlayerFront:bestPlayer')) }}
@@ -25,9 +23,8 @@
                     {% include "FrontBundle:news-main-component:_award-carousel.html.twig" %}
                     {% include "FrontBundle:news-main-component:_follow-us.html.twig" %}
                     {% include "FrontBundle:news-main-component:_standing.html.twig" %}
-                    {% include "FrontBundle:news-main-component:_team-stat.html.twig" %}
-                    {% include "FrontBundle:news-main-component:_gallery-small.html.twig" %}
-                    {% include "FrontBundle:news-main-component:_shop-small.html.twig" %}
+
+
                 </aside>
             </div>
 
