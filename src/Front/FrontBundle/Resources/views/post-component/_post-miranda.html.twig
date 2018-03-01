@@ -25,7 +25,7 @@
         </div>
         <div class="post-miranda-aside"><a class="post-miranda-figure"
                                            href="{{ path('article_show', {'id' : article.id}) }}"><img
-                        src="{{ block image }}{% endblock %}" alt="" width="207" height="152"/></a>
+                        src="{% block image %}{% endblock %}" alt="" width="207" height="152"/></a>
         </div>
     </div>
     <div class="post-miranda-footer">
