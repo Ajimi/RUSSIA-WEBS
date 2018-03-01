@@ -1,0 +1,8 @@
+{% for comment in comments %}
+    <li><span>
+            <span>{{ comment.user }}</span>
+            <span class="time">{{ comment.created|ago }}</span>
+        </span>
+        <span class="message">{{ comment.content }}</span>
+    </li>
+{% endfor %}
