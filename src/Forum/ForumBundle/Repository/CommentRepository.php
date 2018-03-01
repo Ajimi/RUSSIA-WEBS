@@ -19,11 +19,11 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
     public function getTotalNumberOfComment($subject): int
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.subject = :subject')
-            ->setParameter('subject' , $subject)
-            ->select('COUNT(s.subject)')
-            ->getQuery()
-            ->getSingleScalarResult();
+                    ->andWhere('s.subject = :subject')
+                    ->setParameter('subject' , $subject)
+                    ->select('COUNT(s.subject)')
+                    ->getQuery()
+                    ->getSingleScalarResult();
     }
 
 }
