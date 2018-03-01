@@ -1,3 +1,0 @@
-mail_mail_homepage:
-    path:     /mailino
-    defaults: { _controller: MailMailBundle:Default:index }
