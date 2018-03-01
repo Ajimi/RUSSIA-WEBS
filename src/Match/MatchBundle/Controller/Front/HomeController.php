@@ -15,12 +15,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
 
-    public function headerNextMatchAction()
+    public function headerNextMatchAction($isRegion)
     {
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository('MatchBundle:Match')->findOneBy(array('played' => false), array('date' => 'desc'));
         return $this->render('@Match/FrontViews/next_match_header.html.twig', array(
-            'match' => $match
+            'match' => $match,
+            'reg' => $isRegion
         ));
 
     }
@@ -30,7 +31,8 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $matches = $em->getRepository('MatchBundle:Match')->findBy(array('played' => false), array('date' => 'asc'));
         return $this->render('@Front/navbar-component/_nav-panel-carousel.html.twig', array(
-            'matches' => $matches
+            'matches' => $matches,
+
 
         ));
 
@@ -42,7 +44,7 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $match = $em->getRepository('MatchBundle:Match')->findOneBy(array('played' => false), array('date' => 'desc'));
         return $this->render('@Match/FrontViews/next_match_home.html.twig', array(
-            'match' => $match
+            'match' => $match,
         ));
     }
 
@@ -52,7 +54,7 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $scores = $em->getRepository('MatchBundle:Score')->findThreeOrderByDate();
         return $this->render('@Match/Model/single_latest_game_result_model.html.twig', array(
-            'scores'=>$scores
+            'scores'=>$scores,
         ));
     }
 

@@ -53,13 +53,14 @@ class ResultFrontController extends Controller
             'standings' => $standings,
             'bestScorer' => $bestScorer,
             'shotAcc'=>$shotAcc,
-            'finishing'=>$finishing
+            'finishing'=>$finishing,
+
 
         ));
     }
 
     /**
-     * @Route("/search", name="search_results", options={"expose" = true})
+     * @Route("/search", name="search_results")
      */
     public function searchResultAction(Request $request)
     {

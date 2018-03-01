@@ -65,7 +65,7 @@ class EventBackController extends Controller
             'playerT1'=>$playersT1,
             'playerT2'=>$playersT2,
             'idm' => $idm,
-            'events' => $events
+            'events' => $events,
         ));
     }
 

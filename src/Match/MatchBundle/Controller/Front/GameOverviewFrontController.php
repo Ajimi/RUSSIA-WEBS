@@ -23,7 +23,7 @@ class GameOverviewFrontController extends Controller
     /**
      * @Route("/results/overview{idm}", name="game_overview")
      */
-    public function gameOverviewAction($idm)
+    public function gameOverviewAction($idm,$isRegion)
     {
         $em = $this->getDoctrine()->getManager();
         $score = $em->getRepository("MatchBundle:Score")->findOneBy(array('match' => $idm));
@@ -75,7 +75,8 @@ class GameOverviewFrontController extends Controller
             'playersT1' => $playersT1, 'playersT2' => $playersT2,
             'bestScorerT1' => $bestScorerT1,
             'bestScorerT2' => $bestScorerT2,
-            'standings' => $standings
+            'standings' => $standings,
+             'reg' => $isRegion
         ));
 
     }
