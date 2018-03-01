@@ -1,3 +1,6 @@
+{% set logoT1 = 'assets/images/teamUploads/' ~  score.match.team1.teamLogo %}
+{% set logoT2 = 'assets/images/teamUploads/' ~ score.match.team2.teamLogo %}
+
 <article class="game-result">
     <div class="game-info game-info-classic">
         <p class="game-info-subtitle">{{ score.match.stadium }} Stadium -
@@ -6,7 +9,7 @@
         <h3 class="game-info-title">{{ score.match.level }}</h3>
         <div class="game-info-main">
             <div class="game-info-team game-info-team-first">
-                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="100"
+                <figure><img src="{{ asset(logoT1) }}" alt="" width="100"
                              height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ score.match.team1.teamName | slice(0,10) }}</div>
@@ -35,7 +38,7 @@
                 </div>
             </div>
             <div class="game-info-team game-info-team-second">
-                <figure><img src="{{ asset('assets/images/team-real-madrid-75x106.png') }}" alt="" width="75"
+                <figure><img src="{{ asset(logoT2) }}" alt="" width="75"
                              height="106"/>
                 </figure>
                 <div class="game-result-team-name">{{ score.match.team2.teamName | slice(0,10) }}</div>

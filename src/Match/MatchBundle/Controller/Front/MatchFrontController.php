@@ -20,7 +20,7 @@ class MatchFrontController extends Controller
     /**
      * @Route("/", name="schedule_list")
      */
-    public function displayAction(Request $request)
+    public function displayAction(Request $request,$isRegion)
     {
         $em = $this->getDoctrine()->getManager();
         $scores = $em->getRepository("MatchBundle:Score")->findThreeOrderByDate();
@@ -43,7 +43,8 @@ class MatchFrontController extends Controller
         return $this->render('@Match/FrontViews/game_schedule.html.twig', array(
             'matchs' => $pagination,
             'scores' => $scores,
-            'standings' => $standings
+            'standings' => $standings,
+            'reg' => $isRegion
         ));
     }
 
@@ -62,7 +63,7 @@ class MatchFrontController extends Controller
             $matchs = $em->getRepository('MatchBundle:Match')->searchByName($val);
 
             return $this->render('@Match/FrontViews/search_schedule_result.html.twig',array(
-                'matchs'=>$matchs
+                'matchs'=>$matchs,
             ));
         }
 
