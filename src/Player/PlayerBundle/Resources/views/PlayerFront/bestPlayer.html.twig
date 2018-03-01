@@ -1,0 +1,41 @@
+{% set headingTitle = "Top players" %}
+
+
+<div class="main-component">
+    <!-- Heading Component-->
+    {% include 'FrontBundle:news-main-component:_heading-component-title.html.twig'  with {'title': headingTitle } %}
+    <div class="row row-30">
+        {% for player in players %}
+            <div class="col-md-6">
+                <!-- Player Info Modern-->
+                {% embed 'FrontBundle:player-component:_player-info-modern.html.twig' with {'imagePlayer': player.file,'id':player.id} %}
+                    {% block player_number %}{{ player.playerNumber }}{% endblock %}
+                    {% block player_name %}{{ player.playerName~" "~player.playerLastName }} {% endblock %}
+                    {% block player_position %} {{ player.playerPosition }}{% endblock %}
+                    {% block player_skills %}
+                        {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
+                            {% block skill_name %} Finishing{% endblock %}
+                            {% block skill_progress %}
+                                {% if player.shotsOnTarget!=0 %}
+                                    {{ player.goalScored*100/player.shotsOnTarget }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                        {% embed 'FrontBundle:player-component:_team-info-player-skill-progress-bar.html.twig' %}
+                            {% block skill_name %} Shots Acc{% endblock %}
+                            {% block skill_progress %}
+                                {% if player.shots!=0 %}
+                                    {{ player.shotsOnTarget*100/player.shots }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
