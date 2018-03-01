@@ -26,4 +26,16 @@ class PlayerFrontController extends Controller
         ));
     }
 
+    /**
+     * @Route("/bestPlayer", name="player_best")
+     */
+    public function bestPlayerAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $player = $em->getRepository("PlayerBundle:Player")->getFamousPlayers();
+        return $this->render('PlayerBundle:PlayerFront:bestPlayer.html.twig', array(
+            'players' => $player// ...
+        ));
+    }
+
 }

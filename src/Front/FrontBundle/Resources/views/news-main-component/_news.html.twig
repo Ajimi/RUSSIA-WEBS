@@ -9,7 +9,7 @@
                {# {{ render(controller('TicketBundle:TicketHome:HomeTicketShow')) }}#}
                 {{ render(controller('MatchBundle:Front\\Home:homeNextMatch')) }}
                 {% include "FrontBundle:news-main-component:_popular-news.html.twig" %}
-                {% include "FrontBundle:news-main-component:_top-players.html.twig" %}
+                {{ render(controller('PlayerBundle:PlayerFront:bestPlayer')) }}
             </div>
 
             <!-- Aside block -->
