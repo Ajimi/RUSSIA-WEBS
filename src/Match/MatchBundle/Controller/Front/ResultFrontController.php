@@ -35,8 +35,6 @@ class ResultFrontController extends Controller
         $shotAcc=0;
         $finishing=0;
         UtilPlayer::playerSkills($bestScorer[0],$shotAcc,$finishing);
-        dump($finishing);
-        dump($shotAcc);
 
         $scores = $em->getRepository("MatchBundle:Score")->findAll();
         usort($scores, function ($a, $b) {

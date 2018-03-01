@@ -19,12 +19,11 @@
 {% block title %}Clubs List{% endblock %}
 
 
-{% block body %}
     {% block top_content_header %}
         <div class="page-title">
             <div class="title_left">
-                <h3>Club
-                    <small>List</small>
+                <h3>Players
+                    <small>Stats</small>
                 </h3>
             </div>
 
@@ -32,11 +31,12 @@
     {% endblock %}
     {% block page_content %}
         <div class="col-md-12 col-sm-12 col-xs-12">
+
             <div class="x_panel">
                 <div class="x_title">
-                    <div class=" col-sm-2 col-xs-12">
-                        <a class="btn btn-success" href="{{ path('addClub',{'id': id}) }}">New Club</a>
-                    </div>
+                    <h2>Player
+                        <small>Visits</small>
+                    </h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -44,29 +44,18 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Start</th>
-                            <th>Match Player</th>
-                            <th>Goal Scored</th>
-                            <th>Action</th>
+                            <th>LastName</th>
+                            <th>Visits</th>
+                            <th>Total Visits</th>
                         </tr>
                         </thead>
                         <tbody id="costum-table">
-                        {% for club in clubs %}
+                        {% for player in players %}
                             <tr>
-                                <td>{{ club.clubName }}</td>
-                                <td>{{ club.seasonStart }}</td>
-                                <td>{{ club.matchPlayed }}</td>
-                                <td>{{ club.goalScored }}</td>
-                                <td>
-                                    <a href="{{ path('clubEdit',{'id':club.id}) }}"
-                                       class="btn btn-info btn-xs">
-                                        <i class="fa fa-pencil"></i>Edit
-                                    </a>
-                                    <a href="{{ path('clubDelete',{'id':club.id}) }}"
-                                       class="btn btn-danger btn-xs">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
+                                <td>{{ player.playerName }}</td>
+                                <td>{{ player.playerLastName }}</td>
+                                <td>{{ player.visits }}</td>
+                                <td>{{ visits }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -74,10 +63,35 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Pie
+                        <small>Chart</small>
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="div_chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Column
+                        <small>Chart</small>
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div id="cc"></div>
+                </div>
+            </div>
+        </div>
     {% endblock %}
 
 
-{% endblock %}
 
 {% block javascripts %}
 
@@ -99,6 +113,10 @@
     <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/Chart.js/dist/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw([piechart, cc], ['div_chart', 'cc']) }}
+    </script>
 
 {% endblock javascripts %}
