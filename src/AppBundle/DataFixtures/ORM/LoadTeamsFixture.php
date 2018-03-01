@@ -74,7 +74,7 @@ class LoadTeamsFixture implements FixtureInterface
                     break;
             }
 
-            for ($i = 0; $i < 3; $i++) {
+            for ($b = 0; $b < 3; $b++) {
                 $player = $this->generatePlayer($faker);
                 for ($j = 0; $j < 2; $j++) {
                     $club = $this->generateClub($faker);
