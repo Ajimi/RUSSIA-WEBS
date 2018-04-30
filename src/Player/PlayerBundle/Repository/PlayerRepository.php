@@ -10,6 +10,19 @@ namespace Player\PlayerBundle\Repository;
  */
 class PlayerRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    //Team_Front_Stat_Functions
+    public function playersByTeam($team)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->where('p.nationalTeam = :team')
+            ->setParameter('team', $team)
+            ->select('p')
+            ->getQuery();
+        return $query->getResult();
+
+    }
+
     //Team_Front_Stat_Functions
     public function goalScoredByTeam($team)
     {
