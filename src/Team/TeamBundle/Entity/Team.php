@@ -89,9 +89,6 @@ class Team
      * @ORM\Column(name="goalIn", type="integer")
      */
     private $goalIn;
-
-
-
     /**
      * @var int
      *
