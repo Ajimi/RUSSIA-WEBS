@@ -50,6 +50,37 @@ class TeamApiController extends Controller
     }
 
     /**
+     * @Route("/api/teams/stat/{id}", name="team_api")
+     * @param Team $team
+     * @return JsonResponse
+     */
+    public function findTeamStatApiAction(Team $team)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $goalScored = $em->getRepository("PlayerBundle:Player")->goalScoredByTeam($team);
+        $shots = $em->getRepository("PlayerBundle:Player")->shotsByTeam($team);
+        $shotsOnTarget = $em->getRepository("PlayerBundle:Player")->shotsOnTargetByTeam($team);
+        $assists = $em->getRepository("PlayerBundle:Player")->assistsByTeam($team);
+        $fouls = $em->getRepository("PlayerBundle:Player")->foulsByTeam($team);
+        $corners = $em->getRepository("PlayerBundle:Player")->cornerByTeam($team);
+        $penalties = $em->getRepository("PlayerBundle:Player")->penaltyByTeam($team);
+        $yellowCards = $em->getRepository("PlayerBundle:Player")->yellowCardsByTeam($team);
+        $redCards = $em->getRepository("PlayerBundle:Player")->redCardsByTeam($team);
+        $json["team"] = array(
+            "goalScored"=> $goalScored,
+            "shots"=> $shots,
+            "shotsOnTarget"=> $shotsOnTarget,
+            "assists"=> $assists,
+            "fouls"=> $fouls,
+            "corners"=> $corners,
+            "penalties"=> $penalties,
+            "yellowCards"=> $yellowCards,
+            "redCards"=> $redCards,
+        );
+        return new JsonResponse($json);
+    }
+
+    /**
      * @param array|Team[] $teams
      * @return array
      * @internal param $

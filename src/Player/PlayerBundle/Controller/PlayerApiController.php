@@ -109,4 +109,17 @@ class PlayerApiController extends Controller
         $formatted = $this->serializer($players);
         return new JSONResponse($formatted);
     }
+
+    /**
+     * @Route("/api/players/team/{id}", name="players_api")
+     * @param Team $team
+     * @return JsonResponse
+     */
+    public function findAllPlayersByTeamApiAction(Team $team)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $players = $em->getRepository("PlayerBundle:Player")->playersByTeam($team);
+        $formatted = $this->serializer($players);
+        return new JSONResponse($formatted);
+    }
 }
