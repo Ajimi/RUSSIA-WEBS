@@ -25,35 +25,23 @@ class PlayerApiController extends Controller
      * @param Player $player
      * @return JsonResponse
      */
-    public static function findPlayerApiAction(Player $player)
+    public function findPlayerApiAction(Player $player)
     {
-        $formatted = PlayerApiController::serialize($player);
+        $formatted["player"] = $this->serialize($player);
         return new JSONResponse($formatted);
     }
 
-    /**
-     * @Route("/api/players/team/{team}", name="players_team_api")
-     * @param Team $team
-     * @return JsonResponse
-     */
-    public function findAllPlayersByTeamApiAction(Team $team)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $players = $em->getRepository("PlayerBundle:Player")->playersByTeam($team);
-        $formatted = PlayerApiController::serializer($players);
-        return new JSONResponse($formatted);
-    }
 
     /**
      * @param array|Player[] $players
      * @return array
      * @internal param $
      */
-    public static function serializer($players)
+    public function serializer($players)
     {
         $data = array('players' => array());
         foreach ($players as $player) {
-            $playerData = PlayerApiController::serialize($player);
+            $playerData = $this->serialize($player);
             $data['players'][] = $playerData;
         }
         return $data;
@@ -64,7 +52,7 @@ class PlayerApiController extends Controller
      * @return array
      * @internal param $players
      */
-    public static function serialize(Player $player)
+    public function serialize(Player $player)
     {
         return array(
             "id" => $player->getId(),
@@ -72,12 +60,27 @@ class PlayerApiController extends Controller
             "playerLastName" => $player->getPlayerLastName(),
             "playerImage" => $player->getPlayerImage(),
             "playerNumber" => $player->getPlayerNumber(),
+            "totalGames" => $player->getTotalGames(),
             "playerPosition" => $player->getPlayerPosition(),
             "birthday" => $player->getBirthday(),
             "weight" => $player->getWeight(),
             "height" => $player->getHeight(),
             "bio" => $player->getBio(),
-            "nationalTeam" => TeamApiController::serialize($player->getNationalTeam()),
+            "nationalTeam" => array(
+                "id" => $player->getNationalTeam()->getId(),
+                "teamName" => $player->getNationalTeam()->getTeamName(),
+                "teamLogo" => $player->getNationalTeam()->getTeamLogo(),
+                "teamShortcut" => $player->getNationalTeam()->getTeamShortcut(),
+                "matchWon" => $player->getNationalTeam()->getMatchWon(),
+                "matchLost" => $player->getNationalTeam()->getMatchLost(),
+                "matchDraw" => $player->getNationalTeam()->getMatchDraw(),
+                "goalScored" => $player->getNationalTeam()->getGoalScored(),
+                "goalIn" => $player->getNationalTeam()->getGoalIn(),
+                "participation" => $player->getNationalTeam()->getParticipation(),
+                "winner" => $player->getNationalTeam()->getWinner(),
+                "second" => $player->getNationalTeam()->getSecond(),
+                "third" => $player->getNationalTeam()->getThird(),
+            ),
             "team" => $player->getTeam(),
             "goalScored" => $player->getGoalScored(),
             "shots" => $player->getShots(),
@@ -103,7 +106,7 @@ class PlayerApiController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $players = $em->getRepository("PlayerBundle:Player")->findAll();
-        $formatted = PlayerApiController::serializer($players);
+        $formatted = $this->serializer($players);
         return new JSONResponse($formatted);
     }
 }
