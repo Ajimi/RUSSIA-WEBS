@@ -110,7 +110,7 @@ class TeamApiController extends Controller
                 "playerNumber" => $player->getPlayerNumber(),
                 "totalGames" => $player->getTotalGames(),
                 "playerPosition" => $player->getPlayerPosition(),
-                "birthday" => strtotime($player->getBirthday()->format('Y-m-d H:i:s')),
+                "birthday" => $player->getBirthday()->format("d-m-Y"),
                 "weight" => $player->getWeight(),
                 "height" => $player->getHeight(),
                 "bio" => $player->getBio(),
