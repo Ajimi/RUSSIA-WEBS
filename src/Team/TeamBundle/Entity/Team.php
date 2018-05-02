@@ -155,10 +155,10 @@ class Team
     /**
      * @return mixed
      */
-    public function getPlayers()
+   /* public function getPlayers()
     {
         return $this->players;
-    }
+    }*/
 
     /**
      * @param mixed $players
