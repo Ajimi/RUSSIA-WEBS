@@ -11,4 +11,17 @@ namespace Forum\ForumBundle\Repository;
 class SubjectRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    /**
+     * @param $title
+     * @return mixed
+     */
+    public function getTitleSubject($title)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("
+                    select m from ForumBundle:Subject m WHERE m.title LIKE :P")
+            ->setParameter('P', '%' . $title . '%');
+        return $query->getResult();
+    }
+
 }
