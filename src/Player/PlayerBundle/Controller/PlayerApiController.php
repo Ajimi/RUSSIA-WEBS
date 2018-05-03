@@ -99,7 +99,7 @@ class PlayerApiController extends Controller
     }
 
     /**
-     * @Route("/api/players/", name="players_api")
+     * @Route("/api/players/", name="players_apia")
      * @return JsonResponse
      */
     public function findAllPlayersApiAction()
