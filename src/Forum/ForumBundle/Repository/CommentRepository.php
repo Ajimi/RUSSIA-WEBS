@@ -2,6 +2,8 @@
 
 namespace Forum\ForumBundle\Repository;
 
+use Forum\ForumBundle\Entity\Comment;
+
 /**
  * CommentRepository
  *
@@ -19,11 +21,23 @@ class CommentRepository extends \Doctrine\ORM\EntityRepository
     public function getTotalNumberOfComment($subject): int
     {
         return $this->createQueryBuilder('s')
-                    ->andWhere('s.subject = :subject')
-                    ->setParameter('subject' , $subject)
-                    ->select('COUNT(s.subject)')
-                    ->getQuery()
-                    ->getSingleScalarResult();
+            ->andWhere('s.subject = :subject')
+            ->setParameter('subject' , $subject)
+            ->select('COUNT(s.subject)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @param $subject
+     * @return mixed
+     */
+    public function getCommentsBySubject($subject)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select m from ForumBundle:Comment m WHERE m.subject=:P")
+            ->setParameter('P', $subject);
+        return $query->getResult();
     }
 
 }

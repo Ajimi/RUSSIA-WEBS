@@ -13,8 +13,12 @@ use Forum\ForumBundle\Entity\Subject;
 use Forum\ForumBundle\Form\SubjectTypeUser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Tests\StringableObject;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Subject controller.
@@ -23,6 +27,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class SubjectsController extends Controller
 {
+
 
     /**
      * @Route("/new",name="subject_add")
@@ -62,9 +67,12 @@ class SubjectsController extends Controller
         ));
     }
 
+
     /**
+     * @param Subject $subject
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\NonUniqueResultException
      * @Route("/{id}", name="subject_show")
-     * @Method("GET")
      */
     public function showAction(Subject $subject)
     {
