@@ -38,11 +38,13 @@ class ArticleManager extends Manager
     public function getList()
     {
         $articles = $this->repository->findAll();
-        $this->throwApiException($articles, "Empty list of articles");
+//        $this->throwApiException($articles, "Empty list of articles");
 
-        $data = array('article' => array());
+        $data = array('articles' => array());
+//        $data = [];
         foreach ($articles as $article) {
             $data['articles'][] = $this->serializeArticle($article);
+//            $data [] = $this->serializeArticle($article);
         }
 
         return $data;
@@ -57,8 +59,8 @@ class ArticleManager extends Manager
             "title" => $article->getTitle(),
             "created" => $article->getcreated(),
             "updated" => $article->getupdated(),
-            "contentChanged" => $article->getContentChanged(),
             "slug" => $article->getSlug(),
+            "image"=>$article->getImage()
         );
     }
 }

@@ -301,4 +301,78 @@ class User extends BaseUser
     {
         return $this->username;
     }
+
+    /**
+     * Set firstname.
+     *
+     * @param string|null $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname = null)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Set lastname.
+     *
+     * @param string|null $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname = null)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname.
+     *
+     * @return string|null
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Add article.
+     *
+     * @param \News\NewsBundle\Entity\Article $article
+     *
+     * @return User
+     */
+    public function addArticle(\News\NewsBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article.
+     *
+     * @param \News\NewsBundle\Entity\Article $article
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeArticle(\News\NewsBundle\Entity\Article $article)
+    {
+        return $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
 }
