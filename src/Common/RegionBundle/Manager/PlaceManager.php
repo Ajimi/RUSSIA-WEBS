@@ -63,6 +63,17 @@ class PlaceManager extends Manager
     }
 
     /**
+     * @param $place
+     * @return array
+     * @throws ApiException
+     */
+    public function getPlace($place): array
+    {
+        $this->isEmpty($place);
+        return $this->serializer(array($place))['places'];
+    }
+
+    /**
      * @param array|Place[] $places
      * @return array
      * @internal param $
@@ -77,7 +88,6 @@ class PlaceManager extends Manager
                 $location = $this->locationManager->getLocation($place->getLocation());
 
                 $placeData["location"] = $location["location"];
-
             } catch (ApiException $exception) {
                 $placeData['location'] = [];
             }
@@ -97,26 +107,22 @@ class PlaceManager extends Manager
         return array(
             "id" => $place->getId(),
             "name" => $place->getName(),
-            "category" => $place->getCategory(),
+            "category" => array("id" => $place->getCategory()->getId(), "name" => $place->getCategory()->getName(),
+                "code" => $place->getCategory()->getCode(), "icon_type" => $place->getCategory()->getIconType()),
             "phone" => $place->getPhone(),
             "site_url" => $place->getSiteUrl(),
             "preview_picture" => $place->getPreviewPicture(),
             "information" => $place->getInformation(),
             "type" => $place->getType(),
+            "region" => array(
+                "id" => $place->getRegion()->getId(),
+                "name" => $place->getRegion()->getName(),
+                "slug" => $place->getRegion()->getSlug(),
+                'image' => ($place->getRegion()->getImage() != null) ? $place->getRegion()->getImage() : "",
+                'youtube_video' => ($place->getRegion()->getYoutubeVideo() != null) ? $place->getRegion()->getYoutubeVideo() : "",
+                "location" => $this->locationManager->getLocation($place->getRegion()->getLocation())["location"]
+            )
         );
-    }
-
-    /**
-     * @param $place
-     * @return array
-     * @throws ApiException
-     */
-    public function getPlace($place): array
-    {
-        $this->isEmpty($place);
-        $data = array('place' => array());
-        $data ['place'] = $this->serializer(array($place))['places'];
-        return $data;
     }
 
 

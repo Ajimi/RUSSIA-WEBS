@@ -148,5 +148,4 @@ class PlaceAdminController extends Controller
         ));
     }
 
-
 }

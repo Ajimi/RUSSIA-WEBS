@@ -96,6 +96,7 @@ class MatchBackController extends Controller
         $Form->handleRequest($request);
         if ($Form->isValid()) {
             $match->setDate(new \DateTime($request->get('calendar')));
+            $match->setTime($request->get('timepicker'));
             $em->persist($match);
             $em->flush();
             return $this->redirectToRoute('match_list');
