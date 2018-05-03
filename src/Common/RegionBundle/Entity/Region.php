@@ -45,7 +45,7 @@ class Region
     private $location;
 
     /**
-     * One Region has Many Hotels.
+     * One RNegion has Many Hotels.
      * @ORM\OneToMany(targetEntity="Reservation\HotelBundle\Entity\Hotel", mappedBy="region")
      */
     private $hotels;
