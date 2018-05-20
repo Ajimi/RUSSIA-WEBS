@@ -10,4 +10,13 @@ namespace Group\GroupBundle\Repository;
  */
 class RatingRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+    public function averageRatingDQL($id_groupe)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select AVG(r.ratingValue) from GroupBundle:Rating r WHERE r.groupId=:id_groupe")
+            ->setParameter('id_groupe', $id_groupe);
+        return $query->getSingleScalarResult();
+    }
 }

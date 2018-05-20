@@ -43,7 +43,7 @@ class Team
     /**
      * @var File
      *
-     *  @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
+     * @UploadableField(filename="teamLogo",path="assets/images/teamUploads")
      */
     private $file;
 

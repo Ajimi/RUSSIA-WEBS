@@ -55,19 +55,12 @@ class GroupAdminController extends Controller
         $pieChart = new PieChart();
         $em = $this->getDoctrine();
         $groups = $em->getRepository(Groupe::class)->findAll();
-        $sumRating = 0;
-        foreach ($groups as $groupe) {
-            $sumRating = $sumRating + $groupe->getRating();
-        }
+
         $data = array();
-        $stat = ['groupe', 'sumRating'];
         $nb = 0;
-        array_push($data, $stat);
         foreach ($groups as $groupe) {
             $stat = array();
-            array_push($stat, $groupe->getName(), (($groupe->getRating()) * 100) / $sumRating);
-            $nb = ($groupe->getRating() * 100) / $sumRating;
-            $stat = [$groupe->getName(), $nb];
+            $stat = [$groupe->getNameGroup(), $nb];
             array_push($data, $stat);
         }
         $pieChart->getData()->setArrayToDataTable(

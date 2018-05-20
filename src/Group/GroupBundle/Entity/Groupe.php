@@ -3,7 +3,9 @@
 namespace Group\GroupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Groupe
@@ -25,23 +27,26 @@ class Groupe
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="nameGroup", type="string", length=255)
      */
-    private $name;
+    private $nameGroup;
 
-
+//@ORM\OneToMany(targetEntity="Group\GroupBundle\Entity\Rating", mappedBy="groupId", cascade={"remove"}, orphanRemoval=true)
     /**
-     * @var integer
-     * @ORM\Column(name="rating", type="integer")
      *
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 5)
+     * @ORM\Column( type="integer")
      */
     private $rating;
 
     /**
-     * @return int
+     * Groupe constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * @return mixed
      */
     public function getRating()
     {
@@ -49,12 +54,16 @@ class Groupe
     }
 
     /**
-     * @param int $rating
+     * @param mixed $rating
      */
-    public function setRating(int $rating)
+    public function setRating($rating)
     {
         $this->rating = $rating;
     }
+
+    /**
+     * Groupe constructor.
+     */
 
 
     /**
@@ -70,8 +79,6 @@ class Groupe
      * @ORM\JoinColumn(name="id_team2",referencedColumnName="id")
      */
     private $team2;
-
-
     /**
      * @var
      * @ORM\OneToOne(targetEntity="Team\TeamBundle\Entity\Team")
@@ -101,22 +108,20 @@ class Groupe
     {
         $this->id = $id;
     }
-
-
     /**
      * @return string
      */
-    public function getName()
+    public function getNameGroup()
     {
-        return $this->name;
+        return $this->nameGroup;
     }
 
     /**
-     * @param string $name
+     * @param string $nameGroup
      */
-    public function setName(string $name)
+    public function setNameGroup(string $nameGroup)
     {
-        $this->name = $name;
+        $this->nameGroup = $nameGroup;
     }
 
     /**

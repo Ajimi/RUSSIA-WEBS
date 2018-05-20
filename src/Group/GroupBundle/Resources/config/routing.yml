@@ -1,3 +1,11 @@
 _deleteG:
     path:     /deleteG/{id}
     defaults: { _controller: GroupBundle:groupe:deleteG }
+
+all:
+    path:     /groupe/all
+    defaults: { _controller: GroupBundle:GroupController:all}
+
+add:
+    path:     /groupe/new/{id_groupe}/{rate}/{id_user}
+    defaults: { _controller: GroupBundle:GroupController:addRating}

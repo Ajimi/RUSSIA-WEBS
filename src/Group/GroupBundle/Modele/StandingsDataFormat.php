@@ -24,10 +24,10 @@ class StandingsDataFormat
         $s3 = new StandingsFormat();
         $s4 = new StandingsFormat();
 
-        $s1->setGroup($g->getName());
-        $s2->setGroup($g->getName());
-        $s3->setGroup($g->getName());
-        $s4->setGroup($g->getName());
+        $s1->setGroup($g->getNameGroup());
+        $s2->setGroup($g->getNameGroup());
+        $s3->setGroup($g->getNameGroup());
+        $s4->setGroup($g->getNameGroup());
 
         $s1->dataFormat($g->getTeam1());
         array_push($standings, $s1);
@@ -59,10 +59,10 @@ class StandingsDataFormat
             $s3 = new StandingsFormat();
             $s4 = new StandingsFormat();
 
-            $s1->setGroup($g->getName());
-            $s2->setGroup($g->getName());
-            $s3->setGroup($g->getName());
-            $s4->setGroup($g->getName());
+            $s1->setGroup($g->getNameGroup());
+            $s2->setGroup($g->getNameGroup());
+            $s3->setGroup($g->getNameGroup());
+            $s4->setGroup($g->getNameGroup());
 
             $s1->dataFormat($g->getTeam1());
             dump($g->getTeam1());

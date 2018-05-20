@@ -48,6 +48,29 @@ class User extends BaseUser
 
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="Group\GroupBundle\Entity\Rating", mappedBy="userId", cascade={"remove"}, orphanRemoval=true)
+     */
+    private $rating;
+
+    /**
+     * @return mixed
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param mixed $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     protected $birthday;

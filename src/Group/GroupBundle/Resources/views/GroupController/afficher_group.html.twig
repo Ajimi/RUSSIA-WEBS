@@ -70,6 +70,7 @@
                 </div>
             </div>
             <div class="x_content">
+
                 <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action"
                        with="18%">
                     <thead>
@@ -86,7 +87,7 @@
                     <tbody id="costum-table">
                     {% for groups in G %}
                         <tr>
-                            <td>{{ groups.name }}</td>
+                            <td>{{ groups.nameGroup }}</td>
                             <td>{{ groups.team1.teamName }}</td>
                             <td>{{ groups.team2.teamName }}</td>
                             <td>{{ groups.team3.teamName }}</td>
@@ -97,9 +98,6 @@
                                 <a href="{{ path('admin_group_delete',{'id':groups.id}) }}"
                                    class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
                                     Delete</a>
-                            </td>
-                            <td>
-                                {{ groups.rating|rating(5, "fa- 0x") }}
                             </td>
                         </tr>
                     {% endfor %}
