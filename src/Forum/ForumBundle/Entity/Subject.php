@@ -43,7 +43,7 @@ class Subject
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="content", type="string", length=20000)
      */
     private $content;
 
@@ -51,18 +51,18 @@ class Subject
     /**
      * @var string
      *
-     * @ORM\Column(name="image" , type="string", length=255)
+     * @ORM\Column(name="image" , type="string", length=255, nullable=true)
      */
     private $filename;
     /**
      * @var File
-     * @UploadableField(filename="filename",path="upload")
+     * @UploadableField(filename="filename",path="\assets\images\Sujet")
      *
      */
     private $file;
     /**
      * @var string
-     * @ORM\Column(name="état", type="string", length=255)
+     * @ORM\Column(name="etat", type="string", length=255)
      */
     private $etat;
 

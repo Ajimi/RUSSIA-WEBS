@@ -2,6 +2,7 @@
 
 namespace Forum\ForumBundle\Controller;
 
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Forum\ForumBundle\Entity\Comment;
 use Forum\ForumBundle\Entity\Subject;
@@ -19,6 +20,85 @@ use UserBundle\Entity\User;
  */
 class CommentsController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @Route("/api/new")
+     */
+    public function newCAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $comment = new Comment();
+        $comment->setContent($request->get('content'));
+        $comment->setSubject($em->getRepository('ForumBundle:Subject')
+            ->find($request->get('id_subject')));
+        $em->persist($comment);
+        $em->flush();
+        $data = $this->serialize($comment);
+        return new JsonResponse($data);
+    }
+
+
+    /**
+     * @return JsonResponse
+     * @Route("/api/all")
+     */
+    public function allCAction()
+    {
+        $comments = $this->getDoctrine()->getManager()->getRepository('ForumBundle:Comment')->findAll();
+        $data = $this->serializer($comments);
+        return new JsonResponse($data);
+    }
+
+
+    /**
+     * @return JsonResponse
+     * @Route("/find/{idcs}")
+     */
+    public function findCAction($idcs)
+    {
+        $em = $this->getDoctrine()->getManager()
+            ->getRepository('ForumBundle:Comment')
+            ->getCommentsBySubject($idcs);
+        $data = $this->serializer($em);
+        return new JsonResponse($data);
+    }
+
+    public function CountAction()
+    {
+
+    }
+
+    /**
+     * @param $comments
+     * @return array
+     */
+    public function serializer($comments)
+    {
+        $data = array();
+        foreach ($comments as $comment) {
+            $commentData = $this->serialize($comment);
+            $data [] = $commentData;
+        }
+        return $data;
+    }
+
+    /**
+     * @param Comment $comment
+     * @return array
+     */
+    public function serialize(Comment $comment)
+    {
+        return array(
+            "id" => $comment->getId(),
+            "content" => $comment->getContent(),
+            "id_subject" => $comment->getSubject()->getId(),
+            "created" => $comment->getCreated()->getTimestamp(),
+            "updated" => $comment->getUpdated()->getTimestamp(),
+        );
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * @param Request $request
@@ -62,6 +142,7 @@ class CommentsController extends Controller
     }
 
 
+
     /**
      * @Route("remove/{subject}/{comment}" , name="remove_comment")
      */
@@ -101,6 +182,7 @@ class CommentsController extends Controller
         $em->flush();
     }
 
+
     private function checkExceptions($user, $subject, $message = 'Subject not found')
     {
 
@@ -120,5 +202,6 @@ class CommentsController extends Controller
     {
         return new JsonResponse(array('result' => $result, $messageName => $message));
     }
+
 
 }

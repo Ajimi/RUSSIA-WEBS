@@ -62,7 +62,7 @@ class PlayerApiController extends Controller
             "playerNumber" => $player->getPlayerNumber(),
             "totalGames" => $player->getTotalGames(),
             "playerPosition" => $player->getPlayerPosition(),
-            "birthday" => $player->getBirthday(),
+            "birthday" => $player->getBirthday()->format("d-m-Y"),
             "weight" => $player->getWeight(),
             "height" => $player->getHeight(),
             "bio" => $player->getBio(),
@@ -99,7 +99,7 @@ class PlayerApiController extends Controller
     }
 
     /**
-     * @Route("/api/players/", name="players_api")
+     * @Route("/api/players/", name="players_apia")
      * @return JsonResponse
      */
     public function findAllPlayersApiAction()

@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use UserBundle\Controller\DefaultController;
+use UserBundle\Controller\UserController;
+use UserBundle\Entity\User;
 
 
 /**
@@ -27,6 +30,21 @@ class ArticleApiController extends Controller
         $articlesResponse = [];
         try {
             $articlesResponse = $manager->getList();
+        } catch (ApiException $exception) {
+            return new JsonResponse($exception->getErrorDetails());
+        }
+
+        return new JsonResponse($articlesResponse);
+    }
+    /**
+     * @Route("/user" , name="user_show")
+     * @Method({"GET"})
+     */
+    public function listUs(UserController $manager)
+    {
+        $articlesResponse = [];
+        try {
+            $articlesResponse = $manager->getList() ;
         } catch (ApiException $exception) {
             return new JsonResponse($exception->getErrorDetails());
         }

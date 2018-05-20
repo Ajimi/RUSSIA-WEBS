@@ -2,7 +2,7 @@
 
 namespace Reservation\CartBundle\Cart;
 
-use Match\MatchBundle\Entity\Match as Product;
+use Match\MatchBundle\Entity\Match as tiProduct;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 

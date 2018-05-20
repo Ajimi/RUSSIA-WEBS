@@ -46,6 +46,14 @@ class RegionManager extends Manager
      * @param LocationManager $location
      * @param PlaceManager $placeManager
      */
+
+    /**
+     * RegionManager constructor.
+     * @param EntityManager $entityManager
+     * @param HotelManager $hotelManager
+     * @param LocationManager $location
+     * @param PlaceManager $placeManager
+     */
     public function __construct(EntityManager $entityManager, HotelManager $hotelManager, LocationManager $location, PlaceManager $placeManager)
     {
         $this->entityManager = $entityManager;
@@ -83,9 +91,8 @@ class RegionManager extends Manager
     public function getRegion(Region $region = null): array
     {
         $this->isEmpty($region);
-        $data = array('region' => array());
-        $data ['region'] = $this->serializer(array($region))['regions'];
-        return $data;
+        return $this->serializer(array($region))['regions'];
+
     }
 
     /**
@@ -98,7 +105,9 @@ class RegionManager extends Manager
         return array(
             "id" => $region->getId(),
             "name" => $region->getName(),
-            "slug" => $region->getSlug()
+            "slug" => $region->getSlug(),
+            'image' => ($region->getImage() != null) ? $region->getImage() : "",
+            'youtube_video' => ($region->getYoutubeVideo() != null) ? $region->getYoutubeVideo() : ""
         );
     }
 
@@ -116,7 +125,9 @@ class RegionManager extends Manager
             $places = $region->getPlaces();
             $regionData['hotels'] = $this->hotelManager->serializer($hotels)['hotels'];
             $regionData['places'] = $this->placeManager->serializer($places)['places'];
+            $regionData['location'] = $location = $this->location->getLocation($region->getLocation())["location"];
             $data['regions'][] = $regionData;
+
         }
         return $data;
     }

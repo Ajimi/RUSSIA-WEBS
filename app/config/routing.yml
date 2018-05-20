@@ -1,6 +1,8 @@
-esprit_api:
-    resource: "@EspritApiBundle/Resources/config/routing.yml"
-    prefix:   /api
+article:
+    resource: "@ArticleBundle/Resources/config/routing.yml"
+    prefix:   /Art
+
+
 
 region_place:
     resource: "@RegionBundle/Controller/PlaceAdminController.php"
@@ -90,8 +92,8 @@ hotel:
 
 group:
     resource: "@GroupBundle/Controller/"
-    type: annotation
-    prefix:
+    type:     annotation
+    prefix:   /
 
 player:
     resource: "@PlayerBundle/Controller/"
@@ -136,4 +138,5 @@ sg_datatables_bundle:
     resource: "@SgDatatablesBundle/Controller/"
     type:     annotation
     prefix:   /sg
+
 

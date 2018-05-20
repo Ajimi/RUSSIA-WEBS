@@ -62,9 +62,12 @@ class LocationManager extends Manager
      */
     public function getLocation(Location $location = null)
     {
-        $this->isEmpty($location, "Location Object not found");
+//        echo $location;
+//        $this->isEmpty($location, "Location Object not found");
         $data = array('location' => array());
-        $data ['location'] = $this->serialize($location);
+        if ($location != null) {
+            $data ['location'] = $this->serialize($location);
+        }
         return $data;
     }
 

@@ -39,7 +39,7 @@ class TeamApiController extends Controller
     }
 
     /**
-     * @Route("/api/teams/{id}", name="team_api")
+     * @Route("/api/teams/{id}", name="team_apia")
      * @param Team $team
      * @return JsonResponse
      */
@@ -101,6 +101,7 @@ class TeamApiController extends Controller
      */
     public function serialize(Team $team)
     {
+        $formatedPlayer = array();
         foreach ($team->getPlayers() as $player) {
             $formatedPlayer[] = array(
                 "id" => $player->getId(),
@@ -110,7 +111,7 @@ class TeamApiController extends Controller
                 "playerNumber" => $player->getPlayerNumber(),
                 "totalGames" => $player->getTotalGames(),
                 "playerPosition" => $player->getPlayerPosition(),
-                "birthday" => strtotime($player->getBirthday()->format('Y-m-d H:i:s')),
+                "birthday" => $player->getBirthday()->format("d-m-Y"),
                 "weight" => $player->getWeight(),
                 "height" => $player->getHeight(),
                 "bio" => $player->getBio(),

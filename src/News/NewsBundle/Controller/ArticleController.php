@@ -6,11 +6,17 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use News\NewsBundle\Entity\Article;
 use News\NewsBundle\Entity\LikeArticle;
 use News\NewsBundle\Form\ArticleType;
+use News\NewsBundle\NewsBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use function var_dump;
+
 
 /**
  * Article controller.
@@ -147,6 +153,9 @@ class ArticleController extends Controller
             'votes' => $votes
         ));
     }
+
+
+
 
 
 }
