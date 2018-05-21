@@ -22,9 +22,9 @@
                     {{ form_start(form, {'method': 'post', 'attr': {'class': 'form-horizontal form-label-left','display': 'inline' }}) }}
 
                     <div class="form-group">
-                        {{ form_label(form.name, 'Group Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
+                        {{ form_label(form.nameGroup, 'Group Name*', {'label_attr':{'class': 'control-label col-md-3 col-sm-3 col-xs-12','display': 'inline'}}) }}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {{ form_widget(form.name, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
+                            {{ form_widget(form.nameGroup, { 'attr': {'class': 'form-control col-md-7 col-xs-12', 'data-constraints':'@teamName1 @Required'} }) }}
                         </div>
                     </div>
 

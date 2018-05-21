@@ -18,7 +18,7 @@ class GroupeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
+        $builder->add('nameGroup')
             ->add('team1', EntityType::class, array(
                 'class' => 'TeamBundle:Team',
                 'choice_label' => 'teamName', 'multiple' => false))

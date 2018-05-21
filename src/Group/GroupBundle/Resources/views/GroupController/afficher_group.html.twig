@@ -92,6 +92,7 @@
                             <td>{{ groups.team2.teamName }}</td>
                             <td>{{ groups.team3.teamName }}</td>
                             <td>{{ groups.team4.teamName }}</td>
+
                             <td><a href="{{ path('admin_group_edit',{'id':groups.id}) }}"
                                    class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
                                     Edit</a>
@@ -99,6 +100,11 @@
                                    class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
                                     Delete</a>
                             </td>
+                            <td>
+                                {{ groups.rating|rating(5, "fa- 0x") }}
+
+                            </td>
+
                         </tr>
                     {% endfor %}
                     </tbody>
