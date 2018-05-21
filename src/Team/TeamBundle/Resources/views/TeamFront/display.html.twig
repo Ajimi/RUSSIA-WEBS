@@ -73,7 +73,7 @@
                                         {% set i=1 %}
                                         {% for s in standing %}
                                             {% set logo = 'assets/images/teamUploads/' ~ s.logo %}
-                                            {% embed  'FrontBundle:standing-component:_team-rank.html.twig' with { 'teamLogo' : logo~'','rank': i} %}
+                                            {% embed  'FrontBundle:standing-component:_team-rank.html.twig' with { 'teamLogo' : logo~'','rank': i,'teamId': s.idTeam} %}
                                                 {% block teamName %}{{ s.teamName }}{% endblock %}
                                                 {% block  teamShortCut %}{{ s.teamShortcut }}{% endblock %}
                                                 {% block teamWins %}{{ s.win }}{% endblock %}
