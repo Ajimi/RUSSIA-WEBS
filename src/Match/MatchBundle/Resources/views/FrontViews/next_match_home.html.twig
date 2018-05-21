@@ -8,13 +8,13 @@
                 </p>
                 <h3 class="game-info-title">Russia World Cup 2018</h3>
                 <div class="game-info-main">
-                    <div class="game-info-team game-info-team-first">
+                    <a class="game-info-team game-info-team-first" href="{{ path('team_display',{'id':match.team2.id} )}}">
                         <figure><img src="{{ asset(logoT1) }}" alt="" width="100"
                                      height="100"/>
                         </figure>
                         <div class="game-result-team-name">{{ match.team1.teamName}}</div>
                         <div class="game-result-team-country">{{ match.team1.teamShortcut }}</div>
-                    </div>
+                    </a>
                     <div class="game-info-middle game-info-middle-vertical">
                         <time class="time-big" datetime="2017-04-17"><span
                                     class="heading-3">{{match.date | date('D')|slice(0,3)}} {{ match.date | date('d')}}</span>
@@ -27,13 +27,13 @@
                                href="{{ path('cart_add_item', {'match' : match.id }) }}">Buy tickets</a>
                         </div>
                     </div>
-                    <div class="game-info-team game-info-team-second">
+                    <a class="game-info-team game-info-team-second" href="{{ path('team_display',{'id':match.team2.id} )}}">
                         <figure><img src="{{ asset(logoT2) }}" alt="" width="113"
                                      height="106"/>
                         </figure>
                         <div class="game-result-team-name">{{ match.team2.teamName }}</div>
                         <div class="game-result-team-country">{{ match.team2.teamShortcut }}</div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="game-info-countdown">

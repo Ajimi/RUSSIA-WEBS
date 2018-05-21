@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class JsonController extends Controller
 {
     /**
-     * @Route("/schedule", name="schedule_api")
+     * @Route("/schedule", name="schedule_api_ay_7aja")
      */
     public function jsonScheduleAction()
     {

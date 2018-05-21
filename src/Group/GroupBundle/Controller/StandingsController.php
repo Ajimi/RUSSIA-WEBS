@@ -21,9 +21,6 @@ class StandingsController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/standings" ,name="standings")
      */
-
-
-
      public function displayAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -48,7 +45,6 @@ class StandingsController extends Controller
     /**
      *@Route("/fullstandings" ,name="full_standings")
      */
-
     public function standingsFullDisplayAction()
     {
         $em = $this->getDoctrine()->getManager();
