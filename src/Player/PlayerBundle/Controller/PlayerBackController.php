@@ -181,6 +181,18 @@ class PlayerBackController extends Controller
     }
 
     /**
+     * @Route("/deleteView{id}",name="viewDelete")
+     */
+    public function deleteViewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $view = $em->getRepository("PlayerBundle:View")->find($id);
+        $em->remove($view);
+        $em->flush();
+        return $this->redirectToRoute('playerList');
+    }
+
+    /**
      * @Route("/deleteClub/{id}",name="clubDelete")
      */
     public function deleteClubAction($id)
@@ -216,6 +228,20 @@ class PlayerBackController extends Controller
 
         return $this->render('PlayerBundle:PlayerBack:list_clubs.html.twig', array(
             'clubs' => $clubs, 'id' => $id
+            // ...
+        ));
+    }
+
+    /**
+     * @Route("/listViews/{id}", name="viewList")
+     */
+    public function listViewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $views = $em->getRepository("PlayerBundle:View")->findbyPlayer($id);
+
+        return $this->render('PlayerBundle:PlayerBack:list_views.html.twig', array(
+            'views' => $views, 'id' => $id
             // ...
         ));
     }
