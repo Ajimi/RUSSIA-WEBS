@@ -3,7 +3,7 @@
 {% block header_team %}active{% endblock %}
 {% block body %}
     <!-- Section Breadcrumbs-->
-    {% embed 'FrontBundle:common:_breadcrumbs.html.twig' with {'breadcrumbs_title' : 'Team Overview'} %}
+    {% embed '@Guide/place/_breadcrum-with-image.html.twig' with {'breadcrumbs_title' : 'Team Overview' , 'image': asset('assets/images/team-display-bc.jpg')} %}
         {% block breadcrumbs_path %}
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="#">Team</a></li>
