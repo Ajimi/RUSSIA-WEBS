@@ -29,7 +29,7 @@ class MatchFrontController extends Controller
         });
 
 
-        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name' => 'A'));
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('nameGroup' => 'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($g);
 
         $paginator = $this->get('knp_paginator');

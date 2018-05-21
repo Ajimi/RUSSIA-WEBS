@@ -4,13 +4,13 @@
 
 <article class="game-result game-result-classic">
     <div class="game-result-main">
-        <div class="game-result-team game-result-team-first">
+        <a class="game-result-team game-result-team-first" href="{{ path('team_display',{'id':s.match.team1.id} )}}">
             <figure class="game-result-team-figure game-result-team-figure-big"><img
                         src="{{ asset(logoT1) }}" alt="" width="55" height="55"/>
             </figure>
             <div class="game-result-team-name">{{ s.match.team1.teamName | slice(0,10)}}</div>
-            <div class="game-result-team-country">USA</div>
-        </div>
+            <div class="game-result-team-country">{{ s.match.team1.teamShortcut }}</div>
+        </a>
         <div class="game-result-middle">
             <div class="game-result-score-wrap">
                 <div class="game-result-score game-result-team-win">{{ s.scoreTeam1 }}
@@ -40,13 +40,13 @@
             </div>
             <div class="game-results-status"></div>
         </div>
-        <div class="game-result-team game-result-team-second">
+        <a class="game-result-team game-result-team-second" href="{{ path('team_display',{'id':s.match.team2.id} )}}">
             <figure class="game-result-team-figure game-result-team-figure-big"><img
                         src="{{ asset(logoT2) }}" alt="" width="41" height="59"/>
             </figure>
             <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
-            <div class="game-result-team-country">Spain</div>
-        </div>
+            <div class="game-result-team-country">{{ s.match.team2.teamShortcut }}</div>
+        </a>
     </div>
     <div class="game-result-footer">
         <ul class="game-result-details">
