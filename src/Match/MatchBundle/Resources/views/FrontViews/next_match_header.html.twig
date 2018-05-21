@@ -7,7 +7,7 @@
             <time class="event-teaser-time" datetime="2017">{{ match.date |date ('D, M d, Y') }}{#Saturday, April 14, 2017#}</time>
         </div>
         <div class="event-teaser-teams">
-            <div class="event-teaser-team">
+            <a class="event-teaser-team" href="{{ path('team_display',{'id':match.team1.id} )}}">
                 <div class="unit unit-spacing-xs unit-horizontal align-items-center">
                     <div class="unit-left"><img
                                 class="event-teaser-team-image"
@@ -19,10 +19,10 @@
                         <p class="text-style-1">{{ match.team1.teamShortcut }}</p>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="event-teaser-team-divider"><span class="event-teaser-team-divider-text">VS</span>
             </div>
-            <div class="event-teaser-team">
+            <a class="event-teaser-team" href="{{ path('team_display',{'id':match.team2.id} )}}">
                 <div class="unit unit-spacing-xs unit-horizontal align-items-center">
                     <div class="unit-left"><img
                                 class="event-teaser-team-image"
@@ -34,7 +34,7 @@
                         <p class="text-style-1">{{ match.team2.teamShortcut }}</p>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="event-teaser-countdown event-teaser-highlighted">
