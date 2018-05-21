@@ -24,7 +24,6 @@ class ArticleComponentController extends Controller
 
         /** @var Article[] $popularArticles */
         $popularArticles = $repo->getPopularArticles(4);
-
         return $this->render('@News/component/footer-popular.html.twig', array('articles' => $popularArticles));
     }
 

@@ -8,13 +8,13 @@
         </p>
         <h3 class="game-info-title">{{ score.match.level }}</h3>
         <div class="game-info-main">
-            <div class="game-info-team game-info-team-first">
+            <a class="game-info-team game-info-team-first"href="{{ path('team_display',{'id':score.match.team1.id} )}}">
                 <figure><img src="{{ asset(logoT1) }}" alt="" width="100"
                              height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ score.match.team1.teamName | slice(0,10) }}</div>
-                <div class="game-result-team-country">USA</div>
-            </div>
+                <div class="game-result-team-country">{{ score.match.team1.teamShortcut }}</div>
+            </a>
             <div class="game-info-middle">
                 <div class="game-result-score-wrap">
                     {% if score.scoreTeam1 > score.scoreTeam2 %}
@@ -37,13 +37,13 @@
 
                 </div>
             </div>
-            <div class="game-info-team game-info-team-second">
+            <a class="game-info-team game-info-team-second" href="{{ path('team_display',{'id':score.match.team2.id} )}}">
                 <figure><img src="{{ asset(logoT2) }}" alt="" width="75"
                              height="106"/>
                 </figure>
                 <div class="game-result-team-name">{{ score.match.team2.teamName | slice(0,10) }}</div>
-                <div class="game-result-team-country">Spain</div>
-            </div>
+                <div class="game-result-team-country">{{ score.match.team2.teamShortcut }}</div>
+            </a>
         </div>
 
         {% include '@Match/Model/table_game_info_model.html.twig' %}
