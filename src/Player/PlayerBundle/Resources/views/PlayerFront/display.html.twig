@@ -29,10 +29,10 @@
                         {% block playerTg%}{{ player.totalGames }}{% endblock %}
                         {% block skills%}
                             {% for skill in player.skills %}
-                            {% embed  'FrontBundle:player-component:_player-skill.html.twig' %}
-                                {% block skillLabel%}{{ skill.label }}{% endblock %}
-                                {% block skillValue%}{{ skill.value }}{% endblock %}
-                            {% endembed %}
+                                {% embed  'FrontBundle:player-component:_player-skill.html.twig' %}
+                                    {% block skillLabel%}{{ skill.label }}{% endblock %}
+                                    {% block skillValue%}{{ skill.value }}{% endblock %}
+                                {% endembed %}
                             {% endfor %}
                         {% endblock %}
                     {% endembed %}
@@ -69,6 +69,65 @@
                                 {% block yc %}{{ player.yellowCard }}{% endblock %}
                                 {% block rc %}{{ player.redCard }}{% endblock %}
                             {% endembed %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-30">
+                <div class="col-lg-12">
+                    <div class="block-player-info">
+                        <div class="blog-post-comments">
+                            <article class="heading-component">
+                                <div class="heading-component-inner">
+                                    <h5 class="heading-component-title">
+                                        {% if totalViews ==  0 %}
+                                            No Views YET!
+                                        {% elseif totalViews == 1 %}
+                                            One View
+                                        {% else %}
+                                            {{ totalViews }} views
+                                        {% endif %}
+                                    </h5>
+                                </div>
+                            </article>
+                            {% for view in player.views %}
+                                <div class="post-comment">
+                                    <div class="post-comment-main">
+                                        <div class="post-comment-header">
+                                            <h5 class="author-name">{{ view.user }}</h5>
+                                        </div>
+                                        <div class="post-comment-text">
+                                            <p>{{ view.post }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% if app.user %}
+                                <div class="comment-box">
+                                    <div class="comment-box-aside">
+                                        <img class="img-circle" src="{{ asset('assets/images/user/user.png') }}"
+                                             alt=""
+                                             width="69"
+                                             height="69"/>
+                                    </div>
+                                    <div class="comment-box-main">
+                                        <h5 class="comment-box-name">{{ app.user.username }}</h5>
+                                        <!-- RD Mailform-->
+                                        <form class="comment-box-form" data-form-output="form-output-global"
+                                              method="get"
+                                              action="{{ path('view_add' , {'id': player.id }) }}">
+                                            <div class="form-wrap">
+                                                <label class="form-label" for="comment-message">Your comment</label>
+                                                <textarea class="form-input" id="comment-message" name="message"
+                                                          data-constraints="@Required"></textarea>
+                                            </div>
+                                            <div class="form-button">
+                                                <button class="button button-primary" type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

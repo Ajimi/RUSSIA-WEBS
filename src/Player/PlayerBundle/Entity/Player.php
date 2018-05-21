@@ -50,8 +50,8 @@ class Player
     /**
      * @var File
      *
-    * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
-    */
+     * @UploadableField(filename="playerImage",path="assets/images/playerUploads")
+     */
     private $file;
 
     /**
@@ -62,10 +62,10 @@ class Player
     private $playerNumber;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="playerPosition", type="string", length=255)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="playerPosition", type="string", length=255)
+     */
     private $playerPosition;
 
     /**
@@ -207,13 +207,37 @@ class Player
     private $clubs;
 
     /**
+     * @ORM\OneToMany(targetEntity="Player\PlayerBundle\Entity\View", mappedBy="player")
+     */
+    private $views;
+
+    /**
      * Player constructor.
      */
     public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->clubs = new ArrayCollection();
+        $this->views = new ArrayCollection();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * @param mixed $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+    }
+
+
 
     /**
      * @return int
