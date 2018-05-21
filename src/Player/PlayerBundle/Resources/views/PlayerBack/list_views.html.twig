@@ -16,14 +16,13 @@
           rel="stylesheet">
 {% endblock stylesheets %}
 
-{% block title %}Players List{% endblock %}
-
+{% block title %}Skills List{% endblock %}
 
 
     {% block top_content_header %}
         <div class="page-title">
             <div class="title_left">
-                <h3>Player
+                <h3>Skill
                     <small>List</small>
                 </h3>
             </div>
@@ -32,10 +31,11 @@
     {% endblock %}
     {% block page_content %}
         <div class="col-md-12 col-sm-12 col-xs-12">
+
             <div class="x_panel">
                 <div class="x_title">
                     <div class=" col-sm-2 col-xs-12">
-                        <a class="btn btn-success" href="{{ path('addPlayer') }}">New Player</a>
+                        <a class="btn btn-success" href="{{ path('addSkill',{'id': id}) }}">New Skill</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -43,62 +43,18 @@
                     <table id="datatable-fixed-header" class="table table-striped jambo_table bulk_action">
                         <thead>
                         <tr>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>Position</th>
-                            <th>Number</th>
-                            <th>Weight</th>
-                            <th>Height</th>
-                            <th>Total Games</th>
-                            <th>National Team</th>
-                            <th>Club</th>
-                            <th>Skills</th>
-                            <th>Clubs</th>
+                            <th>user</th>
+                            <th>post</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody id="costum-table">
-                        {% for player in players %}
+                        {% for view in views %}
                             <tr>
-                                <td>{{ player.playerName }}</td>
-                                <td>{{ player.playerLastName }}</td>
-                                <td>{{ player.playerPosition }}</td>
-                                <td>{{ player.playerNumber }}</td>
-                                <td>{{ player.weight }}</td>
-                                <td>{{ player.height }}</td>
-                                <td>{{ player.totalGames }}</td>
-                                <td>{{ player.nationalTeam.teamName }}</td>
-                                <td>{{ player.team }}</td>
+                                <td>{{ view.user }}</td>
+                                <td>{{ view.post }}</td>
                                 <td>
-                                    <a href="{{ path('skillList',{'id':player.id}) }}"
-                                       class="btn btn-default btn-xs">
-                                        <i class="fa fa-list"></i>
-                                    </a>
-                                    <a href="{{ path('addSkill',{'id':player.id}) }}"
-                                       class="btn btn-default btn-xs">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('clubList',{'id':player.id}) }}"
-                                       class="btn btn-default btn-xs">
-                                        <i class="fa fa-list"></i>
-                                    </a>
-                                    <a href="{{ path('addClub',{'id':player.id}) }}"
-                                       class="btn btn-default btn-xs">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('viewList',{'id':player.id}) }}"
-                                       class="btn btn-primary btn-xs">
-                                        {{ player.views|length }}  Views
-                                    </a>
-                                    <a href="{{ path('playerEdit',{'id':player.id}) }}"
-                                       class="btn btn-info btn-xs">
-                                        <i class="fa fa-pencil"></i>Edit
-                                    </a>
-                                    <a href="{{ path('playerDelete',{'id':player.id}) }}"
+                                    <a href="{{ path('viewDelete',{'id':view.id}) }}"
                                        class="btn btn-danger btn-xs">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
@@ -111,6 +67,8 @@
             </div>
         </div>
     {% endblock %}
+
+
 
 {% block javascripts %}
 

@@ -10,4 +10,13 @@ namespace Player\PlayerBundle\Repository;
  */
 class ViewRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findbyPlayer($id)
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->where('v.player= :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $qb->execute();
+    }
 }
