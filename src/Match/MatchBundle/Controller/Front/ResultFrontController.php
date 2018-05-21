@@ -28,7 +28,7 @@ class ResultFrontController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name' => 'A'));
+        $g = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('nameGroup' => 'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($g);
         $bestScorer = $em->getRepository('PlayerBundle:Player')->bestScorer();
 

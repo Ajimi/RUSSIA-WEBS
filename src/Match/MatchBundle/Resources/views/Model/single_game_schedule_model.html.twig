@@ -8,12 +8,12 @@
         </p>
         <h3 class="game-info-title">{{ m.level }}</h3>
         <div class="game-info-main">
-            <div class="game-info-team game-info-team-first">
+            <a class="game-info-team game-info-team-first" href="{{ path('team_display',{'id':m.team1.id} )}}">>
                 <figure><img src="{{ asset(logoT1) }}" alt="" width="100" height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ m.team1.teamName |slice(0,15) }}</div>
                 <div class="game-result-team-country">USA</div>
-            </div>
+            </a>
             <div class="game-info-middle game-info-middle-vertical">
                 <time class="time-big" datetime="2017-04-17"><span class="heading-3">{{ m.date |date('D')|slice(0,3)}} {{ m.date |date('d')}} </span>
                     {{ m.date |date('M')}} {{ m.date |date('Y')}}
@@ -35,12 +35,12 @@
                     <a class="button button-sm button-primary" href="{{ path('cart_add_item',{'match':m.id}) }}">Buy tickets</a>
                 </div>
             </div>
-            <div class="game-info-team game-info-team-second">
+            <a class="game-info-team game-info-team-second"href="{{ path('team_display',{'id':m.team2.id} )}}">>
                 <figure><img src="{{ asset(logoT2) }}" alt="" width="100" height="100"/>
                 </figure>
                 <div class="game-result-team-name">{{ m.team2.teamName |slice(0,15)}}</div>
                 <div class="game-result-team-country">Spain</div>
-            </div>
+            </a>
         </div>
         <div>
 
