@@ -56,7 +56,8 @@ class AppKernel extends Kernel
             new Common\BookingBundle\BookingBundle(),
             new Reservation\CartBundle\CartBundle(),
             new News\NewsBundle\NewsBundle(),
-            new EspritApiBundle\EspritApiBundle(),
+
+            new ArticleBundle\ArticleBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
