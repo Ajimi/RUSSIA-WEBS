@@ -29,14 +29,14 @@
                     <tr>
                         <td><span>{{ i }}</span></td>
                         <td class="team-inline">
-                            <div class="team-figure"><img src="{{ asset(logo) }}"
+                            <a class="team-figure" href="{{ path('team_display',{'id':s.idTeam} )}}"><img src="{{ asset(logo) }}"
                                                           alt="" width="39" height="37"/>
-                            </div>
-                            <div class="team-title">
+                            </a>
+                            <a class="team-title" href="{{ path('team_display',{'id':s.idTeam} )}}">
                                 <div class="team-name">{{ s.teamName }}</div>
                                 <div class="team-country">{{ s.teamShortcut }}</div>
 
-                            </div>
+                            </a>
                         </td>
                         <td>{{ s.win }}</td>
                         <td>{{ s.lost }}</td>
