@@ -209,6 +209,10 @@ class StatisticFormat
         {
             $this->setShots($this->getShots()+1);
         }
+        if ($event->getTypeEvent()=="Goal")
+        {
+            $this->setShots($this->getShots()+1);
+        }
         else if ($event->getTypeEvent()=="Save")
         {
             $this->setSaves($this->getSaves()+1);

@@ -61,7 +61,7 @@ class GameOverviewFrontController extends Controller
         $bestScorerT1 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam1());
         $bestScorerT2 = $em->getRepository('PlayerBundle:Player')->findBestScorer($match->getTeam2());
 
-        $group = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('name' => 'A'));
+        $group = $em->getRepository('GroupBundle:Groupe')->findOneBy(array('nameGroup' => 'A'));
         $standings = StandingsDataFormat::oneGroupStandingFormat($group);
 
 
