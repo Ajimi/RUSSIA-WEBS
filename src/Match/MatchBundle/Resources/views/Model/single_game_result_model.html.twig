@@ -8,13 +8,13 @@
             </p>
             <h3 class="game-info-title">{{ s.match.level }}</h3>
             <div class="game-info-main">
-                <div class="game-info-team game-info-team-first">
+                <a class="game-info-team game-info-team-first" href="{{ path('team_display',{'id':s.match.team1.id} )}}">
                     <figure><img src="{{ asset(logoT1) }}" alt="" width="100"
                                  height="100"/>
                     </figure>
                     <div class="game-result-team-name">{{ s.match.team1.teamName | slice(0,10) }}</div>
-                    <div class="game-result-team-country">USA</div>
-                </div>
+                    <div class="game-result-team-country">{{ s.match.team1.teamShortcut }}</div>
+                </a>
                 <div class="game-info-middle">
                     <div class="game-result-score-wrap">
                         {% if s.scoreTeam1 > s.scoreTeam2 %}
@@ -40,13 +40,13 @@
                         <a class="button button-sm button-primary" href="{{ path('game_overview',{'idm':s.match.id}) }}">Game Overview</a>
                     </div>
                 </div>
-            <div class="game-info-team game-info-team-second">
+            <a class="game-info-team game-info-team-second" href="{{ path('team_display',{'id':s.match.team2.id} )}}">
                 <figure><img src="{{ asset(logoT2) }}" alt="" width="75"
                              height="106"/>
                 </figure>
                 <div class="game-result-team-name">{{ s.match.team2.teamName | slice(0,10) }}</div>
-                <div class="game-result-team-country">Spain</div>
-            </div>
+                <div class="game-result-team-country">{{ s.match.team1.teamShortcut }}</div>
+            </a>
         </div>
         </div>
     </article>
