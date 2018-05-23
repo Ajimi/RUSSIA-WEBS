@@ -34,7 +34,7 @@ class MatchFrontController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $em->getRepository("MatchBundle:Match")->findBy(array('played' => false), array('date' => 'desc')),
+            $em->getRepository("MatchBundle:Match")->findBy(array('played' => false), array('date' => 'asc')),
             $request->query->getInt('page', 1),/*page number*/
             $request->query->get('limit', 2)
 
