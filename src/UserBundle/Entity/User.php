@@ -349,43 +349,7 @@ class User extends BaseUser
         return $this->username;
     }
 
-    /**
-     * Set firstname.
-     *
-     * @param string|null $firstname
-     *
-     * @return User
-     */
-    public function setFirstname($firstname = null)
-    {
-        $this->firstname = $firstname;
 
-        return $this;
-    }
-
-    /**
-     * Set lastname.
-     *
-     * @param string|null $lastname
-     *
-     * @return User
-     */
-    public function setLastname($lastname = null)
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    /**
-     * Get lastname.
-     *
-     * @return string|null
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
 
     /**
      * Add article.
