@@ -85,7 +85,7 @@ class Subject
 
     /**
      * @var Comment[]
-     * @ORM\OneToMany(targetEntity="Forum\ForumBundle\Entity\Comment", mappedBy="subject")
+     * @ORM\OneToMany(targetEntity="Forum\ForumBundle\Entity\Comment", mappedBy="subject", cascade={"remove"})
      *
      */
     private $comments;

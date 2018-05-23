@@ -31,8 +31,8 @@ class Comment
 
     /**
      * @var Subject
-     * @ORM\ManyToOne(targetEntity="Forum\ForumBundle\Entity\Subject", inversedBy="comments" , cascade={"remove"})
-     * @ORM\JoinColumn(name="id_subject",referencedColumnName="id" , nullable=true ,onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Forum\ForumBundle\Entity\Subject", inversedBy="comments" )
+     * @ORM\JoinColumn(name="id_subject",referencedColumnName="id" , nullable=true)
      */
     private $subject;
     /**
