@@ -44,8 +44,28 @@
             </div>
             <div class="x_content">
                 <ul class="list-unstyled msg_list">
-                    {% include '@Forum/admin/componentAd/comment-item.html.twig' %}
+                    {{ render(controller('ForumBundle:Admin/CommentsAdmin:allComments' , {'subject' : subject})) }}
                 </ul>
+                <div class="comment-box">
+                    <div class="comment-box-main">
+                        <h2 class="comment-box-name">{{ app.user.username }}</h2>
+                        <!-- RD Mailform-->
+                        <form class="comment-box-form" data-form-output="form-output-global"
+                              method="get"
+                              action="{{ path('comment_add_admin' , {'id': subject.id }) }}">
+                            <div class="form-wrap">
+                                <textarea id="comment-message" name="message"
+                                          data-constraints="@Required"
+                                          class="resizable_textarea form-control"> </textarea>
+                            </div>
+                            <ul class="list-unstyled msg_list">
+                                <div class="form-button">
+                                    <button class="btn btn btn-success" type="submit">Comment</button>
+                                </div>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

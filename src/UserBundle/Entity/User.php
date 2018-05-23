@@ -178,6 +178,14 @@ class User extends BaseUser
     }
 
     /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
      * @return mixed
      */
     public function getStripeCustomerId()
@@ -204,6 +212,22 @@ class User extends BaseUser
         }
         $this->hasPhone = true;
         return $this->phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     /**

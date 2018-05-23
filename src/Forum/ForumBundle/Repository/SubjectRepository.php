@@ -19,8 +19,19 @@ class SubjectRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery("
-                    select m from ForumBundle:Subject m WHERE m.title LIKE :P")
+                    select m from ForumBundle:Subject m WHERE m.etat = 'Accept' AND m.title LIKE :P")
             ->setParameter('P', '%' . $title . '%');
+        return $query->getResult();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function FindAccept()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("
+                    select m from ForumBundle:Subject m WHERE m.etat = 'Accept'");
         return $query->getResult();
     }
 

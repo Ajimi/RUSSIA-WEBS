@@ -64,11 +64,6 @@ class CommentsController extends Controller
         return new JsonResponse($data);
     }
 
-    public function CountAction()
-    {
-
-    }
-
     /**
      * @param $comments
      * @return array

@@ -21,7 +21,7 @@ class SubjectApiController extends Controller
      */
     public function allAction()
     {
-        $subjects = $this->getDoctrine()->getManager()->getRepository('ForumBundle:Subject')->findAll();
+        $subjects = $this->getDoctrine()->getManager()->getRepository('ForumBundle:Subject')->FindAccept();
         $data = $this->serializer($subjects);
         return new JsonResponse($data);
     }
@@ -102,5 +102,6 @@ class SubjectApiController extends Controller
         $data = $this->serializer($em);
         return new JsonResponse($data);
     }
+
 
 }

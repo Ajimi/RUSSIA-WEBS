@@ -1,8 +1,18 @@
 {% for comment in comments %}
-    <li><span>
-            <span>{{ comment.user }}</span>
-            <span class="time">{{ comment.created|ago }}</span>
-        </span>
-        <span class="message">{{ comment.content }}</span>
-    </li>
+    <li class="current-page"></li>
+    <div class="x_content"><span>
+            <h5><div><span>{{ comment.user }} </span>
+                <span class="time">{{ comment.created|ago }}</span></div>
+            </h5></span>
+        <div>
+            <blockquote><h2 class="message">{{ comment.content }}</h2>
+                {% if comment.user == app.user %}
+                    <div>
+                        <a href="{{ path('remove_comment' ,{'comment': comment.id , 'subject': comment.subject.id}) }}"><span
+                                    class="fa fa-trash-o"></span></a>
+                    </div>
+                {% endif %}
+            </blockquote>
+        </div>
+    </div>
 {% endfor %}

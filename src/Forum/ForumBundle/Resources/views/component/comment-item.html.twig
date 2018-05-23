@@ -10,10 +10,12 @@
             <p>{{ comment.content }}</p>
         </div>
         <div class="post-comment-footer">
-            <div class="fa-hover col-md-3 col-sm-4 col-xs-12"><a
-                        href="{{ path('remove_comment' ,{'comment': comment.id , 'subject': comment.subject.id}) }}"><span
-                            class="fa fa-trash-o"></span></a>
-            </div>
+            {% if comment.user == app.user %}
+                <div class="fa-hover col-md-3 col-sm-4 col-xs-12"><a
+                            href="{{ path('remove_comment' ,{'comment': comment.id , 'subject': comment.subject.id}) }}"><span
+                                class="fa fa-trash-o"></span></a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
