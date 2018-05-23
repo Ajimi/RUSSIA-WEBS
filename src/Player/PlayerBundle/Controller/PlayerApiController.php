@@ -12,6 +12,7 @@ namespace Player\PlayerBundle\Controller;
 use Player\PlayerBundle\Entity\Player;
 use Player\PlayerBundle\Util\ClubApiController;
 use Player\PlayerBundle\Util\SkillApiController;
+use Player\PlayerBundle\Util\ViewApiController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -95,6 +96,7 @@ class PlayerApiController extends Controller
             "visits" => $player->getVisits(),
             "skills" => SkillApiController::serializer($player->getSkills()),
             "clubs" => ClubApiController::serializer($player->getClubs()),
+            "views" => ViewApiController::serializer($player->getViews())
         );
     }
 

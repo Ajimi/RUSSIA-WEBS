@@ -11,6 +11,7 @@ namespace Team\TeamBundle\Controller;
 use Player\PlayerBundle\Controller\PlayerApiController;
 use Player\PlayerBundle\Util\ClubApiController;
 use Player\PlayerBundle\Util\SkillApiController;
+use Player\PlayerBundle\Util\ViewApiController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -129,6 +130,7 @@ class TeamApiController extends Controller
                 "visits" => $player->getVisits(),
                 "skills" => SkillApiController::serializer($player->getSkills()),
                 "clubs" => ClubApiController::serializer($player->getClubs()),
+                "views" => ViewApiController::serializer($player->getViews()),
             );
         }
         $formatedTeams = array(
