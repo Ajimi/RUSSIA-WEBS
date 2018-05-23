@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function headerNextMatchAction($isRegion)
     {
         $em = $this->getDoctrine()->getManager();
-        $match = $em->getRepository('MatchBundle:Match')->findOneBy(array('played' => false), array('date' => 'desc'));
+        $match = $em->getRepository('MatchBundle:Match')->findOneBy(array('played' => false), array('date' => 'asc'));
         return $this->render('@Match/FrontViews/next_match_header.html.twig', array(
             'match' => $match,
             'reg' => $isRegion
